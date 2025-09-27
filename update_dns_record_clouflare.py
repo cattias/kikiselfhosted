@@ -1,25 +1,49 @@
 import requests
-import os
 import json
 import time
+import argparse # NEW: Import for command-line argument parsing
 
 # --- Configuration ---
 # Cloudflare API Base URL
 CLOUDFLARE_API_BASE = "https://api.cloudflare.com/client/v4"
 
-# REQUIRED: Your domain (e.g., 'example.com')
-DOMAIN = os.getenv('CLOUDFLARE_DOMAIN') 
-# REQUIRED: The record name, typically '@' for the root domain A record, or 'home' for a subdomain
-RECORD_NAME = os.getenv('CLOUDFLARE_RECORD_NAME', '@') 
-# REQUIRED: Set this to 'live' for production updates, or 'test' for development.
-ENVIRONMENT = os.getenv('CLOUDFLARE_ENVIRONMENT', 'live')
-
-# Authentication Headers (Uses a Bearer Token)
-HEADERS = {
+# HEADERS template (Token will be injected in main)
+HEADERS_TEMPLATE = {
     'Content-Type': 'application/json',
-    # We use CLOUDFLARE_API_TOKEN, which should have Zone:DNS:Edit permissions
-    'Authorization': f'Bearer {os.getenv("CLOUDFLARE_API_TOKEN")}'
+    'Authorization': 'Bearer {}' 
 }
+
+# --- Argument Parsing ---
+
+def parse_arguments():
+    """Parses command-line arguments for configuration."""
+    parser = argparse.ArgumentParser(
+        description="Cloudflare Dynamic DNS (DDNS) Updater for A records. Uses command-line parameters instead of environment variables.",
+        formatter_class=argparse.RawTextHelpFormatter
+    )
+    parser.add_argument(
+        '--token', 
+        required=True, 
+        help="The Cloudflare API Token with Zone:DNS:Edit permissions."
+    )
+    parser.add_argument(
+        '--domain', 
+        required=True, 
+        help="Your registered domain (e.g., 'example.com')."
+    )
+    parser.add_argument(
+        '--name', 
+        default='@', 
+        help="The DNS record name (e.g., '@' for root, or 'home' for subdomain 'home.example.com'). Defaults to '@'."
+    )
+    parser.add_argument(
+        '--env', 
+        default='live', 
+        choices=['live', 'test'], 
+        help="The execution environment/mode. 'live' performs updates, 'test' simulates them. Defaults to 'live'."
+    )
+    return parser.parse_args()
+
 
 # --- Utility Functions ---
 
@@ -37,13 +61,13 @@ def get_public_ip():
         print(f"   Error fetching public IP: {e}")
         return None
 
-def get_zone_id():
+def get_zone_id(domain, headers):
     """Retrieves the Zone ID for the given domain from Cloudflare."""
-    url = f"{CLOUDFLARE_API_BASE}/zones?name={DOMAIN}"
-    print(f"-> 2. Fetching Zone ID for {DOMAIN}...")
+    url = f"{CLOUDFLARE_API_BASE}/zones?name={domain}"
+    print(f"-> 2. Fetching Zone ID for {domain}...")
 
     try:
-        response = requests.get(url, headers=HEADERS, timeout=10)
+        response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
         data = response.json()
 
@@ -52,24 +76,24 @@ def get_zone_id():
             print(f"   Success. Zone ID found: {zone_id}")
             return zone_id
         else:
-            print(f"   Error: Could not find Zone ID for {DOMAIN}. Check domain spelling and API permissions.")
+            print(f"   Error: Could not find Zone ID for {domain}. Check domain spelling and API permissions.")
             print(f"   API Response: {data}")
             return None
     except requests.RequestException as e:
         print(f"   Connection Error fetching Zone ID: {e}")
         return None
 
-def get_current_a_record(zone_id):
+def get_current_a_record(zone_id, domain, record_name, headers):
     """Retrieves the current A record IP and the Record ID from Cloudflare."""
     
     # Cloudflare API requires the full record name (e.g., 'example.com' or 'home.example.com')
-    full_record_name = f"{RECORD_NAME}.{DOMAIN}" if RECORD_NAME != '@' else DOMAIN
+    full_record_name = f"{record_name}.{domain}" if record_name != '@' else domain
     
     url = f"{CLOUDFLARE_API_BASE}/zones/{zone_id}/dns_records?type=A&name={full_record_name}"
     print(f"-> 3. Checking current A record for {full_record_name}...")
 
     try:
-        response = requests.get(url, headers=HEADERS, timeout=10)
+        response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
         data = response.json()
 
@@ -87,9 +111,9 @@ def get_current_a_record(zone_id):
         print(f"   Connection Error checking record: {e}")
         return None, None
 
-def update_a_record(zone_id, record_id, old_ip, new_ip):
+def update_a_record(zone_id, record_id, old_ip, new_ip, domain, record_name, environment, headers):
     """Updates the A record on Cloudflare with the new IP address."""
-    full_record_name = f"{RECORD_NAME}.{DOMAIN}" if RECORD_NAME != '@' else DOMAIN
+    full_record_name = f"{record_name}.{domain}" if record_name != '@' else domain
     url = f"{CLOUDFLARE_API_BASE}/zones/{zone_id}/dns_records/{record_id}"
     
     # TTL is set to 60 seconds (minimum)
@@ -97,19 +121,19 @@ def update_a_record(zone_id, record_id, old_ip, new_ip):
         'type': 'A',
         'name': full_record_name,
         'content': new_ip,
-        'ttl': Auto,
-        'proxied': True
+        'ttl': 60, 
+        'proxied': False # DDNS records are usually not proxied
     }
 
     print(f"-> 4. Attempting to update A record from {old_ip} to: {new_ip}")
     
-    if ENVIRONMENT.lower() != 'live':
-        print("   --- TEST MODE: Update skipped. Set CLOUDFLARE_ENVIRONMENT='live' to enable updates. ---")
+    if environment.lower() != 'live':
+        print("   --- TEST MODE: Update skipped. Use '--env live' to enable updates. ---")
         return True # Simulate success in test mode
 
     try:
         # Cloudflare update API uses PUT
-        response = requests.put(url, headers=HEADERS, data=json.dumps(payload), timeout=10)
+        response = requests.put(url, headers=headers, data=json.dumps(payload), timeout=10)
         response.raise_for_status()
         data = response.json()
         
@@ -128,26 +152,33 @@ def update_a_record(zone_id, record_id, old_ip, new_ip):
 
 def main():
     """The main function to execute the DDNS check and update."""
-    print("--- Cloudflare DDNS Updater Script Starting ---")
     
-    required_env_vars = ["CLOUDFLARE_API_TOKEN", "CLOUDFLARE_DOMAIN"]
-    for var in required_env_vars:
-        if not os.getenv(var):
-            print(f"\nFATAL ERROR: Environment variable '{var}' is missing.")
-            print("Please set the required environment variables. See README_CLOUDFLARE.md for details.")
-            return
+    # NEW: Parse command-line arguments
+    args = parse_arguments()
+    
+    token = args.token
+    domain = args.domain
+    record_name = args.name
+    environment = args.env
+    
+    # NEW: Prepare the full headers object with the token
+    headers = HEADERS_TEMPLATE.copy()
+    headers['Authorization'] = headers['Authorization'].format(token)
+
+    print("--- Cloudflare DDNS Updater Script Starting ---")
     
     public_ip = get_public_ip()
     if not public_ip:
         print("\nScript aborted: Could not determine public IP.")
         return
 
-    zone_id = get_zone_id()
+    # Pass the arguments to the utility functions
+    zone_id = get_zone_id(domain, headers)
     if not zone_id:
         print("\nScript aborted: Could not determine Cloudflare Zone ID.")
         return
 
-    cloudflare_ip, record_id = get_current_a_record(zone_id)
+    cloudflare_ip, record_id = get_current_a_record(zone_id, domain, record_name, headers)
     if not cloudflare_ip or not record_id:
         print("\nScript aborted: Could not retrieve current Cloudflare IP or Record ID.")
         return
@@ -156,7 +187,8 @@ def main():
         print("\n-> 5. IPs match. No update required.")
     else:
         print(f"\n-> 5. IPs MISMATCH: Public IP ({public_ip}) vs Cloudflare IP ({cloudflare_ip})")
-        update_a_record(zone_id, record_id, cloudflare_ip, public_ip)
+        # Pass all necessary arguments to the update function
+        update_a_record(zone_id, record_id, cloudflare_ip, public_ip, domain, record_name, environment, headers)
 
 if __name__ == "__main__":
     main()
