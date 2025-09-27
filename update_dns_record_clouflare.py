@@ -97,8 +97,8 @@ def update_a_record(zone_id, record_id, old_ip, new_ip):
         'type': 'A',
         'name': full_record_name,
         'content': new_ip,
-        'ttl': 60, 
-        'proxied': False # DDNS records are usually not proxied
+        'ttl': Auto,
+        'proxied': True
     }
 
     print(f"-> 4. Attempting to update A record from {old_ip} to: {new_ip}")
