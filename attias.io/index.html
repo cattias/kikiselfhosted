@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Attias.io - Kiki's Delivery Service</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for a polished look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #4b5563; /* Gray-600 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: #1f2937; /* Gray-800 */
+        }
+    </style>
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#1f2937', // Dark blue-gray
+                        'card-bg': '#374151', // Slightly lighter gray
+                        'accent': '#3b82f6', // Blue-500
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-primary-dark min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main Container Card -->
+    <div class="w-full max-w-4xl bg-card-bg shadow-2xl rounded-xl p-6 sm:p-10 border border-gray-700">
+
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-5xl font-extrabold text-white mb-2 tracking-tight">
+                attias.<span class="text-accent">io</span>
+            </h1>
+            <p class="text-gray-300 text-lg font-light">
+                Tout sur le Kiki &copy;
+            </p>
+        </header>
+
+        <!-- Links Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Link Card 1: Admin -->
+            <a href="https://admin.attias.io" target="_blank" class="block group transition duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-lg rounded-xl p-5 bg-gray-700/50 hover:bg-gray-700 border-l-4 border-accent">
+                <div class="flex items-center space-x-4">
+                    <!-- Server Icon -->
+                    <div class="p-3 bg-accent/20 rounded-full text-accent flex-shrink-0">
+                        <!-- Icon (Server) -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4M5 12h14"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-semibold text-white group-hover:text-accent transition duration-150">
+                            Cockpit
+                        </h2>
+                        <p class="text-gray-400 mt-1 text-sm">
+				<q>Baisse ta culotte c'est moi qui pilote.</q>
+                        </p>
+                        <span class="text-sm font-medium text-accent/80 mt-2 inline-block">admin.attias.io &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Link Card 2: DSM (NAS) -->
+            <a href="https://dsm.attias.io" target="_blank" class="block group transition duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-lg rounded-xl p-5 bg-gray-700/50 hover:bg-gray-700 border-l-4 border-green-500">
+                <div class="flex items-center space-x-4">
+                    <!-- Storage Icon -->
+                    <div class="p-3 bg-green-500/20 rounded-full text-green-400 flex-shrink-0">
+                        <!-- Icon (Database/Storage) -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10m0 0h8m-8 0L9.5 14.5M12 17l4.5-4.5M16 17h4m-4 0v-4"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-semibold text-white group-hover:text-green-400 transition duration-150">
+                            Synology
+                        </h2>
+                        <p class="text-gray-400 mt-1 text-sm">
+			This is to access Kiki's Synology NAS interface. The Kikiflix storage library. Pour le plaisir des grands et des petits.
+                        </p>
+                        <span class="text-sm font-medium text-green-500/80 mt-2 inline-block">dsm.attias.io &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Link Card 3: Bitwarden -->
+            <a href="https://bitwarden.attias.io" target="_blank" class="block group transition duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-lg rounded-xl p-5 bg-gray-700/50 hover:bg-gray-700 border-l-4 border-yellow-500">
+                <div class="flex items-center space-x-4">
+                    <!-- Key Icon -->
+                    <div class="p-3 bg-yellow-500/20 rounded-full text-yellow-400 flex-shrink-0">
+                        <!-- Icon (Lock/Key) -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7h3a5 5 0 015 5v5a2 2 0 01-2 2h-5m-4 0v-5a2 2 0 01-2-2v-5m4 0h3m-3 0V7a3 3 0 00-3-3H7a3 3 0 00-3 3v4a2 2 0 002 2h5m4 0v5"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-semibold text-white group-hover:text-yellow-400 transition duration-150">
+                            Bitwarden
+                        </h2>
+                        <p class="text-gray-400 mt-1 text-sm">
+                            This is Kiki's self-hosted Bitwarden instance (password manager). Only for Kiki or if you ask him nicely.
+                        </p>
+                        <span class="text-sm font-medium text-yellow-500/80 mt-2 inline-block">bitwarden.attias.io &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Link Card 4: Grafana -->
+            <a href="https://grafana.attias.io" target="_blank" class="block group transition duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-lg rounded-xl p-5 bg-gray-700/50 hover:bg-gray-700 border-l-4 border-fuchsia-500">
+                <div class="flex items-center space-x-4">
+                    <!-- Dashboard Icon -->
+                    <div class="p-3 bg-fuchsia-500/20 rounded-full text-fuchsia-400 flex-shrink-0">
+                        <!-- Icon (Chart/Monitoring) -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h6m-6 0v2m6-2v2"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-semibold text-white group-hover:text-fuchsia-400 transition duration-150">
+                            Monitoring
+                        </h2>
+                        <p class="text-gray-400 mt-1 text-sm">
+                            This is the monitoring dashboard of the underlying server with prometheus export node metrics. Very beautiful.
+                        </p>
+                        <span class="text-sm font-medium text-fuchsia-500/80 mt-2 inline-block">grafana.attias.io &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Link Card 5: K0s Dashboard (Kubernetes) -->
+            <a href="https://k0s.attias.io" target="_blank" class="block group transition duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-lg rounded-xl p-5 bg-gray-700/50 hover:bg-gray-700 border-l-4 border-red-500">
+                <div class="flex items-center space-x-4">
+                    <!-- Kubernetes Icon (using a geometric/container icon) -->
+                    <div class="p-3 bg-red-500/20 rounded-full text-red-400 flex-shrink-0">
+                        <!-- Icon (Cube/Box - symbolizing a container or node) -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10m0-10L4 7m8 4l8-4"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-semibold text-white group-hover:text-red-400 transition duration-150">
+                            Kubernetes Dashboard
+                        </h2>
+                        <p class="text-gray-400 mt-1 text-sm">
+                            Kik0s admin dashboard. The best k8s distribution on the market.
+                        </p>
+                        <span class="text-sm font-medium text-red-500/80 mt-2 inline-block">k0s.attias.io &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Link Card 6: Plex -->
+            <a href="https://plex.attias.io" target="_blank" class="block group transition duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-lg rounded-xl p-5 bg-gray-700/50 hover:bg-gray-700 border-l-4 border-indigo-500">
+                <div class="flex items-center space-x-4">
+                    <!-- Media/Plex Icon (Video Player) -->
+                    <div class="p-3 bg-indigo-500/20 rounded-full text-indigo-400 flex-shrink-0">
+                        <!-- Icon (Video Camera/Play) -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.64v6.72a1 1 0 01-1.447.894L15 14M5 18H3a2 2 0 01-2-2V8a2 2 0 012-2h2M5 18V6l11 6-11 6z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-semibold text-white group-hover:text-indigo-400 transition duration-150">
+                            Kikiflix
+                        </h2>
+                        <p class="text-gray-400 mt-1 text-sm">
+                            Kikiflix, What else? Vous en avez rêvé, Kiki l'a fait ... Exclusive VIP access only!
+                        </p>
+                        <span class="text-sm font-medium text-indigo-500/80 mt-2 inline-block">plex.attias.io &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+        <!-- End Links Grid -->
+
+        <!-- Footer -->
+        <footer class="mt-10 pt-6 border-t border-gray-700/50 text-center">
+            <p class="text-gray-500 text-sm">
+                Le serveur à la maison de Kiki 2025 &copy;
+            </p>
+        </footer>
+
+    </div>
+    <!-- End Main Container Card -->
+
+</body>
+</html>
+
