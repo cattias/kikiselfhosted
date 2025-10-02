@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: attias-io-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: attias.io
+  template:
+    metadata:
+      labels:
+        app: attias.io
+    spec:
+      containers:
+      - name: attias-io
+        image: kikiattias/attias.io:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: attias-io-service
+spec:
+  selector:
+    app: attias.io
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
