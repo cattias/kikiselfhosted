@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dsm-attias-io-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dsm.attias.io
+  template:
+    metadata:
+      labels:
+        app: dsm.attias.io
+    spec:
+      containers:
+      - name: dsm-attias-io
+        image: kikiattias/dsm.attias.io:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dsm-attias-io-service
+spec:
+  selector:
+    app: dsm.attias.io
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  type: NodePort
