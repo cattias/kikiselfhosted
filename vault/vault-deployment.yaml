@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaultwarden-deployment
+  labels:
+    app: vaultwarden
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vaultwarden
+  template:
+    metadata:
+      labels:
+        app: vaultwarden
+    spec:
+      containers:
+      - name: vaultwarden
+        image: vaultwarden/server:latest
+        env:
+        - name: DOMAIN
+          value: "https://vault.attias.io"
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: vw-data-storage
+          mountPath: /data
+      volumes:
+      - name: vw-data-storage
+        persistentVolumeClaim:
+          claimName: vw-data-pvc
