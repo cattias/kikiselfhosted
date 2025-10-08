@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: attias-io
-        image: kikiattias/attias.io:latest
+        image: kikiattias/attias.io:20251008
         ports:
         - containerPort: 80
 ---
