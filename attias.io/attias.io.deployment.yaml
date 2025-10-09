@@ -13,8 +13,8 @@ spec:
         app: attias.io
     spec:
       containers:
-      - name: attias-io
-        image: kikiattias/attias.io:20251009
+      - name: nginx
+        image: nginx:latest
         ports:
         - containerPort: 80
         volumeMounts:
