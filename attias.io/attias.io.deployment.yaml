@@ -22,9 +22,8 @@ spec:
           mountPath: /usr/share/nginx/html
       volumes:
       - name: html-volume
-        hostPath:
-          path: /var/www/attias.io/
-          type: DirectoryOrCreate
+        configMap:
+          name: static-content
 ---
 apiVersion: v1
 kind: Service
