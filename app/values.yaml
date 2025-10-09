@@ -1,0 +1,12 @@
+config:
+  spec:
+    destination:
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/cattias/kikiselfhosted
+      targetRevision: master
+
+applications:
+  - name: attias.io
+  - name: dsm
+  - name: vault
