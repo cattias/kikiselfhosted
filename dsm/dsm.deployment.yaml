@@ -22,9 +22,8 @@ spec:
           mountPath: /etc/nginx/conf.d/
       volumes:
       - name: conf-volume
-        hostPath:
-          path: /var/www/dsm/
-          type: DirectoryOrCreate
+        configMap:
+          name: conf-cm
 ---
 apiVersion: v1
 kind: Service
