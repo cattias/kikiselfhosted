@@ -1,2 +1,3 @@
-service:
-  type: NodePort
+web:
+  service:
+    type: NodePort
