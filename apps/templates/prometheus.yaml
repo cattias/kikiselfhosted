@@ -20,3 +20,14 @@ spec:
     targetRevision: 27.40.0
     helm:
       releaseName: prometheus
+      valuesObject:
+        server:
+          service:
+            type: NodePort
+          persistentVolume:
+            enabled: true
+            storageClass: local-path
+        alertmanager:
+          persistentVolume:
+            enabled: true
+            storageClass: local-path
