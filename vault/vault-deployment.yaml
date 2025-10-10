@@ -20,11 +20,11 @@ spec:
         env:
         - name: DOMAIN
           value: "https://vault.attias.io"
-        - name: ADMIN_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: vault-admin-token
-              key: admin-token
+#        - name: ADMIN_TOKEN
+#          valueFrom:
+#            secretKeyRef:
+#              name: vault-admin-token
+#              key: admin-token
         ports:
         - containerPort: 80
         volumeMounts:
