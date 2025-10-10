@@ -21,7 +21,7 @@ spec:
     helm:
       releaseName: kubernetes-dashboard
       valuesObject:
-        kong:
+        kong-proxy:
           service:
             type: NodePort
 
