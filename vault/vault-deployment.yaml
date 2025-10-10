@@ -23,7 +23,7 @@ spec:
         - name: ADMIN_TOKEN
           valueFrom:
             secretKeyRef:
-              name: admin-token
+              name: vault-admin-token
               key: admin-token
         ports:
         - containerPort: 80
