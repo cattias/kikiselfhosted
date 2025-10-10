@@ -20,3 +20,6 @@ spec:
     targetRevision: 10.1.0
     helm:
       releaseName: grafana
+      valuesObject:
+        service:
+          type: NodePort
