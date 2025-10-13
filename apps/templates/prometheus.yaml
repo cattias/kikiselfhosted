@@ -28,6 +28,4 @@ spec:
             enabled: true
             storageClass: local-path
         alertmanager:
-          persistentVolume:
-            enabled: true
-            storageClass: local-path
+          enabled: false
