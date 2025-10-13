@@ -1,2 +1,2 @@
-kubectl get secret admin-user -n argocd -o jsonpath="{.data.token}" | base64 -d
+kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath="{.data.token}" | base64 -d
 
