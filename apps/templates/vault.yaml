@@ -1,21 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vault
+  name: vaultwarden
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
     automated:
+      prune: true
       enabled: true
-      prune: false
   destination:
-    namespace: argocd
+    namespace: vaultwarden
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: vault
-    repoURL: https://github.com/cattias/kikiselfhosted
-    targetRevision: HEAD
-
+    repoURL: https://guerzon.github.io/vaultwarden
+    targetRevision: 0.34.4
+    chart: vaultwarden
+    helm:
+      valuesObject:
+        domain: "https://vault.attias.io"
+        database:
+          type: postgresql
+          existingSecret: "vaultwarden-db-app"
+          existingSecretKey: "uri"
+        service:
+          type: NodePort
