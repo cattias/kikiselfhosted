@@ -10,4 +10,4 @@ spec:
 
   storage:
     size: 1Gi
-    storageClass: local-storage
+    storageClass: local-path
