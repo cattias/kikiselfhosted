@@ -30,4 +30,4 @@ spec:
         alertmanager:
           persistentVolume:
             enabled: true
-            storageClassName: local-path
+            storageClass: local-path
