@@ -27,3 +27,6 @@ spec:
           existingSecretKey: "uri"
         service:
           type: NodePort
+        adminToken:
+          existingSecret: "vault-admin-token"
+          existingSecretKey: "admin-token"
