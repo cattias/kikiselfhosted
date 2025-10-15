@@ -5,6 +5,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: daily-postgres-nfs-backup
+  namespace: vaultwarden
 spec:
   # Schedule: Run every day at 02:00 AM UTC.
   schedule: "0 2 * * *"
