@@ -3,6 +3,7 @@ kind: PersistentVolume
 metadata:
   name: backup-pv
   namespace: vaultwarden
+  labels: type: nfs-backup
 spec:
   capacity:
     storage: 100Gi
