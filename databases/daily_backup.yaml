@@ -41,7 +41,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: vaultwarden-db-app
-                  key: app
+                  key: dbname
 
             # Volume Mount: Mount the PVC to a local directory for saving the dump
             volumeMounts:
