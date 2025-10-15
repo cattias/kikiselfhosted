@@ -54,9 +54,10 @@ spec:
               - |
                 BACKUP_DIR="/mnt/nfs-backup"
                 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-                FILENAME="full_postgres_dump_${TIMESTAMP}.sql.gz"
+                # Filename now includes the database name and uses .dump extension for Custom Format
+                FILENAME="${POSTGRES_DB}_dump_${TIMESTAMP}.dump.gz"
                 
-                echo "Starting PostgreSQL backup for ${PGHOST}..."
+                echo "Starting PostgreSQL backup for database ${POSTGRES_DB} on ${PGHOST}..."
                 
                 # Check if the backup directory is writable
                 if [ ! -w "${BACKUP_DIR}" ]; then
@@ -64,18 +65,21 @@ spec:
                   exit 1
                 fi
                 
-                # Execute the full dump, compress it, and save to the NFS share
-                pg_dumpall \
+                # Execute the single database dump using Custom format (-Fc)
+                # This is more efficient than plain SQL and suitable for restoration via pg_restore.
+                # Pipes the compressed output to the NFS share
+                pg_dump -Fc \
                   -h ${PGHOST} \
                   -U ${PGUSER} \
+                  -d ${POSTGRES_DB} \
                   | gzip > ${BACKUP_DIR}/${FILENAME}
                   
-                # Check the exit status of the pg_dumpall process
+                # Check the exit status of the pg_dump process
                 if [ $? -eq 0 ]; then
                   echo "Backup successful! File saved to: ${BACKUP_DIR}/${FILENAME}"
                   # You can add clean-up or notification steps here
                 else
-                  echo "ERROR: pg_dumpall or gzip failed."
+                  echo "ERROR: pg_dump or gzip failed. Check database name and user permissions."
                   exit 1
                 fi
           
