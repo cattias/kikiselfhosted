@@ -29,10 +29,10 @@ spec:
           configStorage: 10Gi
         service:
           type: NodePort
-        volumes:
+        extraVolumes:
           - name: nas-media-pvc
             persistentVolumeClaim:
               claimName: "videos-pvc"
-        volumeMounts:
+        extraVolumeMounts:
           - name: nas-media-pvc
             mountPath: "/data/videos"
