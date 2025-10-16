@@ -21,7 +21,7 @@ spec:
     helm:
       valuesObject:
         ingress:
-          enabled: true
+          enabled: false
           url: "https://plex.attias.io"
           ingressClassName: ingress-nginx
         pms:
@@ -29,9 +29,4 @@ spec:
           configStorage: 10Gi
         service:
           type: NodePort
-        extraVolumes:
-          - name: videos
-          hostPath:
-            path: /mnt/plex
-            type: Directory
 
