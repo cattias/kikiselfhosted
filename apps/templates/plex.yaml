@@ -34,4 +34,3 @@ spec:
             enabled: true
             existingClaim: "videos-pvc"
             mountPath: "/data"
-            accessMode: ReadOnlyMany
