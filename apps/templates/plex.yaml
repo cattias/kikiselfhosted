@@ -29,4 +29,6 @@ spec:
           configStorage: 10Gi
         service:
           type: NodePort
-
+        extraVolumeMounts:
+          - name: videos-pvc
+          mountPath: /dev/videos
