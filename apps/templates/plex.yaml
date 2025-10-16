@@ -29,8 +29,10 @@ spec:
           configStorage: 10Gi
         service:
           type: NodePort
-        persistence:
-          media:
-            enabled: true
-            existingClaim: "videos-pvc"
-            mountPath: "/data"
+        volumes:
+          - name: nas-media-pvc
+            persistentVolumeClaim:
+              claimName: "videos-pvc"
+        volumeMounts:
+          - name: nas-media-pvc
+            mountPath: "/data/videos"
