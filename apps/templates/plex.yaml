@@ -27,7 +27,8 @@ spec:
         pms:
           storageClassName: local-path
           configStorage: 10Gi
-        extraEnv:
-          PLEX_CLAIM: "claim-yL24hXgVswzpniN2UW9k"
         service:
           type: NodePort
+        extraVolumeMounts:
+          - name: videos
+          mountPath: /mnt/plex
