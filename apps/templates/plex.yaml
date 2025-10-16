@@ -29,6 +29,9 @@ spec:
           configStorage: 10Gi
         service:
           type: NodePort
-        extraVolumeMounts:
+        extraVolumes:
           - name: videos
-          mountPath: /mnt/plex
+          hostPath:
+            path: /mnt/plex
+            type: Directory
+
