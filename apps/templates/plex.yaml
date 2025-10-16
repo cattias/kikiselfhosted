@@ -30,5 +30,5 @@ spec:
         service:
           type: NodePort
         extraVolumeMounts:
-          - name: videos-pvc
+          - name: videospvc
           mountPath: /dev/videos
