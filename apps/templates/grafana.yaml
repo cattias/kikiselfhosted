@@ -43,5 +43,7 @@ spec:
             dashboards:
               default:
                 node-exporter-full-dashboard:
-                  file: ../../grafana/node-exporter-full.json
+                  url: https://raw.githubusercontent.com/cattias/kikiselfhosted/refs/heads/main/grafana/node-exporter-full.json
+                  curlOptions: "-sLf"
+                  token: ''
 
