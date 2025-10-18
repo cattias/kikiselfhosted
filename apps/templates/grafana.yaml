@@ -40,4 +40,8 @@ spec:
                 type: prometheus
                 access: proxy
                 url: http://192.168.178.29:9090
+            dashboards:
+              default:
+                node-exporter-full-dashboard:
+                  file: dashboards/node-exporter-full.json
 
