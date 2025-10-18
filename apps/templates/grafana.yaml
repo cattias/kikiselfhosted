@@ -27,3 +27,17 @@ spec:
           existingSecret: admin-user-secret
           userKey: admin-user
           passwordKey: admin-password
+        datasources:
+          datasources.yaml:
+            apiVersion: 1
+            datasources:
+              - name: Kikiflix
+                type: prometheus
+                access: proxy
+                url: http://prom.attias.io
+                isDefault: true
+              - name: Kiki-ds220j
+                type: prometheus
+                access: proxy
+                url: http://192.168.178.29:9090
+
