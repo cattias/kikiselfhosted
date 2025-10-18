@@ -34,7 +34,7 @@ spec:
               - name: Kikiflix
                 type: prometheus
                 access: proxy
-                url: http://prom.attias.io
+                url: https://prom.attias.io
                 isDefault: true
               - name: Kiki-ds220j
                 type: prometheus
