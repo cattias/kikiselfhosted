@@ -40,10 +40,8 @@ spec:
                 type: prometheus
                 access: proxy
                 url: http://192.168.178.29:9090
-            dashboards:
-              default:
-                node-exporter-full-dashboard:
-                  url: https://raw.githubusercontent.com/cattias/kikiselfhosted/refs/heads/main/grafana/node-exporter-full.json
-                  curlOptions: "-sLf"
-                  token: ''
+            sidecar:
+              dashboards:
+                enabled: truei
+                searchNamespace: ALL
 
