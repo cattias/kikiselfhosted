@@ -23,12 +23,7 @@ spec:
       valuesObject:
         service:
           type: NodePort
-        persistence:
-          type: pvc
-          enabled: true
-          storageClassName: local-path
-          accessModes:
-            - ReadWriteOnce
-          size: 10Gi
-          finalizers:
-            - kubernetes.io/pvc-protection
+        admin:
+          existingSecret: admin-user-secret
+          userKey: admin-user
+          passwordKey: admin-password
