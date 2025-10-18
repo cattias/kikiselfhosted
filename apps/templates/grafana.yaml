@@ -43,5 +43,5 @@ spec:
             dashboards:
               default:
                 node-exporter-full-dashboard:
-                  file: dashboards/node-exporter-full.json
+                  file: ../../grafana/node-exporter-full.json
 
