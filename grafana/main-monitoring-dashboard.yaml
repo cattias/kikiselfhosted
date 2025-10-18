@@ -1619,7 +1619,7 @@ data:
               "editorMode": "code",
               "expr": "((node_filesystem_size_bytes{instance=\"$node\", job=\"$job\", device!~\"rootfs\"} - node_filesystem_avail_bytes{instance=\"$node\", job=\"$job\", device!~\"rootfs\"}) / node_filesystem_size_bytes{instance=\"$node\", job=\"$job\", device!~\"rootfs\"}) * 100",
               "format": "time_series",
-              "legendFormat": "{{mountpoint}}",
+              "legendFormat": "{{ "{{" }}mountpoint{{ "}}" }}",
               "range": true,
               "refId": "A",
               "step": 240
