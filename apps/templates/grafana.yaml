@@ -34,7 +34,7 @@ spec:
               - name: Kikiflix
                 type: prometheus
                 access: proxy
-                url: https://prom.attias.io
+                url: http://prometheus-server.monitoring.svc.cluster.local
                 isDefault: true
               - name: Kiki-ds220j
                 type: prometheus
