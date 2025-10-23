@@ -31,7 +31,7 @@ spec:
           data:
             enabled: true
             volumeClaimSpec:
-              storageClass: local-path
+              storageClassName: local-path
               accessModes:
                 - ReadWriteOnce
               resources:
@@ -40,7 +40,7 @@ spec:
           log:
             enabled: true
             volumeClaimSpec:
-              storageClass: local-path
+              storageClassName: local-path
               accessModes:
                 - ReadWriteOnce
               resources:
