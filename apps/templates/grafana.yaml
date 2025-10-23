@@ -45,6 +45,9 @@ spec:
             kubernetes:
               gnetId: 15661
               revision: 2
+              datasource:
+                - name: DS__VICTORIAMETRICS-PROD-ALL
+                  value: 'Kikiflix'
             nodeexporter:
               gnetId: 1860
               revision: 42
