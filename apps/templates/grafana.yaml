@@ -58,7 +58,3 @@ spec:
               gnetId: 15661
               revision: 2
               datasource: Kikiflix
-            nodeexporter:
-              gnetId: 1860
-              revision: 42
-              datasource: Kikiflix
