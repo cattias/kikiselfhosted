@@ -53,7 +53,7 @@ spec:
               revision: 42
             argocd:
               gnetId: 14584
-              revision:1
+              revision: 1
         dashboardProviders:
           dashboardproviders.yaml:
             apiVersion: 1
