@@ -34,3 +34,22 @@ spec:
             nfs:
               path: "/volume1/video/library"
               server: 192.168.178.29
+        persistence:
+          data:
+            enabled: true
+            volumeClaimSpec:
+              storageClassName: local-path
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 10Gi
+          log:
+            enabled: true
+            volumeClaimSpec:
+              storageClassName: local-path
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 1Gi
