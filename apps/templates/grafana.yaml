@@ -36,6 +36,10 @@ spec:
                 access: proxy
                 url: http://prometheus-server.monitoring.svc.cluster.local
                 isDefault: true
+              - name: KikiArgoCD
+                type: prometheus
+                access: proxy
+                url: http://argocd-server-metrics.argocd.svc.cluster.local
               - name: Kiki-ds220j
                 type: prometheus
                 access: proxy
