@@ -52,13 +52,3 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/standard
-        dashboards:
-          default:
-            k0s:
-              gnetId: 15661
-              revision: 2
-              datasource:
-              - name: Kikiflix
-                value: Prometheus
-              - name: Kiki-ds220j
-                value: Prometheus
