@@ -26,9 +26,9 @@ spec:
           enabled: true
         postgresql:
           enabled: true
-          primary:
-            persistence:
-              storageClass: local-path
+          persistence:
+            enabled: true
+            storageClass: local-path
         config:
           paperless_url: "https://paperless.attias.io"
           auth:
