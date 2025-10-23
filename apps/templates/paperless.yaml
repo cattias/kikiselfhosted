@@ -22,19 +22,27 @@ spec:
       valuesObject:
         service:
           type: NodePort
-        mediaVolume:
-          enabled: true
-          name: library
-          volumeSpec:
-            accessModes:
-              - ReadWriteOnce
-            capacity:
-              storage: 8Ti
-            nfs:
-              path: "/volume1/video/library"
-              server: 192.168.178.29
         config:
           paperless_url: "https://paperless.attias.io"
           auth:
             username: kiki
             email: kiki@attias.io
+        persistence:
+          data:
+            enabled: true
+            volumeClaimSpec:
+              storageClass: local-path
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 10Gi
+          log:
+            enabled: true
+            volumeClaimSpec:
+              storageClass: local-path
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 1Gi
