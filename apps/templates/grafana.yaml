@@ -52,3 +52,8 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/standard
+        dashboards:
+          default:
+            kubernetes:
+              gnetId: 15661
+              revision: 2
