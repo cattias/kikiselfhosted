@@ -57,4 +57,8 @@ spec:
             k0s:
               gnetId: 15661
               revision: 2
-              datasource: Kikiflix
+              datasource:
+              - name: Kikiflix
+                value: Prometheus
+              - name: Kiki-ds220j
+                value: Prometheus
