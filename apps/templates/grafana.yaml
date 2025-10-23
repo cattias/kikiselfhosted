@@ -54,6 +54,7 @@ spec:
               path: /var/lib/grafana/dashboards/standard
         dashboards:
           default:
-            kubernetes:
-              gnetId: 15661
+            prometheus-stats:
+              gnetId: 2
               revision: 2
+              datasource: Prometheus
