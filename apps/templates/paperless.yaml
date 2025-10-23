@@ -24,11 +24,10 @@ spec:
           type: NodePort
         redis:
           enabled: true
+          global.defaultStorageClass: local-path
         postgresql:
           enabled: true
-          persistence:
-            enabled: true
-            storageClass: local-path
+          global.defaultStorageClass: local-path
         config:
           paperless_url: "https://paperless.attias.io"
           auth:
