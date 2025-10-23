@@ -22,6 +22,14 @@ spec:
       valuesObject:
         service:
           type: NodePort
+        redis:
+          enabled: true
+          global:
+            storageClass: local-path
+        postgresql:
+          enabled: true
+          global:
+            storageClass: local-path
         config:
           paperless_url: "https://paperless.attias.io"
           auth:
@@ -46,3 +54,14 @@ spec:
               resources:
                 requests:
                   storage: 1Gi
+        # mediaVolume:
+        #   enabled: true
+        #   name: library
+        #   volumeSpec:
+        #     accessModes:
+        #       - ReadWriteOnce
+        #     capacity:
+        #       storage: 8Ti
+        #     nfs:
+        #       path: "/volume1/video/library"
+        #       server: 192.168.178.29
