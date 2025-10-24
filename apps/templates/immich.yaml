@@ -27,6 +27,8 @@ spec:
                 image:
                   tag: v2.1.0
                 env:
+                  - name: REDIS_HOSTNAME
+                    value: redis://immich-redis:6379
                   - name: DB_URL
                     valueFrom:
                       secretKeyRef:
@@ -45,15 +47,6 @@ spec:
             storageTemplate:
               enabled: true
               template: '{{ "{{" }}y{{ "}}" }}/{{ "{{" }}y{{ "}}" }}-{{ "{{" }}MM{{ "}}" }}-{{ "{{" }}dd{{ "}}" }}/{{ "{{" }}filename{{ "}}" }}'
-        valkey:
-          enabled: true
-          persistence:
-            data:
-              enabled: true
-              size: 1Gi
-              type: emptyDir
-              accessMode: ReadWriteOnce
-              storageClass: local-path
         persistence:
           cache:
             enabled: true
