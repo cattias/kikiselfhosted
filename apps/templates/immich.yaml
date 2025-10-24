@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: immich
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+      enabled: true
+  destination:
+    namespace: photos
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: oci://ghcr.io/immich-app/immich-charts/immich
+    targetRevision: 0.10.1
+    chart: immich
+    helm:
+      valuesObject:
+        controllers:
+          main:
+            containers:
+              main:
+                image:
+                  tag: v2.1.0
+        immich:
+          metrics:
+            enabled: true
+          persistence:
+            library:
+              existingClaim: photos-pvc
+          configuration:
+            trash:
+              enabled: false
+              days: 30
+            storageTemplate:
+              enabled: true
+              template: "{{y}}/{{y}}-{{MM}}-{{dd}}/{{filename}}"
+        persistence:
+          cache:
+            enabled: true
+            size: 10Gi
+            type: emptyDir
+            accessMode: ReadWriteMany
+            storageClass: local-path
+        service:
+          type: NodePort
