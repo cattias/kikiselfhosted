@@ -35,7 +35,7 @@ spec:
           storageClass: local-path
           nextcloudData:
             enabled: true
-            subPath:
+            subPath: nextclouddata
             existingClaim: nextcloud-pvc
         # nextcloud:
         #   host: nextcloud.attias.io
