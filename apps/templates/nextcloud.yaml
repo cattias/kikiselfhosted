@@ -33,12 +33,15 @@ spec:
         persistence:
           enabled: true
           storageClass: local-path
-          nextcloudData:
-            enabled: true
-            subPath: nextclouddata
-            existingClaim: nextcloud-pvc
+          # nextcloudData:
+          #   enabled: true
+          #   subPath: nextclouddata
+          #   existingClaim: nextcloud-pvc
         nextcloud:
           # host: nextcloud.attias.io
+          # datadir: /var/www/html/data
+          # persistence:
+          #   subPath:
           trustedDomains: ['nextcloud.attias.io', 'localhost']
         internalDatabase:
           enabled: false
