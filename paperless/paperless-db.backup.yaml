@@ -39,7 +39,7 @@ spec:
 
             volumeMounts:
             - name: backup-storage
-              mountPath: "/mnt/host-backup"
+              mountPath: "/mnt/nfs-backup"
 
             command: ["/bin/bash", "-c"]
             args:
