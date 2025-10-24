@@ -1,0 +1,82 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless-ngx
+  namespace: paperless
+  labels:
+    app: paperless-ngx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless-ngx
+  template:
+    metadata:
+      labels:
+        app: paperless-ngx
+    spec:
+      containers:
+      - name: paperless-ngx
+        image: ghcr.io/paperless-ngx/paperless-ngx:2.19.2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+          name: http
+        
+        env:
+        # Database Configuration sourced from operator-managed Secret
+        - name: PAPERLESS_DBENGINE
+          value: postgresql
+        - name: PAPERLESS_DBHOST
+          valueFrom:
+            secretKeyRef:
+              name: paperless-db-app
+              key: host 
+        - name: PAPERLESS_DBNAME
+          valueFrom:
+            secretKeyRef:
+              name: paperless-db-app
+              key: dbname 
+        - name: PAPERLESS_DBUSER
+          valueFrom:
+            secretKeyRef:
+              name: paperless-db-app
+              key: user 
+        - name: PAPERLESS_DBPASS
+          valueFrom:
+            secretKeyRef:
+              name: paperless-db-app
+              key: password 
+        - name: PAPERLESS_DBPORT
+          value: "5432" 
+        
+        - name: PAPERLESS_REDIS
+          value: redis://paperless-redis:6379
+
+        - name: PAPERLESS_URL
+          value: https://paperless.ntlx.org
+        
+        # Essential Paperless Settings & combined data/media volume
+        - name: USER_UID
+          value: "1000"
+        - name: GROUP_GID
+          value: "1000"
+        - name: PAPERLESS_DATA_DIR
+          value: "/usr/src/paperless/data"
+        - name: PAPERLESS_MEDIA_ROOT
+          value: "/usr/src/paperless/data"
+        
+        volumeMounts:
+        - name: datastore-volume
+          mountPath: /usr/src/paperless/data 
+        - name: consume-volume
+          mountPath: /usr/src/paperless/consume
+
+      volumes:
+      - name: datastore-volume
+        persistentVolumeClaim:
+          claimName: paperless-datastore-pvc
+      - name: consume-volume
+        persistentVolumeClaim:
+          claimName: paperless-consume-pvc

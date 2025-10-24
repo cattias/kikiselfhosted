@@ -1,0 +1,75 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: daily-postgres-hostpath-backup
+  namespace: paperless
+spec:
+  schedule: "0 23 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: postgres-backup-runner
+            image: postgres:latest
+            imagePullPolicy: IfNotPresent
+            
+            env:
+            - name: PGHOST
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-db-app
+                  key: host
+            - name: PGUSER
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-db-app
+                  key: user
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-db-app
+                  key: password
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-db-app
+                  key: dbname
+
+            volumeMounts:
+            - name: backup-storage
+              mountPath: "/mnt/host-backup"
+
+            command: ["/bin/bash", "-c"]
+            args:
+              - |
+                set -euo pipefail
+
+                BACKUP_DIR="/mnt/host-backup"
+                FILENAME="${POSTGRES_DB}.dump.gz"
+                
+                echo "Starting PostgreSQL backup for database ${POSTGRES_DB} on ${PGHOST}..."
+                
+                if [ ! -w "${BACKUP_DIR}" ]; then
+                  echo "ERROR: Backup directory ${BACKUP_DIR} is not writable or not mounted!"
+                  exit 1
+                fi
+                
+                pg_dump -Fc \
+                  -h ${PGHOST} \
+                  -U ${PGUSER} \
+                  -d ${POSTGRES_DB} \
+                  | gzip > ${BACKUP_DIR}/${FILENAME}
+                  
+                if [ $? -eq 0 ]; then
+                  echo "Backup successful! File saved to: ${BACKUP_DIR}/${FILENAME}"
+                else
+                  echo "ERROR: pg_dump or gzip failed. Check database name and user permissions."
+                  exit 1
+                fi
+          volumes:
+          - name: backup-storage
+            hostPath:
+              path: "/mnt/plex/paperless_backups" 
+              type: DirectoryOrCreate
