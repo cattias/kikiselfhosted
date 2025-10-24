@@ -1,0 +1,67 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: paperless
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+      enabled: true
+  destination:
+    namespace: paperless
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://helm.crystalnet.org
+    targetRevision: 0.2.22
+    chart: paperless-ngx
+    helm:
+      valuesObject:
+        service:
+          type: NodePort
+        redis:
+          enabled: true
+          global:
+            defaultStorageClass: local-path
+        postgresql:
+          enabled: true
+          global:
+            defaultStorageClass: local-path
+        config:
+          paperless_url: "https://paperless.attias.io"
+          auth:
+            username: kiki
+            email: kiki@attias.io
+        persistence:
+          data:
+            enabled: true
+            volumeClaimSpec:
+              storageClassName: local-path
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 10Gi
+          log:
+            enabled: true
+            volumeClaimSpec:
+              storageClassName: local-path
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 1Gi
+        # mediaVolume:
+        #   enabled: true
+        #   name: library
+        #   volumeSpec:
+        #     accessModes:
+        #       - ReadWriteOnce
+        #     capacity:
+        #       storage: 8Ti
+        #     nfs:
+        #       path: "/volume1/video/library"
+        #       server: 192.168.178.29
