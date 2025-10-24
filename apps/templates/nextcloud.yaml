@@ -43,15 +43,15 @@ spec:
           # persistence:
           #   subPath:
           trustedDomains: ['nextcloud.attias.io', 'localhost']
-        extraVolumes:
-         - name: nfs
-           nfs:
-             server: "192.168.178.29"
-             path: "/volume1/video/nextcloud"
-             readOnly: false
-        extraVolumeMounts:
-         - name: nfs
-           mountPath: "/nextcloud_data"
+          extraVolumes:
+          - name: nfs
+            nfs:
+              server: "192.168.178.29"
+              path: "/volume1/video/nextcloud"
+              readOnly: false
+          extraVolumeMounts:
+          - name: nfs
+            mountPath: "/nextcloud_data"
         internalDatabase:
           enabled: false
         externalDatabase:
