@@ -30,4 +30,4 @@ spec:
           enabled: true
           storageClass: local-path
         nextcloud:
-          trustedDomains: [nextcloud.attias.io]
+          trustedDomains: ['nextcloud.attias.io', 'localhost']
