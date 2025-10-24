@@ -41,7 +41,7 @@ spec:
           #   existingClaim: nextcloud-pvc
         nextcloud:
           host: nextcloud.attias.io
-          # datadir: /nextcloud_data/data
+          datadir: /var/www/html/data/nextcloud
           # persistence:
           #   subPath: data
           # trustedDomains: ['nextcloud.attias.io', 'localhost']
