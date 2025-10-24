@@ -51,8 +51,8 @@ spec:
               value: ['nextcloud.attias.io']
             
             # Optional: If you use a reverse proxy to handle HTTPS, Nextcloud needs this for proper URL generation.
-            - key: overwriteprotocol
-              value: https
+            # - key: overwriteprotocol
+            #   value: https
               
             # Set the maximum upload file size (e.g., 10GB)
             - key: upload_max_filesize
