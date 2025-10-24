@@ -37,9 +37,9 @@ spec:
             enabled: true
             subPath: nextclouddata
             existingClaim: nextcloud-pvc
-        # nextcloud:
-        #   host: nextcloud.attias.io
-        #   trustedDomains: ['nextcloud.attias.io', 'localhost']
+        nextcloud:
+          # host: nextcloud.attias.io
+          trustedDomains: ['nextcloud.attias.io', 'localhost']
         internalDatabase:
           enabled: false
         externalDatabase:
