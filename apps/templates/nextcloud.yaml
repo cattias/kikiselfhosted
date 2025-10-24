@@ -30,8 +30,8 @@ spec:
           nodePort: 30080
         livenessProbe:
           enabled: false
-        # readinessProbe:
-        #   enabled: false
+        readinessProbe:
+          enabled: false
         persistence:
           enabled: false
           # storageClass: local-path
