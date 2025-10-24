@@ -33,7 +33,7 @@ spec:
                         name: immich-db-app
                         key: uri
                   - name: UPLOAD_LOCATION
-                    value: /mnt/plex/photos
+                    value: '/mnt/plex/photos'
         immich:
           metrics:
             enabled: false
