@@ -44,30 +44,37 @@ spec:
             command: ["/bin/bash", "-c"]
             args:
               - |
-                set -euo pipefail
-
-                BACKUP_DIR="/mnt/host-backup"
-                FILENAME="${POSTGRES_DB}.dump.gz"
+                BACKUP_DIR="/mnt/nfs-backup"
+                TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+                # Filename now includes the database name and uses .dump extension for Custom Format
+                FILENAME="${POSTGRES_DB}_dump_${TIMESTAMP}.dump.gz"
                 
                 echo "Starting PostgreSQL backup for database ${POSTGRES_DB} on ${PGHOST}..."
                 
+                # Check if the backup directory is writable
                 if [ ! -w "${BACKUP_DIR}" ]; then
                   echo "ERROR: Backup directory ${BACKUP_DIR} is not writable or not mounted!"
                   exit 1
                 fi
                 
+                # Execute the single database dump using Custom format (-Fc)
+                # This is more efficient than plain SQL and suitable for restoration via pg_restore.
+                # Pipes the compressed output to the NFS share
                 pg_dump -Fc \
                   -h ${PGHOST} \
                   -U ${PGUSER} \
                   -d ${POSTGRES_DB} \
                   | gzip > ${BACKUP_DIR}/${FILENAME}
                   
+                # Check the exit status of the pg_dump process
                 if [ $? -eq 0 ]; then
                   echo "Backup successful! File saved to: ${BACKUP_DIR}/${FILENAME}"
+                  # You can add clean-up or notification steps here
                 else
                   echo "ERROR: pg_dump or gzip failed. Check database name and user permissions."
                   exit 1
                 fi
+
           volumes:
           - name: backup-storage
             hostPath:
