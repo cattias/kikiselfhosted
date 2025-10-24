@@ -8,8 +8,11 @@ metadata:
 spec:
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
   destination:
     namespace: vaultwarden
     server: https://kubernetes.default.svc

@@ -10,6 +10,9 @@ spec:
     automated:
       prune: true
       enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
   destination:
     namespace: plex
     server: https://kubernetes.default.svc

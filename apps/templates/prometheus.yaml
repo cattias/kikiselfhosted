@@ -10,6 +10,9 @@ spec:
     automated:
       enabled: true
       prune: false
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
   destination:
     namespace: monitoring
     server: https://kubernetes.default.svc
