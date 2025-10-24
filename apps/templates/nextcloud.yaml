@@ -34,25 +34,15 @@ spec:
           enabled: false
         persistence:
           enabled: false
-          # storageClass: local-path
-          # nextcloudData:
-          #   enabled: true
-          #   subPath: data
-          #   existingClaim: nextcloud-pvc
         nextcloud:
           host: nextcloud.attias.io
           datadir: /var/www/html/data/nextcloud
-          # persistence:
-          #   subPath: data
           trustedDomains: ['nextcloud.attias.io', 'localhost']
           extra_configs:
-            # Set the trusted domain for Nextcloud
             - key: trusted_domains
               value: ['nextcloud.attias.io']
-            # Optional: If you use a reverse proxy to handle HTTPS, Nextcloud needs this for proper URL generation.
-            # - key: overwriteprotocol
-            #   value: https
-            # Set the maximum upload file size (e.g., 10GB)
+            - key: overwritehost
+              value: nextcloud.attias.io
             - key: upload_max_filesize
               value: 10G
             - key: post_max_size
