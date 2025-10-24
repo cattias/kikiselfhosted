@@ -28,8 +28,8 @@ spec:
           type: NodePort
           port: 80
           nodePort: 30080
-        # livenessProbe:
-        #   enabled: false
+        livenessProbe:
+          enabled: false
         # readinessProbe:
         #   enabled: false
         persistence:
