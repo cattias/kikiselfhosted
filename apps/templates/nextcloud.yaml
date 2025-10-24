@@ -30,5 +30,26 @@ spec:
           enabled: true
           storageClass: local-path
         nextcloud:
-          host: nextcloud.attias.io
+          # host: nextcloud.attias.io
           trustedDomains: ['nextcloud.attias.io', 'localhost']
+        extraVolumes:
+         - name: nfs
+           nfs:
+             server: "192.168.178.29"
+             path: "/volume1/video/nextcloud"
+             readOnly: false
+        extraVolumeMounts:
+         - name: nfs
+           mountPath: "/nextcloud_data"
+        internalDatabase:
+          enabled: false
+        externalDatabase:
+          enabled: true
+          type: postgresql
+          existingSecret:
+            enabled: true
+            secretName: nextcloud-db-app
+            usernameKey: username
+            passwordKey: password
+            hostKey: host
+            databaseKey: dbname

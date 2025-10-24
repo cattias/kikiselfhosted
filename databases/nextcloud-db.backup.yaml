@@ -1,0 +1,97 @@
+# This CronJob runs daily, executes the pg_dumpall command, compresses the output, 
+# and saves the resulting file to the mounted NFS Persistent Volume Claim (PVC).
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: daily-postgres-nfs-backup
+  namespace: nextcloud
+spec:
+  # Schedule: Run every day at 02:00 AM UTC.
+  schedule: "0 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: postgres-backup-runner
+            # Use the official Postgres image, which includes pg_dump and psql tools
+            image: postgres:latest
+            imagePullPolicy: IfNotPresent
+            
+            # Define environment variables sourced from the Secret
+            env:
+            - name: PGHOST
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-db-app
+                  key: host
+            - name: PGUSER
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-db-app
+                  key: user
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-db-app
+                  key: password
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-db-app
+                  key: dbname
+
+            # Volume Mount: Mount the PVC to a local directory for saving the dump
+            volumeMounts:
+            - name: backup-storage
+              mountPath: "/mnt/nfs-backup"
+
+            # Command: The core backup script
+            # 1. Sets the destination directory and filename with a timestamp.
+            # 2. Uses pg_dumpall to create a full dump (including global objects like users/roles).
+            # 3. Pipes the output to gzip for compression.
+            # 4. Saves the final file to the NFS mount point.
+            # We use /bin/bash -c for the multi-line shell command.
+            command: ["/bin/bash", "-c"]
+            args:
+              - |
+                BACKUP_DIR="/mnt/nfs-backup"
+                TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+                # Filename now includes the database name and uses .dump extension for Custom Format
+                FILENAME="${POSTGRES_DB}_dump_${TIMESTAMP}.dump.gz"
+                
+                echo "Starting PostgreSQL backup for database ${POSTGRES_DB} on ${PGHOST}..."
+                
+                # Check if the backup directory is writable
+                if [ ! -w "${BACKUP_DIR}" ]; then
+                  echo "ERROR: Backup directory ${BACKUP_DIR} is not writable or not mounted!"
+                  exit 1
+                fi
+                
+                # Execute the single database dump using Custom format (-Fc)
+                # This is more efficient than plain SQL and suitable for restoration via pg_restore.
+                # Pipes the compressed output to the NFS share
+                pg_dump -Fc \
+                  -h ${PGHOST} \
+                  -U ${PGUSER} \
+                  -d ${POSTGRES_DB} \
+                  | gzip > ${BACKUP_DIR}/${FILENAME}
+                  
+                # Check the exit status of the pg_dump process
+                if [ $? -eq 0 ]; then
+                  echo "Backup successful! File saved to: ${BACKUP_DIR}/${FILENAME}"
+                  # You can add clean-up or notification steps here
+                else
+                  echo "ERROR: pg_dump or gzip failed. Check database name and user permissions."
+                  exit 1
+                fi
+          
+          # Volume Definition: Reference the PVC created previously
+          volumes:
+          - name: backup-storage
+            hostPath:
+              path: "/mnt/plex/nextcloud_backups" 
+              type: DirectoryOrCreate
+
