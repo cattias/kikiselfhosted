@@ -33,25 +33,25 @@ spec:
         persistence:
           enabled: true
           storageClass: local-path
-          # nextcloudData:
-          #   enabled: true
-          #   subPath: nextclouddata
-          #   existingClaim: nextcloud-pvc
+          nextcloudData:
+            enabled: true
+            subPath: data
+            existingClaim: nextcloud-pvc
         nextcloud:
           # host: nextcloud.attias.io
-          datadir: /nextcloud_data/data
+          # datadir: /nextcloud_data/data
           # persistence:
           #   subPath: data
           trustedDomains: ['nextcloud.attias.io', 'localhost']
-          extraVolumes:
-          - name: nfs
-            nfs:
-              server: "192.168.178.29"
-              path: "/volume1/video/nextcloud"
-              readOnly: false
-          extraVolumeMounts:
-          - name: nfs
-            mountPath: "/nextcloud_data"
+          # extraVolumes:
+          # - name: nfs
+          #   nfs:
+          #     server: "192.168.178.29"
+          #     path: "/volume1/video/nextcloud"
+          #     readOnly: false
+          # extraVolumeMounts:
+          # - name: nfs
+          #   mountPath: "/nextcloud_data"
         internalDatabase:
           enabled: false
         externalDatabase:
