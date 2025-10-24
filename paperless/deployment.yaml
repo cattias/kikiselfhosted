@@ -55,7 +55,7 @@ spec:
           value: redis://paperless-redis:6379
 
         - name: PAPERLESS_URL
-          value: https://paperless.ntlx.org
+          value: https://paperless.attias.io
         
         # Essential Paperless Settings & combined data/media volume
         - name: USER_UID
