@@ -10,4 +10,4 @@ spec:
 
   storage:
     size: 1Gi
-    storageClass: rook-ceph-block
+    storageClass: local-path
