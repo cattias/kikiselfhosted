@@ -26,32 +26,20 @@ spec:
       valuesObject:
         service:
           type: NodePort
-        livenessProbe:
-          enabled: false
-        readinessProbe:
-          enabled: false
+        # livenessProbe:
+        #   enabled: false
+        # readinessProbe:
+        #   enabled: false
         persistence:
           enabled: true
           storageClass: local-path
-          # nextcloudData:
-          #   enabled: true
-          #   subPath: nextcloud_data
-          #   # storageClass: "-"
-          #   # existingClaim:
-          #   accessMode: ReadWriteOnce
-          #   size: 8Gi
-        nextcloud:
-          host: nextcloud.attias.io
-          trustedDomains: ['nextcloud.attias.io', 'localhost']
-        extraVolumes:
-         - name: nfs
-           nfs:
-             server: "192.168.178.29"
-             path: "/volume1/video/nextcloud"
-             readOnly: false
-        extraVolumeMounts:
-         - name: nfs
-           mountPath: "/nextcloud_data"
+          nextcloudData:
+            enabled: true
+            subPath:
+            existingClaim: nextcloud-pvc
+        # nextcloud:
+        #   host: nextcloud.attias.io
+        #   trustedDomains: ['nextcloud.attias.io', 'localhost']
         internalDatabase:
           enabled: false
         externalDatabase:
