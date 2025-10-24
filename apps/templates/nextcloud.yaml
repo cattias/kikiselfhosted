@@ -31,4 +31,4 @@ spec:
           storageClass: local-path
         nextcloud:
           host: nextcloud.attias.io
-          trustedDomains: ['nextcloud.attias.io']
+          trustedDomains: ['nextcloud.attias.io', 'localhost']
