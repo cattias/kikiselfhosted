@@ -26,6 +26,12 @@ spec:
               main:
                 image:
                   tag: v2.1.0
+                env:
+                  - name: DB_URL
+                    valueFrom:
+                      secretKeyRef:
+                        name: immich-db-app
+                        key: uri
         immich:
           metrics:
             enabled: true
@@ -39,6 +45,15 @@ spec:
             storageTemplate:
               enabled: true
               template: '{{ "{{" }}y{{ "}}" }}/{{ "{{" }}y{{ "}}" }}-{{ "{{" }}MM{{ "}}" }}-{{ "{{" }}dd{{ "}}" }}/{{ "{{" }}filename{{ "}}" }}'
+        valkey:
+          enabled: true
+          persistence:
+            data:
+              enabled: true
+              size: 1Gi
+              type: emptyDir
+              accessMode: ReadWriteOnce
+              storageClass: local-path
         persistence:
           cache:
             enabled: true
