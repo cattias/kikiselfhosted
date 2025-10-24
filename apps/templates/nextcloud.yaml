@@ -33,13 +33,13 @@ spec:
         persistence:
           enabled: true
           storageClass: local-path
-          nextcloudData:
-            enabled: true
-            subPath: /nextcloud_data
-            # storageClass: "-"
-            # existingClaim:
-            accessMode: ReadWriteOnce
-            size: 8Gi
+          # nextcloudData:
+          #   enabled: true
+          #   subPath: nextcloud_data
+          #   # storageClass: "-"
+          #   # existingClaim:
+          #   accessMode: ReadWriteOnce
+          #   size: 8Gi
         nextcloud:
           host: nextcloud.attias.io
           trustedDomains: ['nextcloud.attias.io', 'localhost']
