@@ -36,15 +36,15 @@ spec:
           enabled: false
         nextcloud:
           host: nextcloud.attias.io
-          datadir: /var/www/html/data/nextcloud
-          trustedDomains: ['nextcloud.attias.io', 'localhost']
+          # datadir: /var/www/html/data/nextcloud
+          # trustedDomains: ['nextcloud.attias.io', 'localhost']
           admin:
             existingSecret: "admin-user-secret"
             userKey: "admin-user"
             passwordKey: "admin-password"
           extra_configs:
             - key: trusted_domains
-              value: ['nextcloud.attias.io']
+              value: ['nextcloud.attias.io', 'localhost']
             - key: overwritehost
               value: nextcloud.attias.io
             - key: overwriteprotocol
