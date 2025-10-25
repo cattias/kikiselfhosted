@@ -58,7 +58,7 @@ spec:
             runAsGroup: 33
             runAsNonRoot: true
             readOnlyRootFilesystem: false
-          podSecurityContext: {}
+          podSecurityContext:
             runAsUser: 33
             runAsGroup: 33
             runAsNonRoot: true
