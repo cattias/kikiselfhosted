@@ -56,10 +56,13 @@ spec:
           securityContext:
             runAsUser: 33
             runAsGroup: 33
-          # podSecurityContext:
-          #   runAsUser: 33
-          #   runAsGroup: 33
-          #   fsGroup: 33
+          podSecurityContext:
+            runAsUser: 33
+            runAsGroup: 33
+            fsGroup: 33
+            sysctls:
+              - name: net.ipv4.ip_unprivileged_port_start
+                value: "0"
           extraVolumes:
           - name: nfs
             nfs:
