@@ -33,7 +33,8 @@ spec:
         readinessProbe:
           enabled: false
         persistence:
-          enabled: false
+          enabled: true
+          existingClaim: "nextcloud-nfs-data" 
         nextcloud:
           host: nextcloud.attias.io
           # datadir: /var/www/html/data/nextcloud
@@ -64,13 +65,13 @@ spec:
               - name: net.ipv4.ip_unprivileged_port_start
                 value: "0"
           extraVolumes:
-          - name: nfs
+          - name: nextcloud-nfs-data
             nfs:
               server: "192.168.178.29"
               path: "/volume1/video/nextcloud"
               readOnly: false
           extraVolumeMounts:
-          - name: nfs
+          - name: nextcloud-nfs-data
             mountPath: "/var/www/html/data"
         internalDatabase:
           enabled: false
