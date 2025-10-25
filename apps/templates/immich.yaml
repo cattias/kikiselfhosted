@@ -61,3 +61,4 @@ spec:
           service:
             main:
               type: NodePort
+              nodePort: 31313
