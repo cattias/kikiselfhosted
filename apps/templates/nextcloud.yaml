@@ -35,10 +35,14 @@ spec:
         persistence:
           enabled: true
           existingClaim: "nextcloud-nfs-data" 
+        extraVolumes:
+          - name: nextcloud-nfs-data
+            nfs:
+              server: "192.168.178.29"
+              path: "/volume1/video/nextcloud"
+              readOnly: false
         nextcloud:
           host: nextcloud.attias.io
-          # datadir: /var/www/html/data/nextcloud
-          # trustedDomains: ['nextcloud.attias.io', 'localhost']
           admin:
             existingSecret: "admin-user-secret"
             userKey: "admin-user"
@@ -64,15 +68,6 @@ spec:
             sysctls:
               - name: net.ipv4.ip_unprivileged_port_start
                 value: "0"
-          extraVolumes:
-          - name: nextcloud-nfs-data
-            nfs:
-              server: "192.168.178.29"
-              path: "/volume1/video/nextcloud"
-              readOnly: false
-          extraVolumeMounts:
-          - name: nextcloud-nfs-data
-            mountPath: "/var/www/html/data"
         internalDatabase:
           enabled: false
         externalDatabase:
