@@ -53,6 +53,13 @@ spec:
               value: 10G
             - key: post_max_size
               value: 10G
+          podSecurityContext:
+            runAsUser: 33
+            runAsGroup: 33
+            fsGroup: 33
+          securityContext:
+            runAsUser: 33
+            runAsGroup: 33
           extraVolumes:
           - name: nfs
             nfs:
