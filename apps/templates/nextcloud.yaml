@@ -28,19 +28,11 @@ spec:
           type: NodePort
           port: 80
           nodePort: 30080
-        # livenessProbe:
-        #   enabled: false
-        # readinessProbe:
-        #   enabled: false
         persistence:
           enabled: true
           existingClaim: nextcloud-pvc
         nextcloud:
           host: nextcloud.attias.io
-          admin:
-            existingSecret: "admin-user-secret"
-            userKey: "admin-user"
-            passwordKey: "admin-password"
           extra_configs:
             - key: trusted_domains
               value: ['nextcloud.attias.io', 'localhost']
