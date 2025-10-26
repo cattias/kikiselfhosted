@@ -66,13 +66,13 @@ spec:
             sysctls:
               - name: net.ipv4.ip_unprivileged_port_start
                 value: "0"
-          # extraInitContainers:
-          # - name: change-data-owner
-          #   image: busybox:stable
-          #   command: ["sh", "-c", "chown -R 1024:100 /var/www/html/data"]
-          #   volumeMounts:
-          #   - name: nextcloud-pvc
-          #     mountPath: /var/www/html/data
+          extraInitContainers:
+          - name: change-data-owner
+            image: busybox:stable
+            command: ["sh", "-c", "chown -R 1024:100 /var/www/html/data"]
+            volumeMounts:
+            - name: nextcloud-main
+              mountPath: /var/www/html/data
         internalDatabase:
           enabled: false
         externalDatabase:
