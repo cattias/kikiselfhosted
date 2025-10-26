@@ -71,7 +71,7 @@ spec:
             image: busybox:stable
             command: ["sh", "-c", "chown -R 1024:100 /var/www/html/data"]
             volumeMounts:
-            - name: nextcloud-data
+            - name: nextcloud-pvc
               mountPath: /var/www/html/data
         internalDatabase:
           enabled: false
