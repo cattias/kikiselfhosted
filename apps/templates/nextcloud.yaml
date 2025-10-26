@@ -54,6 +54,19 @@ spec:
             sysctls:
               - name: net.ipv4.ip_unprivileged_port_start
                 value: "0"
+          probes:
+            livenessProbe:
+              enabled: true
+              initialDelaySeconds: 300
+              periodSeconds: 60
+              timeoutSeconds: 30
+              failureThreshold: 5
+            readinessProbe:
+              enabled: true
+              initialDelaySeconds: 15
+              periodSeconds: 10
+              timeoutSeconds: 5
+              failureThreshold: 3
         internalDatabase:
           enabled: false
         externalDatabase:
