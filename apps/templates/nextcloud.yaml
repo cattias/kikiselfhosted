@@ -57,12 +57,12 @@ spec:
             - key: post_max_size
               value: 10G
           securityContext:
-            runAsUser: 33
-            runAsGroup: 33
+            runAsUser: 1024
+            runAsGroup: 100
           podSecurityContext:
-            runAsUser: 33
-            runAsGroup: 33
-            fsGroup: 33
+            runAsUser: 1024
+            runAsGroup: 100
+            fsGroup: 100
             sysctls:
               - name: net.ipv4.ip_unprivileged_port_start
                 value: "0"
