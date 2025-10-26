@@ -32,13 +32,13 @@ spec:
           enabled: true
           existingClaim: nextcloud-pvc
         livenessProbe:
-          enabled: true
+          enabled: false
           initialDelaySeconds: 300
           periodSeconds: 60
           timeoutSeconds: 30
           failureThreshold: 5
         readinessProbe:
-          enabled: true
+          enabled: false
           initialDelaySeconds: 15
           periodSeconds: 10
           timeoutSeconds: 5
