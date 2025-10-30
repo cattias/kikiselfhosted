@@ -37,4 +37,3 @@ spec:
       port: 80
       targetPort: 80
   type: NodePort
-  nodePort: 32413
