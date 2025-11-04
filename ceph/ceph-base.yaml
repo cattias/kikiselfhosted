@@ -9,7 +9,7 @@
 apiVersion: ceph.rook.io/v1
 kind: CephCluster
 metadata:
-  name: kiki-ceph-cluster
+  name: kiki-ceph
   namespace: rook-ceph
   annotations:
     argocd.argoproj.io/sync-wave: "1" 
@@ -32,37 +32,30 @@ spec:
       - name: ssd-set
         count: 1
         portable: false
-        dataPVCTemplate:
-          spec:
-            storageClassName: "" # Use raw devices
-            accessModes: ["ReadWriteOnce"]
-            resources:
-              requests:
-                storage: "10Mi" # placeholder, size is determined by device
-            volumeClaimTemplates:
-              - metadata:
-                  name: data
-                spec:
-                  storageClassName: ""
-                  accessModes: ["ReadWriteOnce"]
-                  resources:
-                    requests:
-                      storage: 1Gi
-            # Rook will automatically discover and claim the 6 raw disks
-            preparePlacement:
-              podAntiAffinity:
-                preferredDuringSchedulingIgnoredDuringExecution:
-                  - weight: 100
-                    podAffinityTerm:
-                      labelSelector:
-                        matchLabels:
-                          app: rook-ceph-osd
-                      topologyKey: kubernetes.io/hostname
-            config:
-              # CRITICAL: This tells Rook to pick up all unpartitioned drives (sda through sdf)
-              deviceFilter: "sda|sdb|sdc|sdd|sde|sdf"
-              useAllDevices: "false" 
-              osdsPerDevice: "1"
+        volumeClaimTemplates: 
+          - metadata:
+              name: data
+            spec:
+              storageClassName: ""
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 1Gi
+        # Rook will automatically discover and claim the 6 raw disks
+        preparePlacement:
+          podAntiAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 100
+                podAffinityTerm:
+                  labelSelector:
+                    matchLabels:
+                      app: rook-ceph-osd
+                  topologyKey: kubernetes.io/hostname
+        config:
+          # CRITICAL: UPDATED: Device filter from sda to sdf
+          deviceFilter: "sda|sdb|sdc|sdd|sde|sdf"
+          useAllDevices: "false" 
+          osdsPerDevice: "1"
 ---
 # --- 3. CEPH BLOCK POOL (The Redundancy Rule) ---
 apiVersion: ceph.rook.io/v1
