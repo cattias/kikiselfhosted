@@ -38,52 +38,124 @@ spec:
             accessModes: ["ReadWriteOnce"]
             resources:
               requests:
-                storage: "1Gi"
-        # CRITICAL: Device Filter targets the 6 SSDs (sd[a-f]) by name.
-        # This is safer than useAllDevices: true
-        config:
-          # Targets devices sdb, sdc, sdd, sde, sdf, sdg
-          deviceFilter: "sda|sdb|sdc|sdd|sde|sdf"
-          useAllDevices: "false" 
-          osdsPerDevice: "1"
+                storage: "10Mi" # placeholder, size is determined by device
+            volumeClaimTemplates:
+              - metadata:
+                  name: data
+                spec:
+                  storageClassName: ""
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 1Gi
+            # Rook will automatically discover and claim the 6 raw disks
+            preparePlacement:
+              podAntiAffinity:
+                preferredDuringSchedulingIgnoredDuringExecution:
+                  - weight: 100
+                    podAffinityTerm:
+                      labelSelector:
+                        matchLabels:
+                          app: rook-ceph-osd
+                      topologyKey: kubernetes.io/hostname
+            config:
+              # CRITICAL: This tells Rook to pick up all unpartitioned drives (sda through sdf)
+              deviceFilter: "sda|sdb|sdc|sdd|sde|sdf"
+              useAllDevices: "false" 
+              osdsPerDevice: "1"
 ---
 # --- 3. CEPH BLOCK POOL (The Redundancy Rule) ---
-# Defines the Erasure Coding k=4, m=2 policy for 6 OSDs (8 TB usable).
 apiVersion: ceph.rook.io/v1
 kind: CephBlockPool
 metadata:
   name: ec-ssd-pool
   namespace: rook-ceph
   annotations:
-    argocd.argoproj.io/sync-wave: "1" 
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   failureDomain: host
   erasureCode:
     dataChunks: 4    # k=4 (4 data chunks)
     codingChunks: 2  # m=2 (2 parity chunks - tolerates 2 drive failures)
-  # replication:
-  #   size: 3
   deviceClass: ssd
 ---
 # --- 4. STORAGE CLASS (The K8s Interface) ---
-# This SC uses the Erasure Code Pool and is named generically for all applications.
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: ceph-ssd-ec
   annotations:
-    argocd.argoproj.io/sync-wave: "1" 
+    argocd.argoproj.io/sync-wave: "1"
 provisioner: rook-ceph.rbd.csi.ceph.com
 parameters:
-  pool: ec-ssd-pool
+  pool: ec-ssd-pool # Matches the pool defined above
   clusterID: rook-ceph
   imageFeatures: "layering"
   csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
   csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
   csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
-  csi.storage.k8s.io/node-unstage-secret-name: rook-csi-rbd-node
-  # Use ext4 for general application use (like Prometheus TSDB)
+  csi.storage.s.io/node-unstage-secret-name: rook-csi-rbd-node
   csi.storage.io/fstype: ext4 
 reclaimPolicy: Delete
 allowVolumeExpansion: true
-
+---
+# --- 5. CEPH TOOLBOX (for debugging) ---
+# This utility pod needs to wait for the core cluster to be UP and Secrets to be created.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rook-ceph-tools
+  namespace: rook-ceph
+  annotations:
+    argocd.argoproj.io/sync-wave: "2" # Runs AFTER the CephCluster is deployed
+spec:
+  selector:
+    matchLabels:
+      app: rook-ceph-tools
+  template:
+    metadata:
+      labels:
+        app: rook-ceph-tools
+    spec:
+      dnsPolicy: ClusterFirstWithHostNet # Required since the monitors use hostNetwork
+      hostNetwork: true
+      containers:
+      - name: toolbox
+        image: quay.io/ceph/ceph:v18.2.1
+        command: ["/usr/local/bin/toolbox.sh"]
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: ROOK_CEPH_CLUSTER_FSID
+            value: ""
+        volumeMounts:
+          - mountPath: /etc/ceph
+            name: ceph-config
+          - mountPath: /dev
+            name: dev
+          - mountPath: /sys/bus
+            name: sysbus
+          - mountPath: /lib/modules
+            name: libmodules
+          - mountPath: /run/udev
+            name: run-udev
+          - mountPath: /var/lib/ceph
+            name: ceph-lib
+      volumes:
+        - name: ceph-config
+          secret:
+            secretName: rook-ceph-mon # This Secret is created by the CephCluster (Wave 1)
+        - name: dev
+          hostPath:
+            path: /dev
+        - name: sysbus
+          hostPath:
+            path: /sys/bus
+        - name: libmodules
+          hostPath:
+            path: /lib/modules
+        - name: run-udev
+          hostPath:
+            path: /run/udev
+        - name: ceph-lib
+          hostPath:
+            path: /var/lib/ceph
