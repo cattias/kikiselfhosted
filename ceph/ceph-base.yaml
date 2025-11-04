@@ -9,8 +9,10 @@
 apiVersion: ceph.rook.io/v1
 kind: CephCluster
 metadata:
-  name: my-ceph-cluster
+  name: kiki-ceph-cluster
   namespace: rook-ceph
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" 
 spec:
   cephVersion:
     image: quay.io/ceph/ceph:v18.2.1
@@ -52,6 +54,8 @@ kind: CephBlockPool
 metadata:
   name: ec-ssd-pool
   namespace: rook-ceph
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" 
 spec:
   failureDomain: host
   erasureCode:
@@ -67,6 +71,8 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: ceph-ssd-ec
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" 
 provisioner: rook-ceph.rbd.csi.ceph.com
 parameters:
   pool: ec-ssd-pool

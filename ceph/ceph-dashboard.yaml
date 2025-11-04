@@ -8,6 +8,8 @@ kind: CephDashboard
 metadata:
   name: dashboard
   namespace: rook-ceph
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   enabled: true
   ssl: true # Always use SSL/TLS for security
