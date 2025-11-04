@@ -1,0 +1,83 @@
+# --- 1. ROOK-CEPH OPERATOR BASE RESOURCES ---
+# CRDs, Common, and Operator files are typically deployed first.
+# This single file combines the necessary definitions for ArgoCD synchronization.
+# You MUST ensure the official CRDs, common, and operator manifests are applied 
+# by a separate Application or Kustomization base to avoid ArgoCD errors.
+# For simplicity, this manifest focuses on the core CephCluster and StorageClass.
+---
+# --- 2. CEPHCLUSTER (The Brains) ---
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: my-ceph-cluster
+  namespace: rook-ceph
+spec:
+  cephVersion:
+    image: quay.io/ceph/ceph:v18.2.1
+  dataDirHostPath: /var/lib/rook/ceph
+  mon:
+    count: 1 # Single monitor for single-node k0s (acceptable for homelab)
+    allowMultiplePerNode: true
+  mgr:
+    count: 1
+    allowMultiplePerNode: true
+  network:
+    # Use the host's network settings (critical for bare-metal performance)
+    hostNetwork: true 
+  storage:
+    useAllNodes: true
+    storageClassDeviceSets:
+      - name: ssd-set
+        count: 1
+        portable: false
+        dataPVCTemplate:
+          spec:
+            storageClassName: "" # Use raw devices
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: "1Gi"
+        # CRITICAL: Device Filter targets the 6 SSDs (sd[a-f]) by name.
+        # This is safer than useAllDevices: true
+        config:
+          # Targets devices sdb, sdc, sdd, sde, sdf, sdg
+          deviceFilter: "sda|sdb|sdc|sdd|sde|sdf"
+          useAllDevices: "false" 
+          osdsPerDevice: "1"
+---
+# --- 3. CEPH BLOCK POOL (The Redundancy Rule) ---
+# Defines the Erasure Coding k=4, m=2 policy for 6 OSDs (8 TB usable).
+apiVersion: ceph.rook.io/v1
+kind: CephBlockPool
+metadata:
+  name: ec-ssd-pool
+  namespace: rook-ceph
+spec:
+  failureDomain: host
+  erasureCode:
+    dataChunks: 4    # k=4 (4 data chunks)
+    codingChunks: 2  # m=2 (2 parity chunks - tolerates 2 drive failures)
+  # replication:
+  #   size: 3
+  deviceClass: ssd
+---
+# --- 4. STORAGE CLASS (The K8s Interface) ---
+# This SC uses the Erasure Code Pool and is named generically for all applications.
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ceph-ssd-ec
+provisioner: rook-ceph.rbd.csi.ceph.com
+parameters:
+  pool: ec-ssd-pool
+  clusterID: rook-ceph
+  imageFeatures: "layering"
+  csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+  csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+  csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+  csi.storage.k8s.io/node-unstage-secret-name: rook-csi-rbd-node
+  # Use ext4 for general application use (like Prometheus TSDB)
+  csi.storage.io/fstype: ext4 
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+

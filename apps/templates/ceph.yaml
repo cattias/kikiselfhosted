@@ -1,0 +1,43 @@
+# --- CRITICAL PRE-REQUISITE ---
+# Before applying this file, you MUST manually install the Rook CRDs, Common, 
+# and Operator manifests using the links below, as ArgoCD cannot reliably 
+# enforce this ordering in a single application:
+# 
+# 1. Create namespace: kubectl create namespace rook-ceph
+# 2. Apply CRDs and Common: kubectl apply -f https://raw.githubusercontent.com/rook/rook/release-1.13/deploy/examples/crds.yaml
+# 3. Apply Operator: kubectl apply -f https://raw.githubusercontent.com/rook/rook/release-1.13/deploy/examples/common.yaml
+# 4. Apply Operator: kubectl apply -f https://raw.githubusercontent.com/rook/rook/release-1.13/deploy/examples/operator.yaml
+# 
+# Wait for the rook-ceph-operator pod to be Running before proceeding.
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook-ceph-cluster
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/cattias/kikiselfhosted # Your Git Repository
+    targetRevision: HEAD
+    path: ceph
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rook-ceph
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      # Ensures ArgoCD manages all cluster resources defined in the repository
+      - CreateNamespace=false 
+      - ApplyOutOfSyncOnly=true
+      - PruneLast=true 
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
