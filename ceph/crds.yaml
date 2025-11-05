@@ -2397,13 +2397,15 @@ spec:
                                           volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.
                                           If specified, the CSI driver will create or update the volume with the attributes defined
                                           in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,
-                                          it can be changed after the claim is created. An empty string or nil value indicates that no
-                                          VolumeAttributesClass will be applied to the claim. If the claim enters an Infeasible error state,
-                                          this field can be reset to its previous value (including nil) to cancel the modification.
+                                          it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass
+                                          will be applied to the claim but it's not allowed to reset this field to empty string once it is set.
+                                          If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass
+                                          will be set by the persistentvolume controller if it exists.
                                           If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be
                                           set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource
                                           exists.
                                           More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/
+                                          (Beta) Using this field requires the VolumeAttributesClass feature gate to be enabled (off by default).
                                         type: string
                                       volumeMode:
                                         description: |-
@@ -2621,13 +2623,15 @@ spec:
                                 volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.
                                 If specified, the CSI driver will create or update the volume with the attributes defined
                                 in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,
-                                it can be changed after the claim is created. An empty string or nil value indicates that no
-                                VolumeAttributesClass will be applied to the claim. If the claim enters an Infeasible error state,
-                                this field can be reset to its previous value (including nil) to cancel the modification.
+                                it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass
+                                will be applied to the claim but it's not allowed to reset this field to empty string once it is set.
+                                If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass
+                                will be set by the persistentvolume controller if it exists.
                                 If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be
                                 set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource
                                 exists.
                                 More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/
+                                (Beta) Using this field requires the VolumeAttributesClass feature gate to be enabled (off by default).
                               type: string
                             volumeMode:
                               description: |-
@@ -2852,13 +2856,15 @@ spec:
                                       volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.
                                       If specified, the CSI driver will create or update the volume with the attributes defined
                                       in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,
-                                      it can be changed after the claim is created. An empty string or nil value indicates that no
-                                      VolumeAttributesClass will be applied to the claim. If the claim enters an Infeasible error state,
-                                      this field can be reset to its previous value (including nil) to cancel the modification.
+                                      it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass
+                                      will be applied to the claim but it's not allowed to reset this field to empty string once it is set.
+                                      If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass
+                                      will be set by the persistentvolume controller if it exists.
                                       If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be
                                       set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource
                                       exists.
                                       More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/
+                                      (Beta) Using this field requires the VolumeAttributesClass feature gate to be enabled (off by default).
                                     type: string
                                   volumeMode:
                                     description: |-
@@ -3675,7 +3681,7 @@ spec:
                           Claims lists the names of resources, defined in spec.resourceClaims,
                           that are used by this container.
 
-                          This field depends on the
+                          This is an alpha field and requires enabling the
                           DynamicResourceAllocation feature gate.
 
                           This field is immutable. It can only be set for containers.
@@ -4000,7 +4006,7 @@ spec:
                                   Claims lists the names of resources, defined in spec.resourceClaims,
                                   that are used by this container.
 
-                                  This field depends on the
+                                  This is an alpha field and requires enabling the
                                   DynamicResourceAllocation feature gate.
 
                                   This field is immutable. It can only be set for containers.
@@ -4258,13 +4264,15 @@ spec:
                                         volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.
                                         If specified, the CSI driver will create or update the volume with the attributes defined
                                         in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,
-                                        it can be changed after the claim is created. An empty string or nil value indicates that no
-                                        VolumeAttributesClass will be applied to the claim. If the claim enters an Infeasible error state,
-                                        this field can be reset to its previous value (including nil) to cancel the modification.
+                                        it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass
+                                        will be applied to the claim but it's not allowed to reset this field to empty string once it is set.
+                                        If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass
+                                        will be set by the persistentvolume controller if it exists.
                                         If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be
                                         set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource
                                         exists.
                                         More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/
+                                        (Beta) Using this field requires the VolumeAttributesClass feature gate to be enabled (off by default).
                                       type: string
                                     volumeMode:
                                       description: |-
@@ -4282,6 +4290,11 @@ spec:
                       type: array
                     onlyApplyOSDPlacement:
                       type: boolean
+                    osdMaxUpdatesInParallel:
+                      description: The maximum number of OSDs to update in parallel.
+                      format: int32
+                      minimum: 1
+                      type: integer
                     scheduleAlways:
                       description: Whether to always schedule OSDs on a node even if the node is not currently scheduleable or ready
                       type: boolean
@@ -5340,7 +5353,7 @@ spec:
                                   Claims lists the names of resources, defined in spec.resourceClaims,
                                   that are used by this container.
 
-                                  This field depends on the
+                                  This is an alpha field and requires enabling the
                                   DynamicResourceAllocation feature gate.
 
                                   This field is immutable. It can only be set for containers.
@@ -5605,13 +5618,15 @@ spec:
                                         volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.
                                         If specified, the CSI driver will create or update the volume with the attributes defined
                                         in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,
-                                        it can be changed after the claim is created. An empty string or nil value indicates that no
-                                        VolumeAttributesClass will be applied to the claim. If the claim enters an Infeasible error state,
-                                        this field can be reset to its previous value (including nil) to cancel the modification.
+                                        it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass
+                                        will be applied to the claim but it's not allowed to reset this field to empty string once it is set.
+                                        If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass
+                                        will be set by the persistentvolume controller if it exists.
                                         If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be
                                         set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource
                                         exists.
                                         More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/
+                                        (Beta) Using this field requires the VolumeAttributesClass feature gate to be enabled (off by default).
                                       type: string
                                     volumeMode:
                                       description: |-
@@ -5855,13 +5870,15 @@ spec:
                                   volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.
                                   If specified, the CSI driver will create or update the volume with the attributes defined
                                   in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,
-                                  it can be changed after the claim is created. An empty string or nil value indicates that no
-                                  VolumeAttributesClass will be applied to the claim. If the claim enters an Infeasible error state,
-                                  this field can be reset to its previous value (including nil) to cancel the modification.
+                                  it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass
+                                  will be applied to the claim but it's not allowed to reset this field to empty string once it is set.
+                                  If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass
+                                  will be set by the persistentvolume controller if it exists.
                                   If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be
                                   set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource
                                   exists.
                                   More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/
+                                  (Beta) Using this field requires the VolumeAttributesClass feature gate to be enabled (off by default).
                                 type: string
                               volumeMode:
                                 description: |-
@@ -6822,7 +6839,7 @@ spec:
                         Claims lists the names of resources, defined in spec.resourceClaims,
                         that are used by this container.
 
-                        This field depends on the
+                        This is an alpha field and requires enabling the
                         DynamicResourceAllocation feature gate.
 
                         This field is immutable. It can only be set for containers.
@@ -7464,7 +7481,7 @@ spec:
                         Claims lists the names of resources, defined in spec.resourceClaims,
                         that are used by this container.
 
-                        This field depends on the
+                        This is an alpha field and requires enabling the
                         DynamicResourceAllocation feature gate.
 
                         This field is immutable. It can only be set for containers.
@@ -8045,6 +8062,22 @@ spec:
                       nullable: true
                       type: object
                       x-kubernetes-preserve-unknown-fields: true
+                    cacheMemoryLimitFactor:
+                      description: |-
+                        CacheMemoryLimitFactor is the factor applied to the memory limit to determine the MDS cache memory limit.
+                        MDS cache memory limit should be set to 50-60% of RAM reserved for the MDS container.
+                        MDS uses approximately 125% of the value of mds_cache_memory_limit in RAM.
+                        This factor is applied when resources.limits.memory is set.
+                      maximum: 1
+                      minimum: 0
+                      type: number
+                    cacheMemoryRequestFactor:
+                      description: |-
+                        CacheMemoryRequestFactor is the factor applied to the memory request to determine the MDS cache memory limit.
+                        This factor is applied when resources.requests.memory is set and resources.limits.memory is not set.
+                      maximum: 1
+                      minimum: 0
+                      type: number
                     labels:
                       additionalProperties:
                         type: string
@@ -8720,7 +8753,7 @@ spec:
                             Claims lists the names of resources, defined in spec.resourceClaims,
                             that are used by this container.
 
-                            This field depends on the
+                            This is an alpha field and requires enabling the
                             DynamicResourceAllocation feature gate.
 
                             This field is immutable. It can only be set for containers.
@@ -9621,25 +9654,6 @@ spec:
                                                 type: array
                                                 x-kubernetes-list-type: atomic
                                             type: object
-                                          podCertificate:
-                                            properties:
-                                              certificateChainPath:
-                                                type: string
-                                              credentialBundlePath:
-                                                type: string
-                                              keyPath:
-                                                type: string
-                                              keyType:
-                                                type: string
-                                              maxExpirationSeconds:
-                                                format: int32
-                                                type: integer
-                                              signerName:
-                                                type: string
-                                            required:
-                                              - keyType
-                                              - signerName
-                                            type: object
                                           secret:
                                             properties:
                                               items:
@@ -9892,25 +9906,6 @@ spec:
                                                   type: object
                                                 type: array
                                                 x-kubernetes-list-type: atomic
-                                            type: object
-                                          podCertificate:
-                                            properties:
-                                              certificateChainPath:
-                                                type: string
-                                              credentialBundlePath:
-                                                type: string
-                                              keyPath:
-                                                type: string
-                                              keyType:
-                                                type: string
-                                              maxExpirationSeconds:
-                                                format: int32
-                                                type: integer
-                                              signerName:
-                                                type: string
-                                            required:
-                                              - keyType
-                                              - signerName
                                             type: object
                                           secret:
                                             properties:
@@ -10194,25 +10189,6 @@ spec:
                                                       type: array
                                                       x-kubernetes-list-type: atomic
                                                   type: object
-                                                podCertificate:
-                                                  properties:
-                                                    certificateChainPath:
-                                                      type: string
-                                                    credentialBundlePath:
-                                                      type: string
-                                                    keyPath:
-                                                      type: string
-                                                    keyType:
-                                                      type: string
-                                                    maxExpirationSeconds:
-                                                      format: int32
-                                                      type: integer
-                                                    signerName:
-                                                      type: string
-                                                  required:
-                                                    - keyType
-                                                    - signerName
-                                                  type: object
                                                 secret:
                                                   properties:
                                                     items:
@@ -10306,7 +10282,7 @@ spec:
                                     Claims lists the names of resources, defined in spec.resourceClaims,
                                     that are used by this container.
 
-                                    This field depends on the
+                                    This is an alpha field and requires enabling the
                                     DynamicResourceAllocation feature gate.
 
                                     This field is immutable. It can only be set for containers.
@@ -10537,25 +10513,6 @@ spec:
                                                       type: object
                                                     type: array
                                                     x-kubernetes-list-type: atomic
-                                                type: object
-                                              podCertificate:
-                                                properties:
-                                                  certificateChainPath:
-                                                    type: string
-                                                  credentialBundlePath:
-                                                    type: string
-                                                  keyPath:
-                                                    type: string
-                                                  keyType:
-                                                    type: string
-                                                  maxExpirationSeconds:
-                                                    format: int32
-                                                    type: integer
-                                                  signerName:
-                                                    type: string
-                                                required:
-                                                  - keyType
-                                                  - signerName
                                                 type: object
                                               secret:
                                                 properties:
@@ -11328,7 +11285,7 @@ spec:
                             Claims lists the names of resources, defined in spec.resourceClaims,
                             that are used by this container.
 
-                            This field depends on the
+                            This is an alpha field and requires enabling the
                             DynamicResourceAllocation feature gate.
 
                             This field is immutable. It can only be set for containers.
@@ -12050,25 +12007,6 @@ spec:
                                               type: array
                                               x-kubernetes-list-type: atomic
                                           type: object
-                                        podCertificate:
-                                          properties:
-                                            certificateChainPath:
-                                              type: string
-                                            credentialBundlePath:
-                                              type: string
-                                            keyPath:
-                                              type: string
-                                            keyType:
-                                              type: string
-                                            maxExpirationSeconds:
-                                              format: int32
-                                              type: integer
-                                            signerName:
-                                              type: string
-                                          required:
-                                            - keyType
-                                            - signerName
-                                          type: object
                                         secret:
                                           properties:
                                             items:
@@ -12215,7 +12153,7 @@ spec:
                                 Claims lists the names of resources, defined in spec.resourceClaims,
                                 that are used by this container.
 
-                                This field depends on the
+                                This is an alpha field and requires enabling the
                                 DynamicResourceAllocation feature gate.
 
                                 This field is immutable. It can only be set for containers.
@@ -12813,7 +12751,7 @@ spec:
                             Claims lists the names of resources, defined in spec.resourceClaims,
                             that are used by this container.
 
-                            This field depends on the
+                            This is an alpha field and requires enabling the
                             DynamicResourceAllocation feature gate.
 
                             This field is immutable. It can only be set for containers.
@@ -15375,7 +15313,7 @@ spec:
                         Claims lists the names of resources, defined in spec.resourceClaims,
                         that are used by this container.
 
-                        This field depends on the
+                        This is an alpha field and requires enabling the
                         DynamicResourceAllocation feature gate.
 
                         This field is immutable. It can only be set for containers.
