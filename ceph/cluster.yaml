@@ -14,12 +14,14 @@ metadata:
   name: rook-ceph
   namespace: rook-ceph # namespace:cluster
 spec:
-  cephConfig:
-    global:
-      # This is the key setting for single-node clusters:
-      # 0 means "osd" which allows replicas on the same host but different OSDs.
-      # The default is 1, which means "host" (requires different hosts).
-      osd_pool_default_crush_rule_type: "0"
+  initialCrushRules:
+    - name: replicapool
+      replicated:
+        # The failure domain must be "osd" for single-node setups.
+        # This tells Ceph that different OSDs are the highest level of separation.
+        failureDomain: osd
+        # The root is usually "default" for OSDs created by Rook.
+        root: default
   cephVersion:
     # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
     # v18 is Reef, v19 is Squid
