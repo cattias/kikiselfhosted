@@ -241,33 +241,42 @@ spec:
     #crashcollector: rook-ceph-crashcollector-priority-class
   storage:
     useAllNodes: true
-    storageClassDeviceSets:
-      - name: ssd-set
-        count: 1
-        portable: false
-        volumeClaimTemplates: 
-          - metadata:
-              name: data
-            spec:
-              storageClassName: ""
-              accessModes: ["ReadWriteOnce"]
-              resources:
-                requests:
-                  storage: 1Gi
-        # Rook will automatically discover and claim the 6 raw disks
-        preparePlacement:
-          podAntiAffinity:
-            preferredDuringSchedulingIgnoredDuringExecution:
-              - weight: 100
-                podAffinityTerm:
-                  labelSelector:
-                    matchLabels:
-                      app: rook-ceph-osd
-                  topologyKey: kubernetes.io/hostname
-        config:
-          deviceFilter: "sda|sdb|sdc|sdd|sde|sdf"
-          useAllDevices: "false" 
-          osdsPerDevice: "1"
+    useAllDevices: false
+    # storageClassDeviceSets:
+    #   - name: ssd-set
+    #     count: 1
+    #     portable: false
+    #     volumeClaimTemplates: 
+    #       - metadata:
+    #           name: data
+    #         spec:
+    #           storageClassName: ""
+    #           accessModes: ["ReadWriteOnce"]
+    #           resources:
+    #             requests:
+    #               storage: 1Gi
+    #     # Rook will automatically discover and claim the 6 raw disks
+    #     preparePlacement:
+    #       podAntiAffinity:
+    #         preferredDuringSchedulingIgnoredDuringExecution:
+    #           - weight: 100
+    #             podAffinityTerm:
+    #               labelSelector:
+    #                 matchLabels:
+    #                   app: rook-ceph-osd
+    #               topologyKey: kubernetes.io/hostname
+    #     config:
+    #       deviceFilter: "sda|sdb|sdc|sdd|sde|sdf"
+    #       useAllDevices: "false" 
+    #       osdsPerDevice: "1"
+    #deviceFilter: /dev/disk/by-id/ata-SK_hynix_SC311_SATA_256GB_MS84N461510304A3A
+    config:
+      # crushRoot: "custom-root" # specify a non-default root label for the CRUSH map
+      # metadataDevice: "md0" # specify a non-rotational storage so ceph-volume will use it as block db device of bluestore.
+      # databaseSizeMB: "1024" # uncomment if the disks are smaller than 100 GB
+      # osdsPerDevice: "1" # this value can be overridden at the node or device level
+      # encryptedDevice: "true" # the default value for this option is "false"
+      # deviceClass: "myclass" # specify a device class for OSDs in the cluster
     allowDeviceClassUpdate: true # whether to allow changing the device class of an OSD after it is created
     allowOsdCrushWeightUpdate: true # whether to allow resizing the OSD crush weight after osd pvc is increased
     devices:
@@ -277,6 +286,8 @@ spec:
       - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0KA24248" # sdd
       - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0KA03683" # sde
       - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0HA11932" # sdf
+    # Individual nodes and their config can be specified as well, but 'useAllNodes' above must be set to false. Then, only the named
+    # nodes below will be used as storage resources.  Each node's 'name' field should match their 'kubernetes.io/hostname' label.
     # Whether to always schedule OSD pods on nodes declared explicitly in the "nodes" section, even if they are
     # temporarily not schedulable. If set to true, consider adding placement tolerations for unschedulable nodes.
     scheduleAlways: false
