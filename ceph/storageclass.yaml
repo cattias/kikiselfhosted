@@ -5,7 +5,7 @@ metadata:
   namespace: rook-ceph
 spec:
   failureDomain: host
-  erasureCode:
+  erasurecoded:
     dataChunks: 4    # k=4 (4 data chunks)
     codingChunks: 2  # m=2 (2 parity chunks - tolerates 2 drive failures)
   deviceClass: ssd
