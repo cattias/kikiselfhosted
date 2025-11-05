@@ -8,11 +8,18 @@ metadata:
 spec:
   syncPolicy:
     automated:
-      enabled: true
       prune: true
+      selfHeal: true
     syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
+      - CreateNamespace=true 
+      - ApplyOutOfSyncOnly=true
+      - PruneLast=true 
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
   destination:
     namespace: rook-ceph
     server: https://kubernetes.default.svc
