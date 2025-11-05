@@ -20,9 +20,7 @@ metadata:
 provisioner: rook-ceph.rbd.csi.ceph.com # csi-provisioner-name
 parameters:
   clusterID: rook-ceph
-
   pool: replicapool
-
   # (optional) mapOptions is a comma-separated list of map options.
   # For krbd options refer
   # https://docs.ceph.com/docs/master/man/8/rbd/#kernel-rbd-krbd-options
