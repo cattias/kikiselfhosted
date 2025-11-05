@@ -1,51 +1,52 @@
-# ceph/ceph-pool-fix-job.yaml
-
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: ceph-system-pool-fix
-  namespace: rook-ceph # Must be in the rook-ceph namespace
+  namespace: rook-ceph 
   annotations:
-    # ArgoCD Post-Sync Hook Annotation
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
-      # Use a ServiceAccount with permissions to run 'kubectl exec'
       serviceAccountName: rook-ceph-system 
       containers:
       - name: fix-pools
         # Use a lightweight image with kubectl installed
         image: bitnami/kubectl:latest 
-        env:
-        - name: MON_POD
-          # Command to find the name of the first running MON pod
-          value: "$(kubectl get pod -l app=rook-ceph-mon -n rook-ceph --field-selector=status.phase=Running -o jsonpath='{.items[0].metadata.name}')"
         command: ["/bin/bash", "-c"]
         args:
           - |
-            # 1. Wait for the Ceph cluster components to stabilize
-            echo "Waiting 60 seconds for Ceph components to stabilize..."
+            # 1. Wait for stability
+            # echo "Waiting 60 seconds for Ceph components to stabilize..."
             # sleep 60
             
-            # 2. Define the Ceph CLI command wrapper
+            # 2. Get the MON pod name using the full flag (--selector)
+            # This is the fix for the "unknown shorthand flag: 'l'" error.
+            MON_POD=$(kubectl get pod --selector=app=rook-ceph-mon -n rook-ceph --field-selector=status.phase=Running -o jsonpath='{.items[0].metadata.name}')
+            
+            if [ -z "$MON_POD" ]; then
+                echo "ERROR: Could not find a running rook-ceph-mon pod."
+                exit 1
+            fi
+            
+            # 3. Define the Ceph CLI command wrapper
             CEPH_CMD="kubectl exec -n rook-ceph ${MON_POD} -- ceph"
             
-            # 3. Apply the CRUSH rule change
-            echo "Applying CRUSH rule and pool size fixes..."
+            # 4. Apply the CRUSH rule change (Create rule first, silencing creation error if it exists)
+            echo "Applying CRUSH rule and pool size fixes inside MON pod: ${MON_POD}"
+            
             ${CEPH_CMD} osd crush rule create-replicated allow-single-host-osd-rule default osd || true
             
-            # 4. Fix the .mgr pool
+            # 5. Fix the .mgr pool
             ${CEPH_CMD} osd pool set .mgr crush_rule allow-single-host-osd-rule
             ${CEPH_CMD} osd pool set .mgr size 2
             ${CEPH_CMD} osd pool set .mgr min_size 1
             
-            # 5. Fix the device_health_metrics pool
+            # 6. Fix the device_health_metrics pool
             ${CEPH_CMD} osd pool set device_health_metrics crush_rule allow-single-host-osd-rule
             ${CEPH_CMD} osd pool set device_health_metrics size 2
             ${CEPH_CMD} osd pool set device_health_metrics min_size 1
 
       restartPolicy: OnFailure
   backoffLimit: 5
-
