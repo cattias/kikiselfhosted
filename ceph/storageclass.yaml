@@ -11,7 +11,7 @@ spec:
   # erasureCoded:
   #   dataChunks: 4    # k=4 (4 data chunks)
   #   codingChunks: 2  # m=2 (2 parity chunks - tolerates 2 drive failures)
-  deviceClass: ssd
+  # deviceClass: ssd
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
