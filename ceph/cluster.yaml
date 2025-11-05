@@ -78,8 +78,6 @@ spec:
     # prometheusEndpoint: <protocol>://<prometheus-host>:<port>
     # Whether SSL should be verified if the Prometheus server is using https
     # prometheusEndpointSSLVerify: false
-    service:
-      type: NodePort
   # enable prometheus alerting for cluster
   monitoring:
     # requires Prometheus to be pre-installed
