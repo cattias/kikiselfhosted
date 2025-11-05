@@ -6,10 +6,11 @@ kind: Kustomization
 # 1. Define resources to be applied. ArgoCD/Kustomize applies CRDs first automatically.
 resources:
   # The Official Rook Manifests (CRDs, Common, Operator)
-  - https://raw.githubusercontent.com/rook/rook/release-1.13/deploy/examples/crds.yaml
-  - https://raw.githubusercontent.com/rook/rook/release-1.13/deploy/examples/common.yaml
-  - https://raw.githubusercontent.com/rook/rook/release-1.13/deploy/examples/operator.yaml
-  # - https://raw.githubusercontent.com/rook/rook/release-1.13/deploy/examples/toolbox.yaml # Optional but useful
+  - https://raw.githubusercontent.com/rook/rook/release-1.18/deploy/examples/crds.yaml
+  - https://raw.githubusercontent.com/rook/rook/release-1.18/deploy/examples/common.yaml
+  - https://raw.githubusercontent.com/rook/rook/release-1.18/deploy/examples/operator.yaml
+  - https://raw.githubusercontent.com/rook/rook/release-1.18/deploy/examples/csi-operator.yaml
+  # - https://raw.githubusercontent.com/rook/rook/release-1.18/deploy/examples/toolbox.yaml # Optional but useful
 
   # Your Custom Ceph Resources (Cluster, Pool, Dashboard, StorageClass)
   - ceph-base.yaml      # Your cluster and OSD definition (needs Sync Wave 1)
