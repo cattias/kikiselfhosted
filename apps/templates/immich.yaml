@@ -56,7 +56,7 @@ spec:
             size: 10Gi
             type: emptyDir
             accessMode: ReadWriteMany
-            storageClass: local-path
+            storageClass: rook-ceph-block
         server:
           service:
             main:
