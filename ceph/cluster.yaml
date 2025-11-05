@@ -367,9 +367,9 @@ spec:
     port: 8443
     protocol: TCP
     targetPort: 8443
+    nodePort: 32645
   selector:
     app: rook-ceph-mgr
     rook_cluster: rook-ceph
   sessionAffinity: None
   type: NodePort
-  nodePort: 32645
