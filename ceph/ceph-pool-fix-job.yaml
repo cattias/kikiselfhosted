@@ -27,7 +27,7 @@ spec:
           - |
             # 1. Wait for the Ceph cluster components to stabilize
             echo "Waiting 60 seconds for Ceph components to stabilize..."
-            sleep 60
+            # sleep 60
             
             # 2. Define the Ceph CLI command wrapper
             CEPH_CMD="kubectl exec -n rook-ceph ${MON_POD} -- ceph"
