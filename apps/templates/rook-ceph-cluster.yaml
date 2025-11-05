@@ -441,28 +441,28 @@ spec:
                 # will set default as `ext4`. Note that `xfs` is not recommended due to potential deadlock
                 # in hyperconverged settings where the volume is mounted on the same node as the osds.
                 csi.storage.k8s.io/fstype: ext4
-        ingress:
-          # -- Enable an ingress for the ceph-dashboard
-          dashboard:
-            labels:
-              external-dns/private: "true"
-            annotations:
-              external-dns.alpha.kubernetes.io/hostname: ceph.attias.io
-              nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
-              nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-              nginx.ingress.kubernetes.io/server-snippet: |
-                proxy_ssl_verify off;
-            host:
-              name: ceph.attias.io
-              path: "/ceph-dashboard(/|$)(.*)"
-              pathType: Prefix
-            tls:
-            - hosts:
-                - ceph.attias.io
-              # secretName: testsecret-tls
-            # Note: Only one of ingress class annotation or the `ingressClassName:` can be used at a time
-            # to set the ingress class
-            ingressClassName: nginx
+        # ingress:
+        #   # -- Enable an ingress for the ceph-dashboard
+        #   dashboard:
+        #     labels:
+        #       external-dns/private: "true"
+        #     annotations:
+        #       external-dns.alpha.kubernetes.io/hostname: ceph.attias.io
+        #       nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
+        #       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+        #       nginx.ingress.kubernetes.io/server-snippet: |
+        #         proxy_ssl_verify off;
+        #     host:
+        #       name: ceph.attias.io
+        #       path: "/ceph-dashboard(/|$)(.*)"
+        #       pathType: Prefix
+        #     tls:
+        #     - hosts:
+        #         - ceph.attias.io
+        #       # secretName: testsecret-tls
+        #     # Note: Only one of ingress class annotation or the `ingressClassName:` can be used at a time
+        #     # to set the ingress class
+        #     ingressClassName: nginx
         # route:
         #   # -- Enable an HTTPRoute for the ceph-dashboard
         #   dashboard:
