@@ -14,5 +14,4 @@ resources:
 
   # Your Custom Ceph Resources (Cluster, Pool, Dashboard, StorageClass)
   - ceph-base.yaml      # Your cluster and OSD definition (needs Sync Wave 1)
-  # - ceph-dashboard.yaml # Your dashboard definition (needs Sync Wave 2)
 
