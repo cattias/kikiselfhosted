@@ -1,0 +1,34 @@
+# ceph/operator-patch.yaml
+# Patches the main rook-ceph-operator Deployment to ensure /dev and /run/udev
+# are correctly mounted from the host for device discovery.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rook-ceph-operator
+  namespace: rook-ceph
+spec:
+  template:
+    spec:
+      containers:
+        - name: rook-ceph-operator
+          # Add extra volume mounts to the operator container
+          volumeMounts:
+            - mountPath: /dev
+              name: dev
+            - mountPath: /run/udev
+              name: run-udev
+          # Add environment variables needed for device detection (e.g., LVM)
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+      # Add volumes to the operator pod spec
+      volumes:
+        - name: dev
+          hostPath:
+            path: /dev
+        - name: run-udev
+          hostPath:
+            path: /run/udev
+

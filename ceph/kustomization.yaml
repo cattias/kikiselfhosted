@@ -12,6 +12,14 @@ resources:
   - https://raw.githubusercontent.com/rook/rook/release-1.18/deploy/examples/csi-operator.yaml
   # - https://raw.githubusercontent.com/rook/rook/release-1.18/deploy/examples/toolbox.yaml # Optional but useful
 
-  # Your Custom Ceph Resources (Cluster, Pool, Dashboard, StorageClass)
-  - ceph-base.yaml      # Your cluster and OSD definition (needs Sync Wave 1)
+# 2. Apply patches
+patches:
+  - path: operator-patch.yaml # Applies host path mounts to fix Kubelet registration error
+    target:
+      kind: Deployment
+      name: rook-ceph-operator
 
+# 3. Add custom cluster configurations 
+resources:
+  # Base Rook manifests defined above
+  - ceph-base.yaml # Contains CephCluster, CephBlockPool, StorageClass
