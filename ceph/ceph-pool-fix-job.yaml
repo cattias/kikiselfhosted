@@ -17,9 +17,10 @@ spec:
         command: ["/bin/bash", "-c"]
         args:
           - |
+            exit 0
             # 1. Wait for stability
-            # echo "Waiting 60 seconds for Ceph components to stabilize..."
-            # sleep 60
+            echo "Waiting 60 seconds for Ceph components to stabilize..."
+            sleep 60
             
             # 2. Get the MON pod name using the full flag (--selector)
             # This is the fix for the "unknown shorthand flag: 'l'" error.
