@@ -463,20 +463,19 @@ spec:
             # Note: Only one of ingress class annotation or the `ingressClassName:` can be used at a time
             # to set the ingress class
             ingressClassName: nginx
-
-        route:
-          # -- Enable an HTTPRoute for the ceph-dashboard
-          dashboard:
-            labels:
-              external-dns/private: "true"
-            annotations:
-              external-dns.alpha.kubernetes.io/hostname: ceph.attias.io
-              nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
-            host:
-              name: ceph.attias.io
-              path: "/"
-              pathType: PathPrefix
-            parentRefs:
-              - name: internal
-                namespace: kube-system
-                sectionName: https
+        # route:
+        #   # -- Enable an HTTPRoute for the ceph-dashboard
+        #   dashboard:
+        #     labels:
+        #       external-dns/private: "true"
+        #     annotations:
+        #       external-dns.alpha.kubernetes.io/hostname: ceph.attias.io
+        #       nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
+        #     host:
+        #       name: ceph.attias.io
+        #       path: "/"
+        #       pathType: PathPrefix
+        #     parentRefs:
+        #       - name: internal
+        #         namespace: kube-system
+        #         sectionName: https
