@@ -32,10 +32,10 @@ spec:
   # Default is false.
   upgradeOSDRequiresHealthyPGs: false
   mon:
-    count: 3
+    count: 1
     allowMultiplePerNode: true
   mgr:
-    count: 2
+    count: 1
     allowMultiplePerNode: true
     modules:
       # List of modules to optionally enable or disable.
