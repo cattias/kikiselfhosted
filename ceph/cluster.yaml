@@ -13,6 +13,10 @@ kind: CephCluster
 metadata:
   name: rook-ceph
   namespace: rook-ceph # namespace:cluster
+  annotations:
+    # Overrides to ensure internal metadata pools size correctly
+    ceph.rook.io/default-min-replication-factor: "1"
+    ceph.rook.io/default-replication-factor: "2"
 spec:
   cephVersion:
     # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
