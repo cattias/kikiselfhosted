@@ -264,7 +264,6 @@ spec:
   storage: # cluster level storage configuration and selection
     useAllNodes: true
     useAllDevices: false
-
     #deviceFilter: /dev/disk/by-id/ata-SK_hynix_SC311_SATA_256GB_MS84N461510304A3A
     config:
       # crushRoot: "custom-root" # specify a non-default root label for the CRUSH map
@@ -272,7 +271,7 @@ spec:
       # databaseSizeMB: "1024" # uncomment if the disks are smaller than 100 GB
       osdsPerDevice: "1" # this value can be overridden at the node or device level
       # encryptedDevice: "true" # the default value for this option is "false"
-      # deviceClass: "myclass" # specify a device class for OSDs in the cluster
+      deviceClass: "ssd" # specify a device class for OSDs in the cluster
     allowDeviceClassUpdate: true # whether to allow changing the device class of an OSD after it is created
     allowOsdCrushWeightUpdate: true # whether to allow resizing the OSD crush weight after osd pvc is increased
     devices:
