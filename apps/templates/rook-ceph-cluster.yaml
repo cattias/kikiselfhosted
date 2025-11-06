@@ -389,6 +389,8 @@ spec:
                 compression_mode: none
               mirroring:
                 enabled: false
+            storageClass:
+              enabled: false
           - name: ceph-blockpool
             # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Block-Storage/ceph-block-pool-crd.md#spec for available configuration
             spec:
