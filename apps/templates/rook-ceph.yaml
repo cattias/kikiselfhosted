@@ -34,3 +34,5 @@ spec:
         enableDiscoveryDaemon: true
         # -- Set the discovery daemon device discovery interval (default to 60m)
         discoveryDaemonInterval: 5m
+        csi:
+          kubeletDirPath: /var/lib/k0s/kubelet
