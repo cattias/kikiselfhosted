@@ -11,7 +11,7 @@ spec:
   storage:
     volumeClaimTemplate:
       spec:
-        storageClassName: rook-ceph-block
+        storageClassName: ceph-block
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:

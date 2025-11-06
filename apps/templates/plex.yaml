@@ -28,7 +28,7 @@ spec:
           url: "https://plex.attias.io"
           ingressClassName: ingress-nginx
         pms:
-          storageClassName: rook-ceph-block
+          storageClassName: ceph-block
           configStorage: 10Gi
         service:
           type: NodePort

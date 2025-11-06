@@ -29,6 +29,6 @@ spec:
             type: NodePort
           persistentVolume:
             enabled: true
-            storageClass: rook-ceph-block
+            storageClass: ceph-block
         alertmanager:
           enabled: false
