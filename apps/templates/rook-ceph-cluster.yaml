@@ -381,6 +381,7 @@ spec:
         cephBlockPools:
           - name: builtin-mgr
             spec:
+              name: .mgr
               failureDomain: osd
               enableCrushUpdates: true
               replicated:
