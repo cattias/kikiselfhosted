@@ -30,3 +30,7 @@ spec:
     targetRevision: v1.18.6
     helm:
       releaseName: rook-ceph
+      valuesObject:
+        enableDiscoveryDaemon: true
+        # -- Set the discovery daemon device discovery interval (default to 60m)
+        discoveryDaemonInterval: 5m
