@@ -4,7 +4,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: daily-postgres-nfs-backup
+  name: daily-postgres-vault-nfs-backup
   namespace: vaultwarden
 spec:
   # Schedule: Run every day at 02:00 AM UTC.
@@ -92,6 +92,6 @@ spec:
           volumes:
           - name: backup-storage
             hostPath:
-              path: "/mnt/plex/vault_backups" 
+              path: "/mnt/synology-backups/vaultwarden" 
               type: DirectoryOrCreate
 

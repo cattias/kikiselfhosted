@@ -4,7 +4,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: weekly-postgres-backup-cleanup
+  name: weekly-postgres-immich-backup-cleanup
   namespace: photos
 spec:
   # Schedule: Run every Sunday at 03:00 AM UTC (after the backup runs at 02:00 AM)
@@ -61,5 +61,5 @@ spec:
           volumes:
           - name: backup-storage
             hostPath:
-              path: "/mnt/plex/immich_backups" 
+              path: "/mnt/synology-backups/immich" 
               type: DirectoryOrCreate

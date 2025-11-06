@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: daily-postgres-hostpath-backup
+  name: daily-postgres-immmich-nfs-backup
   namespace: photos
 spec:
   schedule: "0 23 * * *"
@@ -78,5 +78,5 @@ spec:
           volumes:
           - name: backup-storage
             hostPath:
-              path: "/mnt/plex/immich_backups" 
+              path: "/mnt/synology-backups/immich" 
               type: DirectoryOrCreate
