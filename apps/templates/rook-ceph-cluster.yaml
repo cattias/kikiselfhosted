@@ -397,9 +397,8 @@ spec:
             # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Block-Storage/ceph-block-pool-crd.md#spec for available configuration
             spec:
               failureDomain: osd
-              erasureCoded:
-                dataChunks: 4    # k=4 (4 data chunks)
-                codingChunks: 2  # m=2 (2 parity chunks - tolerates 2 drive failures)
+              replicated:
+                size: 2
               deviceClass: ssd
             storageClass:
               enabled: true
