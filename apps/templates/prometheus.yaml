@@ -24,11 +24,18 @@ spec:
     helm:
       releaseName: prometheus
       valuesObject:
+        prometheus:
+          prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: ceph-block
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 50Gi
         server:
           service:
             type: NodePort
-          persistentVolume:
-            enabled: true
-            storageClass: ceph-block
         alertmanager:
           enabled: false
