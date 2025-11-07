@@ -18,16 +18,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: homepage
-    repoURL: oci://ghcr.io/m0nsterrr/helm-charts/homepage
-    targetRevision: 4.2.0
-    helm:
-      releaseName: homepage
-      valuesObject:
-        service:
-          type: NodePort
-          port: 80
-        config:
-          # -- List of allowed hosts (sometimes with the port) that can host your homepage install
-          # -- see https://gethomepage.dev/installation/#homepage_allowed_hosts
-          allowedHosts: [home.attias.io, attias.io]
+    path: homepage
+    repoURL: https://github.com/cattias/kikiselfhosted
+    targetRevision: HEAD
