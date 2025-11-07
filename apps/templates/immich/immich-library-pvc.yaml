@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-library-pvc
+  namespace: photos
+spec:
+  accessModes:
+    - ReadWriteOnce
+  # Immich uses the volume as a standard filesystem for image/video storage
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 2Ti
+  storageClassName: ceph-block
