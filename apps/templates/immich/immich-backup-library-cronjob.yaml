@@ -1,0 +1,51 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: immich-library-backup
+  namespace: photos
+spec:
+  # Schedule: Run every night at 03:00 AM (UTC)
+  schedule: "0 3 * * *"
+  # If the job fails, retry up to 1 time
+  failedJobsHistoryLimit: 1
+  # Keep 1 successful job history
+  successfulJobsHistoryLimit: 1
+  # The actual job template
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          # Use a Pod that is suitable for file operations
+          containers:
+            - name: rsync-backup
+              # rsync is a standard tool for efficient, incremental backups
+              image: alpine/rsync:latest
+              imagePullPolicy: IfNotPresent
+              
+              # The rsync command: 
+              # -a: archive mode (preserves permissions, ownership, timestamps)
+              # -v: verbose output
+              # --delete: remove files from destination if they are removed from source (sync)
+              command: ["/bin/sh", "-c"]
+              args:
+                - "rsync -av --delete /mnt/source/ /mnt/destination/"
+
+              volumeMounts:
+                # 1. Source: Immich's persistent library (Ceph)
+                - name: immich-source-volume
+                  mountPath: /mnt/source
+                # 2. Destination: Synology Backup PV (NFS)
+                - name: synology-backup-volume
+                  mountPath: /mnt/destination
+          
+          restartPolicy: OnFailure
+          volumes:
+            # 1. Source Volume (The data you want to backup)
+            - name: immich-source-volume
+              persistentVolumeClaim:
+                claimName: immich-library-pvc
+            # 2. Destination Volume (The Synology NFS mount)
+            - name: synology-backup-volume
+              hostPath:
+                path: "/mnt/synology-backups/photos" 
+                type: DirectoryOrCreate
