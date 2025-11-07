@@ -15,11 +15,12 @@ data:
   #      url: https://longhorn.my.network
   custom.css: ""
   custom.js: ""
-  bookmarks.yaml: |
-    - Developer:
-        - Github:
-            - abbr: cattias
-              href: https://github.com/cattias/
+  bookmarks.yaml: ""
+  # bookmarks.yaml: |
+  #   - Developer:
+  #       - Github:
+  #           - abbr: cattias
+  #             href: https://github.com/cattias/
   services.yaml: |
     - Kubernetes Services Dasboards:
         - k0s Dashboard:
