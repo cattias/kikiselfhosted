@@ -27,3 +27,8 @@ spec:
         service:
           type: NodePort
           port: 80
+          nodePort: 32358
+        config:
+          # -- List of allowed hosts (sometimes with the port) that can host your homepage install
+          # -- see https://gethomepage.dev/installation/#homepage_allowed_hosts
+          allowedHosts: [192.168.178.36, home.attias.io, attias.io]
