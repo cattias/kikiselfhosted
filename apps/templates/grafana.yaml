@@ -49,6 +49,9 @@ spec:
                 url: http://192.168.178.29:9090
         dashboards:
           default:
+            kikiceph:
+              gnetId: 2842
+              revision: 18
             kikiserver:
               gnetId: 15661
               revision: 2
