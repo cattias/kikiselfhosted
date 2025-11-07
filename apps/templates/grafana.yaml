@@ -52,14 +52,12 @@ spec:
             kikiserver:
               gnetId: 15661
               revision: 2
-              name: "k0s Kikiserver"
               datasource:
                 - name: DS__VICTORIAMETRICS-PROD-ALL
                   value: 'Kikiserver'
             kikinode:
               gnetId: 15661
               revision: 2
-              name: "k0s Kikinode"
               datasource:
                 - name: DS__VICTORIAMETRICS-PROD-ALL
                   value: 'Kikinode'
