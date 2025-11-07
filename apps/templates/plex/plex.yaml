@@ -32,7 +32,6 @@ spec:
           type: NodePort
           externalTrafficPolicy: Local
         extraEnv:
-          PLEX_MEDIA_SERVER_TRANSCODER_TEMPDIR: "/data/transcode"
           TZ: "Etc/UTC"
           PLEX_UID: "1000"
           PLEX_GID: "1000"
@@ -40,11 +39,6 @@ spec:
           - name: nas-media-pvc
             persistentVolumeClaim:
               claimName: "plex-media-pvc"
-          - name: transcode-pvc
-            persistentVolumeClaim:
-              claimName: "plex-transcode-pvc"
         extraVolumeMounts:
           - name: nas-media-pvc
             mountPath: "/data/videos"
-          - name: transcode-pvc
-            mountPath: "/data/transcode"
