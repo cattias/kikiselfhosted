@@ -40,7 +40,7 @@ data:
         - Kikiflix:
             href: http://plex.attias.io/
             description: THE Kikiflix Plex service. Pour le plus grand plaisir de tous.
-        - Kikipic:
+        - Kikipics:
             href: http://photos.attias.io/
             description: Immich, replacement for Google Photos on Kikiserver.
         - Kikidocs:
