@@ -34,8 +34,9 @@ spec:
           type: NodePort
         extraVolumes:
           - name: nas-media-pvc
-            persistentVolumeClaim:
-              claimName: "videos-pvc"
+            hostPath:
+              path: "/mnt/synology-videos" 
+              type: DirectoryOrCreate
         extraVolumeMounts:
           - name: nas-media-pvc
             mountPath: "/data/videos"
