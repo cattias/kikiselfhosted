@@ -54,7 +54,7 @@ spec:
               revision: 2
               datasource:
                 - name: DS__VICTORIAMETRICS-PROD-ALL
-                  value: 'Kikinode'
+                  value: 'Kikiserver'
             nodeexporter:
               gnetId: 1860
               revision: 42
