@@ -18,23 +18,42 @@ data:
   bookmarks.yaml: |
     - Developer:
         - Github:
-            - abbr: GH
-              href: https://github.com/
+            - abbr: cattias
+              href: https://github.com/cattias/
   services.yaml: |
-    - My First Group:
-        - My First Service:
-            href: http://localhost/
-            description: Homepage is awesome
+    - Kubernetes Services Dasboards:
+        - k0s Dashboard:
+            href: https://k0s.attias.io/
+            description: The k0s admin dashboard on Kikiserver
+        - ArgoCD Dashboard:
+            href: https://argocd.attias.io/
+            description: The ArgoCD dashboard on Kikiserver
+        - Monitoring Dashboard:
+            href: https://obs.attias.io/
+            description: The Grafana dashboard to monitor all services
+        - Ceph Dashboard:
+            href: https://ceph.attias.io/
+            description: The Ceph admin dashboard on Kikiserver
 
-    - My Second Group:
-        - My Second Service:
-            href: http://localhost/
-            description: Homepage is the best
+    - Media Applications:
+        - Kikiflix:
+            href: http://plex.attias.io/
+            description: THE Kikiflix Plex service. Pour le plus grand plaisir de tous.
+        - Kikipic:
+            href: http://photos.attias.io/
+            description: Immich, replacement for Google Photos on Kikiserver.
+        - Kikidocs:
+            href: http://paperless.attias.io/
+            description: Paperless app on Kikiserver
 
-    - My Third Group:
-        - My Third Service:
-            href: http://localhost/
-            description: Homepage is 😎
+    - Other applications:
+        - Kikivault:
+            href: http://vault.attias.io/
+            description: Self-hosted vaultwarden instance on Kikiserver
+        - SSH:
+            href: http://ssh.attias.io/
+            description: Web SSH to Kiki's world
+
   widgets.yaml: |
     - kubernetes:
         cluster:
