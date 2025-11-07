@@ -25,8 +25,6 @@ spec:
       valuesObject:
         ingress:
           enabled: false
-          url: "https://plex.attias.io"
-          ingressClassName: ingress-nginx
         pms:
           storageClassName: ceph-block
           configStorage: 10Gi
@@ -34,33 +32,19 @@ spec:
           type: NodePort
           externalTrafficPolicy: Local
         extraEnv:
-        # This claim is optional, and is only used for the first startup of PMS
-        # The claim is obtained from https://www.plex.tv/claim/ is is only valid for a few minutes
-          PLEX_CLAIM: "claim-GKyp4DD8BwcTjZ1wKFam"
-          HOSTNAME: "Kikiflix"
           TZ: "Etc/UTC"
-          PLEX_UPDATE_CHANNEL: "5"
           PLEX_UID: "1000"
           PLEX_GID: "1000"
           PLEX_MEDIA_SERVER_ALLOW_DSM: "1"
-        # a list of CIDRs that can use the server without authentication
-        # this is only used for the first startup of PMS
-        #   ALLOWED_NETWORKS: "0.0.0.0/0"
-        # env:
-        #   - name: PLEX_MEDIA_SERVER_ALLOW_DSM
-        #     value: "1"           
-        #   # Set your local timezone
-        #   - name: TZ
-        #     value: "Europe/Paris"
         # # --- PERSISTENCE CONFIGURATION ---
-        # persistence:
-        #   # Transcoding Cache (Using Ceph SSD for high performance)
-        #   transcode:
-        #     enabled: true
-        #     type: pvc
-        #     size: 100Gi
-        #     storageClass: ceph-block
-        #     mountPath: /transcode
+        persistence:
+          # Transcoding Cache (Using Ceph SSD for high performance)
+          transcode:
+            enabled: true
+            type: pvc
+            size: 100Gi
+            storageClass: ceph-block
+            mountPath: /transcode
         extraVolumes:
           - name: nas-media-pvc
             persistentVolumeClaim:
