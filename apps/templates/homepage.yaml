@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homepage
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  destination:
+    namespace: home
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: homepage
+    repoURL: oci://ghcr.io/m0nsterrr/helm-charts/homepage
+    targetRevision: 4.2.0
+    helm:
+      releaseName: homepage
+      valuesObject:
+        service:
+          type: NodePort
+          port: 80
