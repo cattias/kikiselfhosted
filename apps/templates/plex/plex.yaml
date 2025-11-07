@@ -35,16 +35,6 @@ spec:
           TZ: "Etc/UTC"
           PLEX_UID: "1000"
           PLEX_GID: "1000"
-          PLEX_MEDIA_SERVER_ALLOW_DSM: "1"
-        # # --- PERSISTENCE CONFIGURATION ---
-        persistence:
-          # Transcoding Cache (Using Ceph SSD for high performance)
-          transcode:
-            enabled: true
-            type: pvc
-            size: 100Gi
-            storageClass: ceph-block
-            mountPath: /transcode
         extraVolumes:
           - name: nas-media-pvc
             persistentVolumeClaim:
