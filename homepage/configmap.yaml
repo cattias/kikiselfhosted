@@ -54,6 +54,9 @@ data:
         - SSH:
             href: http://ssh.attias.io/
             description: Web SSH to Kiki's world
+        - Synolokiki:
+            href: http://dsm.attias.io/
+            description: Portal access to Kiki's Synology NAS
 
   widgets.yaml: |
     - kubernetes:
