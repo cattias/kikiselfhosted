@@ -14,7 +14,7 @@ spec:
       - CreateNamespace=true
       - ServerSideApply=true
   destination:
-    namespace: argocd
+    namespace: documents
     server: https://kubernetes.default.svc
   project: default
   source:

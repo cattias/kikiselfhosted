@@ -1,8 +1,8 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: daily-postgres-hostpath-backup
-  namespace: paperless
+  name: daily-postgres-paperless-nfs-backup
+  namespace: documents
 spec:
   schedule: "0 23 * * *"
   jobTemplate:
@@ -78,5 +78,5 @@ spec:
           volumes:
           - name: backup-storage
             hostPath:
-              path: "/mnt/plex/paperless_backups" 
+              path: "/mnt/synology-backups/paperless" 
               type: DirectoryOrCreate

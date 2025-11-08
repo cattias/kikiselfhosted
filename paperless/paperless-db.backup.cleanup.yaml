@@ -4,8 +4,8 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: weekly-postgres-backup-cleanup
-  namespace: paperless
+  name: weekly-postgres-paperless-backup-cleanup
+  namespace: documents
 spec:
   # Schedule: Run every Sunday at 03:00 AM UTC (after the backup runs at 02:00 AM)
   schedule: "0 3 * * SUN"
@@ -61,5 +61,5 @@ spec:
           volumes:
           - name: backup-storage
             hostPath:
-              path: "/mnt/plex/paperless_backups" 
+              path: "/mnt/synology-backups/paperless" 
               type: DirectoryOrCreate
