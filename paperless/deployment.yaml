@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: paperless-ngx
-  namespace: paperless
+  namespace: documents
   labels:
     app: paperless-ngx
 spec:
