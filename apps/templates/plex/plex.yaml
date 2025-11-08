@@ -11,8 +11,8 @@ spec:
       kind: StatefulSet
       name: plex-plex-media-server
       jsonPointers:
-      - /spec/template/metadata/creationTimestamp # Ignored for Pod Template
       - /metadata/creationTimestamp # Ignored for the StatefulSet itself
+      - /spec/volumeClaimTemplates/0/metadata/creationTimestamp
   syncPolicy:
     automated:
       prune: true
