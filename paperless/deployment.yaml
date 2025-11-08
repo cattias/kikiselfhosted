@@ -63,15 +63,15 @@ spec:
         - name: GROUP_GID
           value: "1000"
         - name: PAPERLESS_DATA_DIR
-          value: "/mnt/plex/paperless/data"
+          value: "/data"
         - name: PAPERLESS_MEDIA_ROOT
-          value: "/mnt/plex/paperless/data"
+          value: "/data"
         
         volumeMounts:
         - name: datastore-volume
-          mountPath: /mnt/plex/paperless/data 
+          mountPath: /data 
         - name: consume-volume
-          mountPath: /mnt/plex/paperless/consume
+          mountPath: /consume
 
       volumes:
       - name: datastore-volume
