@@ -1,14 +1,10 @@
-# This CronJob runs daily, executes the pg_dumpall command, compresses the output, 
-# and saves the resulting file to the mounted NFS Persistent Volume Claim (PVC).
-
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: daily-postgres-nfs-backup
-  namespace: nextcloud
+  name: daily-postgres-nextcloud-nfs-backup
+  namespace: documents
 spec:
-  # Schedule: Run every day at 02:00 AM UTC.
-  schedule: "0 2 * * *"
+  schedule: "0 23 * * *"
   jobTemplate:
     spec:
       template:
@@ -16,11 +12,9 @@ spec:
           restartPolicy: OnFailure
           containers:
           - name: postgres-backup-runner
-            # Use the official Postgres image, which includes pg_dump and psql tools
             image: postgres:latest
             imagePullPolicy: IfNotPresent
             
-            # Define environment variables sourced from the Secret
             env:
             - name: PGHOST
               valueFrom:
@@ -43,17 +37,10 @@ spec:
                   name: nextcloud-db-app
                   key: dbname
 
-            # Volume Mount: Mount the PVC to a local directory for saving the dump
             volumeMounts:
             - name: backup-storage
               mountPath: "/mnt/nfs-backup"
 
-            # Command: The core backup script
-            # 1. Sets the destination directory and filename with a timestamp.
-            # 2. Uses pg_dumpall to create a full dump (including global objects like users/roles).
-            # 3. Pipes the output to gzip for compression.
-            # 4. Saves the final file to the NFS mount point.
-            # We use /bin/bash -c for the multi-line shell command.
             command: ["/bin/bash", "-c"]
             args:
               - |
@@ -87,11 +74,9 @@ spec:
                   echo "ERROR: pg_dump or gzip failed. Check database name and user permissions."
                   exit 1
                 fi
-          
-          # Volume Definition: Reference the PVC created previously
+
           volumes:
           - name: backup-storage
             hostPath:
-              path: "/mnt/plex/nextcloud_backups" 
+              path: "/mnt/synology-backups/nextcloud" 
               type: DirectoryOrCreate
-
