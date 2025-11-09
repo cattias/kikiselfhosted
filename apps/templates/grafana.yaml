@@ -42,7 +42,7 @@ spec:
               - name: Kikinode
                 type: prometheus
                 access: proxy
-                url: http://192.168.178.34:32215
+                url: http://192.168.178.34:31530
               - name: Kiki-ds220j
                 type: prometheus
                 access: proxy
