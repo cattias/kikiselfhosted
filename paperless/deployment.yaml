@@ -81,7 +81,7 @@ spec:
           claimName: paperless-media-pvc
       - name: data-volume
         persistentVolumeClaim:
-          claimName: paperless-dataconsume-pvc
+          claimName: paperless-data-pvc
       - name: consume-volume
         persistentVolumeClaim:
-          claimName: paperless-dataconsume-pvc
+          claimName: paperless-consume-pvc
