@@ -65,18 +65,23 @@ spec:
         - name: PAPERLESS_DATA_DIR
           value: "/data"
         - name: PAPERLESS_MEDIA_ROOT
-          value: "/data"
+          value: "/media"
         
         volumeMounts:
-        - name: datastore-volume
+        - name: media-volume
+          mountPath: /media 
+        - name: data-volume
           mountPath: /data 
         - name: consume-volume
           mountPath: /consume
 
       volumes:
-      - name: datastore-volume
+      - name: media-volume
         persistentVolumeClaim:
-          claimName: paperless-datastore-pvc
+          claimName: paperless-media-pvc
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: paperless-dataconsume-pvc
       - name: consume-volume
         persistentVolumeClaim:
-          claimName: paperless-consume-pvc
+          claimName: paperless-dataconsume-pvc

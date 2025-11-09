@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: paperless-datastore-pvc
+  name: paperless-media-pvc
   namespace: documents
 spec:
   accessModes:
@@ -9,12 +9,12 @@ spec:
   storageClassName: ceph-block
   resources:
     requests:
-      storage: 100Gi
+      storage: 500Gi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: paperless-consume-pvc
+  name: paperless-dataconsume-pvc
   namespace: documents
 spec:
   accessModes:
@@ -22,4 +22,4 @@ spec:
   storageClassName: ceph-block
   resources:
     requests:
-      storage: 5Gi
+      storage: 50Gi
