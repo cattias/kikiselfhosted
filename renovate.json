@@ -7,15 +7,11 @@
     "enabled": true,
     "managerFilePatterns": ["/\\.yaml$/"]
   },
-  "docker-compose": {
-    "enabled": true,
-    "managerFilePatterns": ["/\\.yaml$/"]
-  },
   "regexManagers": [
     {
       "fileMatch": ["/\\.yaml$/"],
       "matchStrings": [
-        "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*chart:\\s*immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)"
+        "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*immich"
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "ghcr.io/immich-app/immich-charts",
