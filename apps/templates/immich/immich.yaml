@@ -28,7 +28,7 @@ spec:
             containers:
               main:
                 image:
-                  tag: v2.2.0
+                  tag: v2.2.3
                 env:
                   - name: REDIS_HOSTNAME
                     value: immich-redis
