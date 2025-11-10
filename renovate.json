@@ -21,14 +21,5 @@
       "depNameTemplate": "ghcr.io/immich-app/immich-charts/immich/immich",
       "versioningTemplate": "semver"
     }
-  ],
-  "packageRules": [
-    {
-      "matchDepNames": ["ghcr.io/immich-app/immich-charts/immich/immich"],
-      "datasource": "docker",
-      "versioning": "semver",
-      "extractVersion": "^v?(?<version>.*)$",
-      "allowedVersions": ">=1.0.0" 
-    }
   ]
 }
