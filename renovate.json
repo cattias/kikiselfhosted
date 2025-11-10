@@ -28,7 +28,7 @@
         "image:\\s*quay\\.io/ceph/ceph:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "ghcr.io/immich-app/immich-server",
+      "depNameTemplate": "quay.io/ceph/ceph",
       "versioningTemplate": "semver"
     }
   ],
