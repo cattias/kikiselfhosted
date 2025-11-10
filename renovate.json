@@ -9,7 +9,6 @@
   },
   "docker-compose": {
     "enabled": true,
-    "managerFilePatterns": ["/\\.yaml$/"],
-    "platformManagers": ["argocd"]
+    "managerFilePatterns": ["/\\.yaml$/"]
   }
 }
