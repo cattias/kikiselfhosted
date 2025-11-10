@@ -21,6 +21,15 @@
       "datasourceTemplate": "docker",
       "depNameTemplate": "ghcr.io/immich-app/immich-server",
       "versioningTemplate": "semver"
+    },
+    {
+      "fileMatch": ["apps/templates/rook-ceph-cluster\\.yaml"],
+      "matchStrings": [
+        "image:\\s*quay\\.io/ceph/ceph:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/immich-app/immich-server",
+      "versioningTemplate": "semver"
     }
   ],
   "argocd": {
