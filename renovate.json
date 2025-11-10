@@ -23,6 +23,15 @@
       "versioningTemplate": "semver"
     },
     {
+      "fileMatch": ["paperless/deployment\\.yaml"],
+      "matchStrings": [
+        "name:\\s*paperless-ngx\\s*\\n\\s*image:\\s*ghcr\\.io/paperless-ngx/paperless-ngx:\\s*(?<currentValue>?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/paperless-ngx/paperless-ngx",
+      "versioningTemplate": "semver"
+    },
+    {
       "fileMatch": ["apps/templates/rook-ceph-cluster\\.yaml"],
       "matchStrings": [
         "image:\\s*quay\\.io/ceph/ceph:\\s*(?<currentValue>v?[0-9\\.]+)"
