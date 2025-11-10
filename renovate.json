@@ -18,7 +18,7 @@
         "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*chart:\\s*immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "ghcr.io/immich-app/immich-charts/immich",
+      "depNameTemplate": "ghcr.io/immich-app/immich-charts",
       "versioningTemplate": "semver"
     }
   ]
