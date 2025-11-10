@@ -12,10 +12,18 @@
       "datasourceTemplate": "docker",
       "depNameTemplate": "ghcr.io/immich-app/immich-charts/immich",
       "versioningTemplate": "semver"
+    },
+    {
+      "fileMatch": ["apps/templates/immich/immich\\.yaml"],
+      "matchStrings": [
+        "main:\\s*\\n\\s*image:\\s*\\n\\s*tag:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "semver"
     }
   ],
   "argocd": {
-    "enabled": true,
+    "enabled": false,
     "managerFilePatterns": ["/\\.yaml$/"]
   }
 }
