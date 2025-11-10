@@ -32,7 +32,7 @@
       "versioningTemplate": "semver"
     },
     {
-      "fileMatch": ["databases/\\.yaml"],
+      "fileMatch": ["databases/immich\\.redis\\.yaml"],
       "matchStrings": [
         "kubernetesConfig:\\s*\\n\\s*image:\\s*quay\\.io\\/opstree\\/redis:(?<currentValue>v?[0-9\\.]+)"
       ],
@@ -52,7 +52,7 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["ceph/ceph"],
+      "matchPackageNames": ["quay.io/ceph/ceph"],
       "allowedVersions": "<20.0.0"
     }
   ],
