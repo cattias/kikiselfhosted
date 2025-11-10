@@ -25,6 +25,6 @@
   ],
   "argocd": {
     "enabled": true,
-    "managerFilePatterns": ["/(?!(.*immich.*))\\\\.yaml$/"]
+    "managerFilePatterns": ["(?!(.*immich.*))\\.yaml$"] 
   }
 }
