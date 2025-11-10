@@ -4,12 +4,12 @@
     "config:recommended"
   ],
   "argocd": {
-    "enabled": true,
+    "enabled": false,
     "managerFilePatterns": ["/\\.yaml$/"]
   },
   "regexManagers": [
     {
-      "fileMatch": ["/\\.yaml$/"],
+      "fileMatch": ["apps/templates/immich/immich\\.yaml"],
       "matchStrings": [
         "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*immich"
       ],
