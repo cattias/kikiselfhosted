@@ -25,7 +25,7 @@
     {
       "fileMatch": ["paperless/deployment\\.yaml"],
       "matchStrings": [
-        "name:\\s*paperless-ngx\\s*\\n\\s*image:\\s*ghcr\\.io\\/paperless-ngx\\/paperless-ngx:\\s*(?<currentValue>?[0-9\\.]+)"
+        "name:\\s*paperless-ngx\\s*\\n\\s*image:\\s*ghcr\\.io\\/paperless-ngx\\/paperless-ngx:\\s*(?<currentValue>[0-9\\.]+)"
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "ghcr.io/paperless-ngx/paperless-ngx",
