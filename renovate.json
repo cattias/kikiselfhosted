@@ -3,10 +3,6 @@
   "extends": [
     "config:recommended"
   ],
-  "argocd": {
-    "enabled": false,
-    "managerFilePatterns": ["/\\.yaml$/"]
-  },
   "regexManagers": [
     {
       "fileMatch": ["apps/templates/immich/immich\\.yaml"],
@@ -17,5 +13,9 @@
       "depNameTemplate": "ghcr.io/immich-app/immich-charts/immich",
       "versioningTemplate": "semver"
     }
-  ]
+  ],
+  "argocd": {
+    "enabled": true,
+    "managerFilePatterns": ["/\\.yaml$/"]
+  }
 }
