@@ -19,6 +19,7 @@
         "main:\\s*\\n\\s*image:\\s*\\n\\s*tag:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
       "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/immich-app/immich",
       "versioningTemplate": "semver"
     }
   ],
