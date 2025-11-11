@@ -59,6 +59,8 @@ spec:
             storageClass: ceph-block
         server:
           enabled: true
+          controllers:
+            replicas: 2
           service:
             main:
               type: NodePort
