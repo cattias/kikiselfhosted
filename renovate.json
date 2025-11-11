@@ -1,8 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:best-practices"
+    "config:best-practices",
+    ":disableRateLimiting",
+    "default:pinDigestsDisabled"
   ],
+  "dependencyDashboardTitle": "Renovate Kiki Dashboard",
+  "rebaseWhen": "conflicted",
   "customManagers": [
     {
       "customType": "regex",
