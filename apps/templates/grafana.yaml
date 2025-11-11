@@ -37,7 +37,7 @@ spec:
               - name: Kikiserver
                 type: prometheus
                 access: proxy
-                url: http://prometheus-server.monitoring.svc.cluster.local
+                url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local
                 isDefault: true
               - name: Kikinode
                 type: prometheus
