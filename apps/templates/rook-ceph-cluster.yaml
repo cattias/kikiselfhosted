@@ -39,6 +39,13 @@ spec:
           osd_pool_default_crush_rule_type = 0
         toolbox:
           enabled: true
+        monitoring:
+          # requires Prometheus to be pre-installed
+          enabled: true
+          # Whether to disable the metrics reported by Ceph. If false, the prometheus mgr module and Ceph exporter are enabled.
+          # If true, the prometheus mgr module and Ceph exporter are both disabled. Default is false.
+          metricsDisabled: false
+          createPrometheusRules: true
         cephClusterSpec:
           cephVersion:
             # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
@@ -440,19 +447,3 @@ spec:
                 csi.storage.k8s.io/fstype: ext4
         cephFileSystems: {}
         cephObjectStores: {}
-        # enable prometheus alerting for cluster
-        monitoring:
-          # requires Prometheus to be pre-installed
-          enabled: true
-          # Whether to disable the metrics reported by Ceph. If false, the prometheus mgr module and Ceph exporter are enabled.
-          # If true, the prometheus mgr module and Ceph exporter are both disabled. Default is false.
-          metricsDisabled: false
-          # Ceph exporter metrics config.
-          exporter:
-            # Specifies which performance counters are exported.
-            # Corresponds to --prio-limit Ceph exporter flag
-            # 0 - all counters are exported
-            perfCountersPrioLimit: 5
-            # Time to wait before sending requests again to exporter server (seconds)
-            # Corresponds to --stats-period Ceph exporter flag
-            statsPeriodSeconds: 5
