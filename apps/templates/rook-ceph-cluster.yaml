@@ -5,9 +5,6 @@ metadata:
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
-  labels:
-    monitoring:
-      release: kube-prometheus-stack
 spec:
   syncPolicy:
     automated:
@@ -247,6 +244,8 @@ spec:
           # If no mgr annotations are set, prometheus scrape annotations will be set by default.
           #   mgr:
           labels:
+            monitoring:
+              release: kube-prometheus-stack
           #   all:
           #   mon:
           #   osd:
