@@ -113,6 +113,15 @@ spec:
             prometheusEndpoint: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
             # Whether SSL should be verified if the Prometheus server is using https
             prometheusEndpointSSLVerify: false
+          monitoring:
+            # requires Prometheus to be pre-installed
+            enabled: true
+            # Whether to disable the metrics reported by Ceph. If false, the prometheus mgr module and Ceph exporter are enabled.
+            # If true, the prometheus mgr module and Ceph exporter are both disabled. Default is false.
+            metricsDisabled: false
+            createPrometheusRules: true
+            labels:
+                release: kube-prometheus-stack
           network:
             connections:
               # Whether to encrypt the data in transit across the wire to prevent eavesdropping the data on the network.
