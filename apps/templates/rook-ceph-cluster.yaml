@@ -101,9 +101,9 @@ spec:
             # serve the dashboard using SSL
             ssl: true
             # The url of the Prometheus instance
-            # prometheusEndpoint: <protocol>://<prometheus-host>:<port>
+            prometheusEndpoint: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
             # Whether SSL should be verified if the Prometheus server is using https
-            # prometheusEndpointSSLVerify: false
+            prometheusEndpointSSLVerify: false
           # enable prometheus alerting for cluster
           monitoring:
             # requires Prometheus to be pre-installed
