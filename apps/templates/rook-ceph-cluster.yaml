@@ -104,22 +104,6 @@ spec:
             prometheusEndpoint: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
             # Whether SSL should be verified if the Prometheus server is using https
             prometheusEndpointSSLVerify: false
-          # enable prometheus alerting for cluster
-          monitoring:
-            # requires Prometheus to be pre-installed
-            enabled: true
-            # Whether to disable the metrics reported by Ceph. If false, the prometheus mgr module and Ceph exporter are enabled.
-            # If true, the prometheus mgr module and Ceph exporter are both disabled. Default is false.
-            metricsDisabled: false
-            # Ceph exporter metrics config.
-            exporter:
-              # Specifies which performance counters are exported.
-              # Corresponds to --prio-limit Ceph exporter flag
-              # 0 - all counters are exported
-              perfCountersPrioLimit: 5
-              # Time to wait before sending requests again to exporter server (seconds)
-              # Corresponds to --stats-period Ceph exporter flag
-              statsPeriodSeconds: 5
           network:
             connections:
               # Whether to encrypt the data in transit across the wire to prevent eavesdropping the data on the network.
@@ -456,3 +440,19 @@ spec:
                 csi.storage.k8s.io/fstype: ext4
         cephFileSystems: {}
         cephObjectStores: {}
+        # enable prometheus alerting for cluster
+        monitoring:
+          # requires Prometheus to be pre-installed
+          enabled: true
+          # Whether to disable the metrics reported by Ceph. If false, the prometheus mgr module and Ceph exporter are enabled.
+          # If true, the prometheus mgr module and Ceph exporter are both disabled. Default is false.
+          metricsDisabled: false
+          # Ceph exporter metrics config.
+          exporter:
+            # Specifies which performance counters are exported.
+            # Corresponds to --prio-limit Ceph exporter flag
+            # 0 - all counters are exported
+            perfCountersPrioLimit: 5
+            # Time to wait before sending requests again to exporter server (seconds)
+            # Corresponds to --stats-period Ceph exporter flag
+            statsPeriodSeconds: 5
