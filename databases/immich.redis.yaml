@@ -15,7 +15,7 @@ spec:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 1Gi
+            storage: 10Gi
   redisExporter:
     enabled: false
     image: quay.io/opstree/redis-exporter:v1.44.0
