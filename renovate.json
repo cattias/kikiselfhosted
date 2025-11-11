@@ -95,7 +95,12 @@
       "/\\.yaml$/"
     ],
     "ignorePaths": [
-      "**/immich/**"
+      "**/immich/**",
+      "**/databases\\.yaml",
+      "**/paperless\\.yaml",
+      "**/rook-ceph-cluster-addition\\.yaml",
+      "**/homepage\\.yaml",
+      "**/dsm\\.yaml"
     ]
   }
 }
