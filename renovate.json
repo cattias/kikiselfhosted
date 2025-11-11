@@ -77,14 +77,6 @@
       "versioningTemplate": "semver"
     }
   ],
-  "packageRules": [
-    {
-      "matchPackageNames": [
-        "quay.io/ceph/ceph"
-      ],
-      "allowedVersions": "<20.0.0"
-    }
-  ],
   "argocd": {
     "enabled": true,
     "managerFilePatterns": [
