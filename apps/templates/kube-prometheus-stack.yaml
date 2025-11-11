@@ -36,8 +36,4 @@ spec:
                   resources:
                     requests:
                       storage: 50Gi
-            serviceMonitorNamespaceSelector:
-              matchNames:
-                - name: monitoring
-                - name: photos
-                - name: rook-ceph
+            serviceMonitorNamespaceSelector: {}
