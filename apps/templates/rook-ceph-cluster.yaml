@@ -46,6 +46,8 @@ spec:
           # If true, the prometheus mgr module and Ceph exporter are both disabled. Default is false.
           metricsDisabled: false
           createPrometheusRules: true
+          labels:
+              release: kube-prometheus-stack
         cephClusterSpec:
           cephVersion:
             # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
