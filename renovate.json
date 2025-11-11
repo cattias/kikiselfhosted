@@ -2,7 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":disableRateLimiting"
+    ":disableRateLimiting",
+    ":configMigration"
   ],
   "dependencyDashboardTitle": "Renovate Kiki Dashboard",
   "rebaseWhen": "conflicted",
