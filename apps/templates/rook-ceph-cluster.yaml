@@ -5,6 +5,9 @@ metadata:
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+  labels:
+    monitoring:
+      release: kube-prometheus-stack
 spec:
   syncPolicy:
     automated:
@@ -39,15 +42,15 @@ spec:
           osd_pool_default_crush_rule_type = 0
         toolbox:
           enabled: true
-        monitoring:
-          # requires Prometheus to be pre-installed
-          enabled: true
-          # Whether to disable the metrics reported by Ceph. If false, the prometheus mgr module and Ceph exporter are enabled.
-          # If true, the prometheus mgr module and Ceph exporter are both disabled. Default is false.
-          metricsDisabled: false
-          createPrometheusRules: true
-          labels:
-              release: kube-prometheus-stack
+        # monitoring:
+        #   # requires Prometheus to be pre-installed
+        #   enabled: true
+        #   # Whether to disable the metrics reported by Ceph. If false, the prometheus mgr module and Ceph exporter are enabled.
+        #   # If true, the prometheus mgr module and Ceph exporter are both disabled. Default is false.
+        #   metricsDisabled: false
+        #   createPrometheusRules: true
+        #   labels:
+        #       release: kube-prometheus-stack
         cephClusterSpec:
           cephVersion:
             # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
@@ -119,9 +122,6 @@ spec:
             # Whether to disable the metrics reported by Ceph. If false, the prometheus mgr module and Ceph exporter are enabled.
             # If true, the prometheus mgr module and Ceph exporter are both disabled. Default is false.
             metricsDisabled: false
-            createPrometheusRules: true
-            labels:
-                release: kube-prometheus-stack
           network:
             connections:
               # Whether to encrypt the data in transit across the wire to prevent eavesdropping the data on the network.
