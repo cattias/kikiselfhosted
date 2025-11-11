@@ -36,4 +36,11 @@ spec:
                   resources:
                     requests:
                       storage: 50Gi
+            serviceMonitorSelector: {}
             serviceMonitorNamespaceSelector: {}
+            podMonitorSelector: {}
+            podMonitorNamespaceSelector: {}
+            probeSelector: {}
+            probeNamespaceSelector: {}
+            scrapeConfigSelector: {}
+            scrapeConfigNamespaceSelector: {}
