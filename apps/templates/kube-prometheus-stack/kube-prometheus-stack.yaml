@@ -31,8 +31,9 @@ spec:
             storageSpec:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: ceph-block
-                  accessModes: ["ReadWriteOnce"]
+                  selector:
+                    matchLabels:
+                      app.kubernetes.io/name: kube-prometheus-stack-pvc
                   resources:
                     requests:
                       storage: 50Gi
