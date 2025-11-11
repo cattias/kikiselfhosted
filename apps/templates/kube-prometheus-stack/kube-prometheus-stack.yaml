@@ -39,9 +39,13 @@ spec:
                       storage: 50Gi
             serviceMonitorSelector: {}
             serviceMonitorNamespaceSelector: {}
+            serviceMonitorSelectorNilUsesHelmValues: false
             podMonitorSelector: {}
             podMonitorNamespaceSelector: {}
+            podMonitorSelectorNilUsesHelmValues: false
             probeSelector: {}
             probeNamespaceSelector: {}
+            probeSelectorNilUsesHelmValues: false
             scrapeConfigSelector: {}
             scrapeConfigNamespaceSelector: {}
+            scrapeConfigSelectorNilUsesHelmValues: false
