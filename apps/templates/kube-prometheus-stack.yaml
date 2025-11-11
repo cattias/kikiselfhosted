@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: kube-prometheus-stack
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -18,12 +18,14 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: prometheus
+    chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts/
-    targetRevision: 27.45.0
+    targetRevision: 79.4.1
     helm:
-      releaseName: prometheus
+      releaseName: kube-prometheus-stack
       valuesObject:
+        grafana:
+          enabled: false
         prometheus:
           prometheusSpec:
             storageSpec:
@@ -34,8 +36,3 @@ spec:
                   resources:
                     requests:
                       storage: 50Gi
-        server:
-          service:
-            type: NodePort
-        alertmanager:
-          enabled: false
