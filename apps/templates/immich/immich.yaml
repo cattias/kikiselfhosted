@@ -58,7 +58,12 @@ spec:
             accessMode: ReadWriteMany
             storageClass: ceph-block
         server:
+          enabled: true
           service:
             main:
               type: NodePort
               nodePort: 31313
+        machine-learning:
+          enabled: true
+          controllers:
+            replicas: 2
