@@ -3,9 +3,12 @@
   "extends": [
     "config:best-practices"
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["apps/templates/immich/immich\\.yaml"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/apps/templates/immich/immich\\.yaml/"
+      ],
       "matchStrings": [
         "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*immich"
       ],
@@ -14,7 +17,10 @@
       "versioningTemplate": "semver"
     },
     {
-      "fileMatch": ["apps/templates/immich/immich\\.yaml"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/apps/templates/immich/immich\\.yaml/"
+      ],
       "matchStrings": [
         "main:\\s*\\n\\s*image:\\s*\\n\\s*tag:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
@@ -23,7 +29,10 @@
       "versioningTemplate": "semver"
     },
     {
-      "fileMatch": ["paperless/deployment\\.yaml"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/paperless/deployment\\.yaml/"
+      ],
       "matchStrings": [
         "name:\\s*paperless-ngx\\s*\\n\\s*image:\\s*ghcr\\.io\\/paperless-ngx\\/paperless-ngx:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
@@ -32,7 +41,10 @@
       "versioningTemplate": "semver"
     },
     {
-      "fileMatch": ["databases/immich\\.redis\\.yaml"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/databases/immich\\.redis\\.yaml/"
+      ],
       "matchStrings": [
         "kubernetesConfig:\\s*\\n\\s*image:\\s*quay\\.io\\/opstree\\/redis:(?<currentValue>v?[0-9\\.]+)"
       ],
@@ -41,7 +53,10 @@
       "versioningTemplate": "semver"
     },
     {
-      "fileMatch": ["databases/paperless\\.redis\\.yaml"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/databases/paperless\\.redis\\.yaml/"
+      ],
       "matchStrings": [
         "kubernetesConfig:\\s*\\n\\s*image:\\s*quay\\.io\\/opstree\\/redis:(?<currentValue>v?[0-9\\.]+)"
       ],
@@ -50,7 +65,10 @@
       "versioningTemplate": "semver"
     },
     {
-      "fileMatch": ["apps/templates/rook-ceph-cluster\\.yaml"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/apps/templates/rook-ceph-cluster\\.yaml/"
+      ],
       "matchStrings": [
         "image:\\s*quay\\.io/ceph/ceph:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
@@ -61,13 +79,19 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["quay.io/ceph/ceph"],
+      "matchPackageNames": [
+        "quay.io/ceph/ceph"
+      ],
       "allowedVersions": "<20.0.0"
     }
   ],
   "argocd": {
     "enabled": true,
-    "managerFilePatterns": ["/\\.yaml$/"],
-    "ignorePaths": ["**/immich/**"]
+    "managerFilePatterns": [
+      "/\\.yaml$/"
+    ],
+    "ignorePaths": [
+      "**/immich/**"
+    ]
   }
 }
