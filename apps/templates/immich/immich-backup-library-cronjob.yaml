@@ -31,7 +31,7 @@ spec:
               # /mnt/source/ is used to copy the contents, not the folder itself
               command: ["/bin/sh", "-c"]
               args:
-                - "echo 'Starting Immich library backup...'; rsync -rv --delete /mnt/source/ /mnt/destination/; echo 'Backup complete.'"
+                - "echo 'Starting Immich library backup...'; rsync -rltv --delete /mnt/source/ /mnt/destination/; echo 'Backup complete.'"
 
               volumeMounts:
                 # 1. Source: Immich's persistent library (Ceph)
