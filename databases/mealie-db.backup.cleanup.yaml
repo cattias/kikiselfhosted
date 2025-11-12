@@ -1,0 +1,65 @@
+# This CronJob runs weekly to clean up old PostgreSQL backup files 
+# from the NFS share, enforcing a 30-day retention policy.
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: weekly-postgres-mealie-backup-cleanup
+  namespace: mealie
+spec:
+  # Schedule: Run every Sunday at 03:00 AM UTC (after the backup runs at 02:00 AM)
+  schedule: "0 3 * * SUN"
+  concurrencyPolicy: Forbid # Ensures only one cleanup job runs at a time
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: backup-cleanup-runner
+            # Use a minimal image with the 'find' utility (like busybox or alpine)
+            image: busybox:latest
+            imagePullPolicy: IfNotPresent
+            
+            # Volume Mount: Mount the same PVC as the backup job
+            volumeMounts:
+            - name: backup-storage
+              mountPath: "/mnt/nfs-backup"
+
+            # Command: The core cleanup script
+            command: ["/bin/sh", "-c"]
+            args:
+              - |
+                BACKUP_DIR="/mnt/nfs-backup"
+                RETENTION_DAYS="30"
+                
+                echo "Starting cleanup of backups in ${BACKUP_DIR} older than ${RETENTION_DAYS} days."
+                
+                # Check if the directory exists and is accessible
+                if [ ! -d "${BACKUP_DIR}" ]; then
+                  echo "ERROR: Backup directory ${BACKUP_DIR} does not exist or is not mounted!"
+                  exit 1
+                fi
+                
+                # The 'find' command searches for files in the backup directory:
+                # 1. /mnt/nfs-backup - Starts search here.
+                # 2. -type f - Only search for files (not directories).
+                # 3. -name '*.dump.gz' - Ensures only compressed database dumps are targeted.
+                # 4. -mtime +${RETENTION_DAYS} - Finds files modified more than 30 days ago.
+                # 5. -delete - Executes the deletion command on found files.
+                
+                find "${BACKUP_DIR}" \
+                  -type f \
+                  -name '*.dump.gz' \
+                  -mtime +${RETENTION_DAYS} \
+                  -print \
+                  -delete
+                  
+                echo "Cleanup complete. Deleted files older than ${RETENTION_DAYS} days."
+          
+          # Volume Definition: Reference the PVC created previously
+          volumes:
+          - name: backup-storage
+            hostPath:
+              path: "/mnt/synology-backups/mealie" 
+              type: DirectoryOrCreate

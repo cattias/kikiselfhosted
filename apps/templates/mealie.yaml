@@ -1,0 +1,60 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mealie
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: false
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  destination:
+    namespace: mealie
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://jvalskis.github.io/mealie-helm/
+    targetRevision: 2.0.0
+    chart: mealie
+    helm:
+      valuesObject:
+        service:
+          type: NodePort
+
+        # -- Configure persistence settings for the chart under this key.
+        # @default -- See values.yaml
+        persistence:
+          data:
+            enabled: true
+            accessMode: ReadWriteOnce
+            size: 10Gi
+            storageClass: ceph-block
+            advancedMounts:
+              main: # the controller with the "main" identifier
+                main: # the container with the "main" identifier
+                  - path: /app/data/
+                    readOnly: false
+        postgresql:
+          enabled: false
+          auth:
+            postgresPassword: ""
+            username: 
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-db-app
+                  key: user
+            password: 
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-db-app
+                  key: password
+            database:
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-db-app
+                  key: dbname
