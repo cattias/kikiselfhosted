@@ -31,47 +31,44 @@ spec:
                 # -- environment variables.
                 # @default -- See below
                 env:
-                  - name: TZ
-                    value: UTC
-                  - name: PUID
-                    value: 1000
-                  - name: PGID
-                    value: 1000
-                  - name: BASE_URL
-                    value: https://mealie.attias.io
-                  # Database Settings
-                  - name: DB_ENGINE
-                    value: postgres
-                  - name: POSTGRES_USER 
-                    valueFrom:
-                      secretKeyRef:
-                        name: mealie-db-app
-                        key: user
-                  - name: POSTGRES_PASSWORD
-                    valueFrom:
-                      secretKeyRef:
-                        name: mealie-db-app
-                        key: password
-                  - name: POSTGRES_SERVER
-                    valueFrom:
-                      secretKeyRef:
-                        name: mealie-db-app
-                        key: host
-                  - name: POSTGRES_PORT
-                    valueFrom:
-                      secretKeyRef:
-                        name: mealie-db-app
-                        key: port
-                  - name: POSTGRES_DB
-                    valueFrom:
-                      secretKeyRef:
-                        name: mealie-db-app
-                        key: dbname
-
-
+                - name: TZ
+                  value: UTC
+                - name: PUID
+                  value: 1000
+                - name: PGID
+                  value: 1000
+                - name: BASE_URL
+                  value: https://mealie.attias.io
+                # Database Settings
+                - name: DB_ENGINE
+                  value: postgres
+                - name: POSTGRES_USER 
+                  valueFrom:
+                    secretKeyRef:
+                      name: mealie-db-app
+                      key: user
+                - name: POSTGRES_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: mealie-db-app
+                      key: password
+                - name: POSTGRES_SERVER
+                  valueFrom:
+                    secretKeyRef:
+                      name: mealie-db-app
+                      key: host
+                - name: POSTGRES_PORT
+                  valueFrom:
+                    secretKeyRef:
+                      name: mealie-db-app
+                      key: port
+                - name: POSTGRES_DB
+                  valueFrom:
+                    secretKeyRef:
+                      name: mealie-db-app
+                      key: dbname
         service:
           type: NodePort
-
         # -- Configure persistence settings for the chart under this key.
         # @default -- See values.yaml
         persistence:
