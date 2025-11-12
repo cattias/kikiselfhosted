@@ -36,3 +36,13 @@ spec:
         discoveryDaemonInterval: 5m
         csi:
           kubeletDirPath: /var/lib/k0s/kubelet
+          serviceMonitor:
+              # -- Enable ServiceMonitor for Ceph CSI drivers
+              enabled: true
+              # -- Service monitor scrape interval
+              interval: 5s
+              # -- ServiceMonitor additional labels
+              labels: 
+                release: kube-prometheus-stack
+        monitoring:
+          enabled: true
