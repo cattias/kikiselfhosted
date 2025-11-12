@@ -28,6 +28,14 @@ spec:
             enabled: true
             containers:
               main:
+                image:
+                  # -- image repository
+                  repository: ghcr.io/mealie-recipes/mealie
+                  # -- image tag
+                  # @default -- chart.appVersion
+                  tag:
+                  # -- image pull policy
+                  pullPolicy: IfNotPresent
                 # -- environment variables.
                 # @default -- See below
                 env:
