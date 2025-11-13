@@ -31,37 +31,47 @@ data:
             href: https://k0s.attias.io/
             description: The k0s admin dashboard on Kikiserver
         - ArgoCD Dashboard:
+            icon: argo-cd.png
             href: https://argocd.attias.io/
             description: The ArgoCD dashboard on Kikiserver
         - Monitoring Dashboard:
+            icon: grafana.png
             href: https://obs.attias.io/
             description: The Grafana dashboard to monitor all services
         - Ceph Dashboard:
+            icon: ceph.png
             href: https://ceph.attias.io/
             description: The Ceph admin dashboard on Kikiserver
 
     - Media Applications:
         - Kikiflix:
+            icon: plex.png
             href: http://plex.attias.io/
             description: THE Kikiflix Plex service. Pour le plus grand plaisir de tous.
         - Kikipics:
+            icon: immich.png
             href: http://photos.attias.io/
             description: Immich, replacement for Google Photos on Kikiserver.
         - Kikidocs:
+            icon: paperless.png
             href: http://paperless.attias.io/
             description: Paperless app on Kikiserver
 
     - Other applications:
         - Kikivault:
+            icon: vaultwarden.png
             href: http://vault.attias.io/
             description: Self-hosted vaultwarden instance on Kikiserver
         - SSH:
+            icon: terminal.png
             href: http://ssh.attias.io/
             description: Web SSH to Kiki's world
         - Synolokiki:
+            icon: synology.png
             href: http://dsm.attias.io/
             description: Portal access to Kiki's Synology NAS
         - Les recettes de Kiki:
+            icon: mealie.png
             href: http://recettes.attias.io/
             description: Les recettes de Kiki
 
