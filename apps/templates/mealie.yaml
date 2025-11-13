@@ -8,8 +8,8 @@ metadata:
 spec:
   syncPolicy:
     automated:
-      prune: false
       enabled: true
+      prune: false
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
@@ -18,72 +18,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://jvalskis.github.io/mealie-helm/
-    targetRevision: 2.0.0
-    chart: mealie
-    helm:
-      valuesObject:
-        controllers:
-          main:
-            enabled: true
-            containers:
-              main:
-                image:
-                  # -- image repository
-                  repository: ghcr.io/mealie-recipes/mealie
-                  # -- image tag
-                  # @default -- chart.appVersion
-                  tag:
-                  # -- image pull policy
-                  pullPolicy: IfNotPresent
-                # -- environment variables.
-                # @default -- See below
-                env:
-                  TZ: UTC
-                  PUID: 1000
-                  PGID: 1000
-                  BASE_URL: https://recettes.attias.io
-                # Database Settings
-                  DB_ENGINE: postgres
-                  POSTGRES_USER:
-                    valueFrom:
-                      secretKeyRef:
-                        name: mealie-db-app
-                        key: user
-                  POSTGRES_PASSWORD:
-                    valueFrom:
-                      secretKeyRef:
-                        name: mealie-db-app
-                        key: password
-                  POSTGRES_SERVER:
-                    valueFrom:
-                      secretKeyRef:
-                        name: mealie-db-app
-                        key: host
-                  POSTGRES_PORT:
-                    valueFrom:
-                      secretKeyRef:
-                        name: mealie-db-app
-                        key: port
-                  POSTGRES_DB:
-                    valueFrom:
-                      secretKeyRef:
-                        name: mealie-db-app
-                        key: dbname
-        service:
-          type: NodePort
-        # -- Configure persistence settings for the chart under this key.
-        # @default -- See values.yaml
-        persistence:
-          data:
-            enabled: true
-            accessMode: ReadWriteOnce
-            size: 10Gi
-            storageClass: ceph-block
-            advancedMounts:
-              main: # the controller with the "main" identifier
-                main: # the container with the "main" identifier
-                  - path: /app/data/
-                    readOnly: false
-        postgresql:
-          enabled: false
+    path: mealie
+    repoURL: https://github.com/cattias/kikiselfhosted
+    targetRevision: HEAD
