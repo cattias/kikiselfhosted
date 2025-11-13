@@ -42,7 +42,7 @@ spec:
                   TZ: UTC
                   PUID: 1000
                   PGID: 1000
-                  BASE_URL: https://mealie.attias.io
+                  BASE_URL: https://recettes.attias.io
                 # Database Settings
                   DB_ENGINE: postgres
                   POSTGRES_USER:

@@ -43,12 +43,9 @@ data:
         - Kikipics:
             href: http://photos.attias.io/
             description: Immich, replacement for Google Photos on Kikiserver.
-        - Paperless:
+        - Kikidocs:
             href: http://paperless.attias.io/
             description: Paperless app on Kikiserver
-        - Kikidocs:
-            href: http://nextcloud.attias.io/
-            description: Nextcloud on Kikiserver
 
     - Other applications:
         - Kikivault:
@@ -60,6 +57,9 @@ data:
         - Synolokiki:
             href: http://dsm.attias.io/
             description: Portal access to Kiki's Synology NAS
+        - Les recettes de Kiki:
+            href: http://recettes.attias.io/
+            description: Les recettes de Kiki
 
   widgets.yaml: |
     - kubernetes:
