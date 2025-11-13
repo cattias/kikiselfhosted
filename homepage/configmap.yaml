@@ -56,6 +56,10 @@ data:
             icon: paperless.png
             href: http://paperless.attias.io/
             description: Paperless app on Kikiserver
+        - Les recettes de Kiki:
+            icon: mealie.png
+            href: http://recettes.attias.io/
+            description: Les recettes de Kiki
 
     - Other applications:
         - Kikivault:
@@ -70,10 +74,6 @@ data:
             icon: synology.png
             href: http://dsm.attias.io/
             description: Portal access to Kiki's Synology NAS
-        - Les recettes de Kiki:
-            icon: mealie.png
-            href: http://recettes.attias.io/
-            description: Les recettes de Kiki
 
   widgets.yaml: |
     - kubernetes:
