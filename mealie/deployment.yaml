@@ -57,7 +57,7 @@ spec:
             - name: TZ
               value: UTC
             - name: SMTP_HOST
-              value: smtp.google.com
+              value: smtp.gmail.com
             - name: SMTP_FROM_EMAIL
               value: recettes@attias.io
             - name: SMTP_USER
