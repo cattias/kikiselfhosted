@@ -56,6 +56,20 @@ spec:
               value: "1000"
             - name: TZ
               value: UTC
+            - name: SMTP_HOST
+              value: smtp.google.com
+            - name: SMTP_FROM_EMAIL
+              value: recettes@attias.io
+            - name: SMTP_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-smtp-secret
+                  key: username
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-smtp-secret
+                  key: password
           image: ghcr.io/mealie-recipes/mealie:v3.4.0
           name: mealie
           ports:
