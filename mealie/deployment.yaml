@@ -72,8 +72,8 @@ spec:
                 secretKeyRef:
                   name: mealie-smtp-secret
                   key: password
-          image: ghcr.io/mealie-recipes/mealie:v3.4.0
           name: mealie
+          image: ghcr.io/mealie-recipes/mealie:v3.4.0
           ports:
             - containerPort: 9000
               protocol: TCP

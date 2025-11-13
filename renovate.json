@@ -47,6 +47,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/mealie/deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*mealie\\s*\\n\\s*image:\\s*ghcr\\.io\\/mealie-recipes\\/mealie:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/mealie-recipes/mealie",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/databases/immich\\.redis\\.yaml/"
       ],
       "matchStrings": [
@@ -98,6 +110,7 @@
       "**/immich/**",
       "**/databases\\.yaml",
       "**/paperless\\.yaml",
+      "**/mealie\\.yaml",
       "**/rook-ceph-cluster-addition\\.yaml",
       "**/homepage\\.yaml",
       "**/nextcloud/**",
