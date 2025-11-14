@@ -72,6 +72,10 @@ data:
             icon: sonarr.png
             href: https://sonarr.attias.io/
             description: Sonarr for Kikiflix - TV Show Library manager
+        - Lidarr:
+            icon: lidarr.png
+            href: https://lidarr.attias.io/
+            description: Lidarr for Kikiflix - Music Library manager
         - Transmission:
             icon: transmission.png
             href: https://transmission.attias.io/
