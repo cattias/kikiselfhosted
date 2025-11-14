@@ -42,14 +42,6 @@ data:
             icon: ceph.png
             href: https://ceph.attias.io/
             description: The Ceph admin dashboard on Kikiserver
-        - Renovate Dasboard:
-            icon: renovate.png
-            href: https://github.com/cattias/kikiselfhosted/issues/22
-            description: The Renovate Issue on GitHub
-        - CloudFlare Tunnel:
-            icon: cloudflare.png
-            href: https://one.dash.cloudflare.com/4e24fd66b5017151cc6e26c92c2538ca/networks/tunnels/cfd_tunnel/ba5df757-03b1-4ead-946b-6869d75cd782/edit?tab=publicHostname
-            description: The CloudFlare Tunnel management page
 
     - Media Applications:
         - Kikiflix:
@@ -102,6 +94,14 @@ data:
             icon: synology.png
             href: https://dsm.attias.io/
             description: Portal access to Kiki's Synology NAS
+        - Renovate Dasboard:
+            icon: renovate.png
+            href: https://github.com/cattias/kikiselfhosted/issues/22
+            description: The Renovate Issue on GitHub
+        - CloudFlare Tunnel:
+            icon: cloudflare.png
+            href: https://one.dash.cloudflare.com/4e24fd66b5017151cc6e26c92c2538ca/networks/tunnels/cfd_tunnel/ba5df757-03b1-4ead-946b-6869d75cd782/edit?tab=publicHostname
+            description: The CloudFlare Tunnel management page
 
   widgets.yaml: |
     - kubernetes:
