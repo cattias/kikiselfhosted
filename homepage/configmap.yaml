@@ -47,7 +47,7 @@ data:
         - Kikiflix:
             icon: plex.png
             href: https://plex.attias.io/
-            description: THE Kikiflix Plex service. Pour le plus grand plaisir de tous.
+            description: Kikiflix. What else? Pour le plus grand plaisir de tous.
         - Kikipics:
             icon: immich.png
             href: https://photos.attias.io/
