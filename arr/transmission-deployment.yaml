@@ -22,7 +22,7 @@ spec:
             - name: LOCAL_NETWORK
               value: 192.168.0.0/16
             - name: OPENVPN_CONFIG
-              value: germany frankfurt 1
+              value: my_expressvpn_germany_-_frankfurt_-_1_udp
             - name: OPENVPN_PASSWORD
               valueFrom:
                 secretKeyRef:
