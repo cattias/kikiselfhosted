@@ -33,6 +33,8 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: synology-video-volume
+            - mountPath: /config
+              name: radarr-config-pvc
       restartPolicy: Always
       volumes:
         - name: synology-video-volume

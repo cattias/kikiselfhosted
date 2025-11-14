@@ -37,6 +37,8 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: synology-video-volume
+            - mountPath: /config
+              name: prowlarr-config-pvc
       restartPolicy: Always
       volumes:
         - name: synology-video-volume
