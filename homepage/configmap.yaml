@@ -46,41 +46,45 @@ data:
     - Media Applications:
         - Kikiflix:
             icon: plex.png
-            href: http://plex.attias.io/
+            href: https://plex.attias.io/
             description: THE Kikiflix Plex service. Pour le plus grand plaisir de tous.
         - Kikipics:
             icon: immich.png
-            href: http://photos.attias.io/
+            href: https://photos.attias.io/
             description: Immich, replacement for Google Photos on Kikiserver.
         - Kikidocs:
             icon: paperless.png
-            href: http://paperless.attias.io/
+            href: https://paperless.attias.io/
             description: Paperless app on Kikiserver
         - Les recettes de Kiki:
             icon: mealie.png
-            href: http://recettes.attias.io/
+            href: https://recettes.attias.io/
             description: Les recettes de Kiki
         - Radarr:
             icon: radarr.png
-            href: http://radarr.attias.io/
+            href: https://radarr.attias.io/
             description: Radarr for Kikiflix.
         - Transmission:
             icon: transmission.png
-            href: http://transmission.attias.io/
+            href: https://transmission.attias.io/
             description: Transmission for Kikiflix.
+        - Prowlarr:
+            icon: prowlarr.png
+            href: https://prowlarr.attias.io/
+            description: Prowlarr for Kikiflix
 
     - Admin applications:
         - Kikivault:
             icon: vaultwarden.png
-            href: http://vault.attias.io/
+            href: https://vault.attias.io/
             description: Self-hosted vaultwarden instance on Kikiserver
         - SSH:
             icon: terminal.png
-            href: http://ssh.attias.io/
+            href: https://ssh.attias.io/
             description: Web SSH to Kiki's world
         - Synolokiki:
             icon: synology.png
-            href: http://dsm.attias.io/
+            href: https://dsm.attias.io/
             description: Portal access to Kiki's Synology NAS
 
   widgets.yaml: |

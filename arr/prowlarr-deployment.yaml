@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prowlarr
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: prowlarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prowlarr
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prowlarr
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: UTC
+          image: linuxserver/prowlarr:develop
+          name: prowlarr
+          ports:
+            - containerPort: 9696
+              protocol: TCP
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          volumeMounts:
+            - mountPath: /data
+              name: synology-video-volume
+      restartPolicy: Always
+      volumes:
+        - name: synology-video-volume
+          hostPath:
+            path: "/mnt/synology-videos" 
+            type: DirectoryOrCreate
