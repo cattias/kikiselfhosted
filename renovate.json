@@ -111,6 +111,7 @@
       "**/databases\\.yaml",
       "**/paperless\\.yaml",
       "**/mealie\\.yaml",
+      "**/arr\\.yaml",
       "**/rook-ceph-cluster-addition\\.yaml",
       "**/homepage\\.yaml",
       "**/nextcloud/**",
