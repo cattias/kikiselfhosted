@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transmission
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: transmission
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: transmission
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: transmission
+    spec:
+      containers:
+        - env:
+            - name: LOCAL_NETWORK
+              value: 192.168.0.0/16
+            - name: OPENVPN_CONFIG
+              value: germany frankfurt 1
+            - name: OPENVPN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: openvpn-config-secret
+                  key: password
+            - name: OPENVPN_PROVIDER
+              value: EXPRESSVPN
+            - name: OPENVPN_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: openvpn-config-secret
+                  key: username
+            - name: TRANSMISSION_WEB_UI
+              value: flood-for-transmission
+            - name: WEBPROXY_ENABLED
+              value: "false"
+          image: haugene/transmission-openvpn:latest
+          name: transmission
+          ports:
+            - containerPort: 9091
+              protocol: TCP
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          volumeMounts:
+            - mountPath: /data
+              name: synology-video-volume
+      restartPolicy: Always
+      volumes:
+        - name: synology-video-volume
+          hostPath:
+            path: "/mnt/synology-videos/transmission" 
+            type: DirectoryOrCreate

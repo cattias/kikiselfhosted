@@ -65,7 +65,7 @@ data:
             href: http://radarr.attias.io/
             description: Radarr for Kikiflix.
 
-    - Other applications:
+    - Admin applications:
         - Kikivault:
             icon: vaultwarden.png
             href: http://vault.attias.io/
