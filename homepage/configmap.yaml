@@ -60,6 +60,10 @@ data:
             icon: mealie.png
             href: http://recettes.attias.io/
             description: Les recettes de Kiki
+        - Radarr:
+            icon: radarr.png
+            href: http://radarr.attias.io/
+            description: Radarr for Kikiflix.
 
     - Other applications:
         - Kikivault:

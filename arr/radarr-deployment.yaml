@@ -37,5 +37,5 @@ spec:
       volumes:
         - name: synology-video-volume
           hostPath:
-            path: "/mnt/synology-videos/data" 
+            path: "/mnt/synology-videos" 
             type: DirectoryOrCreate
