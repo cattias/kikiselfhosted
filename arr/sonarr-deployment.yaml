@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: sonarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sonarr
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sonarr
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: UTC
+          name: sonarr
+          image: linuxserver/sonarr:latest
+          ports:
+            - containerPort: 8989
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /data
+              name: synology-video-volume
+            - mountPath: /config
+              name: sonarr-config
+      restartPolicy: Always
+      volumes:
+        - name: synology-video-volume
+          hostPath:
+            path: "/mnt/synology-videos" 
+            type: DirectoryOrCreate
+        - name: sonarr-config
+          persistentVolumeClaim:
+            claimName: sonarr-config-pvc
