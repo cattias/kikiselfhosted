@@ -64,6 +64,10 @@ data:
             icon: radarr.png
             href: http://radarr.attias.io/
             description: Radarr for Kikiflix.
+        - Transmission:
+            icon: transmission.png
+            href: http://transmission.attias.io/
+            description: Transmission for Kikiflix.
 
     - Admin applications:
         - Kikivault:
