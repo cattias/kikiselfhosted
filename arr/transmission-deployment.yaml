@@ -55,5 +55,5 @@ spec:
       volumes:
         - name: synology-video-volume
           hostPath:
-            path: "/mnt/synology-videos/transmission" 
+            path: "/mnt/synology-videos" 
             type: DirectoryOrCreate
