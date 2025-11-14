@@ -60,18 +60,22 @@ data:
             icon: mealie.png
             href: https://recettes.attias.io/
             description: Les recettes de Kiki
-        - Radarr:
-            icon: radarr.png
-            href: https://radarr.attias.io/
-            description: Radarr for Kikiflix.
-        - Transmission:
-            icon: transmission.png
-            href: https://transmission.attias.io/
-            description: Transmission for Kikiflix.
         - Prowlarr:
             icon: prowlarr.png
             href: https://prowlarr.attias.io/
-            description: Prowlarr for Kikiflix
+            description: Prowlarr for Kikiflix - Indexer manager
+        - Radarr:
+            icon: radarr.png
+            href: https://radarr.attias.io/
+            description: Radarr for Kikiflix - Movie Library manager
+        - Sonarr:
+            icon: sonarr.png
+            href: https://sonarr.attias.io/
+            description: Sonarr for Kikiflix - TV Show Library manager
+        - Transmission:
+            icon: transmission.png
+            href: https://transmission.attias.io/
+            description: Transmission for Kikiflix - Download manager
 
     - Admin applications:
         - Kikivault:
