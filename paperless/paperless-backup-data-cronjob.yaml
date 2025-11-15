@@ -1,0 +1,70 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: paperless-data-backup
+  namespace: documents
+spec:
+  # Schedule: Run every night at 03:00 AM (UTC)
+  schedule: "0 4 * * *"
+  # If the job fails, retry up to 1 time
+  failedJobsHistoryLimit: 1
+  # Keep 1 successful job history
+  successfulJobsHistoryLimit: 1
+  # Concurrency Policy: Prevents a new job from starting if the previous one is still running.
+  concurrencyPolicy: Forbid 
+  # The actual job template
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          # Use a Pod that is suitable for file operations
+          containers:
+            - name: rsync-backup
+              # rsync is a standard tool for efficient, incremental backups
+              image: instrumentisto/rsync-ssh:latest 
+              imagePullPolicy: IfNotPresent
+              
+              # The rsync command: 
+              # -a: archive mode (preserves permissions, ownership, timestamps)
+              # -v: verbose output
+              # --delete: remove files from destination if they are removed from source (sync)
+              # /mnt/source/ is used to copy the contents, not the folder itself
+              command: ["/bin/sh", "-c"]
+              args:
+                - "echo 'Starting Paperless media backup...'; rsync -rltv --delete /mnt/media/ /mnt/destinationmedia/; echo 'Paperless media backup DONE'; echo 'Starting Paperless data backup...'; rsync -rltv --delete /mnt/data/ /mnt/destinationdata/; echo 'Paperless data backup DONE'"
+
+              volumeMounts:
+                # 1. Source: Paperless's media
+                - name: paperless-media-volume
+                  mountPath: /mnt/media
+                # 2. Source: Paperless's data
+                - name: paperless-data-volume
+                  mountPath: /mnt/data
+                # 3. Destination: Synology Backup PV (NFS)
+                - name: synology-backup-media-volume
+                  mountPath: /mnt/destinationmedia
+                # 4. Destination: Synology Backup PV (NFS)
+                - name: synology-backup-data-volume
+                  mountPath: /mnt/destinationdata
+          
+          restartPolicy: OnFailure
+
+          volumes:
+            # 1. Media Volume
+            - name: paperless-media-volume
+              persistentVolumeClaim:
+                claimName: paperless-media-pvc
+            # 2. Data Volume
+            - name: paperless-data-volume
+              persistentVolumeClaim:
+                claimName: paperless-data-pvc
+            # 3. Destination Volume (The Synology NFS mount)
+            - name: synology-backup-media-volume
+              hostPath:
+                path: "/mnt/synology-backups/documents/media" 
+                type: DirectoryOrCreate
+            # 4. Destination Volume (The Synology NFS mount)
+            - name: synology-backup-data-volume
+              hostPath:
+                path: "/mnt/synology-backups/documents/data" 
+                type: DirectoryOrCreate
