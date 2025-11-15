@@ -88,7 +88,7 @@ data:
             description: Transmission for Kikiflix - Download manager
         - SABnzbd:
             icon: sabnzbd.png
-            href: https://sabnzbd.attias.io/
+            href: http://192.168.178.36:30579/
             description: SABnzbd for Kikiflix - Download manager
 
     - Admin applications:
