@@ -32,21 +32,10 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /config
-              name: sabnzbd-config
-            - mountPath: /incomplete-downloads
-              name: synology-video-volume-incompletedl
-            - mountPath: /downloads
-              name: synology-video-volume-dl
+              name: synology-video-volume-sabnzbd
       restartPolicy: Always
       volumes:
-        - name: synology-video-volume-dl
+        - name: synology-video-volume-sabnzbd
           hostPath:
-            path: "/mnt/synology-videos/sabnzbd/downloads" 
+            path: "/mnt/synology-videos/sabnzbd" 
             type: DirectoryOrCreate
-        - name: synology-video-volume-incompletedl
-          hostPath:
-            path: "/mnt/synology-videos/sabnzbd/incomplete-downloads" 
-            type: DirectoryOrCreate
-        - name: sabnzbd-config
-          persistentVolumeClaim:
-            claimName: sabnzbd-config-pvc
