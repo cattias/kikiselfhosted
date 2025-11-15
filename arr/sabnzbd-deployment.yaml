@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sabnzbd
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: sabnzbd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sabnzbd
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sabnzbd
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: Etc/UTC
+          image: lscr.io/linuxserver/sabnzbd:latest
+          name: sabnzbd
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /config
+              name: sabnzbd-config
+            - mountPath: /incomplete-downloads
+              name: synology-video-volume-incompletedl
+            - mountPath: /downloads
+              name: synology-video-volume-dl
+      restartPolicy: Always
+      volumes:
+        - name: synology-video-volume-dl
+          hostPath:
+            path: "/mnt/synology-videos/sabnzbd/downloads" 
+            type: DirectoryOrCreate
+        - name: synology-video-volume-incompletedl
+          hostPath:
+            path: "/mnt/synology-videos/sabnzbd/incomplete-downloads" 
+            type: DirectoryOrCreate
+        - name: sabnzbd-config
+          persistentVolumeClaim:
+            claimName: sabnzbd-config-pvc

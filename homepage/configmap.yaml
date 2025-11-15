@@ -86,6 +86,10 @@ data:
             icon: transmission.png
             href: https://transmission.attias.io/
             description: Transmission for Kikiflix - Download manager
+        - SABnzbd:
+            icon: sabnzbd.png
+            href: https://sabnzbd.attias.io/
+            description: SABnzbd for Kikiflix - Download manager
 
     - Admin applications:
         - Kikivault:
