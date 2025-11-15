@@ -60,6 +60,10 @@ data:
             icon: metube.png
             href: https://metube.attias.io/
             description: MeTube app on Kikiserver
+        - KikiBeets:
+            icon: beets.png
+            href: https://beets.attias.io/
+            description: Beets app on Kikiserver
         - Les recettes de Kiki:
             icon: mealie.png
             href: https://recettes.attias.io/

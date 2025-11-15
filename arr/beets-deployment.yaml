@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beets
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: beets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: beets
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: beets
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: Etc/UTC
+          name: beets
+          image: lscr.io/linuxserver/beets:latest
+          ports:
+            - containerPort: 8337
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /music
+              name: synology-music-volume
+            - mountPath: /downloads
+              name: synology-beets-volume
+            - mountPath: /config
+              name: beets-config
+      restartPolicy: Always
+      volumes:
+        - name: synology-music-volume
+          hostPath:
+            path: "/mnt/synology-videos/Music" 
+            type: DirectoryOrCreate
+        - name: synology-beets-volume
+          hostPath:
+            path: "/mnt/synology-videos/beets" 
+            type: DirectoryOrCreate
+        - name: beets-config
+          persistentVolumeClaim:
+            claimName: beets-config-pvc
