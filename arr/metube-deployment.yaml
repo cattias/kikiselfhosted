@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metube
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: metube
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: metube
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: metube
+    spec:
+      containers:
+        - env:
+            - name: AUDIO_DOWNLOAD_DIR
+              value: /audio-downloads
+            - name: GID
+              value: "1000"
+            - name: UID
+              value: "1000"
+            - name: TZ
+              value: UTC
+          name: metube
+          image: alexta69/metube:latest
+          ports:
+            - containerPort: 8081
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /downloads
+              name: synology-metube-volume
+            - mountPath: /audio-downloads
+              name: synology-music-volume
+      restartPolicy: Always
+      volumes:
+        - name: synology-metube-volume
+          hostPath:
+            path: "/mnt/synology-videos/metube/" 
+            type: DirectoryOrCreate
+        - name: synology-music-volume
+          hostPath:
+            path: "/mnt/synology-videos/Music/" 
+            type: DirectoryOrCreate

@@ -56,6 +56,10 @@ data:
             icon: paperless.png
             href: https://paperless.attias.io/
             description: Paperless app on Kikiserver
+        - KikiTube:
+            icon: metube.png
+            href: https://metube.attias.io/
+            description: MeTube app on Kikiserver
         - Les recettes de Kiki:
             icon: mealie.png
             href: https://recettes.attias.io/
