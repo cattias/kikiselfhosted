@@ -60,6 +60,8 @@ data:
             icon: mealie.png
             href: https://recettes.attias.io/
             description: Les recettes de Kiki
+
+    - Arr Stack:
         - Prowlarr:
             icon: prowlarr.png
             href: https://prowlarr.attias.io/
