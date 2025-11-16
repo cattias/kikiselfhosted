@@ -130,33 +130,33 @@ spec:
             storageClass: ceph-block
             # -- Selector for persistent disk
           selector: null
-          distributor:
-            ring:
-              kvstore:
-                store: memberlist
-          ingester:
-            lifecycler:
-              ring:
-                kvstore:
-                  store: memberlist
-                replication_factor: 1
-              final_sleep: 0s
-              chunk_idle_period: 5m
-              chunk_retain_period: 30s
-          extraEnv:
-            - name: MY_POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
-          extraArgs:
-            - -memberlist.bind-addr=$(MY_POD_IP)
-        memberlist:
-          abort_if_cluster_join_fails: false
-          # Expose this port on all distributor, ingester
-          # and querier replicas.
-          bind_port: 7946
-          join_members:
-          - loki-gossip-ring.loki.svc.cluster.local:7946
+          # distributor:
+          #   ring:
+          #     kvstore:
+          #       store: memberlist
+          # ingester:
+          #   lifecycler:
+          #     ring:
+          #       kvstore:
+          #         store: memberlist
+          #       replication_factor: 1
+          #     final_sleep: 0s
+          #     chunk_idle_period: 5m
+          #     chunk_retain_period: 30s
+          # extraEnv:
+          #   - name: MY_POD_IP
+          #     valueFrom:
+          #       fieldRef:
+          #         fieldPath: status.podIP
+          # extraArgs:
+          #   - -memberlist.bind-addr=$(MY_POD_IP)
+        # memberlist:
+        #   abort_if_cluster_join_fails: false
+        #   # Expose this port on all distributor, ingester
+        #   # and querier replicas.
+        #   bind_port: 7946
+        #   join_members:
+        #   - loki-gossip-ring.loki.svc.cluster.local:7946
         
         gateway:
           enabled: false
