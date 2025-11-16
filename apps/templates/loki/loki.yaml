@@ -159,8 +159,10 @@ spec:
         #   - loki-gossip-ring.loki.svc.cluster.local:7946
         
         gateway:
-          enabled: false
-
+          enabled: true
+          affinity: {}
+          service:
+            type: NodePort
         backend:
           replicas: 0
         read:
