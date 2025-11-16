@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: influxdb
+  template:
+    metadata:
+      labels:
+        app: influxdb
+    spec:
+      containers:
+        - name: influxdb
+          image: influxdb:1.11
+          envFrom:
+            - configMapRef:
+                name: influxdb-config
+          env:
+            - name: INFLUXDB_USER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: garmin-grafana-secret
+                  key: INFLUXDB_PASSWORD
+            - name: INFLUXDB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: garmin-grafana-secret
+                  key: INFLUXDB_USERNAME
+          ports:
+            - containerPort: 8086
+          volumeMounts:
+            - name: influxdb-storage
+              mountPath: /var/lib/influxdb
+      volumes:
+        - name: influxdb-storage
+          persistentVolumeClaim:
+            claimName: influxdb-pvc
