@@ -13,6 +13,9 @@ spec:
       labels:
         app: garmin-fetch-data
     spec:
+      securityContext:
+        runAsUser: 0
+        runAsGroup: 0
       containers:
         - name: garmin-fetch-data
           image: thisisarpanghosh/garmin-fetch-data:latest
