@@ -36,6 +36,7 @@ spec:
       releaseName: loki
       valuesObject:
         loki:
+          auth_enabled: false
           storage:
             bucketNames:
               chunks: ceph-bkt-692e05a9-28fa-47bd-9751-5854b21720c5
@@ -58,7 +59,7 @@ spec:
                     key: accesskey
               signatureVersion: null
               s3ForcePathStyle: false
-              insecure: false
+              insecure: true
               http_config: {}
             object_store:
               # Type of object store. Valid options are: s3, gcs, azure
@@ -84,7 +85,7 @@ spec:
                       name: loki-s3-access
                       key: secretkey
                 # Optional. Enable if using self-signed TLS
-                insecure: false
+                insecure: true
                 # Optional server-side encryption configuration
                 sse: {}
                 # Optional HTTP client configuration
