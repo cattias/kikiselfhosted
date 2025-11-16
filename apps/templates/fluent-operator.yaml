@@ -32,4 +32,6 @@ spec:
               enable: true
               host: loki-gateway.monitoring.svc.cluster.local
               port: 80
-              tenantID: "1"
+              httpUser: test-user-1
+              httpPassword: test-password-1
+              tenantID: "test-user-1"
