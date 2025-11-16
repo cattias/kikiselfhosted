@@ -42,6 +42,8 @@ spec:
         minio:
           enabled: true
         loki:
+          commonConfig:
+            replication_factor: 1
           ui:
             enabled: true
           auth_enabled: false
