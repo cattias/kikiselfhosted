@@ -35,12 +35,49 @@ spec:
               s3: null
               endpoint: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local
               region: eu-central-1
-              secretAccessKey: null
-              accessKeyId: null
+              secretAccessKey: 
+                valueFrom:
+                  secretKeyRef:
+                    name: loki-s3-access
+                    key: secretkey
+              accessKeyId: 
+                valueFrom:
+                  secretKeyRef:
+                    name: loki-s3-access
+                    key: accesskey
               signatureVersion: null
               s3ForcePathStyle: false
               insecure: false
               http_config: {}
+            object_store:
+              # Type of object store. Valid options are: s3, gcs, azure
+              type: s3
+              # Optional prefix for storage keys
+              storage_prefix: null
+              # S3 configuration (when type is "s3")
+              s3:
+                # S3 endpoint URL
+                endpoint: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local
+                # Optional region
+                region: eu-central-1
+                # Optional access key
+                access_key_id: 
+                  valueFrom:
+                    secretKeyRef:
+                      name: loki-s3-access
+                      key: accesskey
+                # Optional secret key
+                secret_access_key: 
+                  valueFrom:
+                    secretKeyRef:
+                      name: loki-s3-access
+                      key: secretkey
+                # Optional. Enable if using self-signed TLS
+                insecure: false
+                # Optional server-side encryption configuration
+                sse: {}
+                # Optional HTTP client configuration
+                http: {}
           schemaConfig:
             configs:
               - from: "2024-04-01"
