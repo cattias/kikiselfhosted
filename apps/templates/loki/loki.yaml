@@ -49,7 +49,7 @@ spec:
               admin: loki-full
             type: s3
             s3:
-              s3: null
+              s3: s3://loki-full
               endpoint: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local
               region: eu-central-1
               secretAccessKey: 
