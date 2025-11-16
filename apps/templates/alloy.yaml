@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: promtail
+  name: alloy
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -20,14 +20,14 @@ spec:
   source:
     chart: grafana
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 6.17.1
+    targetRevision: 1.4.0
     helm:
-      releaseName: promtail
+      releaseName: alloy
       valuesObject:
-        config:
-        # publish data to loki
-          clients:
-            - url: http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push
-              tenant_id: 1
-        rbac:
-          create: false
+        service:
+          # -- Creates a Service for the controller's pods.
+          enabled: true
+          # -- Service type
+          type: NodePort
+          # -- NodePort port. Only takes effect when `service.type: NodePort`
+          nodePort: 31128
