@@ -35,6 +35,10 @@ spec:
     helm:
       releaseName: loki
       valuesObject:
+        test:
+          enabled: false
+        lokiCanary:
+          enabled: false
         minio:
           enabled: true
         loki:
