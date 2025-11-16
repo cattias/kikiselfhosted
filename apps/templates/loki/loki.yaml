@@ -35,6 +35,8 @@ spec:
     helm:
       releaseName: loki
       valuesObject:
+        minio:
+          enabled: true
         loki:
           ui:
             enabled: true
