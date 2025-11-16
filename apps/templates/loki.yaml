@@ -64,11 +64,11 @@ spec:
         deploymentMode: SimpleScalable
 
         backend:
-          replicas: 2
+          replicas: 1
         read:
-          replicas: 2
+          replicas: 1
         write:
-          replicas: 3 # To ensure data durability with replication
+          replicas: 1
 
         gateway:
           service:
