@@ -38,9 +38,10 @@ spec:
         loki:
           ui:
             enabled: true
-          tenants:
-            - name: "test-user-1"
-              password: "test-password-1"
+          auth_enabled: false
+          # tenants:
+          #   - name: "test-user-1"
+          #     password: "test-password-1"
           storage:
             bucketNames:
               chunks: ceph-bkt-692e05a9-28fa-47bd-9751-5854b21720c5
