@@ -451,4 +451,80 @@ spec:
                 # in hyperconverged settings where the volume is mounted on the same node as the osds.
                 csi.storage.k8s.io/fstype: ext4
         cephFileSystems: {}
-        cephObjectStores: {}
+        cephObjectStores:
+          - name: ceph-objectstore
+            # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Object-Storage/ceph-object-store-crd.md#object-store-settings for available configuration
+            spec:
+              metadataPool:
+                failureDomain: osd
+                replicated:
+                  size: 3
+              dataPool:
+                failureDomain: osd
+                erasureCoded:
+                  dataChunks: 2
+                  codingChunks: 1
+                parameters:
+                  bulk: "true"
+              preservePoolsOnDelete: true
+              gateway:
+                port: 80
+                resources:
+                  limits:
+                    memory: "2Gi"
+                  requests:
+                    cpu: "1000m"
+                    memory: "1Gi"
+                # securePort: 443
+                # sslCertificateRef:
+                instances: 1
+                priorityClassName: system-cluster-critical
+                # opsLogSidecar:
+                #   resources:
+                #     limits:
+                #       memory: "100Mi"
+                #     requests:
+                #       cpu: "100m"
+                #       memory: "40Mi"
+            storageClass:
+              enabled: true
+              name: ceph-bucket
+              reclaimPolicy: Delete
+              volumeBindingMode: "Immediate"
+              annotations: {}
+              labels: {}
+              # see https://github.com/rook/rook/blob/master/Documentation/Storage-Configuration/Object-Storage-RGW/ceph-object-bucket-claim.md#storageclass for available configuration
+              parameters:
+                # note: objectStoreNamespace and objectStoreName are configured by the chart
+                region: eu-central-1
+            ingress:
+              # Enable an ingress for the ceph-objectstore
+              enabled: false
+              # The ingress port by default will be the object store's "securePort" (if set), or the gateway "port".
+              # To override those defaults, set this ingress port to the desired port.
+              # port: 80
+              # annotations: {}
+              # host:
+              #   name: objectstore.example.com
+              #   path: /
+              #   pathType: Prefix
+              # tls:
+              # - hosts:
+              #     - objectstore.example.com
+              #   secretName: ceph-objectstore-tls
+              # ingressClassName: nginx
+            route:
+              # Enable an ingress for the ceph-objectstore
+              enabled: false
+              # The ingress port by default will be the object store's "securePort" (if set), or the gateway "port".
+              # To override those defaults, set this ingress port to the desired port.
+              # port: 80
+              # annotations: {}
+              # host:
+              #   name: objectstore.example.com
+              #   path: /
+              #   pathType: PathPrefix
+              # parentRefs:
+              #   - name: internal
+              #     namespace: kube-system
+              #     sectionName: https
