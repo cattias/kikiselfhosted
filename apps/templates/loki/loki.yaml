@@ -38,21 +38,9 @@ spec:
         loki:
           storage:
             bucketNames:
-              chunks:
-                valueFrom:
-                  configMapKeyRef:
-                      name: loki-chunks
-                      key: data.BUCKET_NAME
-              ruler:
-                valueFrom:
-                  configMapKeyRef:
-                      name: loki-ruler
-                      key: data.BUCKET_NAME
-              admin:
-                valueFrom:
-                  configMapKeyRef:
-                      name: loki-admin
-                      key: data.BUCKET_NAME
+              chunks: ceph-bkt-692e05a9-28fa-47bd-9751-5854b21720c5
+              ruler: ceph-bkt-81ddb2cd-e626-49fc-92ba-7ef8b6c5d283
+              admin: ceph-bkt-16740757-1f0d-44d8-b65c-b4e8554a43ad
             type: s3
             s3:
               s3: null
