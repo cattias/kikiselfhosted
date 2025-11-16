@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fluentbit
+  name: fluent-operator
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -18,11 +18,18 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: fluent-bit
+    chart: fluent-operator
     repoURL: https://fluent.github.io/helm-charts
-    targetRevision: 0.54.0
+    targetRevision: 3.5.0
     helm:
-      releaseName: fluent-bit
+      releaseName: fluent-operator
       valuesObject:
         service:
           type: NodePort
+        fluentbit:
+          output:
+            loki:
+              enable: true
+              host: loki-gateway.monitoring.svc.cluster.local
+              port: 80
+              tenantID: 1
