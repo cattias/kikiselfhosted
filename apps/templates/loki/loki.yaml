@@ -122,5 +122,6 @@ spec:
           replicas: 1
 
         gateway:
+          affinity: {}
           service:
             type: NodePort
