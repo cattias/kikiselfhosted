@@ -38,9 +38,21 @@ spec:
         loki:
           storage:
             bucketNames:
-              chunks: loki-chunks
-              ruler: loki-ruler
-              admin: loki-admin
+              chunks:
+                valueFrom:
+                  configMapKeyRef:
+                      name: loki-chunks
+                      key: data.BUCKET_NAME
+              ruler:
+                valueFrom:
+                  configMapKeyRef:
+                      name: loki-ruler
+                      key: data.BUCKET_NAME
+              admin:
+                valueFrom:
+                  configMapKeyRef:
+                      name: loki-admin
+                      key: data.BUCKET_NAME
             type: s3
             s3:
               s3: null
