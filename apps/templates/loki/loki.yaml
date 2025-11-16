@@ -121,6 +121,9 @@ spec:
         write:
           replicas: 1
 
+        ui:
+          enabled: true
+
         gateway:
           affinity: {}
           service:
