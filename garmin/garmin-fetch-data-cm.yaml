@@ -8,3 +8,4 @@ data:
   INFLUXDB_PORT: "8086" # Influxdb V3 maps to 8181 instead of 8086 of V1
   INFLUXDB_DATABASE: GarminStats
   GARMINCONNECT_IS_CN: "False"
+  MANUAL_START_DATE: "2013-06-04"

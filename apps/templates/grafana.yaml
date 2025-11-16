@@ -47,6 +47,14 @@ spec:
                 type: prometheus
                 access: proxy
                 url: http://192.168.178.29:9090
+              - uid: DS_GARMIN_STATS
+                name: GarminInflux
+                type: influxdb
+                url: "http://influxdb.monitoring.svc.cluster.local:8086"
+                database: GarminStats
+                user: admin
+                secureJsonData:
+                  password: $__env{INFLUXDB_PASSWORD}
         dashboards:
           default:
             kikiceph:
@@ -67,6 +75,12 @@ spec:
             nodeexporter:
               gnetId: 1860
               revision: 42
+            garmin-dashboard:
+              gnetId: 23245
+              revision: 2
+              datasource:
+                - name: DS_GARMIN_STATS
+                  value: GarminInflux
         dashboardProviders:
           dashboardproviders.yaml:
             apiVersion: 1
