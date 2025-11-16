@@ -26,6 +26,10 @@ spec:
       valuesObject:
         loki:
           storage:
+            bucketNames:
+              chunks: loki_chunks
+              ruler: loki_ruler
+              admin: loki_admin
             type: s3
             s3:
               s3: null
