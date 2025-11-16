@@ -39,92 +39,106 @@ spec:
           ui:
             enabled: true
           auth_enabled: false
-          # tenants:
-          #   - name: "test-user-1"
-          #     password: "test-password-1"
           storage:
-            bucketNames:
-              chunks: loki-full
-              ruler: loki-full
-              admin: loki-full
-            type: s3
-            s3:
-              s3: s3://loki-full
-              endpoint: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local
-              region: eu-central-1
-              secretAccessKey: 
-                valueFrom:
-                  secretKeyRef:
-                    name: loki-full
-                    key: AWS_SECRET_ACCESS_KEY
-              accessKeyId: 
-                valueFrom:
-                  secretKeyRef:
-                    name: loki-full
-                    key: AWS_ACCESS_KEY_ID
-              signatureVersion: null
-              s3ForcePathStyle: false
-              insecure: true
-              http_config: {}
-            object_store:
-              # Type of object store. Valid options are: s3, gcs, azure
-              type: s3
-              # Optional prefix for storage keys
-              storage_prefix: null
-              # S3 configuration (when type is "s3")
-              s3:
-                # S3 endpoint URL
-                endpoint: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local
-                # Optional region
-                region: eu-central-1
-                # Optional access key
-                access_key_id: 
-                  valueFrom:
-                    secretKeyRef:
-                      name: loki-full
-                      key: AWS_ACCESS_KEY_ID
-                # Optional secret key
-                secret_access_key: 
-                  valueFrom:
-                    secretKeyRef:
-                      name: loki-full
-                      key: AWS_SECRET_ACCESS_KEY
-                # Optional. Enable if using self-signed TLS
-                insecure: true
-                # Optional server-side encryption configuration
-                sse: {}
-                # Optional HTTP client configuration
-                http: {}
-          schemaConfig:
-            configs:
-              - from: "2024-04-01"
-                store: tsdb
-                object_store: s3
-                schema: v13
-                index:
-                  prefix: loki_index_
-                  period: 24h
-          ingester:
-            chunk_encoding: snappy
-          querier:
-            # Default is 4, if you have enough memory and CPU you can increase, reduce if OOMing
-            max_concurrent: 4
-          pattern_ingester:
+            type: 'filesystem'
+            storageClassName: ceph-block
+            size: 100Gi
+            accessModes:
+              - ReadWriteOnce
+          query_scheduler:
+            max_outstanding_requests_per_tenant: 2048
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: http-metrics
+            initialDelaySeconds: 45
+            timeoutSeconds: 5
+          image:
+            # -- The Docker registry
+            registry: docker.io
+            # -- Docker image repository
+            repository: grafana/loki
+            # -- Overrides the image tag whose default is the chart's appVersion
+            # TODO: needed for 3rd target backend functionality
+            # revert to null or latest once this behavior is relased
+            tag: null
+            # -- Docker image pull policy
+            pullPolicy: IfNotPresent
+          # -- Common annotations for all pods
+          podAnnotations: {}
+          # -- Common labels for all pods
+          podLabels: {}
+          # -- The number of old ReplicaSets to retain to allow rollback
+          revisionHistoryLimit: 10
+          # -- The SecurityContext for Loki pods
+          podSecurityContext:
+            fsGroup: 10001
+            runAsGroup: 10001
+            runAsNonRoot: true
+            runAsUser: 10001
+          # -- The SecurityContext for Loki containers
+          containerSecurityContext:
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            allowPrivilegeEscalation: false
+          # -- Should enableServiceLinks be enabled. Default to enable
+          enableServiceLinks: true
+        
+        deploymentMode: SingleBinary
+
+        table_manager:
+          retention_deletes_enabled: true
+          #WARNING: The retention period must be a multiple of the index and chunks table period, configured in the period_config block. Which is 24h, so 4 weeks retention is 672h.
+          retention_period: 672
+        # look_back restriction that should be the same value as retention_period
+        chunk_store_config:
+          # max_look_back_period must be equal to retention_period
+          max_look_back_period: 672
+        # --------------------------------------------------------------------------
+        # Configuration for the single binary node(s)
+        singleBinary:
+          replicas: 1
+          persistence:
+            # -- Enable StatefulSetAutoDeletePVC feature
+            enableStatefulSetAutoDeletePVC: false
+            # -- Enable persistent disk
             enabled: true
-          limits_config:
-            allow_structured_metadata: true
-            volume_enabled: true
-
-        deploymentMode: SimpleScalable
-
-        backend:
-          replicas: 1
-        read:
-          replicas: 1
-        write:
-          replicas: 1
-
-        gateway:
-          affinity: {}
-          service:
-            type: NodePort
+            # -- Size of persistent disk
+            size: 100Gi
+            # -- Storage class to be used.
+            # If defined, storageClassName: <storageClass>.
+            # If set to "-", storageClassName: "", which disables dynamic provisioning.
+            # If empty or set to null, no storageClassName spec is
+            # set, choosing the default provisioner (gp2 on AWS, standard on GKE, AWS, and OpenStack).
+            storageClass: ceph-block
+            # -- Selector for persistent disk
+          selector: null
+          distributor:
+            ring:
+              kvstore:
+                store: memberlist
+          ingester:
+            lifecycler:
+              ring:
+                kvstore:
+                  store: memberlist
+                replication_factor: 1
+              final_sleep: 0s
+              chunk_idle_period: 5m
+              chunk_retain_period: 30s
+          extraEnv:
+            - name: MY_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          extraArgs:
+            - -memberlist.bind-addr=$(MY_POD_IP)
+        memberlist:
+          abort_if_cluster_join_fails: false
+          # Expose this port on all distributor, ingester
+          # and querier replicas.
+          bind_port: 7946
+          join_members:
+          - loki-gossip-ring.loki.svc.cluster.local:7946
