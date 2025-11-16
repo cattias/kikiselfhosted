@@ -142,3 +142,14 @@ spec:
           bind_port: 7946
           join_members:
           - loki-gossip-ring.loki.svc.cluster.local:7946
+        
+        gateway:
+          enabled: false
+
+        backend:
+          replicas: 0
+        read:
+          replicas: 0
+        write:
+          replicas: 0
+
