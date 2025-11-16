@@ -30,8 +30,8 @@ spec:
           output:
             loki:
               enable: true
-              host: loki.monitoring.svc.cluster.local
-              port: 3100
+              host: loki-gateway.monitoring.svc.cluster.local
+              port: 80
               httpUser: ""
               httpPassword: ""
               tenantID: ""
