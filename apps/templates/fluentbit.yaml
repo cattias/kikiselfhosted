@@ -18,16 +18,11 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: grafana
-    repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 1.4.0
+    chart: fluent
+    repoURL: https://fluent.github.io/helm-charts
+    targetRevision: 0.54.0
     helm:
-      releaseName: alloy
+      releaseName: fluent-bit
       valuesObject:
         service:
-          # -- Creates a Service for the controller's pods.
-          enabled: true
-          # -- Service type
           type: NodePort
-          # -- NodePort port. Only takes effect when `service.type: NodePort`
-          nodePort: 31128
