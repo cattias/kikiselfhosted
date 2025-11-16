@@ -26,12 +26,17 @@ spec:
       valuesObject:
         loki:
           storage:
-            type: filesystem
-            filesystem:
-              chunks_directory: /var/loki/chunks
-              rules_directory: /var/loki/rules
-
-
+            type: s3
+            s3:
+              s3: null
+              endpoint: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local
+              region: eu-central-1
+              secretAccessKey: null
+              accessKeyId: null
+              signatureVersion: null
+              s3ForcePathStyle: false
+              insecure: false
+              http_config: {}
           schemaConfig:
             configs:
               - from: "2024-04-01"
@@ -60,10 +65,6 @@ spec:
           replicas: 2
         write:
           replicas: 3 # To ensure data durability with replication
-
-        # Enable minio for storage
-        minio:
-          enabled: true
 
         gateway:
           service:
