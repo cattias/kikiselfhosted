@@ -4,5 +4,5 @@ metadata:
   name: loki-ruler
   namespace: monitoring
 spec:
-  generateBucketName: ceph-bkt
+  bucketName: loki-ruler
   storageClassName: ceph-bucket

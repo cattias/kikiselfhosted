@@ -4,5 +4,5 @@ metadata:
   name: loki-chunks
   namespace: monitoring
 spec:
-  generateBucketName: ceph-bkt
+  bucketName: loki-chunks
   storageClassName: ceph-bucket
