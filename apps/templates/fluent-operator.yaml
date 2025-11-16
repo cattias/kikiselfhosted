@@ -27,6 +27,13 @@ spec:
         service:
           type: NodePort
         fluentbit:
+          input:
+            tail:
+              enable: true
+              refreshIntervalSeconds: 10
+              memBufLimit: 100MB
+              bufferMaxSize: "256KB"
+              bufferChunkSize: "256KB"
           output:
             loki:
               enable: true

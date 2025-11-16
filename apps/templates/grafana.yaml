@@ -47,6 +47,10 @@ spec:
                 type: prometheus
                 access: proxy
                 url: http://192.168.178.29:9090
+              - name: Lokiki
+                type: loki
+                access: proxy
+                url: http://loki-gateway.monitoring.svc.cluster.local
               - uid: DS_GARMIN_STATS
                 name: GarminInflux
                 type: influxdb
