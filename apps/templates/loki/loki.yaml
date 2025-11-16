@@ -53,6 +53,15 @@ spec:
               port: http-metrics
             initialDelaySeconds: 45
             timeoutSeconds: 5
+          schemaConfig:
+            configs:
+              - from: "2024-04-01"
+                store: tsdb
+                object_store: s3
+                schema: v13
+                index:
+                  prefix: loki_index_
+                  period: 24h
           image:
             # -- The Docker registry
             registry: docker.io
