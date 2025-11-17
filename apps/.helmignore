@@ -1,0 +1,2 @@
+apps/templates/grafana/dashboards/*.json
+
