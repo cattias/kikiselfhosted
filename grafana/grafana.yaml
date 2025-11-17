@@ -89,3 +89,5 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards
+        dashboardsConfigMaps:
+          default: "grafana-dashboards"
