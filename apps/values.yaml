@@ -2,4 +2,6 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   source:
+    directory:
+      exclude: '*.json'
     registry: https://github.com/cattias
