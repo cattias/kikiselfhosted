@@ -1543,7 +1543,7 @@
           "editorMode": "code",
           "expr": "rate(node_network_receive_bytes_total{instance=\"$node\",job=\"$job\"}[$__rate_interval])*8",
           "format": "time_series",
-          "legendFormat": "Rx {{ '{{' }}device{{ '}}' }}",
+          "legendFormat": "Rx {{ \"{{\" }}device{{ \"}}\" }}",
           "range": true,
           "refId": "A",
           "step": 240
