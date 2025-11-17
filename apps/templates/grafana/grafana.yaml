@@ -6,6 +6,10 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  source:
+    directory:
+      exclude: '*.json'
+      include: '*.yaml'
   syncPolicy:
     automated:
       enabled: true
