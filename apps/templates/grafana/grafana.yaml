@@ -72,4 +72,8 @@ spec:
               options:
                 path: /var/lib/grafana/dashboards
         dashboardsConfigMaps:
-          default: "grafana-dashboards"
+          default: 
+            ceph: "ceph-dashboard"
+            node: "node-dashboard"
+            k8s: "k8s-dashboard"
+            garmin: "garmin-dashboard"
