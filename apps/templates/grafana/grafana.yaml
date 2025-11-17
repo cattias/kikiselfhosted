@@ -61,30 +61,18 @@ spec:
                   password: $__env{INFLUXDB_PASSWORD}
         dashboards:
           default:
-            kikiceph:
-              gnetId: 2842
-              revision: 18
-            kikiserver:
-              gnetId: 15661
-              revision: 2
-              datasource:
-                - name: DS__VICTORIAMETRICS-PROD-ALL
-                  value: 'Kikiserver'
-            kikinode:
-              gnetId: 15661
-              revision: 2
-              datasource:
-                - name: DS__VICTORIAMETRICS-PROD-ALL
-                  value: 'Kikinode'
             nodeexporter:
               gnetId: 1860
               revision: 42
-            garmin-dashboard:
-              gnetId: 23245
-              revision: 2
-              datasource:
-                - name: DS_GARMIN_STATS
-                  value: GarminInflux
+            kubernetes:
+              json: |
+                ${indent(8, file("${path.module}/k8s-dashboard.json"))}
+            ceph:
+              json: |
+                ${indent(8, file("${path.module}/ceph-dashboard.json"))}
+            garmin:
+              json: |
+                ${indent(8, file("${path.module}/garmin-dashboard.json"))}
         dashboardProviders:
           dashboardproviders.yaml:
             apiVersion: 1
