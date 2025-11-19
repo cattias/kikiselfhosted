@@ -9,18 +9,18 @@ metadata:
     argocd.argoproj.io/compare-options: ServerSideDiff=true
 spec:
   ignoreDifferences:
-    - group: apps
-      kind: Deployment
-      name: kubernetes-dashboard-auth
-      jsonPointers:
-      - /spec/template/metadata/annotations/checksum~1config # Ignored for Pod Template
-      # - /metadata/annotations/checksum~1config # Ignored for the Deployment itself
-    - group: apps
-      kind: Deployment
-      name: kubernetes-dashboard-api
-      jsonPointers:
-      - /spec/template/metadata/annotations/checksum~1config # Ignored for Pod Template
-      # - /metadata/annotations/checksum~1config # Ignored for the Deployment itself
+    # - group: apps
+    #   kind: Deployment
+    #   name: kubernetes-dashboard-auth
+    #   jsonPointers:
+    #   - /spec/template/metadata/annotations/checksum~1config # Ignored for Pod Template
+    #   - /metadata/annotations/checksum~1config # Ignored for the Deployment itself
+    # - group: apps
+    #   kind: Deployment
+    #   name: kubernetes-dashboard-api
+    #   jsonPointers:
+    #   - /spec/template/metadata/annotations/checksum~1config # Ignored for Pod Template
+    #   - /metadata/annotations/checksum~1config # Ignored for the Deployment itself
     - group: apps
       kind: Secret
       name: kubernetes-dashboard-csrf
