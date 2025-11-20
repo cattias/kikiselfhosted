@@ -5,7 +5,7 @@
     ":disableRateLimiting",
     ":configMigration"
   ],
-  "dependencyDashboardTitle": "Renovate Kiki Dashboard",
+  "dependencyDashboardTitle": "Renovate Kiki Dashboard - Server",
   "rebaseWhen": "conflicted",
   "customManagers": [
     {
