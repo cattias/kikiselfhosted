@@ -42,6 +42,14 @@ data:
             icon: ceph.png
             href: https://ceph.attias.io/
             description: The Ceph admin dashboard on Kikiserver
+        - k0s Dashboard - on Kikinode:
+            icon: kubernetes-dashboard.png
+            href: https://k0s2.attias.io/
+            description: The k0s admin dashboard on Kikinode
+        - ArgoCD Dashboard - on Kikinode:
+            icon: argo-cd.png
+            href: https://argocd2.attias.io/
+            description: The ArgoCD dashboard on Kikinode
 
     - Media Applications:
         - Kikiflix:
