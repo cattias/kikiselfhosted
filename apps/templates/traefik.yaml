@@ -56,19 +56,6 @@ spec:
                 readTimeout: 600s
                 idleTimeout: 600s
                 writeTimeout: 600s
-            tls:
-              enabled: true
-              options: ""
-              certResolver:
-                letsencrypt:
-                    email: kiki@attias.io
-                    storage: traefik-acme.json
-                    # Configure ACME to use the ClusterIssuer defined above
-                    caServer: https://acme-staging-v02.api.letsencrypt.org/directory # Match ClusterIssuer server
-                    dnsChallenge:
-                      provider: cloudflare
-                      delayBeforeCheck: 0
-              domains: []
         api:
           dashboard: true
         ingressRoute:
@@ -80,6 +67,23 @@ spec:
           prometheus:
             serviceMonitor:
               enabled: true
+
+        certificatesResolvers:
+          le: # <-- This is the string name you will use in IngressRoutes
+            acme:
+              email: kiki@attias.io
+              storage: /data/acme.json
+              # Use the Staging server for initial testing
+              caServer: https://acme-staging-v02.api.letsencrypt.org/directory 
+              # Use DNS Challenge since kiki.home is internal
+              dnsChallenge:
+                provider: cloudflare
+                # Use the secret containing your API token (from previous step)
+                resolvers: ["1.1.1.1:53", "1.0.0.1:53"] # Use reliable public DNS resolvers
+                delayBeforeCheck: 0 # Time to wait before checking for TXT record
+                # Reference the Secret with your Cloudflare API token
+                # This will inject the API token as an environment variable (CF_API_TOKEN)
+                secretName: cloudflare-api-token-secret
         persistence:
           enabled: true
           name: data
