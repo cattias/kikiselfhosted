@@ -46,6 +46,11 @@ spec:
             exposedPort: 443
             targetPort: 8443
             protocol: TCP
+            transport:
+              respondingTimeouts:
+                readTimeout: 600s
+                idleTimeout: 600s
+                writeTimeout: 600s
         api:
           dashboard: true
         ingressRoute:
