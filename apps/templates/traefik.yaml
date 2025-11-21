@@ -81,9 +81,6 @@ spec:
                 # Use the secret containing your API token (from previous step)
                 resolvers: ["1.1.1.1:53", "1.0.0.1:53"] # Use reliable public DNS resolvers
                 delayBeforeCheck: 0 # Time to wait before checking for TXT record
-                # Reference the Secret with your Cloudflare API token
-                # This will inject the API token as an environment variable (CF_API_TOKEN)
-                secretName: cloudflare-api-token-secret
         persistence:
           enabled: true
           name: data
