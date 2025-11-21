@@ -72,7 +72,7 @@ spec:
           le: # <-- This is the string name you will use in IngressRoutes
             acme:
               email: kiki@attias.io
-              storage: /data/acme.json
+              storage: acme.json
               # Use the Staging server for initial testing
               caServer: https://acme-staging-v02.api.letsencrypt.org/directory 
               # Use DNS Challenge since kiki.home is internal
