@@ -36,11 +36,11 @@ data:
             description: The ArgoCD dashboard on Kikiserver
         - Monitoring Dashboard:
             icon: grafana.png
-            href: https://obs.kiki.home/
+            href: http://obs.kiki.home/
             description: The Grafana dashboard to monitor all services
         - Ceph Dashboard:
             icon: ceph.png
-            href: https://ceph.kiki.home/
+            href: http://ceph.kiki.home/
             description: The Ceph admin dashboard on Kikiserver
         - Traefik Dashboard:
             icon: traefik.png
@@ -70,7 +70,7 @@ data:
             description: Paperless app on Kikiserver
         - KikiTube:
             icon: metube.png
-            href: https://metube.kiki.home/
+            href: http://metube.kiki.home/
             description: MeTube app on Kikiserver
         - Les recettes de Kiki:
             icon: mealie.png
@@ -80,27 +80,27 @@ data:
     - Arr Stack:
         - Prowlarr:
             icon: prowlarr.png
-            href: https://prowlarr.kiki.home/
+            href: http://prowlarr.kiki.home/
             description: Prowlarr for Kikiflix - Indexer manager
         - Radarr:
             icon: radarr.png
-            href: https://radarr.kiki.home/
+            href: http://radarr.kiki.home/
             description: Radarr for Kikiflix - Movie Library manager
         - Sonarr:
             icon: sonarr.png
-            href: https://sonarr.kiki.home/
+            href: http://sonarr.kiki.home/
             description: Sonarr for Kikiflix - TV Show Library manager
         - Lidarr:
             icon: lidarr.png
-            href: https://lidarr.kiki.home/
+            href: http://lidarr.kiki.home/
             description: Lidarr for Kikiflix - Music Library manager
         - Transmission:
             icon: transmission.png
-            href: https://transmission.kiki.home/
+            href: http://transmission.kiki.home/
             description: Transmission for Kikiflix - Download manager
         - SABnzbd:
             icon: sabnzbd.png
-            href: https://sabnzbd.kiki.home/
+            href: http://sabnzbd.kiki.home/
             description: SABnzbd for Kikiflix - Download manager
 
     - Admin applications:
@@ -114,7 +114,7 @@ data:
             description: Web SSH to Kiki's world
         - Synolokiki:
             icon: synology.png
-            href: https://dsm.kiki.home/
+            href: http://dsm.kiki.home/
             description: Portal access to Kiki's Synology NAS
         - Renovate Dasboard - Server:
             icon: renovate.png
