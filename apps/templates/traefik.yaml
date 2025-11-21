@@ -56,6 +56,19 @@ spec:
                 readTimeout: 600s
                 idleTimeout: 600s
                 writeTimeout: 600s
+            tls:
+              enabled: true
+              options: ""
+              certResolver:
+                letsencrypt:
+                    email: kiki@attias.io
+                    storage: traefik-acme.json
+                    # Configure ACME to use the ClusterIssuer defined above
+                    caServer: https://acme-staging-v02.api.letsencrypt.org/directory # Match ClusterIssuer server
+                    dnsChallenge:
+                      provider: cloudflare
+                      delayBeforeCheck: 0
+              domains: []
         api:
           dashboard: true
         ingressRoute:
