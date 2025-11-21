@@ -27,11 +27,7 @@ spec:
           type: LoadBalancer
         api:
           dashboard: true
-        ingressRoute:
-          dashboard:
-            enabled: true
-            # matchRule: Host(`traefik.kiki.local`)
-            entryPoints: ["web"]
+          insecure: true
         metrics:
           prometheus:
             serviceMonitor:
@@ -42,3 +38,14 @@ spec:
           accessMode: ReadWriteOnce
           size: 1Gi
           storageClass: "ceph-block"
+
+        entryPoints:
+          # Standard HTTP Entry Point
+          web:
+            address: ":80"
+          # Standard HTTPS Entry Point
+          websecure:
+            address: ":443"
+          # API Entry Point on port 9000
+          traefik:
+            address: ":9000"
