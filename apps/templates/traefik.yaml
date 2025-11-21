@@ -88,15 +88,17 @@ spec:
                 # Use the secret containing your API token (from previous step)
                 resolvers: ["1.1.1.1:53", "1.0.0.1:53"] # Use reliable public DNS resolvers
                 delayBeforeCheck: 0 # Time to wait before checking for TXT record
-        additionalArguments:
-          - "--certificatesresolvers.le.acme.storage=/data/acme.json"
-        # securityContext:
-        #   readOnlyRootFilesystem: false
-        # podSecurityContext:
-        #   runAsGroup: 65532
-        #   runAsNonRoot: true
-        #   runAsUser: 65532
-        #   fsGroup: 65532
+          initContainers:
+          - name: take-data-dir-ownership
+            image: alpine:3.6
+            command:
+            - chown
+            - -R  
+            - 600:600
+            - /data
+            volumeMounts:
+            - name: data
+              mountPath: /data
         persistence:
           enabled: true
           name: data
