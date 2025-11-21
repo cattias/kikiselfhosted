@@ -25,7 +25,5 @@ spec:
       releaseName: metallb
       valuesObject:
         prometheus:
-          podMonitor:
-            enabled: true
           serviceMonitor:
             enabled: true
