@@ -96,7 +96,7 @@ data:
             description: Transmission for Kikiflix - Download manager
         - SABnzbd:
             icon: sabnzbd.png
-            href: http://192.168.178.36:30579/
+            href: http://192.168.178.211/
             description: SABnzbd for Kikiflix - Download manager
 
     - Admin applications:
