@@ -27,18 +27,18 @@ spec:
           type: LoadBalancer
         ports:
           traefik:
-            port: 9000
+            port: 8080
             expose:
               default: true
-            exposedPort: 9000
+            exposedPort: 8080
             protocol: TCP
         api:
           dashboard: true
           insecure: true
-        # metrics:
-        #   prometheus:
-        #     serviceMonitor:
-        #       enabled: true
+        metrics:
+          prometheus:
+            serviceMonitor:
+              enabled: true
         persistence:
           enabled: true
           name: data
