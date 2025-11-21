@@ -1,0 +1,19 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: home-pool
+  namespace: metallb
+spec:
+  # Replace with a range of IPs that are unused on your 192.168.1.x subnet
+  addresses:
+    - 192.168.178.200-192.168.178.250
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: home-advertisement
+  namespace: metallb
+spec:
+  # Links this advertisement to the IPAddressPool above
+  ipAddressPools:
+    - home-pool
