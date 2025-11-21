@@ -83,6 +83,11 @@ spec:
                 delayBeforeCheck: 0 # Time to wait before checking for TXT record
         securityContext:
           readOnlyRootFilesystem: false
+        podSecurityContext:
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
+          fsGroup: 65532
         persistence:
           enabled: true
           name: data
