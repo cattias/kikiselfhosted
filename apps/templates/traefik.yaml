@@ -39,13 +39,10 @@ spec:
           size: 1Gi
           storageClass: "ceph-block"
 
-        entryPoints:
-          # Standard HTTP Entry Point
-          web:
-            address: ":80"
-          # Standard HTTPS Entry Point
-          websecure:
-            address: ":443"
-          # API Entry Point on port 9000
+        ports:
           traefik:
-            address: ":9000"
+            port: 8080
+            expose:
+              default: true
+            exposedPort: 8080
+            protocol: TCP
