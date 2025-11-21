@@ -29,7 +29,7 @@ spec:
           existingSecret: "vaultwarden-db-app"
           existingSecretKey: "uri"
         service:
-          type: NodePort
+          type: LoadBalancer
         adminToken:
           existingSecret: "vault-admin-token"
           existingSecretKey: "admin-token"

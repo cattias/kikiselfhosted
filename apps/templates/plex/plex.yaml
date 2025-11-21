@@ -40,7 +40,7 @@ spec:
           storageClassName: ceph-block
           configStorage: 10Gi
         service:
-          type: NodePort
+          type: LoadBalancer
           externalTrafficPolicy: Local
         extraEnv:
           TZ: "Etc/UTC"

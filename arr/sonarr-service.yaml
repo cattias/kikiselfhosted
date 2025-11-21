@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: sonarr
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: "8989"
       port: 8989

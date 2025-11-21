@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: mealie
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: "9925"
       port: 9925

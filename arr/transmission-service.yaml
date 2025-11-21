@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: transmission
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: "9091"
       port: 9091

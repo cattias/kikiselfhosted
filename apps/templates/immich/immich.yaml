@@ -61,7 +61,6 @@ spec:
           enabled: true
           service:
             main:
-              type: NodePort
-              nodePort: 31313
+              type: LoadBalancer
         machine-learning:
           enabled: true

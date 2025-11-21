@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: metube
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: "8081"
       port: 8081

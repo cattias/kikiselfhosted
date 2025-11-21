@@ -6,7 +6,7 @@ metadata:
   labels:
     app: paperless-ngx
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: 8000
