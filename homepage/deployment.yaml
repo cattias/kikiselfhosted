@@ -28,7 +28,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: HOMEPAGE_ALLOWED_HOSTS
-              value: "www.attias.io,home.attias.io,attias.io"
+              value: "www.attias.io,home.attias.io,attias.io,kiki.home"
           ports:
             - name: http
               containerPort: 3000
