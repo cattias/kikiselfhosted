@@ -23,6 +23,15 @@ spec:
     chart: traefik
     helm:
       valuesObject:
+        service:
+          type: LoadBalancer
+        api:
+          dashboard: true
+        ingressRoute:
+          dashboard:
+            enabled: true
+            # matchRule: Host(`traefik.kiki.local`)
+            entryPoints: ["web"]
         metrics:
           prometheus:
             serviceMonitor:
@@ -33,14 +42,3 @@ spec:
           accessMode: ReadWriteOnce
           size: 1Gi
           storageClass: "ceph-block"
-        ingressClass:
-          enabled: true
-          isDefaultClass: true
-          name: "traefik-ingress"
-        ingressRoute:
-          dashboard:
-            enabled: true
-            annotations:
-              kubernetes.io/ingress.class: traefik-ingress
-            entryPoints: ["web"]
-
