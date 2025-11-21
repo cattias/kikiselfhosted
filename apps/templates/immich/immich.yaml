@@ -62,5 +62,6 @@ spec:
           service:
             main:
               type: LoadBalancer
+              port: 80
         machine-learning:
           enabled: true
