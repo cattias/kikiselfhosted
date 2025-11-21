@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`photos.attias.io`)
+    - match: Host(`photos.attias.io`) || Host(`photos.kiki.local`)
       kind: Rule
       services:
         - name: immich-server
