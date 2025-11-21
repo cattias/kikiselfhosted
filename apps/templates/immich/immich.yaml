@@ -61,12 +61,5 @@ spec:
           enabled: true
           labels:
             traefik.enable: true
-            # increase readingTimeouts for the entrypoint used here
-            traefik.http.routers.immich.entrypoints: websecure
-            traefik.http.routers.immich.rule: Host(`photos.attias.io`)
-            traefik.http.services.immich.loadbalancer.server.port: 2283
-          service:
-            main:
-              type: LoadBalancer
         machine-learning:
           enabled: true
