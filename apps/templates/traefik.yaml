@@ -25,24 +25,23 @@ spec:
       valuesObject:
         service:
           type: LoadBalancer
+        ports:
+          traefik:
+            port: 9000
+            expose:
+              default: true
+            exposedPort: 9000
+            protocol: TCP
         api:
           dashboard: true
           insecure: true
-        metrics:
-          prometheus:
-            serviceMonitor:
-              enabled: true
+        # metrics:
+        #   prometheus:
+        #     serviceMonitor:
+        #       enabled: true
         persistence:
           enabled: true
           name: data
           accessMode: ReadWriteOnce
           size: 1Gi
           storageClass: "ceph-block"
-
-        ports:
-          traefik:
-            port: 8080
-            expose:
-              default: true
-            exposedPort: 8080
-            protocol: TCP
