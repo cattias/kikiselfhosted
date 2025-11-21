@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dsm-attias-io-deployment
+  namespace: dsm
 spec:
   replicas: 1
   selector:
@@ -29,11 +30,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: dsm-attias-io-service
+  namespace: dsm
 spec:
   selector:
     app: dsm.attias.io
   ports:
     - protocol: TCP
-      port: 80
+      port: 5000
       targetPort: 5000
-  type: LoadBalancer
+  type: ClusterIP
