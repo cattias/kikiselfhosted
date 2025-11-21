@@ -5,10 +5,12 @@ metadata:
   namespace: monitoring
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`obs.kiki.home`)
       kind: Rule
       services:
         - name: grafana
           port: 80
+  tls:
+    certResolver: le
