@@ -9,7 +9,7 @@ spec:
   type: LoadBalancer
   ports:
     - name: "9091"
-      port: 9091
+      port: 80
       targetPort: 9091
   selector:
     app.kubernetes.io/name: transmission

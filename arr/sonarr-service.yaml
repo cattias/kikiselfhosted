@@ -9,7 +9,7 @@ spec:
   type: LoadBalancer
   ports:
     - name: "8989"
-      port: 8989
+      port: 80
       targetPort: 8989
   selector:
     app.kubernetes.io/name: sonarr

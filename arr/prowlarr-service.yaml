@@ -9,7 +9,7 @@ spec:
   type: LoadBalancer
   ports:
     - name: "9696"
-      port: 9696
+      port: 80
       targetPort: 9696
   selector:
     app.kubernetes.io/name: prowlarr
