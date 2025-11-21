@@ -28,8 +28,6 @@ spec:
           type: postgresql
           existingSecret: "vaultwarden-db-app"
           existingSecretKey: "uri"
-        service:
-          type: LoadBalancer
         adminToken:
           existingSecret: "vault-admin-token"
           existingSecretKey: "admin-token"
