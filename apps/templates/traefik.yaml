@@ -39,6 +39,11 @@ spec:
             exposedPort: 80
             targetPort: 8000
             protocol: TCP
+            transport:
+              respondingTimeouts:
+                readTimeout: 600s
+                idleTimeout: 600s
+                writeTimeout: 600s
           websecure:
             port: 8443
             expose:
