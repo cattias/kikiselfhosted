@@ -72,7 +72,7 @@ spec:
           le: # <-- This is the string name you will use in IngressRoutes
             acme:
               email: kiki@attias.io
-              storage: acme.json
+              storage: /data/acme.json
               # Use the Staging server for initial testing
               caServer: https://acme-staging-v02.api.letsencrypt.org/directory 
               # Use DNS Challenge since kiki.home is internal
@@ -85,7 +85,7 @@ spec:
           readOnlyRootFilesystem: false
         podSecurityContext:
           runAsGroup: 65532
-          runAsNonRoot: false
+          runAsNonRoot: true
           runAsUser: 65532
           fsGroup: 65532
         persistence:
