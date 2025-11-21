@@ -32,9 +32,22 @@ spec:
               default: true
             exposedPort: 8080
             protocol: TCP
+          web:
+            port: 8000
+            expose:
+              default: true
+            exposedPort: 80
+            targetPort: 8000
+            protocol: TCP
+          websecure:
+            port: 8443
+            expose:
+              default: true
+            exposedPort: 443
+            targetPort: 8443
+            protocol: TCP
         api:
           dashboard: true
-          insecure: true
         metrics:
           prometheus:
             serviceMonitor:
