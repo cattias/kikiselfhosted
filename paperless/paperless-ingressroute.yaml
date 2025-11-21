@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: paperless-router
+  namespace: documents
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`paperless.attias.io`) || Host(`paperless.kiki.home`)
+      kind: Rule
+      services:
+        - name: paperless-ngx-service
+          port: 80

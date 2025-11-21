@@ -32,10 +32,6 @@ spec:
     targetRevision: 7.14.0
     helm:
       releaseName: kubernetes-dashboard
-      valuesObject:
-        kong:
-          proxy:
-            type: LoadBalancer
 ---
 apiVersion: v1
 kind: ServiceAccount
