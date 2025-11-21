@@ -25,7 +25,7 @@ spec:
       releaseName: grafana
       valuesObject:
         service:
-          type: NodePort
+          type: LoadBalancer
         admin:
           existingSecret: admin-user-secret
           userKey: admin-user
