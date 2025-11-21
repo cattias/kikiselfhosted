@@ -9,7 +9,7 @@ spec:
   type: LoadBalancer
   ports:
     - name: "9925"
-      port: 9925
+      port: 80
       targetPort: 9000
   selector:
     app.kubernetes.io/name: mealie
