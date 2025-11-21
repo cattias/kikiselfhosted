@@ -67,7 +67,14 @@ spec:
           prometheus:
             serviceMonitor:
               enabled: true
-
+        env:
+          - name: CLOUDFLARE_EMAIL
+            value: christophe.attias@gmail.com
+          - name: CLOUDFLARE_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: cloudflare-api-token-secret
+                key: token
         certificatesResolvers:
           le: # <-- This is the string name you will use in IngressRoutes
             acme:
@@ -81,8 +88,8 @@ spec:
                 # Use the secret containing your API token (from previous step)
                 resolvers: ["1.1.1.1:53", "1.0.0.1:53"] # Use reliable public DNS resolvers
                 delayBeforeCheck: 0 # Time to wait before checking for TXT record
-        securityContext:
-          readOnlyRootFilesystem: false
+        # securityContext:
+        #   readOnlyRootFilesystem: false
         podSecurityContext:
           runAsGroup: 65532
           runAsNonRoot: true
