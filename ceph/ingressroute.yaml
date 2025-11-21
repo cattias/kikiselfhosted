@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rook-ceph-router
+  namespace: rook-ceph
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`ceph.kiki.home`)
+      kind: Rule
+      services:
+        - name: rook-ceph-mgr-dashboard-external-https
+          port: 443
