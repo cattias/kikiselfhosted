@@ -51,7 +51,7 @@ spec:
         ingressRoute:
           dashboard:
             enabled: true
-            matchRule: Host(`traefik.kiki.local`) 
+            matchRule: Host(`traefik.kiki.local`) || Host(`traefik.attias.io`)
             entryPoints: ["web"]
         metrics:
           prometheus:
