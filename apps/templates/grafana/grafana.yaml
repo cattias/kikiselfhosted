@@ -24,8 +24,6 @@ spec:
     helm:
       releaseName: grafana
       valuesObject:
-        service:
-          type: LoadBalancer
         admin:
           existingSecret: admin-user-secret
           userKey: admin-user

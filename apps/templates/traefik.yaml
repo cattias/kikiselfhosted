@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  destination:
+    namespace: traefik
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    repoURL: https://traefik.github.io/charts
+    targetRevision: 37.4.0
+    chart: traefik
+    helm:
+      valuesObject:
+        metrics:
+          prometheus:
+            serviceMonitor:
+              enabled: true
+        persistence:
+          enabled: true
+          name: data
+          accessMode: ReadWriteOnce
+          size: 1Gi
+          storageClass: "ceph-block"
