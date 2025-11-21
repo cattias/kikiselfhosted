@@ -31,7 +31,7 @@ spec:
               value: "www.attias.io,home.attias.io,attias.io"
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 3000
               protocol: TCP
           volumeMounts:
             - mountPath: /app/config/custom.js
