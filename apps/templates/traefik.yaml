@@ -48,6 +48,11 @@ spec:
             protocol: TCP
         api:
           dashboard: true
+        ingressRoute:
+          dashboard:
+            enabled: true
+            matchRule: Host(`traefik.kiki.local`) 
+            entryPoints: ["web"]
         metrics:
           prometheus:
             serviceMonitor:
