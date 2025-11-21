@@ -27,6 +27,7 @@ spec:
               value: UTC
           image: linuxserver/prowlarr:develop
           name: prowlarr
+          imagePullPolicy: Always
           ports:
             - containerPort: 9696
               protocol: TCP
