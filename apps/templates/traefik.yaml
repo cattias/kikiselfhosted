@@ -33,3 +33,11 @@ spec:
           accessMode: ReadWriteOnce
           size: 1Gi
           storageClass: "ceph-block"
+        ingressClass:
+          enabled: true
+          isDefaultClass: true
+          name: "traefik-ingress"
+        ingressRoute:
+          dashboard:
+            enabled: true
+
