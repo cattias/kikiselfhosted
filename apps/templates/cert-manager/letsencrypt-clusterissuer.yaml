@@ -1,0 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-dns
+  namespace: cert-manager
+spec:
+  acme:
+    # Use staging server for testing, change to production for final certificate
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: kiki@attias.io
+    privateKeySecretRef:
+      name: letsencrypt-dns-account-key
+    solvers:
+      - dns01:
+          cloudflare:
+            email: christophe.attias@gmail.com
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: token
