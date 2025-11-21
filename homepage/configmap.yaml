@@ -42,6 +42,10 @@ data:
             icon: ceph.png
             href: https://ceph.kiki.home/
             description: The Ceph admin dashboard on Kikiserver
+        - Traefik Dashboard:
+            icon: traefik.png
+            href: http://traefik.kiki.home/
+            description: The Traefik admin dashboard on Kikiserver
         - k0s Dashboard - on Kikinode:
             icon: kubernetes-dashboard.png
             href: https://k0snode.kiki.home/
