@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: radarr-router
+  namespace: arr
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`radarr.kiki.home`)
+      kind: Rule
+      services:
+        - name: radarr
+          port: 7878

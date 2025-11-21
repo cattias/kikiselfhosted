@@ -6,10 +6,10 @@ metadata:
   labels:
     app.kubernetes.io/name: radarr
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - name: "7878"
-      port: 80
+      port: 7878
       targetPort: 7878
   selector:
     app.kubernetes.io/name: radarr

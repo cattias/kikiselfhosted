@@ -6,10 +6,10 @@ metadata:
   labels:
     app.kubernetes.io/name: prowlarr
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - name: "9696"
-      port: 80
+      port: 9696
       targetPort: 9696
   selector:
     app.kubernetes.io/name: prowlarr
