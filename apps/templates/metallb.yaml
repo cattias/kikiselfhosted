@@ -23,7 +23,3 @@ spec:
     targetRevision: 0.15.2
     helm:
       releaseName: metallb
-      valuesObject:
-        prometheus:
-          serviceMonitor:
-            enabled: true
