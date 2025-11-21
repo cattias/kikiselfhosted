@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: conf-cm
+  namespace: dsm
+data:
+  dsm.attias.io.conf: |
+    server {   
+        listen 5000;
+      
+      location / {
+          proxy_pass http://192.168.178.29:5000/;
+        }
+    }

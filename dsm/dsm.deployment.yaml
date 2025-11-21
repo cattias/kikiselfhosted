@@ -23,14 +23,8 @@ spec:
           mountPath: /etc/nginx/conf.d/
       volumes:
       - name: conf-volume
-        configMap: |
-          server {   
-              listen 5000;
-            
-            location / {
-                proxy_pass http://192.168.178.29:5000/;
-              }
-          }
+        configMap:
+          name: conf-cm
 ---
 apiVersion: v1
 kind: Service

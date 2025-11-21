@@ -88,6 +88,10 @@ spec:
                 # Use the secret containing your API token (from previous step)
                 resolvers: ["1.1.1.1:53", "1.0.0.1:53"] # Use reliable public DNS resolvers
                 delayBeforeCheck: 0 # Time to wait before checking for TXT record
+        additionalArguments:
+          - "--certificatesresolvers.le.acme.storage=/data/acme.json"
+          - "--certificatesresolvers.le.acme.keytype=RSA4096"
+          - "--certificatesresolvers.le.acme.storageMode=0600"
         securityContext:
           readOnlyRootFilesystem: false
         podSecurityContext:
