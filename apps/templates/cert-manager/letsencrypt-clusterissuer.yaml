@@ -13,7 +13,6 @@ spec:
     solvers:
       - dns01:
           cloudflare:
-            email: christophe.attias@gmail.com
             apiTokenSecretRef:
               name: cloudflare-api-token-secret
               key: token
