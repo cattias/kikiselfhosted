@@ -88,7 +88,6 @@ spec:
               caServer: https://acme-staging-v02.api.letsencrypt.org/directory 
               dnsChallenge:
                 provider: cloudflare
-                domain: attias.io
                 # Use the secret containing your API token (from previous step)
                 resolvers: ["1.1.1.1:53", "1.0.0.1:53"] # Use reliable public DNS resolvers
                 delayBeforeCheck: 0 # Time to wait before checking for TXT record
