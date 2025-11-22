@@ -63,6 +63,8 @@ spec:
             enabled: true
             matchRule: Host(`traefik.attias.io`)
             entryPoints: ["websecure"]
+            tls:
+              certResolver: le
         metrics:
           prometheus:
             serviceMonitor:
