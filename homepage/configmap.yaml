@@ -36,15 +36,15 @@ data:
             description: The ArgoCD dashboard on Kikiserver
         - Monitoring Dashboard:
             icon: grafana.png
-            href: http://obs.attias.io/
+            href: https://obs.attias.io/
             description: The Grafana dashboard to monitor all services
         - Ceph Dashboard:
             icon: ceph.png
-            href: http://ceph.attias.io/
+            href: https://ceph.attias.io/
             description: The Ceph admin dashboard on Kikiserver
         - Traefik Dashboard:
             icon: traefik.png
-            href: http://traefik.attias.io/
+            href: https://traefik.attias.io/
             description: The Traefik admin dashboard on Kikiserver
         - k0s Dashboard - on Kikinode:
             icon: kubernetes-dashboard.png
@@ -70,7 +70,7 @@ data:
             description: Paperless app on Kikiserver
         - KikiTube:
             icon: metube.png
-            href: http://metube.attias.io/
+            href: https://metube.attias.io/
             description: MeTube app on Kikiserver
         - Les recettes de Kiki:
             icon: mealie.png
@@ -80,27 +80,27 @@ data:
     - Arr Stack:
         - Prowlarr:
             icon: prowlarr.png
-            href: http://prowlarr.attias.io/
+            href: https://prowlarr.attias.io/
             description: Prowlarr for Kikiflix - Indexer manager
         - Radarr:
             icon: radarr.png
-            href: http://radarr.attias.io/
+            href: https://radarr.attias.io/
             description: Radarr for Kikiflix - Movie Library manager
         - Sonarr:
             icon: sonarr.png
-            href: http://sonarr.attias.io/
+            href: https://sonarr.attias.io/
             description: Sonarr for Kikiflix - TV Show Library manager
         - Lidarr:
             icon: lidarr.png
-            href: http://lidarr.attias.io/
+            href: https://lidarr.attias.io/
             description: Lidarr for Kikiflix - Music Library manager
         - Transmission:
             icon: transmission.png
-            href: http://transmission.attias.io/
+            href: https://transmission.attias.io/
             description: Transmission for Kikiflix - Download manager
         - SABnzbd:
             icon: sabnzbd.png
-            href: http://sabnzbd.attias.io/
+            href: https://sabnzbd.attias.io/
             description: SABnzbd for Kikiflix - Download manager
 
     - Admin applications:
@@ -114,7 +114,7 @@ data:
             description: Web SSH to Kiki's world
         - Synolokiki:
             icon: synology.png
-            href: http://dsm.attias.io/
+            href: https://dsm.attias.io/
             description: Portal access to Kiki's Synology NAS
         - Renovate Dasboard - Server:
             icon: renovate.png
