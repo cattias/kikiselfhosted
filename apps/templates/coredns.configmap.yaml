@@ -23,6 +23,12 @@ data:
             force_tcp
             health_check 5s
         }
+    attias.io:53 {
+        errors
+        forward . 192.168.178.110:53 {
+            force_tcp
+            health_check 5s
+        }
 kind: ConfigMap
 metadata:
   labels:
