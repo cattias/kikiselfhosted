@@ -75,6 +75,10 @@ spec:
               secretKeyRef:
                 name: cloudflare-api-token-secret
                 key: token
+        podSecurityContext:
+          runAsGroup: 0
+          runAsNonRoot: false
+          runAsUser: 0
         certificatesResolvers:
           le: # <-- This is the string name you will use in IngressRoutes
             acme:
