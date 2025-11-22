@@ -94,7 +94,4 @@ spec:
                 delayBeforeCheck: 0 # Time to wait before checking for TXT record
         persistence:
           enabled: true
-          name: data
-          accessMode: ReadWriteOnce
-          size: 1Gi
-          storageClass: "ceph-block"
+          existingClaim: traefik-data-pvc
