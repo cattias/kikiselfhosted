@@ -23,6 +23,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/apps/templates/cert-manager/cert-manager\\.yaml/"
+      ],
+      "matchStrings": [
+        "repoURL:\\s*oci:\\/\\/quay\\.io\\/jetstack\\/charts\\/cert-manager\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*cert-manager"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "quay.io/jetstack/charts/cert-manager",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/apps/templates/immich/immich\\.yaml/"
       ],
       "matchStrings": [
@@ -108,9 +120,11 @@
     ],
     "ignorePaths": [
       "**/immich/**",
+      "**/cert-manager/**",
       "**/databases\\.yaml",
       "**/paperless\\.yaml",
       "**/mealie\\.yaml",
+      "**/garmin-grafana\\.yaml",
       "**/arr\\.yaml",
       "**/rook-ceph-cluster-addition\\.yaml",
       "**/homepage\\.yaml",
