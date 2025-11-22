@@ -5,10 +5,12 @@ metadata:
   namespace: kubernetes-dashboard
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: Host(`k0s.kiki.home`)
+    - match: Host(`k0s.attias.io`)
       kind: Rule
       services:
         - name: kubernetes-dashboard-kong-proxy
           port: 443
+  tls:
+    certResolver: le

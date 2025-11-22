@@ -28,31 +28,31 @@ data:
     - Kubernetes Services Dasboards:
         - k0s Dashboard:
             icon: kubernetes-dashboard.png
-            href: https://k0s.kiki.home/
+            href: https://k0s.attias.io/
             description: The k0s admin dashboard on Kikiserver
         - ArgoCD Dashboard:
             icon: argo-cd.png
-            href: https://argocd.kiki.home/
+            href: https://argocd.attias.io/
             description: The ArgoCD dashboard on Kikiserver
         - Monitoring Dashboard:
             icon: grafana.png
-            href: http://obs.kiki.home/
+            href: http://obs.attias.io/
             description: The Grafana dashboard to monitor all services
         - Ceph Dashboard:
             icon: ceph.png
-            href: http://ceph.kiki.home/
+            href: http://ceph.attias.io/
             description: The Ceph admin dashboard on Kikiserver
         - Traefik Dashboard:
             icon: traefik.png
-            href: http://traefik.kiki.home/
+            href: http://traefik.attias.io/
             description: The Traefik admin dashboard on Kikiserver
         - k0s Dashboard - on Kikinode:
             icon: kubernetes-dashboard.png
-            href: https://k0snode.kiki.home/
+            href: https://k0snode.attias.io/
             description: The k0s admin dashboard on Kikinode
         - ArgoCD Dashboard - on Kikinode:
             icon: argo-cd.png
-            href: https://argocdnode.kiki.home/
+            href: https://argocdnode.attias.io/
             description: The ArgoCD dashboard on Kikinode
 
     - Media Applications:
@@ -70,7 +70,7 @@ data:
             description: Paperless app on Kikiserver
         - KikiTube:
             icon: metube.png
-            href: http://metube.kiki.home/
+            href: http://metube.attias.io/
             description: MeTube app on Kikiserver
         - Les recettes de Kiki:
             icon: mealie.png
@@ -80,27 +80,27 @@ data:
     - Arr Stack:
         - Prowlarr:
             icon: prowlarr.png
-            href: http://prowlarr.kiki.home/
+            href: http://prowlarr.attias.io/
             description: Prowlarr for Kikiflix - Indexer manager
         - Radarr:
             icon: radarr.png
-            href: http://radarr.kiki.home/
+            href: http://radarr.attias.io/
             description: Radarr for Kikiflix - Movie Library manager
         - Sonarr:
             icon: sonarr.png
-            href: http://sonarr.kiki.home/
+            href: http://sonarr.attias.io/
             description: Sonarr for Kikiflix - TV Show Library manager
         - Lidarr:
             icon: lidarr.png
-            href: http://lidarr.kiki.home/
+            href: http://lidarr.attias.io/
             description: Lidarr for Kikiflix - Music Library manager
         - Transmission:
             icon: transmission.png
-            href: http://transmission.kiki.home/
+            href: http://transmission.attias.io/
             description: Transmission for Kikiflix - Download manager
         - SABnzbd:
             icon: sabnzbd.png
-            href: http://sabnzbd.kiki.home/
+            href: http://sabnzbd.attias.io/
             description: SABnzbd for Kikiflix - Download manager
 
     - Admin applications:
@@ -114,7 +114,7 @@ data:
             description: Web SSH to Kiki's world
         - Synolokiki:
             icon: synology.png
-            href: http://dsm.kiki.home/
+            href: http://dsm.attias.io/
             description: Portal access to Kiki's Synology NAS
         - Renovate Dasboard - Server:
             icon: renovate.png
