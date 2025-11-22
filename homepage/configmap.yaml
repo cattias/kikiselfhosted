@@ -105,8 +105,8 @@ data:
 
     - Admin applications:
         - Pihole:
-            icon: pihole.png
-            href: http://pihole.kiki.home/
+            icon: pi-hole.png
+            href: http://pihole.kiki.home/admin/
             description: DNS portal access to Kiki's world
         - Kikivault:
             icon: vaultwarden.png
