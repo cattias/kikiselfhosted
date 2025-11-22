@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ugreen-attias-io-deployment
+  namespace: dsm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ugreen.attias.io
+  template:
+    metadata:
+      labels:
+        app: ugreen.attias.io
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: conf-volume
+          mountPath: /etc/nginx/conf.d/
+      volumes:
+      - name: conf-volume
+        configMap:
+          name: ugreen-conf-cm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ugreen-attias-io-service
+  namespace: dsm
+spec:
+  selector:
+    app: ugreen.attias.io
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9999
+  type: LoadBalancer

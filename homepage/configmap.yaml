@@ -120,6 +120,10 @@ data:
             icon: synology.png
             href: http://dsm.kiki.home/
             description: Portal access to Kiki's Synology NAS
+        - Ugreenkiki:
+            icon: ugreen.png
+            href: http://ugreen.kiki.home/
+            description: Portal access to Kiki's UGreen NAS
         - Renovate Dasboard - Server:
             icon: renovate.png
             href: https://github.com/cattias/kikiselfhosted/issues
