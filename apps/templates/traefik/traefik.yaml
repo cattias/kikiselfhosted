@@ -71,8 +71,6 @@ spec:
             serviceMonitor:
               enabled: true
         env:
-          - name: CLOUDFLARE_EMAIL
-            value: christophe.attias@gmail.com
           - name: CF_API_EMAIL
             value: christophe.attias@gmail.com
           - name: CF_DNS_API_TOKEN
@@ -80,16 +78,23 @@ spec:
               secretKeyRef:
                 name: cloudflare-api-token-secret
                 key: token
-          - name: CF_API_KEY
+          - name: CF_ZONE_API_TOKEN
             valueFrom:
               secretKeyRef:
                 name: cloudflare-api-token-secret
                 key: token
-          - name: CLOUDFLARE_API_KEY
-            valueFrom:
-              secretKeyRef:
-                name: cloudflare-api-token-secret
-                key: token
+          # - name: CLOUDFLARE_EMAIL
+          #   value: christophe.attias@gmail.com
+          # - name: CF_API_KEY
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: cloudflare-api-token-secret
+          #       key: token
+          # - name: CLOUDFLARE_API_KEY
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: cloudflare-api-token-secret
+          #       key: token
         podSecurityContext:
           runAsGroup: 0
           runAsNonRoot: false
