@@ -1,7 +1,0 @@
-apiVersion: traefik.io/v1alpha1
-kind: ServersTransport
-metadata:
-  name: dashboard-dns-transport
-  namespace: kubernetes-dashboard
-spec:
-  serverName: kubernetes-dashboard.kubernetes-dashboard.svc.cluster.local
