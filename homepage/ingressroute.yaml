@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`attias.io`) || Host(`home.kiki`)
+    - match: Host(`attias.io`)
       kind: Rule
       services:
         - name: homepage
