@@ -104,6 +104,10 @@ data:
             description: SABnzbd for Kikiflix - Download manager
 
     - Admin applications:
+        - Pihole:
+            icon: pihole.png
+            href: http://pihole.kiki.home/
+            description: DNS portal access to Kiki's world
         - Kikivault:
             icon: vaultwarden.png
             href: https://vault.attias.io/
