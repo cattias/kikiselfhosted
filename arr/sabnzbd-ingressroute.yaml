@@ -5,10 +5,12 @@ metadata:
   namespace: arr
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: Host(`sabnzbd.kiki.home`)
+    - match: Host(`sabnzbd.attias.io`)
       kind: Rule
       services:
         - name: sabnzbd
           port: 8080
+  tls:
+    certResolver: le

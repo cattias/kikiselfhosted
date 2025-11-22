@@ -5,10 +5,12 @@ metadata:
   namespace: arr
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: Host(`metube.kiki.home`)
+    - match: Host(`metube.attias.io`)
       kind: Rule
       services:
         - name: metube
           port: 8081
+  tls:
+    certResolver: le

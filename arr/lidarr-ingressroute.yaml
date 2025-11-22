@@ -5,10 +5,12 @@ metadata:
   namespace: arr
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: Host(`lidarr.kiki.home`)
+    - match: Host(`lidarr.attias.io`)
       kind: Rule
       services:
         - name: lidarr
           port: 8686
+  tls:
+    certResolver: le

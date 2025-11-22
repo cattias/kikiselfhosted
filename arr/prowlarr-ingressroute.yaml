@@ -5,10 +5,12 @@ metadata:
   namespace: arr
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: Host(`prowlarr.kiki.home`)
+    - match: Host(`prowlarr.attias.io`)
       kind: Rule
       services:
         - name: prowlarr
           port: 9696
+  tls:
+    certResolver: le

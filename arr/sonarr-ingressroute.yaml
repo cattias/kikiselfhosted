@@ -5,10 +5,12 @@ metadata:
   namespace: arr
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: Host(`sonarr.kiki.home`)
+    - match: Host(`sonarr.attias.io`)
       kind: Rule
       services:
         - name: sonarr
           port: 8989
+  tls:
+    certResolver: le

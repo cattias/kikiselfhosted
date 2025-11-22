@@ -5,10 +5,12 @@ metadata:
   namespace: arr
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: Host(`transmission.kiki.home`)
+    - match: Host(`transmission.attias.io`)
       kind: Rule
       services:
         - name: transmission
           port: 9091
+  tls:
+    certResolver: le

@@ -5,10 +5,12 @@ metadata:
   namespace: rook-ceph
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: Host(`ceph.kiki.home`)
+    - match: Host(`ceph.attias.io`)
       kind: Rule
       services:
         - name: rook-ceph-mgr-dashboard-external-https
           port: 443
+  tls:
+    certResolver: le

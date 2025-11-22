@@ -5,10 +5,12 @@ metadata:
   namespace: home
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`attias.io`) || Host(`home.kiki`)
       kind: Rule
       services:
         - name: homepage
           port: 80
+  tls:
+    certResolver: le
