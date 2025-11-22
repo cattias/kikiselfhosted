@@ -25,36 +25,38 @@ data:
   custom.js: ""
   bookmarks.yaml: ""
   services.yaml: |
-    - Kubernetes Services Dasboards:
-        - k0s Dashboard:
+    - Kubernetes Services Dasboards - Server:
+        - k0s Dashboard - Server:
             icon: kubernetes-dashboard.png
             href: https://k0s.attias.io/
             description: The k0s admin dashboard on Kikiserver
-        - ArgoCD Dashboard:
+        - ArgoCD Dashboard - Server:
             icon: argo-cd.png
             href: https://argocd.attias.io/
             description: The ArgoCD dashboard on Kikiserver
-        - Monitoring Dashboard:
+        - Monitoring Dashboard - Server:
             icon: grafana.png
             href: https://obs.attias.io/
             description: The Grafana dashboard to monitor all services
-        - Ceph Dashboard:
+        - Ceph Dashboard - Server:
             icon: ceph.png
             href: https://ceph.attias.io/
             description: The Ceph admin dashboard on Kikiserver
-        - Traefik Dashboard:
+        - Traefik Dashboard - Server:
             icon: traefik.png
             href: https://traefik.attias.io/
             description: The Traefik admin dashboard on Kikiserver
-        - k0s Dashboard - on Kikinode:
+
+    - Kubernetes Services Dasboards - Node:
+        - k0s Dashboard - Node:
             icon: kubernetes-dashboard.png
             href: https://k0snode.attias.io/
             description: The k0s admin dashboard on Kikinode
-        - ArgoCD Dashboard - on Kikinode:
+        - ArgoCD Dashboard - Node:
             icon: argo-cd.png
             href: https://argocdnode.attias.io/
             description: The ArgoCD dashboard on Kikinode
-        - Traefik Dashboard - on Kikinode:
+        - Traefik Dashboard - Node:
             icon: traefik.png
             href: https://traefiknode.attias.io/
             description: The Traefik admin dashboard on Kikinode
