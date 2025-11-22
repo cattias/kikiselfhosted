@@ -101,12 +101,8 @@ spec:
               storage: /data/acme.json
               # Use the Staging server for initial testing
               caServer: https://acme-staging-v02.api.letsencrypt.org/directory 
-              # httpChallenge:
-              #   # used during the challenge
-              #   entryPoint: web
               dnsChallenge:
                 provider: cloudflare
-                # resolvers: ["1.1.1.1:53", "1.0.0.1:53"]
                 delayBeforeCheck: 0
         persistence:
           enabled: true
