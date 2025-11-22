@@ -23,6 +23,9 @@ spec:
     chart: traefik
     helm:
       valuesObject:
+        logs:
+          general:
+            level: "DEBUG"
         service:
           type: LoadBalancer
         ports:
