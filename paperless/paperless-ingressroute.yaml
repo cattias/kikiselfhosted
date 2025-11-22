@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`paperless.attias.io`) || Host(`paperless.kiki.home`)
+    - match: Host(`paperless.attias.io`)
       kind: Rule
       services:
         - name: paperless-ngx-service
