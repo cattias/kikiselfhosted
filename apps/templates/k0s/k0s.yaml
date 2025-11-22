@@ -32,6 +32,13 @@ spec:
     targetRevision: 7.14.0
     helm:
       releaseName: kubernetes-dashboard
+      valuesObject:
+        kong:
+          enabled: true
+          proxy:
+            type: ClusterIP
+            http:
+              enabled: true
 ---
 apiVersion: v1
 kind: ServiceAccount
