@@ -122,7 +122,7 @@ data:
             description: Portal access to Kiki's Synology NAS
         - Ugreenkiki:
             icon: ugreen.png
-            href: http://ugreen.kiki.home/
+            href: http://192.168.1.147:9999/desktop/#/
             description: Portal access to Kiki's UGreen NAS
         - Renovate Dasboard - Server:
             icon: renovate.png
