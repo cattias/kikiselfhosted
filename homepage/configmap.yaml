@@ -54,6 +54,10 @@ data:
             icon: argo-cd.png
             href: https://argocdnode.attias.io/
             description: The ArgoCD dashboard on Kikinode
+        - Traefik Dashboard - on Kikinode:
+            icon: traefik.png
+            href: https://traefiknode.attias.io/
+            description: The Traefik admin dashboard on Kikinode
 
     - Media Applications:
         - Kikiflix:
