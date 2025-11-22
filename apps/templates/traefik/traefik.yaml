@@ -23,9 +23,9 @@ spec:
     chart: traefik
     helm:
       valuesObject:
-        logs:
-          general:
-            level: "TRACE"
+        # logs:
+        #   general:
+        #     level: "TRACE"
         service:
           type: LoadBalancer
         ports:
@@ -83,18 +83,6 @@ spec:
               secretKeyRef:
                 name: cloudflare-api-token-secret
                 key: token
-          # - name: CLOUDFLARE_EMAIL
-          #   value: christophe.attias@gmail.com
-          # - name: CF_API_KEY
-          #   valueFrom:
-          #     secretKeyRef:
-          #       name: cloudflare-api-token-secret
-          #       key: token
-          # - name: CLOUDFLARE_API_KEY
-          #   valueFrom:
-          #     secretKeyRef:
-          #       name: cloudflare-api-token-secret
-          #       key: token
         podSecurityContext:
           runAsGroup: 0
           runAsNonRoot: false
