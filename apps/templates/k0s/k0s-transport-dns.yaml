@@ -4,4 +4,4 @@ metadata:
   name: dashboard-dns-transport
   namespace: kubernetes-dashboard
 spec:
-  serverName: kubernetes-dashboard-kong-proxy.kubernetes-dashboard.svc.cluster.local
+  serverName: kubernetes-dashboard.kubernetes-dashboard.svc.cluster.local
