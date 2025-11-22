@@ -61,8 +61,8 @@ spec:
         ingressRoute:
           dashboard:
             enabled: true
-            matchRule: Host(`traefik.kiki.home`)
-            entryPoints: ["web"]
+            matchRule: Host(`traefik.attias.io`)
+            entryPoints: ["websecure"]
         metrics:
           prometheus:
             serviceMonitor:
