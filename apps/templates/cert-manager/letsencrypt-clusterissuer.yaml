@@ -7,7 +7,7 @@ spec:
   acme:
     # Use staging server for testing, change to production for final certificate
     server: https://acme-staging-v02.api.letsencrypt.org/directory
-    email: kiki@attias.io
+    email: christophe.attias@gmail.com
     privateKeySecretRef:
       name: letsencrypt-dns-account-key
     solvers:

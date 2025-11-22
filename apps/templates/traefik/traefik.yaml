@@ -82,7 +82,7 @@ spec:
         certificatesResolvers:
           le: # <-- This is the string name you will use in IngressRoutes
             acme:
-              email: kiki@attias.io
+              email: christophe.attias@gmail.com
               storage: /data/acme.json
               # Use the Staging server for initial testing
               caServer: https://acme-staging-v02.api.letsencrypt.org/directory 
