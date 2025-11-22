@@ -23,9 +23,6 @@ spec:
     chart: traefik
     helm:
       valuesObject:
-        # logs:
-        #   general:
-        #     level: "TRACE"
         service:
           type: LoadBalancer
         ports:
@@ -92,8 +89,7 @@ spec:
             acme:
               email: christophe.attias@gmail.com
               storage: /data/acme.json
-              # Use the Staging server for initial testing
-              caServer: https://acme-staging-v02.api.letsencrypt.org/directory 
+              caServer: https://acme-v02.api.letsencrypt.org/directory
               dnsChallenge:
                 provider: cloudflare
                 delayBeforeCheck: 0
