@@ -40,7 +40,7 @@ spec:
               - name: Kikinode
                 type: prometheus
                 access: proxy
-                url: http://promnode.kiki.home
+                url: https://prometheusnode.attias.io
               - name: Kiki-ds220j
                 type: prometheus
                 access: proxy
