@@ -5,12 +5,10 @@ metadata:
   namespace: mealie
 spec:
   entryPoints:
-    - websecure
+    - web
   routes:
     - match: Host(`recettes.attias.io`)
       kind: Rule
       services:
         - name: mealie
           port: 9000
-  tls:
-    certResolver: le
