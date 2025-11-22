@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`obs.kiki.server`)
+    - match: Host(`obs.kiki.lan`)
       kind: Rule
       services:
         - name: grafana
