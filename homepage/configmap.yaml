@@ -108,13 +108,9 @@ data:
             icon: vaultwarden.png
             href: https://vault.attias.io/
             description: Self-hosted vaultwarden instance on Kikiserver
-        - SSH:
-            icon: terminal.png
-            href: https://ssh.attias.io/
-            description: Web SSH to Kiki's world
         - Synolokiki:
             icon: synology.png
-            href: https://dsm.attias.io/
+            href: http://dsm.kiki.home/
             description: Portal access to Kiki's Synology NAS
         - Renovate Dasboard - Server:
             icon: renovate.png
