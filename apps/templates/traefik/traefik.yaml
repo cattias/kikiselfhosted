@@ -90,17 +90,19 @@ spec:
           runAsNonRoot: false
           runAsUser: 0
         certificatesResolvers:
-          le: # <-- This is the string name you will use in IngressRoutes
+          le:
             acme:
               email: christophe.attias@gmail.com
               storage: /data/acme.json
               # Use the Staging server for initial testing
               caServer: https://acme-staging-v02.api.letsencrypt.org/directory 
-              dnsChallenge:
-                provider: cloudflare
-                # Use the secret containing your API token (from previous step)
-                resolvers: ["1.1.1.1:53", "1.0.0.1:53"] # Use reliable public DNS resolvers
-                delayBeforeCheck: 0 # Time to wait before checking for TXT record
+              httpChallenge:
+                # used during the challenge
+                entryPoint: web
+              # dnsChallenge:
+              #   provider: cloudflare
+              #   resolvers: ["1.1.1.1:53", "1.0.0.1:53"]
+              #   delayBeforeCheck: 0
         persistence:
           enabled: true
           existingClaim: traefik-data-pvc
