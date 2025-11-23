@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: budget
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: false
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  destination:
+    namespace: budget
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    repoURL: https://community-charts.github.io/helm-charts
+    targetRevision: 1.8.4
+    chart: actualbudget
+    helm:
+      valuesObject:
+        persistence:
+          enabled: true
+          existingClaim: budget-data-pvc
