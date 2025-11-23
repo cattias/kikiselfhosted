@@ -34,16 +34,16 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /downloads
-              name: synology-metube-volume
+              name: nas-metube-volume
             - mountPath: /audio-downloads
-              name: synology-music-volume
+              name: nas-music-volume
       restartPolicy: Always
       volumes:
-        - name: synology-metube-volume
+        - name: nas-metube-volume
           hostPath:
-            path: "/mnt/synology-videos/metube/" 
+            path: "/mnt/ugreen-medias/metube/" 
             type: DirectoryOrCreate
-        - name: synology-music-volume
+        - name: nas-music-volume
           hostPath:
-            path: "/mnt/synology-videos/Music/" 
+            path: "/mnt/ugreen-medias/Music/" 
             type: DirectoryOrCreate

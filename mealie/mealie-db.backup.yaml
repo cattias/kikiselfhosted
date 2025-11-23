@@ -92,6 +92,6 @@ spec:
           volumes:
           - name: backup-storage
             hostPath:
-              path: "/mnt/synology-backups/mealie" 
+              path: "/mnt/ugreen-backup/mealie" 
               type: DirectoryOrCreate
 

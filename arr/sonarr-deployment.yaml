@@ -32,14 +32,14 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /data
-              name: synology-video-volume
+              name: nas-media-volume
             - mountPath: /config
               name: sonarr-config
       restartPolicy: Always
       volumes:
-        - name: synology-video-volume
+        - name: nas-media-volume
           hostPath:
-            path: "/mnt/synology-videos" 
+            path: "/mnt/ugreen-medias" 
             type: DirectoryOrCreate
         - name: sonarr-config
           persistentVolumeClaim:

@@ -61,5 +61,5 @@ spec:
           volumes:
           - name: backup-storage
             hostPath:
-              path: "/mnt/synology-backups/paperless" 
+              path: "/mnt/ugreen-backup/paperless" 
               type: DirectoryOrCreate
