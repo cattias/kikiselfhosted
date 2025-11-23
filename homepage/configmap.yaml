@@ -138,6 +138,10 @@ data:
             icon: mealie.png
             href: https://recettes.attias.io/
             description: Les recettes de Kiki
+        - Le budget de Kiki:
+            icon: actualbudget.png
+            href: https://budget.attias.io/
+            description: Le budget de Kiki
 
   widgets.yaml: |
     - kubernetes:
