@@ -59,7 +59,10 @@ spec:
             storageClass: ceph-block
         server:
           enabled: true
-          labels:
-            traefik.enable: true
+          service:
+            main:
+              type: LoadBalancer
+              port: 80
+              targetPort: 2283
         machine-learning:
           enabled: true
