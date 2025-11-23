@@ -10,5 +10,5 @@ spec:
     - match: Host(`budget.attias.io`)
       kind: Rule
       services:
-        - name: budget
+        - name: budget-actualbudget
           port: 5006
