@@ -11,4 +11,4 @@ spec:
       kind: Rule
       services:
         - name: budget
-          port: 9000
+          port: 5006
