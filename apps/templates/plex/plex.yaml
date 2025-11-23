@@ -40,7 +40,7 @@ spec:
           storageClassName: ceph-block
           configStorage: 10Gi
         service:
-          type: ClusterIP
+          type: LoadBalancer
           port: 32400
           targetPort: 32400
           externalTrafficPolicy: Local
