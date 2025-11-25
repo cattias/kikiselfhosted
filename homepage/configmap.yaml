@@ -78,10 +78,6 @@ data:
             icon: vaultwarden.png
             href: https://vault.attias.io/
             description: Self-hosted vaultwarden instance on Kikiserver
-        - Synolokiki:
-            icon: synology.png
-            href: http://dsm.kiki.home/
-            description: Portal access to Kiki's Synology NAS
         - Ugreenkiki:
             icon: ugreen.png
             href: http://nas.kiki.home/
