@@ -10,6 +10,11 @@ spec:
     storage: 100Gi
   accessModes:
     - ReadWriteOnce
+  mountOptions:
+      - "soft"
+      - "timeo=50"
+      - "retrans=2"
+      - "vers=4.1"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ""
   nfs:
