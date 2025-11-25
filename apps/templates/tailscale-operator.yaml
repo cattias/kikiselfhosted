@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tailscale-operator
+  name: tailscale-operator-kikiserver
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -27,11 +27,11 @@ spec:
 apiVersion: tailscale.com/v1alpha1
 kind: Connector
 metadata:
-  name: ts-pod-cidrs
+  name: ts-pod-cidrs-kikiserver
   namespace: tailscale
 spec:
   replicas: 1
-  hostnamePrefix: ts-pod-cidrs
+  hostnamePrefix: ts-pod-cidrs-kikiserver
   subnetRouter:
     advertiseRoutes:
       - "192.168.0.0/16"
