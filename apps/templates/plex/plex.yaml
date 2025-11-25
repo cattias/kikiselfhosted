@@ -49,9 +49,10 @@ spec:
           PLEX_UID: "1000"
           PLEX_GID: "1000"
         extraVolumes:
-          - name: nas-media-pvc
-            persistentVolumeClaim:
-              claimName: "plex-media-pvc"
+          - name: nas-media-volume
+            hostPath:
+              path: "/mnt/ugreen-media" 
+              type: DirectoryOrCreate
         extraVolumeMounts:
-          - name: nas-media-pvc
+          - name: nas-media-volume
             mountPath: "/data/videos"

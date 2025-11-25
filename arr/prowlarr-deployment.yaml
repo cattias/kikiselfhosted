@@ -44,7 +44,7 @@ spec:
       volumes:
         - name: nas-media-volume
           hostPath:
-            path: "/mnt/ugreen-medias" 
+            path: "/mnt/ugreen-media" 
             type: DirectoryOrCreate
         - name: prowlarr-config
           persistentVolumeClaim:

@@ -41,9 +41,9 @@ spec:
       volumes:
         - name: nas-metube-volume
           hostPath:
-            path: "/mnt/ugreen-medias/metube/" 
+            path: "/mnt/ugreen-media/metube/" 
             type: DirectoryOrCreate
         - name: nas-music-volume
           hostPath:
-            path: "/mnt/ugreen-medias/Music/" 
+            path: "/mnt/ugreen-media/Music/" 
             type: DirectoryOrCreate

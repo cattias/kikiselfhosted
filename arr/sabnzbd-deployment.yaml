@@ -37,5 +37,5 @@ spec:
       volumes:
         - name: nas-media-volume-sabnzbd
           hostPath:
-            path: "/mnt/ugreen-medias/sabnzbd" 
+            path: "/mnt/ugreen-media/sabnzbd" 
             type: DirectoryOrCreate
