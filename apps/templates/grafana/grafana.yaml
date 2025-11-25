@@ -41,6 +41,10 @@ spec:
                 type: prometheus
                 access: proxy
                 url: https://prometheusnode.attias.io
+              - name: Kikinas
+                type: prometheus
+                access: proxy
+                url: http://nas.kiki.home:9090/
               - name: Kikioffsite
                 type: prometheus
                 access: proxy
