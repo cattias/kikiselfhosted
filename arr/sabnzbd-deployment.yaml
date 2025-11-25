@@ -32,10 +32,10 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /config
-              name: synology-video-volume-sabnzbd
+              name: nas-media-volume-sabnzbd
       restartPolicy: Always
       volumes:
-        - name: synology-video-volume-sabnzbd
+        - name: nas-media-volume-sabnzbd
           hostPath:
-            path: "/mnt/synology-videos/sabnzbd" 
+            path: "/mnt/ugreen-medias/sabnzbd" 
             type: DirectoryOrCreate

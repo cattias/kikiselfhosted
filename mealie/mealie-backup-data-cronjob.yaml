@@ -37,8 +37,8 @@ spec:
                 # 1. Source: Mealie's persistent data (Ceph)
                 - name: mealie-source-volume
                   mountPath: /mnt/source
-                # 2. Destination: Synology Backup PV (NFS)
-                - name: synology-backup-volume
+                # 2. Destination: Backup PV (NFS)
+                - name: backup-volume
                   mountPath: /mnt/destination
           
           restartPolicy: OnFailure
@@ -48,8 +48,8 @@ spec:
             - name: mealie-source-volume
               persistentVolumeClaim:
                 claimName: mealie-data-pvc
-            # 2. Destination Volume (The Synology NFS mount)
-            - name: synology-backup-volume
+            # 2. Destination Volume (The NFS mount)
+            - name: backup-volume
               hostPath:
-                path: "/mnt/synology-backups/mealie/data" 
+                path: "/mnt/ugreen-backup/mealie/data" 
                 type: DirectoryOrCreate

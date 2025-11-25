@@ -92,6 +92,6 @@ spec:
           volumes:
           - name: backup-storage
             hostPath:
-              path: "/mnt/synology-backups/vaultwarden" 
+              path: "/mnt/ugreen-backup/vaultwarden" 
               type: DirectoryOrCreate
 

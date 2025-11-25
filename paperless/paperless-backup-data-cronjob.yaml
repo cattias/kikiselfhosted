@@ -40,11 +40,11 @@ spec:
                 # 2. Source: Paperless's data
                 - name: paperless-data-volume
                   mountPath: /mnt/data
-                # 3. Destination: Synology Backup PV (NFS)
-                - name: synology-backup-media-volume
+                # 3. Destination: Backup PV (NFS)
+                - name: backup-media-volume
                   mountPath: /mnt/destinationmedia
-                # 4. Destination: Synology Backup PV (NFS)
-                - name: synology-backup-data-volume
+                # 4. Destination: Backup PV (NFS)
+                - name: backup-data-volume
                   mountPath: /mnt/destinationdata
           
           restartPolicy: OnFailure
@@ -58,13 +58,13 @@ spec:
             - name: paperless-data-volume
               persistentVolumeClaim:
                 claimName: paperless-data-pvc
-            # 3. Destination Volume (The Synology NFS mount)
-            - name: synology-backup-media-volume
+            # 3. Destination Volume (The NFS mount)
+            - name: backup-media-volume
               hostPath:
-                path: "/mnt/synology-backups/documents/media" 
+                path: "/mnt/ugreen-backup/documents/media" 
                 type: DirectoryOrCreate
-            # 4. Destination Volume (The Synology NFS mount)
-            - name: synology-backup-data-volume
+            # 4. Destination Volume (The NFS mount)
+            - name: backup-data-volume
               hostPath:
-                path: "/mnt/synology-backups/documents/data" 
+                path: "/mnt/ugreen-backup/documents/data" 
                 type: DirectoryOrCreate
