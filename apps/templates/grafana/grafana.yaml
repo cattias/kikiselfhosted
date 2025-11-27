@@ -45,10 +45,10 @@ spec:
                 type: prometheus
                 access: proxy
                 url: http://nas.kiki.home:9090/
-              - name: Kikioffsite
-                type: prometheus
-                access: proxy
-                url: http://offsite.kiki.home:9090
+              # - name: Kikioffsite
+              #   type: prometheus
+              #   access: proxy
+              #   url: http://offsite.kiki.home:9090
               - uid: DS_GARMIN_STATS
                 name: GarminInflux
                 type: influxdb
