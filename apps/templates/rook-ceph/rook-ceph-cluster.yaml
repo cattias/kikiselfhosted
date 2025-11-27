@@ -396,6 +396,9 @@ spec:
               replicated:
                 size: 2
               deviceClass: ssd
+              parameters:
+                pg_num: "512"
+                pgp_num: "512"
             storageClass:
               enabled: true
               name: ceph-block
