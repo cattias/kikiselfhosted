@@ -41,7 +41,7 @@ services:
       - /dev/net/tun:/dev/net/tun
       - ./lib:/var/lib/tailscale
     environment:
-      - TS_AUTHKEY=tskey-auth-kUXwfDipWP11CNTRL-oxwg5sDFg9ZFC2y7uMru8Z9TFKWbG2DWh
+      - TS_AUTHKEY=tskey-auth-xxxx
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_ROUTES=192.168.0.0/16
     network_mode: host
