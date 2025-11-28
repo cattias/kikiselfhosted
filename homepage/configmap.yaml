@@ -116,6 +116,10 @@ data:
             icon: metube.png
             href: https://metube.attias.io/
             description: MeTube app on Kikiserver
+        - NZBGeek:
+            icon: nzbgeek.png
+            href: https://nzbgeek.info/
+            description: NZBGeek Search Engine
 
     - Media Applications:
         - Kikiflix:
