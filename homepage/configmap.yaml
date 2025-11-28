@@ -90,7 +90,7 @@ data:
             icon: asus.png
             href: http://192.168.178.64/
             description: ASUS router admin portal
-        - Fritzbox Router Admin
+        - Fritzbox Router Admin:
             icon: fritzbox.png
             href: http://192.168.178.1/
             description: Fritzbox router admin portal
