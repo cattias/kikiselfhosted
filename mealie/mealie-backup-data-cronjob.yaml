@@ -5,7 +5,7 @@ metadata:
   namespace: mealie
 spec:
   # Schedule: Run every night at 03:00 AM (UTC)
-  schedule: "0 1 * * *"
+  schedule: "15 1 * * *"
   # If the job fails, retry up to 1 time
   failedJobsHistoryLimit: 1
   # Keep 1 successful job history
