@@ -112,10 +112,6 @@ data:
             icon: lidarr.png
             href: https://lidarr.attias.io/
             description: Lidarr for Kikiflix - Music Library manager
-        - Transmission:
-            icon: transmission.png
-            href: https://transmission.attias.io/
-            description: Transmission for Kikiflix - Download manager
         - SABnzbd:
             icon: sabnzbd.png
             href: https://sabnzbd.attias.io/
