@@ -1,6 +1,19 @@
 sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv -r
 
+sudo apt install nfs-common
 sudo apt install ceph
+
+
+/etc/systemd/system.conf
+[Manager]
+DefaultLimitNOFILE=1048576
+
+sudo systemctl edit k0scontroller.service
+[Service]
+LimitNOFILE=1048576
+
+sudo systemctl daemon-reload
+sudo systemctl restart k0scontroller.service
 
 curl -sSLf https://get.k0s.sh | sudo sh
 

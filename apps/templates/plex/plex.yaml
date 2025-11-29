@@ -48,7 +48,7 @@ spec:
           TZ: "Etc/UTC"
           PLEX_UID: "1000"
           PLEX_GID: "1000"
-          PLEX_CLAIM: "claim-xs4xHrsm5-momi-GLpHY"
+          PLEX_CLAIM: "claim-xVbzFJXTJsx_Md-mexyy"
         extraVolumes:
           - name: nas-media-volume
             hostPath:
