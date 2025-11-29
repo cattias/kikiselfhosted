@@ -8,8 +8,8 @@ metadata:
 spec:
   syncPolicy:
     automated:
-      prune: true
-      enabled: true
+      prune: false
+      enabled: false
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
@@ -21,4 +21,3 @@ spec:
     repoURL: https://github.com/cattias/kikiselfhosted
     targetRevision: HEAD
     path: paperless
-

@@ -35,3 +35,13 @@ sudo mv argocd /usr/local/bin
 argocd admin initial-password -n argocd
 
 
+plex
+  extraEnv:
+    // plex.tv/claim
+    PLEX_CLAIM: "claim-xVbzFJXTJsx_Md-mexyy"
+Remote : disable
+Custom server access URLs : plex.attias.io:443,https://plex.attias.io:443
+
+
+Accept subnets in tailscale
+Verify pihole DNS records against IP from services

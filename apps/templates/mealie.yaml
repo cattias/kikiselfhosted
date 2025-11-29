@@ -8,7 +8,7 @@ metadata:
 spec:
   syncPolicy:
     automated:
-      enabled: true
+      enabled: false
       prune: false
     syncOptions:
       - CreateNamespace=true
