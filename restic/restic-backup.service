@@ -1,0 +1,10 @@
+[Unit]
+Description=Restic Offsite Backup Service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=kiki 
+ExecStart=/home/kiki/restic/backup_restic.sh
+
