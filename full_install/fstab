@@ -1,0 +1,4 @@
+#nas.kiki.home:/volume1/backup /mnt/ugreen-backup nfs defaults,noatime,_netdev,nofail,x-systemd.automount 0 0
+#nas.kiki.home:/volume1/media /mnt/ugreen-media nfs defaults,soft,timeo=50,retrans=2,noatime,_netdev,nofail,x-systemd.automount 0 0
+#172.16.10.2:/volume1/backup /mnt/ugreen-backup nfs defaults,noatime,_netdev,nofail,x-systemd.automount 0 0
+#172.16.10.2:/volume1/media /mnt/ugreen-media nfs defaults,soft,timeo=50,retrans=2,noatime,_netdev,nofail,x-systemd.automount 0 0
