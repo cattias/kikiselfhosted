@@ -95,3 +95,7 @@ kubectl get svc --all-namespaces
 
 # At the end convert argocd service to ClusterIP -> restart the deployments to make sure the unsecure option is taken into account
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "ClusterIP"}}'
+
+# Alerts
+Update the alermanager.yaml secret to add the Telegram bot receiver
+Apply the alerts
