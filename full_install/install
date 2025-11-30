@@ -3,6 +3,9 @@ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv -r
 sudo apt install nfs-common
 sudo apt install ceph
 
+netplan
+fstab and mount
+
 curl -sSLf https://get.k0s.sh | sudo sh
 
 sudo k0s install controller --single
