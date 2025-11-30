@@ -37,6 +37,16 @@ LimitNOFILE=1048576
 sudo systemctl daemon-reload
 sudo systemctl restart k0scontroller.service
 
+sudo vi /etc/sysctl.d/99-inotify-limits.conf
+# Increase the maximum number of inotify instances for a user
+fs.inotify.max_user_instances = 1024
+# Increase the maximum number of inotify watches for a user
+fs.inotify.max_user_watches = 524288
+
+sudo sysctl --system
+
+
+
 create namespaces
 create secrets
 
