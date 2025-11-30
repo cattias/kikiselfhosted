@@ -34,6 +34,8 @@ sudo mv argocd /usr/local/bin
 
 argocd admin initial-password -n argocd
 
+create namespaces
+create secrets
 
 plex
   extraEnv:
@@ -45,3 +47,5 @@ Custom server access URLs : plex.attias.io:443,https://plex.attias.io:443
 
 Accept subnets in tailscale
 Verify pihole DNS records against IP from services
+
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "ClusterIP"}}'
