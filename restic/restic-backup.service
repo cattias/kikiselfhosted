@@ -6,5 +6,5 @@ After=network-online.target
 [Service]
 Type=oneshot
 User=kiki 
-ExecStart=/home/kiki/restic/backup_restic.sh
+ExecStart=/home/kiki/restic/restic_backup.sh
 
