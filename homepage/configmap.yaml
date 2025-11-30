@@ -108,10 +108,6 @@ data:
             icon: sonarr.png
             href: https://sonarr.attias.io/
             description: Sonarr for Kikiflix - TV Show Library manager
-        - Lidarr:
-            icon: lidarr.png
-            href: https://lidarr.attias.io/
-            description: Lidarr for Kikiflix - Music Library manager
         - SABnzbd:
             icon: sabnzbd.png
             href: https://sabnzbd.attias.io/
