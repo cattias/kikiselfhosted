@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: restore-data
+  namespace: photos
+spec:
+  template:
+    spec:
+      # Use a PostgreSQL client image
+      containers:
+      - name: rsync-restore
+        image: instrumentisto/rsync-ssh:latest 
+        command: ["/bin/sh", "-c"]
+        args:
+          - "echo 'Starting Immich library restore...'; rsync -rltv /mnt/source/ /mnt/destination/; echo 'Restore complete.'"
+
+        volumeMounts:
+        # 1. Source: Immich's persistent library (Ceph)
+        - name: immich-backup-volume
+          mountPath: /mnt/source
+        # 2. Destination: Backup PV (NFS)
+        - name: immich-library-volume
+          mountPath: /mnt/destination
+    
+      restartPolicy: OnFailure
+
+      volumes:
+      # 1. Source Volume (The data you want to restore)
+      - name: immich-backup-volume
+        hostPath:
+          path: "/mnt/ugreen-backup/photos" 
+          type: DirectoryOrCreate
+      # 2. Destination Volume (The library)
+      - name: immich-library-volume
+        persistentVolumeClaim:
+          claimName: immich-library-pvc
