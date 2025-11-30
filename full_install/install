@@ -1,31 +1,54 @@
+# Extend the root volume to use 100% of the disk
 sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv -r
 
+# Necessary for NFS mounts
 sudo apt install nfs-common
+# Necessary for ceph disks cleanup
 sudo apt install ceph
+cleanup_disks
 
+# Update netplan to get the 10G dedicated IP then update the fstab with the mounts and mount them
 netplan
 fstab and mount
 
+# Install k0s and kubectl
 curl -sSLf https://get.k0s.sh | sudo sh
-
 sudo k0s install controller --single
 sudo k0s start
 sudo k0s kubeconfig admin > .kube/config
-
 sudo snap install kubectl --classic
 
+# Create namespaces (even tho some are automatically created)
 kubectl create namespace argocd
+kubectl create namespace arr
+kubectl create namespace budget
+kubectl create namespace documents
+kubectl create namespace home
+kubectl create namespace kubernetes-dashboard
+kubectl create namespace mealie
+kubectl create namespace metallb
+kubectl create namespace monitoring
+kubectl create namespace photos
+kubectl create namespace plex
+kubectl create namespace postgres-operator
+kubectl create namespace redis-operator
+kubectl create namespace rook-ceph
+kubectl create namespace tailscale
+kubectl create namespace traefik
+kubectl create namespace vaultwarden
+
+# Install argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
+# Expose it as NodePort to start with
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
-
+# Get the cli
 wget argocd release
 chmod a+x argocd
 sudo mv argocd /usr/local/bin
-
+# Setup admin pwd
 argocd admin initial-password -n argocd
 
-
+# Update the fd limits
 /etc/systemd/system.conf
 [Manager]
 DefaultLimitNOFILE=1048576
@@ -45,22 +68,30 @@ fs.inotify.max_user_watches = 524288
 
 sudo sysctl --system
 
+# Create Secret
+create secrets from list
 
+# ArgoCD ignore diff patch ?
 
-create namespaces
-create secrets
+# Let's go and sync everything
+argocd sync yolo
 
-ArgoCD ignore diff patch ?
-
+# For Plex make sure to add a claim at the first start
 plex
   extraEnv:
     // plex.tv/claim
     PLEX_CLAIM: "claim-xVbzFJXTJsx_Md-mexyy"
-Remote : disable
+Remote : disable then enable again
 Custom server access URLs : plex.attias.io:443,https://plex.attias.io:443
 
+# Check restore scripts
+# For Immich DB : restore when the DB is completely empty, even removing the vchord extensions at first to avoid conflicts
+kubectl apply -f restore.yaml
 
+# Go to Tailscale management
 Accept subnets in tailscale
-Verify pihole DNS records against IP from services
+# Verify pihole DNS records against IP from services
+kubectl get svc --all-namespaces
 
+# At the end convert argocd service to ClusterIP -> restart the deployments to make sure the unsecure option is taken into account
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "ClusterIP"}}'
