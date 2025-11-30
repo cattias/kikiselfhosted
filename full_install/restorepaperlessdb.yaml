@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: restore-pg-dump
+  namespace: documents
+spec:
+  template:
+    spec:
+      # Use a PostgreSQL client image
+      containers:
+      - name: pg-restore
+        image: postgres:latest
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            pg_restore -h ${PGHOST} -U ${PGUSER} -d ${POSTGRES_DB} --clean --if-exists < /backup/last.dump
+        env:
+        - name: PGHOST
+          valueFrom:
+            secretKeyRef:
+              name: paperless-db-app
+              key: host
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: paperless-db-app
+              key: user
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: paperless-db-app
+              key: password
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: paperless-db-app
+              key: dbname
+        # Mount the volume containing your backup file
+        volumeMounts:
+        - name: backup-volume
+          mountPath: /backup
+
+      restartPolicy: OnFailure
+      volumes:
+      - name: backup-volume
+        hostPath:
+          path: "/mnt/ugreen-backup/paperless" 
+          type: DirectoryOrCreate
