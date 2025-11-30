@@ -17,7 +17,7 @@ spec:
         severity: critical
       annotations:
         summary: Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} is crashlooping ({{ $value }} restarts).
-        description: Check logs for application errors (e.g., config error, volume failure).
+        description: Check logs for application errors.
 
     - alert: KubePersistentVolumeFillingUp
       expr: |
@@ -27,7 +27,7 @@ spec:
         severity: warning
       annotations:
         summary: Persistent Volume {{ $labels.persistentvolumeclaim }} is filling up ({{ $value }}% remaining).
-        description: PVC is running out of space. Check your NFS/Ceph capacity.
+        description: PVC is running out of space. Check your disk capacity.
 
     - alert: CephClusterHealthDegraded
       # The 'ceph_health_status' metric reports 0 for HEALTH_OK.
