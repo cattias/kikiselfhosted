@@ -1,0 +1,21 @@
+# Steps to setup restic
+add ssh key
+# Create the service
+sudo vi /etc/systemd/system/restic-backup.service
+# Create the timer
+sudo vi /etc/systemd/system/restic-backup.timer
+# Reload daemon
+sudo systemctl daemon-reload
+# Enable timer
+sudo systemctl enable restic-backup.timer
+# Start Timer
+sudo systemctl start restic-backup.timer
+# Check that the timer is there
+sudo systemctl list-timers | grep restic
+
+# Test the service once
+sudo systemctl start restic-backup.service
+# Logs
+sudo journalctl -xeu restic-backup.service
+# List snapshots
+restic snapshots --repo "sftp:restic_user@offsite.kiki.home:restic_repository" --password-file /home/kiki/restic/restic_password.txt

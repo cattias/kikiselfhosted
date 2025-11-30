@@ -2,3 +2,11 @@
 #nas.kiki.home:/volume1/media /mnt/ugreen-media nfs defaults,soft,timeo=50,retrans=2,noatime,_netdev,nofail,x-systemd.automount 0 0
 #172.16.10.2:/volume1/backup /mnt/ugreen-backup nfs defaults,noatime,_netdev,nofail,x-systemd.automount 0 0
 #172.16.10.2:/volume1/media /mnt/ugreen-media nfs defaults,soft,timeo=50,retrans=2,noatime,_netdev,nofail,x-systemd.automount 0 0
+
+#can be tried
+mountOptions:
+  - hard
+  - intr
+  - vers=4.2
+  - rsize=1048576
+  - wsize=1048576
