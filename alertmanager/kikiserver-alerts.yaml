@@ -26,14 +26,3 @@ spec:
       annotations:
         summary: Persistent Volume {{ $labels.persistentvolumeclaim }} is filling up ({{ $value }}% remaining).
         description: PVC is running out of space. Check your NFS/Ceph capacity.
-
-    - alert: CephManagerCrash
-      # This checks for the mgr module crash warning you saw earlier
-      expr: |
-        sum(ceph_cluster_health_status_code{name="RECENT_MGR_MODULE_CRASH"}) > 0
-      for: 5m
-      labels:
-        severity: critical
-      annotations:
-        summary: Ceph Manager Module Crash Detected
-        description: The Ceph MGR module (management service) is crashing repeatedly. Immediate investigation required.
