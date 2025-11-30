@@ -3,6 +3,8 @@ kind: PrometheusRule
 metadata:
   name: kikiserver-critical-alerts
   namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
 spec:
   groups:
   - name: kikiserver.alerts
