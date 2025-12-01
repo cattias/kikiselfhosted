@@ -8,15 +8,17 @@ metadata:
     alertmanagerConfig: alertmanager-telegram
 spec:
   route:
-    group_by: ['namespace']
-    group_wait: 30s
-    group_interval: 5m
-    repeat_interval: 1h
+    groupBy: ['namespace']
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 1h
     receiver: 'telegram'
     routes:
     - receiver: 'null'
       matchers:
-        - alertname = "Watchdog"
+        - name: alertname
+          matchType: "=~"
+          value: "Watchdog"
   receivers:
     - name: 'null'
     - name: 'telegram'
