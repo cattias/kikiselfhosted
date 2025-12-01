@@ -62,7 +62,7 @@ spec:
 
               {{ define "telegram.message" }}
               Hello Kiki
-              {{ .Alerts }}
+              {{ . }}
               {{ if .Alerts }}
               ALAAAAARM
               {{ if gt (len .Alerts.Firing) 0 }}
