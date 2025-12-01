@@ -76,17 +76,8 @@ spec:
             receivers:
             - name: 'telegram-alert'
               telegram_configs:
-              - name: api_url
-                value: 'https://api.telegram.org'
-              - name: bot_token
-                valueFrom:
-                  secretKeyRef:
-                    name: telegram-bot-secret
-                    key: botid
-              - name: chat_id
-                valueFrom:
-                  secretKeyRef:
-                    name: telegram-bot-secret
-                    key: chatid
+              - api_url: 'https://api.telegram.org'
+                bot_token: '8320495096:AAEbPClP0RdYBlEU7AwyzeV1hqjZa72ooe8'
+                chat_id: '76776913'
             templates:
             - '/etc/alertmanager/config/*.tmpl'
