@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`prom.attias.io`)
+    - match: Host(`prometheus.attias.io`)
       kind: Rule
       services:
         - name: kube-prometheus-stack-prometheus
