@@ -86,12 +86,11 @@ spec:
                 parse_mode: 'HTML'
                 disable_notifications: false
                 send_resolved: true
-                message: '{{ template "telegram.kiki" .}}'
             templates:
             - '/etc/alertmanager/config/*.tmpl'
           templateFiles:
             telegram.tmpl: |-
-              {{ define "telegram.kiki" }}
+              {{ define "telegram.default.message" }}
               {{ if eq .Status "firing" }}
                   {{ if eq .CommonLabels.severity "critical" }}
                       🔴 Alert: {{ .CommonLabels.alertname }}
