@@ -1,0 +1,30 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: alert-config-telegram
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+    alertmanagerConfig: alertmanager-telegram
+spec:
+  route:
+    group_by: ['namespace']
+    group_wait: 30s
+    group_interval: 5m
+    repeat_interval: 1h
+    receiver: 'telegram'
+    routes:
+    - receiver: 'null'
+      matchers:
+        - alertname = "Watchdog"
+  receivers:
+    - name: 'null'
+    - name: 'telegram'
+      telegramConfigs:
+        - botToken:
+            name: telegram-bot-secret
+            key: botid
+          chatID: 76776913
+          parseMode: 'MarkdownV2'
+          disableNotifications: false
+          sendResolved: true
