@@ -37,6 +37,9 @@ spec:
                     requests:
                       storage: 50Gi
         alertmanager:
+          alertmanagerSpec:
+            secrets:
+              - telegram-bot-secret
           config:
             global:
               resolve_timeout: 5m
@@ -78,7 +81,7 @@ spec:
             - name: 'telegram-alert'
               telegram_configs:
               - api_url: 'https://api.telegram.org'
-                bot_token: '8320495096:AAEbPClP0RdYBlEU7AwyzeV1hqjZa72ooe8'
+                bot_token_file: '/etc/alertmanager/secrets/telegram-bot-secret/botid'
                 chat_id: 76776913
             templates:
             - '/etc/alertmanager/config/*.tmpl'
