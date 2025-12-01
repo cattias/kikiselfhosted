@@ -93,7 +93,7 @@ spec:
             telegram.tmpl: |-
               {{ define "telegram.kiki" }}
               <b>KikiServer</b>
-              {{ .kube-prometheus-stack }}
+              {{ .kube\-prometheus\-stack }}
               {{ if eq .Status "firing" }}
                   {{ if eq .CommonLabels.severity "critical" }}
                       🔴 Alert: {{ .CommonLabels.alertname }}
