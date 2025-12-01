@@ -61,7 +61,7 @@ spec:
               {{ end }}
 
               {{ define "telegram.message" }}
-              {{ if .Alerts }}
+              {{ range .Alerts }}
               {{ if gt (len .Alerts.Firing) 0 }}
               🔥 Alerts Firing 🔥
               {{ template "alert_list" .Alerts.Firing }}
