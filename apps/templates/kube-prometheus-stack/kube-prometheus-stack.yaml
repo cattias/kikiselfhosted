@@ -74,6 +74,7 @@ spec:
                 matchers:
                   - alertname = "Watchdog"
             receivers:
+            - name: 'null'
             - name: 'telegram-alert'
               telegram_configs:
               - api_url: 'https://api.telegram.org'
