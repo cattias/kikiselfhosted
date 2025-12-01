@@ -42,40 +42,43 @@ spec:
               - telegram-bot-secret
           templateFiles:
             telegram.tmpl: |-
-              {{ define "alert_list" }}{{ range . }}
-              ---
-              🪪 <b>Kikiserver - {{ .Labels.alertname }}</b>
-              {{- if eq .Labels.severity "critical" }}
-              🚨 CRITICAL 🚨 {{ end }}
-              {{- if eq .Labels.severity "warning" }}
-              ⚠️ WARNING ⚠️{{ end }}
-              {{- if .Annotations.summary }}
-              📝 {{ .Annotations.summary }}{{ end }}
-              {{- if .Annotations.description }}
-              📖 {{ .Annotations.description }}{{ end }}
+              {{ define "telegram.default.message" }}
+              -- KikiServer --
+              {{- if eq .Status "firing" -}}
+                  {{- if eq .CommonLabels.severity "critical" -}}
+                      🔴 Alert: {{ .CommonLabels.alertname }}
+                  {{- else if eq .CommonLabels.severity "warning" -}}
+                      🟠 Alert: {{ .CommonLabels.alertname }}
+                  {{- else -}}
+                      ⚪️ Alert: {{ .CommonLabels.alertname }}
+                  {{- end }}
+              Status: 🔥 FIRING
+              Severity: {{ if eq .CommonLabels.severity "critical" }}🔴 {{ .CommonLabels.severity | title }}{{ else if eq .CommonLabels.severity "warning" }}🟠 {{ .CommonLabels.severity | title }}{{ else }}⚪️ {{ .CommonLabels.severity | title }}{{ end }}
+              {{- else if eq .Status "resolved" -}}
+                  ⚪️ Alert: {{ .CommonLabels.alertname }}
+              Status: ✅ RESOLVED
+              Severity: {{ if eq .CommonLabels.severity "critical" }}🟢 {{ .CommonLabels.severity | title }}{{ else if eq .CommonLabels.severity "warning" }}🟢 {{ .CommonLabels.severity | title }}{{ else }}⚪️ {{ .CommonLabels.severity | title }}{{ end }}
+              {{- end }}
 
-              🏷 Labels:
-              {{ range .Labels.SortedPairs }}  <i>{{ .Name }}</i>: <code>{{ .Value }}</code>
-              {{ end }}{{ end }}
-              🛠 <a href="https://obs.attias.io">Grafana</a> 💊 <a href="https://alertmanager.attias.io">Alertmanager</a> 🛠
-              {{ end }}
+              {{- range .Alerts -}}
 
-              {{ define "telegram.message" }}
-              Hello Kiki
-              {{ . }}
-              {{ if .Alerts }}
-              ALAAAAARM
-              {{ if gt (len .Alerts.Firing) 0 }}
-              🔥 Alerts Firing 🔥
-              {{ template "alert_list" .Alerts.Firing }}
-              {{ end }}
-              {{ if gt (len .Alerts.Resolved) 0 }}
-              ✅ Alerts Resolved ✅
-              {{ template "alert_list" .Alerts.Resolved }}
-              {{ end }}
-              {{else}}
-              Tutti va benne
-              {{ end }}
+              {{- if .Labels.job }}
+              Job: `{{ .Labels.job }}`
+              {{- end }}
+
+              {{- if .Labels.namespace }}
+              Namespace: `{{ .Labels.namespace }}`
+              {{- end }}
+
+              {{- if .Labels.instance }}
+              Instance: `{{ .Labels.instance }}`
+              {{- end }}
+
+              {{- if .Annotations.runbook_url }}
+              [RunbookURL]({{ .Annotations.runbook_url }})
+
+              {{- end }}
+              {{- end }}
               {{ end }}
           config:
             global:
@@ -120,7 +123,8 @@ spec:
               - api_url: 'https://api.telegram.org'
                 bot_token_file: '/etc/alertmanager/secrets/telegram-bot-secret/botid'
                 chat_id: 76776913
-                parse_mode: 'HTML'
-                message: '{{ template "telegram.message". }}' 
+                parse_mode: 'MarkdownV2'
+                disableNotifications: false
+                sendResolved: true
             templates:
             - '/etc/alertmanager/config/*.tmpl'
