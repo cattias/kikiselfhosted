@@ -38,13 +38,13 @@ spec:
                       storage: 50Gi
         alertmanager:
           templateFiles:
-            telegram.tmpl: |-
-              {{ define "telegram.message" }}
+            kikiserver.tmpl: |-
+              {{ define "kikiserver.message" }}
               <b>KikiServer</b>: {{ .Status }}
               {{ end }}
           alertmanagerSpec:
             alertmanagerConfigSelector:
               matchLabels:
-                alertmanagerConfig: alertmanager-telegram
+                alertmanagerConfig: alertmanager-slack
             alertmanagerConfigMatcherStrategy:
               type: None
