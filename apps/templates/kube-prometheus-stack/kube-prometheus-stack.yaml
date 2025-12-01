@@ -88,32 +88,32 @@ spec:
             templates:
             - '/etc/alertmanager/config/*.tmpl'
           templateFiles:
-            telegam.tmpl: |-
-              {{ "{{" }} define "alert_list" {{ "}}" }}{{ "{{" {{ "}}" }} range . {{ "}}" }}
+            telegram.tmpl: |-
+              {{ define "alert_list" }}{{ range . }}
               ---
-              🪪 <b>{{ "{{" {{ "}}" }} .Labels.alertname {{ "}}" }} - Kikiserver</b>
-              {{ "{{" {{ "}}" }}- if eq .Labels.severity "critical" {{ "}}" }}
-              🚨 CRITICAL 🚨 {{ "{{" {{ "}}" }} end {{ "}}" }}
-              {{ "{{" {{ "}}" }}- if eq .Labels.severity "warning" {{ "}}" }}
-              ⚠️ WARNING ⚠️{{ "{{" {{ "}}" }} end {{ "}}" }}
-              {{ "{{" {{ "}}" }}- if .Annotations.summary {{ "}}" }}
-              📝 {{ "{{" {{ "}}" }} .Annotations.summary {{ "}}" }}{{ "{{" {{ "}}" }} end {{ "}}" }}
-              {{ "{{" {{ "}}" }}- if .Annotations.description {{ "}}" }}
-              📖 {{ "{{" {{ "}}" }} .Annotations.description {{ "}}" }}{{ "{{" {{ "}}" }} end {{ "}}" }}
+              🪪 <b>Kikiserver - {{ .Labels.alertname }}</b>
+              {{- if eq .Labels.severity "critical" }}
+              🚨 CRITICAL 🚨 {{ end }}
+              {{- if eq .Labels.severity "warning" }}
+              ⚠️ WARNING ⚠️{{ end }}
+              {{- if .Annotations.summary }}
+              📝 {{ .Annotations.summary }}{{ end }}
+              {{- if .Annotations.description }}
+              📖 {{ .Annotations.description }}{{ end }}
 
               🏷 Labels:
-              {{ "{{" {{ "}}" }} range .Labels.SortedPairs {{ "}}" }}  <i>{{ "{{" {{ "}}" }} .Name {{ "}}" }}</i>: <code>{{ "{{" {{ "}}" }} .Value {{ "}}" }}</code>
-              {{ "{{" {{ "}}" }} end {{ "}}" }}{{ "{{" {{ "}}" }} end {{ "}}" }}
+              {{ range .Labels.SortedPairs }}  <i>{{ .Name }}</i>: <code>{{ .Value }}</code>
+              {{ end }}{{ end }}
               🛠 <a href="https://obs.attias.io">Grafana</a> 💊 <a href="https://alertmanager.attias.io">Alertmanager</a> 🛠
-              {{ "{{" {{ "}}" }} end {{ "}}" }}
+              {{ end }}
 
-              {{ "{{" {{ "}}" }} define "telegram.message" {{ "}}" }}
-              {{ "{{" {{ "}}" }} if gt (len .Alerts.Firing) 0 {{ "}}" }}
+              {{ define "telegram.message" }}
+              {{ if gt (len .Alerts.Firing) 0 }}
               🔥 Alerts Firing 🔥
-              {{ "{{" {{ "}}" }} template "alert_list" .Alerts.Firing {{ "}}" }}
-              {{ "{{" {{ "}}" }} end {{ "}}" }}
-              {{ "{{" {{ "}}" }} if gt (len .Alerts.Resolved) 0 {{ "}}" }}
+              {{ template "alert_list" .Alerts.Firing }}
+              {{ end }}
+              {{ if gt (len .Alerts.Resolved) 0 }}
               ✅ Alerts Resolved ✅
-              {{ "{{" {{ "}}" }} template "alert_list" .Alerts.Resolved {{ "}}" }}
-              {{ "{{" {{ "}}" }} end {{ "}}" }}
-              {{ "{{" {{ "}}" }} end {{ "}}" }}
+              {{ template "alert_list" .Alerts.Resolved }}
+              {{ end }}
+              {{ end }}
