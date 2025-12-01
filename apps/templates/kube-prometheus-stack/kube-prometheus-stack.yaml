@@ -61,7 +61,9 @@ spec:
               {{ end }}
 
               {{ define "telegram.message" }}
+              Hello Kiki
               {{ if .Alerts }}
+              ALAAAAARM
               {{ if gt (len .Alerts.Firing) 0 }}
               🔥 Alerts Firing 🔥
               {{ template "alert_list" .Alerts.Firing }}
@@ -70,6 +72,8 @@ spec:
               ✅ Alerts Resolved ✅
               {{ template "alert_list" .Alerts.Resolved }}
               {{ end }}
+              {{else}}
+              Tutti va benne
               {{ end }}
               {{ end }}
           config:
