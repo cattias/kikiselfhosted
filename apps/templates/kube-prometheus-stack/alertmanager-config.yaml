@@ -30,3 +30,4 @@ spec:
           parseMode: 'MarkdownV2'
           disableNotifications: false
           sendResolved: true
+          message: '{{ template "telegram.message" . }}''

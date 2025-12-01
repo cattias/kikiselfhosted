@@ -39,7 +39,7 @@ spec:
         alertmanager:
           templateFiles:
             telegram2.tmpl: |-
-              {{ define "telegram.default.message" }}
+              {{ define "telegram.message" }}
               *KikiServer*: {{ .Status }}
               {{ end }}
           alertmanagerSpec:
