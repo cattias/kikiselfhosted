@@ -43,7 +43,6 @@ spec:
           templateFiles:
             telegram.tmpl: |-
               {{ define "telegram.default.message" }}
-              -- KikiServer --
               {{- if eq .Status "firing" -}}
                   {{- if eq .CommonLabels.severity "critical" -}}
                       🔴 Alert: {{ .CommonLabels.alertname }}
