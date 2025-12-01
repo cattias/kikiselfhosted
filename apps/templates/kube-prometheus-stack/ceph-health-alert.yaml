@@ -13,7 +13,7 @@ spec:
       # The 'ceph_health_status' metric reports 0 for HEALTH_OK.
       # This expression fires if the status is anything but 0.
       expr: |
-        ceph_health_status != 2
+        ceph_health_status != 0
       
       # The alert will fire immediately (for: 0m) as soon as the status changes.
       for: 0m
