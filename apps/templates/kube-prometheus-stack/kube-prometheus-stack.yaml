@@ -37,11 +37,6 @@ spec:
                     requests:
                       storage: 50Gi
         alertmanager:
-          templateFiles:
-            kikiserver.tmpl: |-
-              {{ define "kikiserver.message" }}
-              <b>KikiServer</b>: {{ .Status }}
-              {{ end }}
           alertmanagerSpec:
             alertmanagerConfigSelector:
               matchLabels:
