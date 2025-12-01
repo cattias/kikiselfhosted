@@ -28,9 +28,8 @@ spec:
             key: url
           channel: '#kikiserver'
           sendResolved: true
-          title: |-
-            [KikiServer]{{ template slack.default.title . }}
           text: >-
+            *[KikiServer]*
             {{ range .Alerts -}}
             *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
 
