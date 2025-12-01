@@ -40,6 +40,6 @@ spec:
           alertmanagerSpec:
             alertmanagerConfigSelector:
               matchLabels:
-                alertmanagerConfig: alertmanager-slack
+                alertmanagerConfig: alertmanager-telegram
             alertmanagerConfigMatcherStrategy:
               type: None

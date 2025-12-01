@@ -27,6 +27,3 @@ spec:
             name: telegram-bot-secret
             key: botid
           chatID: 76776913
-          parseMode: 'HTML'
-          disableNotifications: false
-          sendResolved: true
