@@ -75,7 +75,7 @@ spec:
                   - alertname = "Watchdog"
             receivers:
             - name: 'telegram-alert'
-              telegram_config:
+              telegram_configs:
               - api_url: 'https://api.telegram.org'
                 bot_token: '8320495096:AAEbPClP0RdYBlEU7AwyzeV1hqjZa72ooe8'
                 chat_id: 76776913
