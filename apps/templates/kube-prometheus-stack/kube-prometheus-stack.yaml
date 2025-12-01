@@ -92,7 +92,7 @@ spec:
           templateFiles:
             telegram.tmpl: |-
               {{ define "telegram.message" }}
-              <b>KikiServer ALERT</b> ({{ .Status | toUpper }})
+              <b>KikiServer ALERT</b> ({{ .Status }})
               ---
               {{- if .Alerts -}}
                 {{- range .Alerts -}}
