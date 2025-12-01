@@ -23,5 +23,5 @@ spec:
         team: storage
         
       annotations:
-        summary: "🛑 CEPH HEALTH STATUS CHANGE: Cluster is no longer HEALTH_OK"
+        summary: "CEPH HEALTH STATUS CHANGE: Cluster is no longer HEALTH_OK"
         description: "The top-level Ceph health metric changed from 0 (OK) to {{ "{{" }} $value {{ "}}" }}. Check the Ceph dashboard immediately for specific warnings (e.g., OSDs down, PGs degraded). The change indicates a cluster-wide issue."
