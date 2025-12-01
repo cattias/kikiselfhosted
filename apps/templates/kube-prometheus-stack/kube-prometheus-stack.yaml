@@ -86,12 +86,12 @@ spec:
                 parse_mode: 'HTML'
                 disable_notifications: false
                 send_resolved: true
-                message: '{{ template "telegram.kiki" .}}'
+                message: '{{ template "telegram.message" .}}'
             templates:
             - '/etc/alertmanager/config/*.tmpl'
           templateFiles:
             telegram.tmpl: |-
-              {{ define "telegram.kiki" }}
+              {{ define "telegram.message" }}
               <b>KikiServer</b>
               {{ .Alerts }}
               {{ .Status }}
