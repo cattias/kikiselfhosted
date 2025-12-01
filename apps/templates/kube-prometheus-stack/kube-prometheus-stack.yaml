@@ -83,7 +83,7 @@ spec:
               - api_url: 'https://api.telegram.org'
                 bot_token_file: '/etc/alertmanager/secrets/telegram-bot-secret/botid'
                 chat_id: 76776913
-                parse_mode: 'MarkdownV2'
+                parse_mode: 'HTML'
                 disable_notifications: false
                 send_resolved: true
             templates:
@@ -91,7 +91,7 @@ spec:
           templateFiles:
             telegram.tmpl: |-
               {{ define "telegram.default.message" }}
-              *KikiServer*
+              <b>KikiServer</b>
               {{ if eq .Status "firing" }}
                   {{ if eq .CommonLabels.severity "critical" }}
                       🔴 Alert: {{ .CommonLabels.alertname }}
