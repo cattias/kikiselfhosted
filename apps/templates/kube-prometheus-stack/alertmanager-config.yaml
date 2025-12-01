@@ -27,7 +27,7 @@ spec:
             name: telegram-bot-secret
             key: botid
           chatID: 76776913
-          parseMode: 'MarkdownV2'
+          parseMode: 'HTML'
           disableNotifications: false
           sendResolved: true
           message: '{{ template "telegram.message" . }}'
