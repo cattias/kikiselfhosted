@@ -40,9 +40,11 @@ spec:
           alertmanagerSpec:
             secrets:
               - telegram-bot-secret
+              - slack-secret
           config:
             global:
               resolve_timeout: 5m
+              slack_api_url: '/etc/alertmanager/secrets/slack-secret/url'
             inhibit_rules:
               - source_matchers:
                   - 'severity = critical'
@@ -71,13 +73,17 @@ spec:
               group_wait: 30s
               group_interval: 5m
               repeat_interval: 1h
-              receiver: 'telegram-alert'
+              receiver: 'slack-notifications'
               routes:
               - receiver: 'null'
                 matchers:
                   - alertname = "Watchdog"
             receivers:
             - name: 'null'
+            - name: 'slack-notifications'
+              slack_configs:
+              - channel: '#kikiserver'
+                send_resolved: true
             - name: 'telegram-alert'
               telegram_configs:
               - api_url: 'https://api.telegram.org'
