@@ -30,4 +30,4 @@ spec:
           parseMode: 'HTML'
           disableNotifications: false
           sendResolved: true
-          message: '{{ template "telegram.message" . }}'
+          # message: '{{ template "telegram.message" . }}'
