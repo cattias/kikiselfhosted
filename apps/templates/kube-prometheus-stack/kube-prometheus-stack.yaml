@@ -93,6 +93,8 @@ spec:
             telegram.tmpl: |-
               {{ define "telegram.kiki" }}
               <b>KikiServer</b>
+              {{ . }}
+              Ceci est un Test
               {{ if eq .Status "firing" }}
                   {{ if eq .CommonLabels.severity "critical" }}
                       🔴 Alert: {{ .CommonLabels.alertname }}
