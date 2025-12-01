@@ -40,23 +40,7 @@ spec:
           templateFiles:
             telegram.tmpl: |-
               {{ define "telegram.default.message" }}
-              *KikiServer ALERTS*
-              {{- if eq .Status "firing" -}}
-                  {{- if eq .CommonLabels.severity "critical" -}}
-                      🔴 Alert: {{ .CommonLabels.alertname }}
-                  {{- else if eq .CommonLabels.severity "warning" -}}
-                      🟠 Alert: {{ .CommonLabels.alertname }}
-                  {{- else -}}
-                      ⚪️ Alert: {{ .CommonLabels.alertname }}
-                  {{- end }}
-              Status: 🔥 FIRING
-              Severity: {{ if eq .CommonLabels.severity "critical" }}🔴 {{ .CommonLabels.severity | title }}{{ else if eq .CommonLabels.severity "warning" }}🟠 {{ .CommonLabels.severity | title }}{{ else }}⚪️ {{ .CommonLabels.severity | title }}{{ end }}
-              {{- else if eq .Status "resolved" -}}
-                  ⚪️ Alert: {{ .CommonLabels.alertname }}
-              Status: ✅ RESOLVED
-              Severity: {{ if eq .CommonLabels.severity "critical" }}🟢 {{ .CommonLabels.severity | title }}{{ else if eq .CommonLabels.severity "warning" }}🟢 {{ .CommonLabels.severity | title }}{{ else }}⚪️ {{ .CommonLabels.severity | title }}{{ end }}
-              {{- end }}
-
+              *KikiServer*: {{ .Status }}
               {{ end }}
           alertmanagerSpec:
             alertmanagerConfigSelector:
