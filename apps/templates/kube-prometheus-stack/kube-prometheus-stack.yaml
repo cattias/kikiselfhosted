@@ -93,12 +93,12 @@ spec:
             telegram.tmpl: |-
               {{ define "telegram.message" }}
               <b>KikiServer</b>
-              {{ .Alerts }}
-              {{ .Status }}
-              {{ .ExternalURL }}
-              {{ .GroupLabels }}
-              {{ .CommonLabels }}
-              {{ .CommonAnnotations }}
+              Alerts: {{ .Alerts }}
+              Status: {{ .Status }}
+              ExternalURL: {{ .ExternalURL }}
+              GroupLabels: {{ .GroupLabels }}
+              CommonLabels: {{ .CommonLabels }}
+              CommonAnnotations: {{ .CommonAnnotations }}
               {{ if eq .Status "firing" }}
                   {{ if eq .CommonLabels.severity "critical" }}
                       🔴 Alert: {{ .CommonLabels.alertname }}
