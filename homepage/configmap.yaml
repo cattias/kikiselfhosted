@@ -38,6 +38,10 @@ data:
             icon: grafana.png
             href: https://obs.attias.io/
             description: The Grafana dashboard to monitor all services
+        - Prometheus Dashboard - Server:
+            icon: prometheus.png
+            href: https://prom.attias.io/
+            description: The Query and Alerts dashboard to target prometheus
         - Ceph Dashboard - Server:
             icon: ceph.png
             href: https://ceph.attias.io/
