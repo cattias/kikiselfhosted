@@ -99,7 +99,7 @@ spec:
           templateFiles:
             telegram.tmpl: |-
               {{ define "telegram.kiki.message" }}
-              1️⃣ __KikiServer__:\n
+              {{printf "1️⃣ __KikiServer__:\n"}}
               {{- if eq .Status "firing" -}}
                   {{- if eq .CommonLabels.severity "critical" -}}
                       🔴 Alert: {{ .CommonLabels.alertname }}
