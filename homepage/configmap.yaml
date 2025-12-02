@@ -18,14 +18,14 @@ data:
         opacity: 50 # 0-100
     cardBlur: xs # xs, md, etc... see https://tailwindcss.com/docs/backdrop-blur
     layout:
-    Media:
-        style: row
-        columns: 4
+        Media:
+            style: row
+            columns: 2
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: ""
   services.yaml: |
-    - Kubernetes Services Dasboards - Server:
+    - KikiServer:
         - k0s Dashboard - Server:
             icon: kubernetes-dashboard.png
             href: https://k0s.attias.io/
@@ -55,7 +55,7 @@ data:
             href: https://github.com/cattias/kikiselfhosted/issues
             description: The Renovate Dashboard for the Server on GitHub
 
-    - Kubernetes Services Dasboards - Node:
+    - KikiNode:
         - k0s Dashboard - Node:
             icon: kubernetes-dashboard.png
             href: https://k0snode.attias.io/
@@ -77,7 +77,7 @@ data:
             href: https://github.com/cattias/kikinodeapp/issues
             description: The Renovate Dashboard for the Node on GitHub
 
-    - Admin applications:
+    - Admin:
         - Pihole:
             icon: pi-hole.png
             href: http://pihole.kiki.home/admin/
