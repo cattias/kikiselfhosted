@@ -38,6 +38,7 @@ spec:
                       storage: 50Gi
         alertmanager:
           alertmanagerSpec:
+            externalUrl: https://alertmanager.attias.io
             secrets:
               - telegram-bot-secret
           config:
