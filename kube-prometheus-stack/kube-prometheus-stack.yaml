@@ -101,13 +101,7 @@ spec:
               {{ define "telegram.kiki.message" }}
               {{printf "1️⃣ __KikiServer__:\n"}}
               {{- if eq .Status "firing" -}}
-                  {{- if eq .CommonLabels.severity "critical" -}}
-                      🔴 Alert: {{ .CommonLabels.alertname }}
-                  {{- else if eq .CommonLabels.severity "warning" -}}
-                      🟠 Alert: {{ .CommonLabels.alertname }}
-                  {{- else -}}
-                      ⚪️ Alert: {{ .CommonLabels.alertname }}
-                  {{- end }}
+              Alert: {{ .CommonLabels.alertname }}
               Status: 🔥 FIRING
               Severity: {{ if eq .CommonLabels.severity "critical" }}🔴 {{ .CommonLabels.severity | title }}{{ else if eq .CommonLabels.severity "warning" }}🟠 {{ .CommonLabels.severity | title }}{{ else }}⚪️ {{ .CommonLabels.severity | title }}{{ end }}
               {{- else if eq .Status "resolved" -}}
