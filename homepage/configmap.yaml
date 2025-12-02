@@ -42,6 +42,10 @@ data:
             icon: prometheus.png
             href: https://prometheus.attias.io/
             description: The Query and Alerts dashboard to target prometheus
+        - Alertmanager Dashboard - Server:
+            icon: alertmanager.png
+            href: https://alertmanager.attias.io/
+            description: The Alerts dashboard
         - Ceph Dashboard - Server:
             icon: ceph.png
             href: https://ceph.attias.io/
@@ -68,6 +72,10 @@ data:
             icon: prometheus.png
             href: https://prometheusnode.attias.io/
             description: The Query and Alerts dashboard to target prometheus
+        - Alertmanager Dashboard - Node:
+            icon: alertmanager.png
+            href: https://alertmanagernode.attias.io/
+            description: The Alerts dashboard
         - Traefik Dashboard - Node:
             icon: traefik.png
             href: https://traefiknode.attias.io/
