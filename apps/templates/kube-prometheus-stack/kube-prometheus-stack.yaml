@@ -76,6 +76,14 @@ spec:
               - receiver: 'null'
                 matchers:
                   - alertname = "Watchdog"
+              - receiver: 'null'
+                matchers:
+                  - alertname = "KubeControllerManagerDown"
+                  - job = "kube-controller-manager"
+              - receiver: 'null'
+                matchers:
+                  - alertname = "KubeSchedulerDown"
+                  - job = "kube-scheduler"
             receivers:
             - name: 'null'
             - name: 'telegram-alert'
