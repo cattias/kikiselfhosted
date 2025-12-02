@@ -120,11 +120,13 @@
     ],
     "ignorePaths": [
       "**/immich/**",
+      "**/nas/**",
       "**/cert-manager/**",
       "**/databases\\.yaml",
       "**/paperless\\.yaml",
       "**/mealie\\.yaml",
       "**/garmin-grafana\\.yaml",
+      "**/prometheus-app\\.yaml",
       "**/arr\\.yaml",
       "**/rook-ceph-cluster-addition\\.yaml",
       "**/homepage\\.yaml",
