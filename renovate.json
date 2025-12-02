@@ -120,7 +120,7 @@
     ],
     "ignorePaths": [
       "**/immich/**",
-      "**/nas/**",
+      "/nas/docker-compose\\.yml",
       "**/cert-manager/**",
       "**/databases\\.yaml",
       "**/paperless\\.yaml",
