@@ -20,9 +20,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     if: |
-      # 1. Ensure the PR is from the Renovate bot user
       github.actor == 'renovate[bot]' && 
-      # 2. Match the specific component name in the PR title
       startsWith(github.event.pull_request.title, 'Update')
       
     steps:
