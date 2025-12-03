@@ -19,10 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    if: |
-      github.actor == 'renovate[bot]' && 
-      startsWith(github.event.pull_request.title, 'Update')
-      
+    if: github.actor == 'renovate[bot]'
+    
     steps:
       - name: Send Telegram Notification
         uses: appleboy/telegram-action@master # (Or discord-action, etc.)
