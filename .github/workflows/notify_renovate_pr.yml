@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    # if: github.actor == 'renovate[bot]'
+    if: github.actor == 'renovate[bot]'
     
     steps:
       - name: Send Telegram Notification
@@ -25,7 +25,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            🚨 NEW CRITICAL UPDATE PR 🚨
+            🚨 New Renovate PR 🚨
             Repository: ${{ github.repository }}
             Title: ${{ github.event.pull_request.title }}
             URL: ${{ github.event.pull_request.html_url }}
