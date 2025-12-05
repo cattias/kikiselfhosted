@@ -1,6 +1,12 @@
 # Extend the root volume to use 100% of the disk
 sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv -r
 
+# Unattended upgrades
+sudo apt install unattended-upgrades -y
+sudo dpkg-reconfigure -plow unattended-upgrades
+sudo vi /etc/apt/apt.conf.d/20auto-upgrades
+sudo vi /etc/apt/apt.conf.d/50unattended-upgrades
+
 # Necessary for NFS mounts
 sudo apt install nfs-common
 # Necessary for ceph disks cleanup
