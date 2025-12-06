@@ -124,6 +124,10 @@ data:
             icon: sonarr.png
             href: https://sonarr.attias.io/
             description: Sonarr for Kikiflix - TV Show Library manager
+        - Bazarr:
+            icon: bazarr.png
+            href: https://bazarr.attias.io/
+            description: Bazarr for Kikiflix - Subtitles Library manager
         - SABnzbd:
             icon: sabnzbd.png
             href: https://sabnzbd.attias.io/
