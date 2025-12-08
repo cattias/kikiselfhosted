@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: version-check-script
+  namespace: monitoring
+data:
+  version-check.sh: |-
+    #!/bin/bash
+    
+    # Set the output file path where Prometheus will read the metrics
+    OUTPUT_FILE="/var/lib/node_exporter/custom_metrics/versions.prom"
+    
+    # --- k0s Version Check ---
+    K0S_LATEST=$(curl -sSL https://api.github.com/repos/k0sproject/k0s/releases/latest | grep '"tag_name":' | head -1 | awk -F '"' '{print $4}' | tr -d 'v' | cut -d '+' -f1)
+    K0S_CURRENT=$(kubectl get nodes -o jsonpath="{.items[0].status.nodeInfo.kubeletVersion}" | cut -d '-' -f1 | tr -d 'v' | cut -d '+' -f1)
+    
+    # Use awk for version comparison (1 if latest > current, 0 otherwise)
+    K0S_STATUS=$(echo -e "$K0S_CURRENT\n$K0S_LATEST" | sort -V | tail -n 1)
+    if [[ "$K0S_STATUS" == "$K0S_LATEST" && "$K0S_LATEST" != "$K0S_CURRENT" ]]; then
+        K0S_STATUS_CODE=1
+    else
+        K0S_STATUS_CODE=0
+    fi
+    
+    # --- ArgoCD Version Check ---
+    # Fetches the latest stable ArgoCD version tag
+    ARGOCD_LATEST=$(curl -sSL https://api.github.com/repos/argoproj/argo-cd/releases/latest | grep '"tag_name":' | head -1 | awk -F '"' '{print $4}' | tr -d 'v')
+    
+    # Fetches the currently installed ArgoCD version from its Kubernetes Deployment
+    ARGOCD_CURRENT=$(kubectl get deploy argocd-server -n argocd -o jsonpath='{.spec.template.spec.containers[0].image}' 2>/dev/null | cut -d ':' -f2 | tr -d 'v')
+    
+    if [[ "$(echo -e "$ARGOCD_CURRENT\n$ARGOCD_LATEST" | sort -V | tail -n 1)" == "$ARGOCD_LATEST" && "$ARGOCD_LATEST" != "$ARGOCD_CURRENT" ]]; then
+        ARGOCD_STATUS_CODE=1
+    else
+        ARGOCD_STATUS_CODE=0
+    fi
+
+    # --- Output Metrics ---
+    echo "# Custom Metrics for Version Checks" > $OUTPUT_FILE
+    echo "# HELP k0s_upgrade_available Status code for k0s version comparison." >> $OUTPUT_FILE
+    echo "# TYPE k0s_upgrade_available gauge" >> $OUTPUT_FILE
+    echo "k0s_upgrade_available{current_version=\"$K0S_CURRENT\", latest_version=\"$K0S_LATEST\"} $K0S_STATUS_CODE" >> $OUTPUT_FILE
+    
+    echo "# HELP argocd_upgrade_available Status code for ArgoCD version comparison." >> $OUTPUT_FILE
+    echo "# TYPE argocd_upgrade_available gauge" >> $OUTPUT_FILE
+    echo "argocd_upgrade_available{current_version=\"$ARGOCD_CURRENT\", latest_version=\"$ARGOCD_LATEST\"} $ARGOCD_STATUS_CODE" >> $OUTPUT_FILE

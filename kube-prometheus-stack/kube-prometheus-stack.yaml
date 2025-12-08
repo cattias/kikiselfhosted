@@ -131,3 +131,47 @@ spec:
               {{- end }}
               {{- end }}
               {{ end }}
+        nodeExporter:
+          enabled: true
+          daemonset:
+            serviceAccountName: node-exporter 
+            
+            extraVolumes: # Add the volume that mounts the script from the ConfigMap
+              - name: version-check-script-volume
+                configMap:
+                  name: version-check-script
+                  defaultMode: 0755 # Ensure script is executable
+                  items:
+                    - key: version-check.sh
+                      path: version-check.sh
+                      
+            extraVolumeMounts: # Mount the script into the Sidecar container
+              - name: version-check-script-volume
+                mountPath: /opt/version-check.sh
+                subPath: version-check.sh
+                
+            extraContainers: # Define the Sidecar container
+              - name: version-checker
+                image: busybox:stable-glibc
+                # Arguments to run the script every 6 hours
+                args:
+                  - /bin/sh
+                  - -c
+                  - |
+                    /opt/version-check.sh
+                    while true; do
+                      sleep 6h # Run every 6 hours
+                      /opt/version-check.sh
+                    done
+                volumeMounts:
+                  # Mount the ConfigMap script
+                  - name: version-check-script-volume
+                    mountPath: /opt/version-check.sh
+                    subPath: version-check.sh
+                  # Mount the Node Exporter's textfile collector volume
+                  - name: textfilecollector
+                    mountPath: /var/lib/node_exporter/custom_metrics # Must match where script writes
+                resources:
+                  limits:
+                    cpu: 10m
+                    memory: 32Mi
