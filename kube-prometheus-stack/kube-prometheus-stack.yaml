@@ -134,7 +134,7 @@ spec:
         prometheus-node-exporter:
           sidecars:
             - name: version-checker
-              image: busybox:stable-glibc
+              image: alpine/k8s:latest
               # Arguments to run the script every 6 hours
               args:
                 - /bin/sh
