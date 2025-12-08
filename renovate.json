@@ -124,6 +124,7 @@
       "**/databases\\.yaml",
       "**/paperless\\.yaml",
       "**/mealie\\.yaml",
+      "**/lgtm\\.yaml",
       "**/garmin-grafana\\.yaml",
       "**/prometheus-app\\.yaml",
       "**/arr\\.yaml",
