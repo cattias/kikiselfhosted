@@ -141,7 +141,8 @@ spec:
               - -c
               - |
                 # Install kubectl and curl inside the container on startup
-                apt-get update && apt-get install -y curl kubectl
+                apt-get update && apt-get install -y curl
+                snap install kubectl --classic
                 
                 # Run the script after installation
                 /etc/node-exporter/version-check.sh
