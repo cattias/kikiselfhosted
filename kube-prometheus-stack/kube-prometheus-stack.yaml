@@ -148,10 +148,6 @@ spec:
                     sleep 6h # Run every 6 hours
                     /opt/version-check.sh
                   done
-              resources:
-                limits:
-                  cpu: 10m
-                  memory: 32Mi
           extraVolumes: # Add the volume that mounts the script from the ConfigMap
             - name: version-check-script-volume
               configMap:
