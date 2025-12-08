@@ -159,7 +159,7 @@ spec:
                     path: version-check.sh
           sidecarVolumeMount: # Mount the script into the Sidecar container
             - name: version-check-script-volume-mount
-              mountPath: /opt/version-check.sh
+              mountPath: /opt
               subPath: version-check.sh
             - name: textfilecollector
               mountPath: /var/lib/node_exporter/custom_metrics # Must match where script writes
