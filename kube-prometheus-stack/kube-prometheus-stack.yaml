@@ -134,17 +134,21 @@ spec:
         prometheus-node-exporter:
           sidecars:
             - name: version-checker
-              image: alpine/k8s:latest
+              image: ubuntu:latest
               # Arguments to run the script every 6 hours
               args:
-                - /bin/sh
-                - -c
-                - |
-                  /opt/version-check.sh
-                  while true; do
-                    sleep 6h # Run every 6 hours
-                    /opt/version-check.sh
-                  done
+              - /bin/bash
+              - -c
+              - |
+                # Install kubectl and curl inside the container on startup
+                apt-get update && apt-get install -y curl kubectl
+                
+                # Run the script after installation
+                /etc/node-exporter/version-check.sh
+                while true; do
+                  sleep 6h
+                  /etc/node-exporter/version-check.sh
+                done
               resources:
                 limits:
                   cpu: 10m
