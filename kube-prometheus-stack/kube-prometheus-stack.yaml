@@ -134,22 +134,19 @@ spec:
         prometheus-node-exporter:
           sidecars:
             - name: version-checker
-              image: ubuntu:latest
+              image: alpine/curl:latest
               # Arguments to run the script every 6 hours
               args:
-              - /bin/bash
-              - -c
-              - |
-                # Install kubectl and curl inside the container on startup
-                apt-get update && apt-get install -y curl
-                snap install kubectl --classic
-                
-                # Run the script after installation
-                /etc/node-exporter/version-check.sh
-                while true; do
-                  sleep 6h
-                  /etc/node-exporter/version-check.sh
-                done
+                - /bin/sh
+                - -c
+                - |
+                  curl -L -o /usr/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+                  chmod +x /usr/bin/kubectl
+                  /opt/version-check.sh
+                  while true; do
+                    sleep 6h # Run every 6 hours
+                    /opt/version-check.sh
+                  done
               resources:
                 limits:
                   cpu: 10m
