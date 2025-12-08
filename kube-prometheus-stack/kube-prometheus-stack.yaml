@@ -145,10 +145,6 @@ spec:
                     sleep 6h # Run every 6 hours
                     /opt/version-check.sh
                   done
-              volumeMounts:
-                # Mount the Node Exporter's textfile collector volume
-                - name: textfilecollector
-                  mountPath: /var/lib/node_exporter/custom_metrics # Must match where script writes
               resources:
                 limits:
                   cpu: 10m
@@ -165,3 +161,5 @@ spec:
             - name: version-check-script-volume-mount
               mountPath: /opt/version-check.sh
               subPath: version-check.sh
+            - name: textfilecollector
+              mountPath: /var/lib/node_exporter/custom_metrics # Must match where script writes
