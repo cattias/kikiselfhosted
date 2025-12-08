@@ -1,0 +1,32 @@
+name: Merge PR from Telegram Command
+
+on:
+  # This allows the workflow to be triggered manually via API call (by the bot)
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'The Pull Request number to merge.'
+        required: true
+        type: number
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Merge Pull Request
+        # Use the gh CLI tool, which is available in GitHub Actions runners
+        run: |
+          # The PR number is passed from the Telegram Bot via workflow_dispatch
+          PR_NUMBER="${{ github.event.inputs.pr_number }}"
+          REPO_NAME="${{ github.repository }}"
+          
+          echo "Attempting to merge PR #${PR_NUMBER} in ${REPO_NAME}"
+          
+          # Use the GITHUB_TOKEN environment variable (set with the PAT) 
+          # to authorize the merge operation.
+          gh pr merge --merge --admin "${PR_NUMBER}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.TELEGRAM_MERGE_TOKEN }}
