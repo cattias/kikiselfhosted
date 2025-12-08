@@ -7,7 +7,7 @@ on:
       pr_number:
         description: 'The Pull Request number to merge.'
         required: true
-        type: number
+        type: string
 
 jobs:
   merge:
