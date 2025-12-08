@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lgtm-bot-deployment
+  namespace: monitoring
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: lgtm-bot
+  template:
+    metadata:
+      labels:
+        app: lgtm-bot
+    spec:
+      containers:
+      - name: lgtm-bot
+        image: kikiattias/lgtm-bot:latest
+        imagePullPolicy: Always
+        
+        env:
+        - name: TELEGRAM_BOT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: lgtm-bot-secret
+              key: TELEGRAM_BOT_TOKEN
+        - name: GITHUB_MERGE_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: lgtm-bot-secret
+              key: GITHUB_MERGE_TOKEN
+        
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
