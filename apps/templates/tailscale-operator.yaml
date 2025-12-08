@@ -35,5 +35,6 @@ spec:
   hostnamePrefix: ts-pod-cidrs-kikiserver
   subnetRouter:
     advertiseRoutes:
+      - "192.168.0.0/16"
       - "10.244.0.0/24"
       - "10.96.0.0/12"
