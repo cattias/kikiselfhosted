@@ -140,8 +140,9 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  curl -L -o /usr/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-                  chmod +x /usr/bin/kubectl
+                  curl -L -o /opt/kubectl "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+                  chmod +x /opt/kubectl
+                  export PATH=/opt/:$PATH
                   /opt/version-check.sh
                   while true; do
                     sleep 6h # Run every 6 hours
