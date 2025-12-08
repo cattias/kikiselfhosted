@@ -132,9 +132,6 @@ spec:
               {{- end }}
               {{ end }}
         prometheus-node-exporter:
-          configmaps:
-            - name: version-check-script
-              mountPath: /opt/version-check.sh
           sidecars:
             - name: version-checker
               image: busybox:stable-glibc
@@ -168,7 +165,6 @@ spec:
                 items:
                   - key: version-check.sh
                     path: version-check.sh
-                    
           sidecarVolumeMount: # Mount the script into the Sidecar container
             - name: version-check-script-volume
               mountPath: /opt/version-check.sh
