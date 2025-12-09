@@ -6,50 +6,30 @@ metadata:
 data:
   version-check.sh: |-
     #!/bin/sh
-
-    # --- Configuration for Internal API Access ---
-    TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-    API_SERVER="https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"
-    CA_CERT="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
-
-    # Set the output file path for the textfile collector
+    
+    # Set the output file path where Prometheus will read the metrics
     OUTPUT_FILE="/var/lib/node_exporter/custom_metrics/versions.prom"
-
-    # Curl function for internal API calls
-    API_CURL="curl -s -H \"Authorization: Bearer $TOKEN\" --cacert $CA_CERT"
-
-    # --- Fetch Data from Internal API ---
-
-    # 1. Fetch current K0s/Kubelet version from the node
-    # We target the specific node this pod is running on (using the downward API)
-    K0S_CURRENT=$(
-        $API_CURL "$API_SERVER/api/v1/nodes" | \
-        grep -o '"kubeletVersion":"v[^"]*"' | head -n 1 | \
-        cut -d ':' -f2 | tr -d 'v"' | cut -d '-' -f1
-    )
-
-    # 2. Fetch current ArgoCD image tag from its deployment
-    ARGOCD_CURRENT=$(
-        $API_CURL "$API_SERVER/apis/apps/v1/namespaces/argocd/deployments/argocd-server" | \
-        grep -o '"image":"[^"]*"' | head -n 1 | \
-        cut -d ':' -f3 | tr -d '"' | tr -d 'v'
-    )
-
-    # --- Fetch Data from External API (GitHub) ---
+    
+    # --- k0s Version Check ---
     K0S_LATEST=$(curl -sSL https://api.github.com/repos/k0sproject/k0s/releases/latest | grep '"tag_name":' | head -1 | awk -F '"' '{print $4}' | tr -d 'v' | cut -d '+' -f1)
-    ARGOCD_LATEST=$(curl -sSL https://api.github.com/repos/argoproj/argo-cd/releases/latest | grep '"tag_name":' | head -1 | awk -F '"' '{print $4}' | tr -d 'v')
-
-
-    # --- Comparison Logic (1 if LATEST > CURRENT, 0 otherwise) ---
-    K0S_STATUS_CODE=$(echo -e "$K0S_CURRENT\n$K0S_LATEST" | sort -V | tail -n 1)
-    if [[ "$K0S_STATUS_CODE" == "$K0S_LATEST" && "$K0S_LATEST" != "$K0S_CURRENT" ]]; then
+    K0S_CURRENT=$(/opt/kubectl get nodes -o jsonpath="{.items[0].status.nodeInfo.kubeletVersion}" | cut -d '-' -f1 | tr -d 'v' | cut -d '+' -f1)
+    
+    # Use awk for version comparison (1 if latest > current, 0 otherwise)
+    K0S_STATUS=$(echo -e "$K0S_CURRENT\n$K0S_LATEST" | sort -V | tail -n 1)
+    if [[ "$K0S_STATUS" == "$K0S_LATEST" && "$K0S_LATEST" != "$K0S_CURRENT" ]]; then
         K0S_STATUS_CODE=1
     else
         K0S_STATUS_CODE=0
     fi
-
-    ARGOCD_STATUS_CODE=$(echo -e "$ARGOCD_CURRENT\n$ARGOCD_LATEST" | sort -V | tail -n 1)
-    if [[ "$ARGOCD_STATUS_CODE" == "$ARGOCD_LATEST" && "$ARGOCD_LATEST" != "$ARGOCD_CURRENT" ]]; then
+    
+    # --- ArgoCD Version Check ---
+    # Fetches the latest stable ArgoCD version tag
+    ARGOCD_LATEST=$(curl -sSL https://api.github.com/repos/argoproj/argo-cd/releases/latest | grep '"tag_name":' | head -1 | awk -F '"' '{print $4}' | tr -d 'v')
+    
+    # Fetches the currently installed ArgoCD version from its Kubernetes Deployment
+    ARGOCD_CURRENT=$(/opt/kubectl get deploy argocd-server -n argocd -o jsonpath='{.spec.template.spec.containers[0].image}' 2>/dev/null | cut -d ':' -f2 | tr -d 'v')
+    
+    if [[ "$(echo -e "$ARGOCD_CURRENT\n$ARGOCD_LATEST" | sort -V | tail -n 1)" == "$ARGOCD_LATEST" && "$ARGOCD_LATEST" != "$ARGOCD_CURRENT" ]]; then
         ARGOCD_STATUS_CODE=1
     else
         ARGOCD_STATUS_CODE=0
@@ -57,5 +37,10 @@ data:
 
     # --- Output Metrics ---
     echo "# Custom Metrics for Version Checks" > $OUTPUT_FILE
+    echo "# HELP k0s_upgrade_available Status code for k0s version comparison." >> $OUTPUT_FILE
+    echo "# TYPE k0s_upgrade_available gauge" >> $OUTPUT_FILE
     echo "k0s_upgrade_available{current_version=\"$K0S_CURRENT\", latest_version=\"$K0S_LATEST\"} $K0S_STATUS_CODE" >> $OUTPUT_FILE
+    
+    echo "# HELP argocd_upgrade_available Status code for ArgoCD version comparison." >> $OUTPUT_FILE
+    echo "# TYPE argocd_upgrade_available gauge" >> $OUTPUT_FILE
     echo "argocd_upgrade_available{current_version=\"$ARGOCD_CURRENT\", latest_version=\"$ARGOCD_LATEST\"} $ARGOCD_STATUS_CODE" >> $OUTPUT_FILE

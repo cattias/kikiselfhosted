@@ -144,24 +144,39 @@ spec:
               - -c
               - |
                 # --- 1. Set up Environment Variables for Internal API Access ---
-                
-                # KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT are automatically provided by Kubernetes.
-                # export TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-                # export API_SERVER="https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"
-                # export CA_CERT="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
-                
-                # Define the curl command with authentication headers and certificate
-                # This variable is used inside the version-check.sh script
-                # export API_CURL="curl -s -H \"Authorization: Bearer $TOKEN\" --cacert $CA_CERT"
+                curl -L -o /opt/kubectl "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+                chmod +x /opt/kubectl
 
-                # Define the output file path (must match the mount point)
-                # export OUTPUT_FILE="/var/lib/node_exporter/custom_metrics/versions.prom"
+                export TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+                export API_SERVER="https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"
+                export CA=$(cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt | base64)
+
+                KUBECONFIG_PATH="/opt/config"
+
+                cat > $KUBECONFIG_PATH <<EOF
+                apiVersion: v1
+                kind: Config
+                clusters:
+                - cluster:
+                    certificate-authority-data: $CA
+                    server: $API_SERVER
+                  name: kubernetes
+                contexts:
+                - context:
+                    cluster: kubernetes
+                    user: read-only-user
+                  name: read-only-context
+                current-context: read-only-context
+                users:
+                - name: read-only-user
+                  user:
+                    token: $TOKEN
+                EOF
+
+                export KUBECONFIG=$KUBECONFIG_PATH
 
                 # --- 2. Execution Loop ---
-
-                # Ensure the script has executable permissions
-                # chmod +x /opt/version-check.sh
-
+                chmod +x /opt/version-check.sh
                 # Run the script immediately, then loop every 6 hours
                 /opt/version-check.sh
                 while true; do
