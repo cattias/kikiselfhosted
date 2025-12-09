@@ -146,30 +146,26 @@ spec:
                 # --- 1. Set up Environment Variables for Internal API Access ---
                 
                 # KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT are automatically provided by Kubernetes.
-                export TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-                export API_SERVER="https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"
-                export CA_CERT="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
+                # export TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+                # export API_SERVER="https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"
+                # export CA_CERT="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
                 
                 # Define the curl command with authentication headers and certificate
                 # This variable is used inside the version-check.sh script
-                export API_CURL="curl -s -H \"Authorization: Bearer $TOKEN\" --cacert $CA_CERT"
+                # export API_CURL="curl -s -H \"Authorization: Bearer $TOKEN\" --cacert $CA_CERT"
 
                 # Define the output file path (must match the mount point)
-                export OUTPUT_FILE="/var/lib/node_exporter/custom_metrics/versions.prom"
+                # export OUTPUT_FILE="/var/lib/node_exporter/custom_metrics/versions.prom"
 
                 # --- 2. Execution Loop ---
 
                 # Ensure the script has executable permissions
-                chmod +x /opt/version-check.sh
+                # chmod +x /opt/version-check.sh
 
                 # Run the script immediately, then loop every 6 hours
+                /opt/version-check.sh
                 while true; do
-                  logger.info("Starting version check cycle...")
-                  
-                  # Execute the version check script
                   /opt/version-check.sh
-                  
-                  logger.info("Version check complete. Sleeping for 6 hours.")
                   sleep 6h
                 done
           extraVolumes: # Add the volume that mounts the script from the ConfigMap
