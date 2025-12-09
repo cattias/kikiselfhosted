@@ -176,12 +176,12 @@ spec:
                 export KUBECONFIG=$KUBECONFIG_PATH
 
                 # --- Create script ---
-                # Set the output file path where Prometheus will read the metrics
-                export OUTPUT_FILE="/var/lib/node_exporter/custom_metrics/versions.prom"
-
                 cat > /opt/version-check.sh <<'EOF'
                 #!/bin/sh
-                
+
+                # Set the output file path where Prometheus will read the metrics
+                OUTPUT_FILE="/var/lib/node_exporter/custom_metrics/versions.prom"
+
                 # --- k0s Version Check ---
                 K0S_LATEST=$(curl -sSL https://api.github.com/repos/k0sproject/k0s/releases/latest | grep '"tag_name":' | head -1 | awk -F '"' '{print $4}' | tr -d 'v' | cut -d '+' -f1)
                 K0S_CURRENT=$(/opt/kubectl get nodes -o jsonpath="{.items[0].status.nodeInfo.kubeletVersion}" | cut -d '-' -f1 | tr -d 'v' | cut -d '+' -f1)
