@@ -16,7 +16,8 @@ spec:
             - name: kometa
               image: kometateam/kometa:latest
               imagePullPolicy: IfNotPresent
-              args: [ "--run", "--read-only-config" ]
+              # args: [ "--run", "--read-only-config" ]
+              args: [ "--run" ]
               resources:
                 limits:
                   cpu: 100m
