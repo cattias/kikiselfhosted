@@ -149,7 +149,7 @@ spec:
 
                 export TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
                 export API_SERVER="https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"
-                export CA=$(cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt | base64)
+                export CA=$(cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt | base64 | tr -d '\n')
 
                 KUBECONFIG_PATH="/opt/config"
 
