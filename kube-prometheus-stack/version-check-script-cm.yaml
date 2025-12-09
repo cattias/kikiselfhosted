@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring
 data:
   version-check.sh: |-
-    #!/bin/bash
+    #!/bin/sh
 
     # --- Configuration for Internal API Access ---
     TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
