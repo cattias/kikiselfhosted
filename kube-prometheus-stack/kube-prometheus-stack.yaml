@@ -227,17 +227,8 @@ spec:
                   /opt/version-check.sh
                   sleep 6h
                 done
-          extraVolumes: # Add the volume that mounts the script from the ConfigMap
-            - name: version-check-script-volume
-              configMap:
-                name: version-check-script
-                defaultMode: 0755 # Ensure script is executable
-                items:
-                  - key: version-check.sh
-                    path: version-check.sh
           sidecarVolumeMount: # Mount the script into the Sidecar container
             - name: version-check-script-volume-mount
               mountPath: /opt
-              subPath: version-check.sh
             - name: textfilecollector
               mountPath: /var/lib/node_exporter/custom_metrics # Must match where script writes
