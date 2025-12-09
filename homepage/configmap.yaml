@@ -146,6 +146,10 @@ data:
             icon: plex.png
             href: https://plex.attias.io/
             description: Kikiflix. What else? Pour le plus grand plaisir de tous.
+        - Kikiflix Monitoring:
+            icon: tautulli.png
+            href: https://tautulli.attias.io/
+            description: Kikiflix Monitoring
         - Kikipics:
             icon: immich.png
             href: https://photos.attias.io/
