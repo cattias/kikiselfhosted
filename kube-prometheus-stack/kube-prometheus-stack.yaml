@@ -179,7 +179,7 @@ spec:
                 # Set the output file path where Prometheus will read the metrics
                 export OUTPUT_FILE="/var/lib/node_exporter/custom_metrics/versions.prom"
 
-                cat > /opt/version-check.sh <<EOF
+                cat > /opt/version-check.sh <<'EOF'
                 #!/bin/sh
                 
                 # --- k0s Version Check ---
