@@ -27,7 +27,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            1️⃣ __KikiServer__: New Renovate PR
+            1️⃣ KikiServer: New Renovate PR
             Repository: ${{ github.repository }}
             Title: ${{ github.event.pull_request.title }}
             URL: ${{ github.event.pull_request.html_url }}
