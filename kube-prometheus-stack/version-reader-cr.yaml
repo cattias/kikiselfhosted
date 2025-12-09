@@ -1,27 +1,27 @@
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: version-reader
-rules:
-- apiGroups: [""] # Refers to core API resources (Nodes)
-  resources: ["nodes"]
-  verbs: ["get", "list"]
-- apiGroups: ["apps"] # Refers to apps API resources (Deployments)
-  resources: ["deployments"]
-  verbs: ["get", "list"]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: node-exporter-version-reader
-subjects:
-- kind: ServiceAccount
-  name: kube-prometheus-stack-prometheus-node-exporter
-  namespace: monitoring
-roleRef:
-  kind: ClusterRole
-  name: version-reader
-  apiGroup: rbac.authorization.k8s.io
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: ClusterRole
+# metadata:
+#   name: version-reader
+# rules:
+# - apiGroups: [""] # Refers to core API resources (Nodes)
+#   resources: ["nodes"]
+#   verbs: ["get", "list"]
+# - apiGroups: ["apps"] # Refers to apps API resources (Deployments)
+#   resources: ["deployments"]
+#   verbs: ["get", "list"]
+# ---
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: ClusterRoleBinding
+# metadata:
+#   name: node-exporter-version-reader
+# subjects:
+# - kind: ServiceAccount
+#   name: kube-prometheus-stack-prometheus-node-exporter
+#   namespace: monitoring
+# roleRef:
+#   kind: ClusterRole
+#   name: version-reader
+#   apiGroup: rbac.authorization.k8s.io
 # ---
 # apiVersion: rbac.authorization.k8s.io/v1
 # kind: ClusterRoleBinding
