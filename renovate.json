@@ -65,7 +65,6 @@
         "name:\\s*kometa\\s*\\n\\s*image:\\s*kometateam\\/kometa:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "ghcr.io/kometateam/kometa",
       "versioningTemplate": "semver"
     },
     {
