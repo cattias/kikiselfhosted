@@ -23,10 +23,6 @@ data:
             episodes: true
             ignore_locked: true
           mass_genre_update: imdb
-          mass_content_rating_update: 
-            - mdb_commonsense
-            - mdb_age_rating
-            - NR 
           mass_original_title_update: imdb
           run_order: operations, metadata, collections, overlays
       KikiFlix TV Shows:
@@ -45,10 +41,6 @@ data:
             episodes: true
             ignore_locked: true
           mass_genre_update: imdb
-          mass_content_rating_update: 
-            - mdb_commonsense
-            - mdb_age_rating
-            - NR 
           mass_original_title_update: imdb
           run_order: operations, metadata, collections, overlays
     settings:
