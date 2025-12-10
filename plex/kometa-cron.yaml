@@ -14,7 +14,7 @@ spec:
             runAsGroup: 1000
           containers:
             - name: kometa
-              image: kometateam/kometa:latest
+              image: kometateam/kometa:v2.2.2
               imagePullPolicy: IfNotPresent
               args: [ "--run", "--read-only-config" ]
               resources:
