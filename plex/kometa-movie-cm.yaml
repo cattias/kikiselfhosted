@@ -1,12 +1,8 @@
 apiVersion: v1
 data:
   movies.yaml: |
-    collections:
-      Top 100 on TMDb:
-        sync_mode: sync
-        tmdb_list: https://www.themoviedb.org/movie/top-rated
-        collection_order: release
-        schedule: daily
+    collection_files:
+      - default: tmdb
 kind: ConfigMap
 metadata:
   name: movie-config
