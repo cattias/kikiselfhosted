@@ -85,6 +85,7 @@ data:
       custom_repo:
       overlay_artwork_filetype: webp_lossy
       overlay_artwork_quality: 90
+      run_order: operations, metadata, collections, overlays
     plex:
       url: https://plex.attias.io
       token: PLEX_TOKEN
