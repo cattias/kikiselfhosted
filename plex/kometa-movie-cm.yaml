@@ -1,8 +1,7 @@
 apiVersion: v1
 data:
   movies.yaml: |
-    collection_files:
-      - default: tmdb
+    collections:
 kind: ConfigMap
 metadata:
   name: movie-config

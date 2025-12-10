@@ -4,7 +4,12 @@ data:
     libraries:
       KikiFlix Movies:
         collection_files:
-          - file: config/movies.yaml
+          - default: imdb
+            template_variables:
+              use_lowest: false 
+              visible_library_top: true 
+              visible_home_top: true 
+              visible_shared_top: true 
         operations:
           mass_poster_update: tmdb 
           mass_content_rating_update: tmdb 
