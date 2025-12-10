@@ -10,8 +10,8 @@ spec:
       template:
         spec:
           securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
+            runAsUser: 0
+            runAsGroup: 0
           containers:
             - name: kometa
               image: kometateam/kometa:v2.2.2
