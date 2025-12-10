@@ -14,8 +14,8 @@ data:
         collection_files:
           - file: config/tv.yaml
         operations:
-          mass_poster_update: tmdb 
-          item_refresh: true 
+          # mass_poster_update: tmdb 
+          # item_refresh: true 
           run_order: operations, metadata, collections, overlays
     settings:
       cache: true
