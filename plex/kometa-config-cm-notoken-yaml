@@ -22,6 +22,7 @@ data:
             seasons: true
             episodes: true
             ignore_locked: true
+            ignore_overlays: true
           mass_genre_update: imdb
           mass_original_title_update: imdb
           run_order: operations, metadata, collections, overlays
@@ -40,6 +41,7 @@ data:
             seasons: true
             episodes: true
             ignore_locked: true
+            ignore_overlays: true
           mass_genre_update: imdb
           mass_original_title_update: imdb
           run_order: operations, metadata, collections, overlays
