@@ -5,16 +5,25 @@ data:
       KikiFlix Movies:
         collection_files:
           - file: config/movies.yaml
+        operations:
+          mass_poster_update: tmdb 
+          mass_content_rating_update: tmdb 
+          mass_original_title_update: tmdb
+          run_order: operations, metadata, collections, overlays
       KikiFlix TV Shows:
         collection_files:
           - file: config/tv.yaml
+        operations:
+          mass_poster_update: tmdb 
+          item_refresh: true 
+          run_order: operations, metadata, collections, overlays
     settings:
       cache: true
       cache_expiration: 60
       asset_directory: config/assets
       asset_folders: true
       asset_depth: 0
-      create_asset_folders: false
+      create_asset_folders: true
       dimensional_asset_rename: false
       download_url_assets: false
       show_missing_season_assets: false
@@ -102,16 +111,16 @@ data:
       upgrade_existing: true
       monitor_existing: true
       ignore_cache: false
-    trakt:
-      client_id: YOUR_CLIENT_ID_HERE
-      client_secret: YOUR_CLIENT_SECRET_HERE
-      authorization:
-          access_token: YOUR_ACCESS_TOKEN_HERE
-          token_type: Bearer
-          expires_in: 7889237
-          refresh_token: YOUR_REFERSH_TOKEN_HERE
-          scope: public
-          created_at: 1642462048
+    # trakt:
+    #   client_id: YOUR_CLIENT_ID_HERE
+    #   client_secret: YOUR_CLIENT_SECRET_HERE
+    #   authorization:
+    #       access_token: YOUR_ACCESS_TOKEN_HERE
+    #       token_type: Bearer
+    #       expires_in: 7889237
+    #       refresh_token: YOUR_REFERSH_TOKEN_HERE
+    #       scope: public
+    #       created_at: 1642462048
 kind: ConfigMap
 metadata:
   name: kometa-config
