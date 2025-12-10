@@ -11,16 +11,45 @@ data:
               visible_home_top: true 
               visible_shared_top: true 
         operations:
-          mass_poster_update: tmdb 
-          mass_content_rating_update: tmdb 
-          mass_original_title_update: tmdb
+          mass_poster_update: 
+            source: tmdb 
+            seasons: true
+            episodes: true
+            ignore_locked: true
+            ignore_overlays: true
+          mass_background_update:
+            source: tmdb 
+            seasons: true
+            episodes: true
+            ignore_locked: true
+          mass_genre_update: imdb
+          mass_content_rating_update: 
+            - mdb_commonsense
+            - mdb_age_rating
+            - NR 
+          mass_original_title_update: imdb
           run_order: operations, metadata, collections, overlays
       KikiFlix TV Shows:
         collection_files:
           - file: config/tv.yaml
         operations:
-          # mass_poster_update: tmdb 
-          # item_refresh: true 
+          mass_poster_update: 
+            source: tmdb 
+            seasons: true
+            episodes: true
+            ignore_locked: true
+            ignore_overlays: true
+          mass_background_update:
+            source: tmdb 
+            seasons: true
+            episodes: true
+            ignore_locked: true
+          mass_genre_update: imdb
+          mass_content_rating_update: 
+            - mdb_commonsense
+            - mdb_age_rating
+            - NR 
+          mass_original_title_update: imdb
           run_order: operations, metadata, collections, overlays
     settings:
       cache: true
