@@ -37,6 +37,8 @@ spec:
               name: nas-media-music-volume
             - mountPath: /config
               name: beets-config
+            - mountPath: /custom-cont-init.d
+              name: beets-custom-init
       restartPolicy: Always
       volumes:
         - name: nas-media-deemix-volume
@@ -50,4 +52,8 @@ spec:
         - name: beets-config
           hostPath:
             path: "/mnt/ugreen-media/beets/config"
+            type: DirectoryOrCreate
+        - name: beets-custom-init
+          hostPath:
+            path: "/mnt/ugreen-media/beets/custom-init"
             type: DirectoryOrCreate
