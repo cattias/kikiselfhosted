@@ -41,10 +41,12 @@ spec:
           storageClassName: ceph-block
           configStorage: 10Gi
         service:
-          type: ClusterIP
+          type: LoadBalancer
           port: 32400
           targetPort: 32400
           externalTrafficPolicy: Local
+          annotations:
+            tailscale.com/expose: "true"
         extraEnv:
           TZ: "Etc/UTC"
           PLEX_UID: "1000"
