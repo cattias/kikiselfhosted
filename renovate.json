@@ -47,6 +47,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/apps/templates/traefik/traefik\\.yaml/"
+      ],
+      "matchStrings": [
+        "image:\\s*\\n\\s*tag:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "traefik/traefik",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/paperless/deployment\\.yaml/"
       ],
       "matchStrings": [
