@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beets
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: beets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: beets
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: beets
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: UTC
+          name: beets
+          image: lscr.io/linuxserver/beets:latest
+          ports:
+            - containerPort: 8337
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /downloads
+              name: nas-media-deemix-volume
+            - mountPath: /music
+              name: nas-media-music-volume
+            - mountPath: /config
+              name: beets-config
+      restartPolicy: Always
+      volumes:
+        - name: nas-media-deemix-volume
+          hostPath:
+            path: "/mnt/ugreen-media/deemix/inbox"
+            type: DirectoryOrCreate
+        - name: nas-media-music-volume
+          hostPath:
+            path: "/mnt/ugreen-media/Music/beets"
+            type: DirectoryOrCreate
+        - name: beets-config
+          hostPath:
+            path: "/mnt/ugreen-media/beets/config"
+            type: DirectoryOrCreate
