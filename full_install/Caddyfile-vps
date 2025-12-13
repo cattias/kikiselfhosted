@@ -1,0 +1,15 @@
+plex.attias.io {
+    reverse_proxy http://100.114.55.101:32400
+}
+
+photos.attias.io {
+    reverse_proxy http://100.74.99.88:2283
+}
+
+overseerr.attias.io {
+    reverse_proxy https://100.90.241.99:443 {
+	transport http {
+	    tls_insecure_skip_verify
+	}
+    }
+}
