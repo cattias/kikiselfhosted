@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: deemix-router
+  namespace: arr
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`deemix.attias.io`)
+      kind: Rule
+      services:
+        - name: deemix
+          port: 6595
+  tls:
+    certResolver: le

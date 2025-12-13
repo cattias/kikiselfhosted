@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deemix
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: deemix
+spec:
+  type: ClusterIP
+  ports:
+    - name: "6595"
+      port: 6595
+      targetPort: 6595
+  selector:
+    app.kubernetes.io/name: deemix

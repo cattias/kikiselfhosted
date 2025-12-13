@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deemix
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: deemix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: deemix
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: deemix
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: UTC
+          name: deemix
+          image: ghcr.io/bambanah/deemix:latest
+          ports:
+            - containerPort: 6595
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /downloads
+              name: nas-media-deemix-volume
+            - mountPath: /config
+              name: deemix-config
+      restartPolicy: Always
+      volumes:
+        - name: nas-media-deemix-volume
+          hostPath:
+            path: "/mnt/ugreen-media/deemix/inbox"
+            type: DirectoryOrCreate
+        - name: deemix-config
+          persistentVolumeClaim:
+            claimName: deemix-config-pvc
