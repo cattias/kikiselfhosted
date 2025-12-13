@@ -102,10 +102,6 @@ data:
             icon: synology.png
             href: http://offsite.kiki.home:5000/
             description: Portal access to Kiki's off-site backup NAS
-        - CloudFlare Tunnel:
-            icon: cloudflare.png
-            href: https://one.dash.cloudflare.com/4e24fd66b5017151cc6e26c92c2538ca/networks/tunnels/cfd_tunnel/ba5df757-03b1-4ead-946b-6869d75cd782/edit?tab=publicHostname
-            description: The CloudFlare Tunnel management page
         - ASUS Router Admin:
             icon: asus.png
             href: http://192.168.178.64/
