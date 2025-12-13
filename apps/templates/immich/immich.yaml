@@ -64,5 +64,7 @@ spec:
             main:
               type: LoadBalancer
               targetPort: 2283
+              annotations:
+                tailscale.com/expose: "true"
         machine-learning:
           enabled: true
