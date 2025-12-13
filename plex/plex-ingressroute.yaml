@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`plex.attias.io`)
+    - match: Host(`plex.attias.io`) || Host(`plex.kiki.home`)
       kind: Rule
       services:
         - name: plex-plex-media-server
