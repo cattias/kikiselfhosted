@@ -5,7 +5,7 @@ metadata:
   namespace: budget
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`budget.attias.io`)
       kind: Rule
