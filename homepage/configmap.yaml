@@ -132,6 +132,10 @@ data:
             icon: bazarr.png
             href: https://bazarr.attias.io/
             description: Bazarr for Kikiflix - Subtitles Library manager
+        - Overseerr:
+            icon: overseerr.png
+            href: https://overseerr.attias.io/
+            description: Overseerr for Kikiflix - Media discovery manager
         - SABnzbd:
             icon: sabnzbd.png
             href: https://sabnzbd.attias.io/
