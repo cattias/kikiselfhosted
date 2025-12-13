@@ -28,6 +28,8 @@ spec:
           tag: v3.6.4
         service:
           type: LoadBalancer
+          annotations:
+            tailscale.com/expose: "true"
         ports:
           traefik:
             port: 8080
