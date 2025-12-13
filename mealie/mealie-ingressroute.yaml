@@ -5,7 +5,7 @@ metadata:
   namespace: mealie
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`recettes.attias.io`)
       kind: Rule

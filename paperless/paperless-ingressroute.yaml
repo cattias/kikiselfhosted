@@ -5,7 +5,7 @@ metadata:
   namespace: documents
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`paperless.attias.io`)
       kind: Rule
