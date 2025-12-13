@@ -12,3 +12,5 @@ spec:
       services:
         - name: budget-actualbudget
           port: 5006
+  tls:
+    certResolver: le

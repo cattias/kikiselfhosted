@@ -12,3 +12,5 @@ spec:
       services:
         - name: mealie
           port: 9000
+  tls:
+    certResolver: le
