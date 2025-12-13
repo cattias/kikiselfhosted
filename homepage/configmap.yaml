@@ -136,6 +136,10 @@ data:
             icon: sabnzbd.png
             href: https://sabnzbd.attias.io/
             description: SABnzbd for Kikiflix - Download manager
+        - Deemix:
+            icon: deemix.png
+            href: https://deemix.attias.io/
+            description: Deemix app on Kikiserver
         - KikiTube:
             icon: metube.png
             href: https://metube.attias.io/
