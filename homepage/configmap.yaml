@@ -98,7 +98,7 @@ data:
             icon: ugreen.png
             href: http://nas.kiki.home/
             description: Portal access to Kiki's UGreen NAS
-        - Off-site Backup Synology
+        - Off-site Backup Synology:
             icon: synology.png
             href: http://offsite.kiki.home:5000/
             description: Portal access to Kiki's off-site backup NAS
