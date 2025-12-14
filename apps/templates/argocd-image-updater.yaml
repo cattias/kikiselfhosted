@@ -22,7 +22,3 @@ spec:
     repoURL: https://argoproj.github.io/argo-helm
     targetRevision: 1.0.2
     chart: argocd-image-updater
-    # helm:
-    #   valuesObject:
-    #     config:
-    #       clusterWide: true
