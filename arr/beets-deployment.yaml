@@ -5,6 +5,10 @@ metadata:
   namespace: arr
   labels:
     app.kubernetes.io/name: beets
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: beets=linuxserver/beets:latest
+    argocd-image-updater.argoproj.io/beets.update-strategy: digest
+    argocd-image-updater.argoproj.io/beets.jsonpath: /spec/template/spec/containers/0/image
 spec:
   replicas: 1
   selector:

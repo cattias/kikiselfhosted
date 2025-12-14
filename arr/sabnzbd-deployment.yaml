@@ -5,6 +5,10 @@ metadata:
   namespace: arr
   labels:
     app.kubernetes.io/name: sabnzbd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: sabnzbd=linuxserver/sabnzbd:latest
+    argocd-image-updater.argoproj.io/sabnzbd.update-strategy: digest
+    argocd-image-updater.argoproj.io/sabnzbd.jsonpath: /spec/template/spec/containers/0/image
 spec:
   replicas: 1
   selector:

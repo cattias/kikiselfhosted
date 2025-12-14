@@ -5,6 +5,10 @@ metadata:
   namespace: arr
   labels:
     app.kubernetes.io/name: overseerr
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: overseerr=sctx/overseerr:latest
+    argocd-image-updater.argoproj.io/overseerr.update-strategy: digest
+    argocd-image-updater.argoproj.io/overseerr.jsonpath: /spec/template/spec/containers/0/image
 spec:
   replicas: 1
   selector:

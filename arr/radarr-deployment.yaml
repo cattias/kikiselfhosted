@@ -5,6 +5,10 @@ metadata:
   namespace: arr
   labels:
     app.kubernetes.io/name: radarr
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: radarr=linuxserver/radarr:latest
+    argocd-image-updater.argoproj.io/radarr.update-strategy: digest
+    argocd-image-updater.argoproj.io/radarr.jsonpath: /spec/template/spec/containers/0/image
 spec:
   replicas: 1
   selector:
