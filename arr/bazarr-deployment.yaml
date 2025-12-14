@@ -5,10 +5,10 @@ metadata:
   namespace: arr
   labels:
     app.kubernetes.io/name: bazarr
-annotations:
-  argocd-image-updater.argoproj.io/image-list: bazarr=linuxserver/bazarr:latest
-  argocd-image-updater.argoproj.io/bazarr.update-strategy: digest
-  argocd-image-updater.argoproj.io/bazarr.jsonpath: /spec/template/spec/containers/0/image
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: bazarr=linuxserver/bazarr:latest
+    argocd-image-updater.argoproj.io/bazarr.update-strategy: digest
+    argocd-image-updater.argoproj.io/bazarr.jsonpath: /spec/template/spec/containers/0/image
 spec:
   replicas: 1
   selector:
