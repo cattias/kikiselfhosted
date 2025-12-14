@@ -20,7 +20,7 @@ data:
       paths:
         default: $artist/$album/$track $title # Default path for albums
         comp: Compilations/$album/$track $title # Path for various artist compilations
-        singleton: Single Tracks/$artist - $title # Path for files without album data (singles)
+        singleton: Single/$artist - $title # Path for files without album data (singles)
 
     plugins: fromfilename web musicbrainz fetchart lyrics lastgenre plexupdate
 
