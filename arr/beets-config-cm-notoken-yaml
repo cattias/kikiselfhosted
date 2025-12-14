@@ -1,0 +1,49 @@
+apiVersion: v1
+data:
+  config.yaml: |
+    directory: /music
+    library: /config/library.db
+    import:
+      import_dir: /downloads
+      move: yes
+      delete: yes
+      autotag: yes
+      resume: yes
+      quiet: yes
+      quiet_fallback: asis
+      default_action: apply
+      log: /config/beets_log.txt
+
+      item_fields:
+        tracktitle: title
+
+      paths:
+        default: $artist/$album/$track $title # Default path for albums
+        comp: Compilations/$album/$track $title # Path for various artist compilations
+        singleton: Single Tracks/$artist - $title # Path for files without album data (singles)
+
+    plugins: fromfilename web musicbrainz fetchart lyrics lastgenre plexupdate
+
+    web:
+      host: 0.0.0.0
+      include_paths: true
+
+    musicbrainz:
+      extra_tags: [barcode, catalognum, country, label, media, year]
+      external_ids:
+        discogs: yes
+        spotify: yes
+        bandcamp: yes
+        beatport: yes
+        deezer: yes
+        tidal: yes
+
+    plex:
+      host: "192.168.178.201"
+      port: 32400
+      token: PLEX_TOKEN
+      library_name: "Kiki Music"
+kind: ConfigMap
+metadata:
+  name: beets-config
+  namespace: arr
