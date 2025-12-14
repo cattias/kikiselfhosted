@@ -27,6 +27,7 @@ spec:
               value: UTC
           name: sonarr
           image: linuxserver/sonarr:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8989
               protocol: TCP

@@ -27,6 +27,7 @@ spec:
               value: UTC
           name: radarr
           image: linuxserver/radarr:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 7878
               protocol: TCP

@@ -29,6 +29,7 @@ spec:
               value: UTC
           name: metube
           image: alexta69/metube:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8081
               protocol: TCP

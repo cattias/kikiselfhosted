@@ -27,6 +27,7 @@ spec:
               value: UTC
           name: deemix
           image: ghcr.io/bambanah/deemix:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 6595
               protocol: TCP

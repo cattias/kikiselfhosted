@@ -26,6 +26,7 @@ spec:
             - name: TZ
               value: Etc/UTC
           image: lscr.io/linuxserver/sabnzbd:latest
+          imagePullPolicy: Always
           name: sabnzbd
           ports:
             - containerPort: 8080

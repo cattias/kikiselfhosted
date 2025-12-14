@@ -19,6 +19,7 @@ spec:
       containers:
         - name: garmin-fetch-data
           image: thisisarpanghosh/garmin-fetch-data:latest
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: fetch-data-config
