@@ -30,6 +30,13 @@ spec:
           ports:
             - containerPort: 8337
               protocol: TCP
+          command: ["watch"]
+          args: ["-n 10", "beet import -s /downloads"]
+
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 10
+
           volumeMounts:
             - mountPath: /downloads
               name: nas-media-deemix-volume
