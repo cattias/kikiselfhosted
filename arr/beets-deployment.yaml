@@ -46,8 +46,11 @@ spec:
               mountPath: /config/config.yaml
               subPath: config.yaml
             - name: beets-custom-init-sh
-              mountPath: /custom-cont-init.d/99-install-plugins.sh
-              subPath: 99-install-plugins.sh
+              mountPath: /custom-cont-init.d/89-install-plugins.sh
+              subPath: 89-install-plugins.sh
+            - name: beets-custom-init-sh
+              mountPath: /custom-cont-init.d/99-run-dropbox.sh
+              subPath: 99-run-dropbox.sh
       restartPolicy: Always
       volumes:
         - name: nas-media-deemix-volume

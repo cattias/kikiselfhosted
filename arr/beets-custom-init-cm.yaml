@@ -1,12 +1,18 @@
 apiVersion: v1
 data:
-  99-install-plugins.sh: |
+  89-install-plugins.sh: |
     #!/bin/bash
     # Script to install drop2beets and its dependencies
     echo "Installing drop2beets plugin dependency..."
     # Install the external plugin and the necessary dependency
     pip install drop2beets
     echo "Plugin installation complete."
+  99-run-dropbox.sh: |
+    #!/bin/bash
+    # Script to install drop2beets and its dependencies
+    echo "Starting Beets Dropbox Watcher Daemon..."
+    setsid nohup su root -c "beet dropbox" > /dev/null 2>&1 &
+    echo "Beets Dropbox Watcher started."
 kind: ConfigMap
 metadata:
   name: beets-custom-init
