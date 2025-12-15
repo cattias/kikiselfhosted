@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: beets-router
+  namespace: arr
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`beets.attias.io`)
+      kind: Rule
+      services:
+        - name: beets
+          port: 8337
+  tls:
+    certResolver: le
