@@ -29,6 +29,8 @@ spec:
               value: "1000"
             - name: TZ
               value: UTC
+            - name: DEEMIX_SINGLE_USER
+              value: true
           name: deemix
           image: ghcr.io/bambanah/deemix:latest
           imagePullPolicy: Always
