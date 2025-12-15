@@ -27,6 +27,7 @@ spec:
         image:
           tag: v3.6.4
         service:
+          loadBalancerIP: 192.168.178.200
           type: LoadBalancer
           annotations:
             tailscale.com/expose: "true"
