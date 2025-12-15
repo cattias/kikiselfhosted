@@ -48,7 +48,6 @@ spec:
             - name: beets-custom-init-sh
               mountPath: /custom-cont-init.d/99-install-plugins.sh
               subPath: 99-install-plugins.sh
-              defaultMode: 0755
       restartPolicy: Always
       volumes:
         - name: nas-media-deemix-volume
@@ -67,4 +66,5 @@ spec:
           name: beets-config-yml
         - configMap:
             name: beets-custom-init
+            defaultMode: 0755
           name: beets-custom-init-sh
