@@ -5,7 +5,7 @@ data:
     # Script to install drop2beets and its dependencies
     echo "Installing drop2beets plugin dependency..."
     # Install the external plugin and the necessary dependency
-    pip install drop2beets
+    pip install drop2beets git+https://github.com/cattias/drop2beets.git@main
     echo "Plugin installation complete."
   99-run-dropbox.sh: |
     #!/bin/bash
