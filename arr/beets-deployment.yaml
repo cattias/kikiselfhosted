@@ -35,6 +35,8 @@ spec:
           ports:
             - containerPort: 8337
               protocol: TCP
+          command: ["beet"]
+          args: ["dropbox"]
           volumeMounts:
             - mountPath: /downloads
               name: nas-media-deemix-volume

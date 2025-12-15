@@ -46,7 +46,7 @@ data:
     
     drop2beets:
       dropbox_path: /downloads
-
+      log_path: /config/drop2beets.log
 kind: ConfigMap
 metadata:
   name: beets-config
