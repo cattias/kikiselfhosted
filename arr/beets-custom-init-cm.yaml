@@ -7,7 +7,7 @@ data:
     apk update
     apk add git
     # Install the external plugin and the necessary dependency
-    pip install drop2beets git+https://github.com/cattias/drop2beets.git@main
+    pip install drop2beets git+https://github.com/cattias/drop2beets.git@v2.1.2
     echo "Plugin installation complete."
   99-run-dropbox.sh: |
     #!/bin/bash
