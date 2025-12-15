@@ -14,13 +14,10 @@ data:
       default_action: apply
       log: /config/beets_log.txt
 
-      item_fields:
-        tracktitle: title
-
-      paths:
-        default: $artist/$album/$track $title # Default path for albums
-        comp: Compilations/$album/$track $title # Path for various artist compilations
-        singleton: Single/$artist - $title # Path for files without album data (singles)
+    paths:
+      default: $artist/$album/$track $title # Default path for albums
+      comp: Compilations/$album/$track $title # Path for various artist compilations
+      singleton: Single/$artist - $title # Path for files without album data (singles)
 
     plugins: fromfilename web musicbrainz fetchart lyrics lastgenre plexupdate drop2beets
 
