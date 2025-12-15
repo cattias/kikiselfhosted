@@ -35,8 +35,6 @@ spec:
           ports:
             - containerPort: 8337
               protocol: TCP
-          # command: ["watch"]
-          # args: ["-n 10", "beet import -s /downloads"]
           volumeMounts:
             - mountPath: /downloads
               name: nas-media-deemix-volume
@@ -47,6 +45,10 @@ spec:
             - name: beets-config-yml
               mountPath: /config/config.yaml
               subPath: config.yaml
+            - name: beets-custom-init-sh
+              mountPath: /custom-cont-init.d/99-install-plugins.sh
+              subPath: 99-install-plugins.sh
+              defaultMode: 0755
       restartPolicy: Always
       volumes:
         - name: nas-media-deemix-volume
@@ -63,3 +65,6 @@ spec:
         - configMap:
             name: beets-config
           name: beets-config-yml
+        - configMap:
+            name: beets-custom-init
+          name: beets-custom-init-sh

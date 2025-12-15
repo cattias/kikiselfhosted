@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  99-install-plugins.sh: |
+    #!/bin/bash
+    # Script to install drop2beets and its dependencies
+    echo "Installing drop2beets plugin dependency..."
+    # Install the external plugin and the necessary dependency
+    pip install drop2beets
+    echo "Plugin installation complete."
+kind: ConfigMap
+metadata:
+  name: beets-custom-init
+  namespace: arr

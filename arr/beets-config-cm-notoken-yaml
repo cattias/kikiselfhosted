@@ -22,7 +22,7 @@ data:
         comp: Compilations/$album/$track $title # Path for various artist compilations
         singleton: Single/$artist - $title # Path for files without album data (singles)
 
-    plugins: fromfilename web musicbrainz fetchart lyrics lastgenre plexupdate
+    plugins: fromfilename web musicbrainz fetchart lyrics lastgenre plexupdate drop2beets
 
     web:
       host: 0.0.0.0
@@ -43,6 +43,10 @@ data:
       port: 32400
       token: PLEX_TOKEN
       library_name: "Kiki Music"
+    
+    drop2beets:
+      dropbox_path: /downloads
+
 kind: ConfigMap
 metadata:
   name: beets-config
