@@ -51,7 +51,7 @@ spec:
             - mountPath: /music
               name: nas-media-soulsolid-music-volume
             - name: soulsolid-config
-              mountPath: /app/soulsolid
+              mountPath: /app
             - name: soulsolid-config-yml
               mountPath: /app/config.yaml
               subPath: config.yaml
