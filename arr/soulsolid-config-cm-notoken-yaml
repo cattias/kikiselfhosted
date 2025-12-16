@@ -8,7 +8,7 @@ data:
       token: TOKEN
       allowedUsers:
         - kikattias
-      bot_handle: kikialerting_bot
+      bot_handle: kikimedia_bot
     logger:
       enabled: true
       level: info
