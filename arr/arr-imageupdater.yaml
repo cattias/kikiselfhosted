@@ -1,0 +1,50 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: arr-image-updater
+  namespace: argocd
+spec:
+  namespace: arr
+  applicationRefs:
+    - namePattern: "*"
+      images:
+        - alias: "bazarr"
+          imageName: "linuxserver/bazarr"
+          commonUpdateSettings:
+            updateStrategy: newest-build
+        - alias: "beets"
+          imageName: "linuxserver/beets"
+          commonUpdateSettings:
+            updateStrategy: newest-build
+        - alias: "deemix"
+          imageName: "bambanah/deemix"
+          commonUpdateSettings:
+            updateStrategy: newest-build
+        - alias: "metube"
+          imageName: "alexta69/metube"
+          commonUpdateSettings:
+            updateStrategy: newest-build
+        - alias: "overseerr"
+          imageName: "sctx/overseerr"
+          commonUpdateSettings:
+            updateStrategy: newest-build
+        - alias: "prowlarr"
+          imageName: "inuxserver/prowlarr"
+          commonUpdateSettings:
+            updateStrategy: newest-build
+        - alias: "radarr"
+          imageName: "linuxserver/radarr"
+          commonUpdateSettings:
+            updateStrategy: newest-build
+        - alias: "sabnzbd"
+          imageName: "linuxserver/sabnzbd"
+          commonUpdateSettings:
+            updateStrategy: newest-build
+        - alias: "sonarr"
+          imageName: "linuxserver/sonarr"
+          commonUpdateSettings:
+            updateStrategy: newest-build
+        - alias: "soulsolid"
+          imageName: "kikiattias/soulsolid-plugins"
+          commonUpdateSettings:
+            updateStrategy: newest-build
