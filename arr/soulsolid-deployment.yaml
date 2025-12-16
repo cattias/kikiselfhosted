@@ -50,8 +50,8 @@ spec:
               name: nas-media-soulsolid-downloads-volume
             - mountPath: /music
               name: nas-media-soulsolid-music-volume
-            - name: soulsolid-config
-              mountPath: /app
+            - name: soulsolid-db
+              mountPath: /app/db
             - name: soulsolid-config-yml
               mountPath: /app/config.yaml
               subPath: config.yaml
@@ -71,10 +71,9 @@ spec:
           hostPath:
             path: "/mnt/ugreen-media/soulsolid/music"
             type: DirectoryOrCreate
-        - name: soulsolid-config
-          hostPath:
-            path: "/mnt/ugreen-media/soulsolid/app"
-            type: DirectoryOrCreate
+        - name: soulsolid-db
+          persistentVolumeClaim:
+            claimName: soulsolid-db-pvc
         - configMap:
             name: soulsolid-config-cm
           name: soulsolid-config-yml
