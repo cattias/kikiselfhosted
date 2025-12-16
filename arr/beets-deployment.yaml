@@ -59,7 +59,7 @@ spec:
             type: DirectoryOrCreate
         - name: nas-media-music-volume
           hostPath:
-            path: "/mnt/ugreen-media/Music/beets"
+            path: "/mnt/ugreen-media/Music"
             type: DirectoryOrCreate
         - name: beets-config
           persistentVolumeClaim:
