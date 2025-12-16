@@ -3,10 +3,6 @@ kind: Deployment
 metadata:
   name: garmin-fetch-data
   namespace: monitoring
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: garmin-fetch-data=thisisarpanghosh/garmin-fetch-data:latest
-    argocd-image-updater.argoproj.io/garmin-fetch-data.update-strategy: digest
-    argocd-image-updater.argoproj.io/garmin-fetch-data.jsonpath: /spec/template/spec/containers/0/image
 spec:
   replicas: 1
   selector:
