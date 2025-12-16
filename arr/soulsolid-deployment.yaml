@@ -72,8 +72,9 @@ spec:
             path: "/mnt/ugreen-media/soulsolid/music"
             type: DirectoryOrCreate
         - name: soulsolid-config
-          persistentVolumeClaim:
-            claimName: soulsolid-config-pvc
+          hostPath:
+            path: "/mnt/ugreen-media/soulsolid/app"
+            type: DirectoryOrCreate
         - configMap:
             name: soulsolid-config-cm
           name: soulsolid-config-yml
