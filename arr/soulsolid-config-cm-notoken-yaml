@@ -5,7 +5,7 @@ data:
     downloadPath: /downloads
     telegram:
       enabled: true
-      # token: <token>
+      token: TOKEN
       allowedUsers:
         - kikattias
       bot_handle: kikialerting_bot
@@ -18,13 +18,19 @@ data:
       plugins:
         - name: "deezer"
           enabled: true
-          path: "../soulsolid-deemix-plugin/plugin.so"
+          path: "./plugins/deemix/plugin.so"
           icon: https://demo2.contre.io/img/deezer.png
           config:
-            arl: ""
+            arl: "ARL"
             preferred_quality: "FLAC"
             fallback_quality: "MP3_320"
             # preferred_quality: "MP3_320"
+        - name: "youtube"
+          enabled: true
+          path: "./plugins/youtube/plugin.so"
+          icon: "https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png"
+          config:
+            max_playlist_items: 10
       artwork:
         embedded:
           enabled: true
@@ -34,7 +40,7 @@ data:
       show_routes: false
       port: 3535
     database:
-      path: /app/library.db
+      path: /app/db/library.db
     import:
       move: true
       always_queue: false # When true, it will queue every single imported track for manual review.
@@ -50,12 +56,12 @@ data:
       providers:
         acoustid:
           enabled: true
-          secret: <acoust_id_token>
+          secret: ACOUSTID
         deezer:
           enabled: true
         discogs:
           enabled: false
-          secret: <discogs_token> # You can get it here -> https://www.discogs.com/settings/developers
+          # secret: <discogs_token> # You can get it here -> https://www.discogs.com/settings/developers
         musicbrainz:
           enabled: true
     lyrics:
@@ -64,19 +70,15 @@ data:
           enabled: true
     sync:
       enabled: false
-      # devices:
-      #   - uuid: 8722-177E
-      #     name: iPod
-      #     sync_path: Soulsolid
     jobs:
       log: true
       log_path: /app/logs/jobs
       webhooks:
-        enabled: false
+        enabled: true
         job_types:
           - directory_import
           - download_album
-        command: "TEXT=\"🎵 Job {{.Name}} ({{.Type}}) {{.Status}}\\n📝 {{.Message}}\\n⏱️ Duration: {{.Duration}}\"\ncurl -X POST -H 'Content-Type: application/json' \\\n  -d '{\"chat_id\": \"<chat_id>\", \"text\": \"'\"$TEXT\"'\", \"parse_mode\": \"HTML\"}' \\\n  https://api.telegram.org/bot<bot_token>/sendMessage\n"
+        command: "TEXT=\"🎵 Job {{.Name}} ({{.Type}}) {{.Status}}\\n📝 {{.Message}}\\n⏱️  Duration: {{.Duration}}\"\ncurl -X POST -H 'Content-Type: application/json' \\\n  -d '{\"chat_id\": \"-5088656987\", \"text\": \"'\"$TEXT\"'\", \"parse_mode\": \"HTML\"}' \\\n  https://api.telegram.org/botTELEGRAM_TOKEN/sendMessage\n"
 kind: ConfigMap
 metadata:
   name: soulsolid-config-cm
