@@ -37,6 +37,11 @@ spec:
           name: soulsolid
           image: contre95/soulsolid:beta
           imagePullPolicy: Always
+          securityContext:
+            allowPrivilegeEscalation: true
+            capabilities: {}
+            privileged: true
+            readOnlyRootFilesystem: false
           ports:
             - containerPort: 3535
               protocol: TCP
