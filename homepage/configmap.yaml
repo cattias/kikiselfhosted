@@ -158,6 +158,10 @@ data:
             icon: tautulli.png
             href: https://tautulli.attias.io/
             description: Kikiflix Monitoring
+        - Soulsolid:
+            icon: https://soulsolid.attias.io/img/galaxy.png
+            href: https://soulsolid.attias.io/
+            description: Soulsolid for music management
         - Kikipics:
             icon: immich.png
             href: https://photos.attias.io/
