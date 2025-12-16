@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: soulsolid
   annotations:
-    argocd-image-updater.argoproj.io/image-list: soulsolid=kikiattias/soulsolid-deemix:latest
+    argocd-image-updater.argoproj.io/image-list: soulsolid=kikiattias/soulsolid-plugins:latest
     argocd-image-updater.argoproj.io/soulsolid.update-strategy: digest
     argocd-image-updater.argoproj.io/soulsolid.jsonpath: /spec/template/spec/containers/0/image
 spec:
@@ -35,7 +35,7 @@ spec:
                   name: telegram-bot-secret
                   key: token
           name: soulsolid
-          image: kikiattias/soulsolid-deemix:latest
+          image: kikiattias/soulsolid-plugins:latest
           imagePullPolicy: Always
           # securityContext:
           #   allowPrivilegeEscalation: true
