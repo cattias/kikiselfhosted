@@ -5,7 +5,6 @@ data:
     downloadPath: /downloads
     telegram:
       enabled: true
-      token: TOKEN
       allowedUsers:
         - kikattias
       bot_handle: kikimedia_bot
