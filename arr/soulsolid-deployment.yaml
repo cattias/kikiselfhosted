@@ -37,11 +37,11 @@ spec:
           name: soulsolid
           image: contre95/soulsolid:beta
           imagePullPolicy: Always
-          securityContext:
-            allowPrivilegeEscalation: true
-            capabilities: {}
-            privileged: true
-            readOnlyRootFilesystem: false
+          # securityContext:
+          #   allowPrivilegeEscalation: true
+          #   capabilities: {}
+          #   privileged: true
+          #   readOnlyRootFilesystem: false
           ports:
             - containerPort: 3535
               protocol: TCP
@@ -51,7 +51,7 @@ spec:
             - mountPath: /music
               name: nas-media-soulsolid-music-volume
             - name: soulsolid-config
-              mountPath: /app
+              mountPath: /app/soulsolid
             - name: soulsolid-config-yml
               mountPath: /app/config.yaml
               subPath: config.yaml
