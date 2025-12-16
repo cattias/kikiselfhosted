@@ -56,7 +56,7 @@ spec:
               mountPath: /app/config.yaml
               subPath: config.yaml
             - name: soulsolid-deemix-plugin
-              mountPath: /soulsolid-deemix-plugin
+              mountPath: /app/plugins/deemix
       restartPolicy: Always
       volumes:
         - name: soulsolid-deemix-plugin
