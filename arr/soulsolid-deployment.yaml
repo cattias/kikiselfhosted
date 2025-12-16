@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: soulsolid
   annotations:
-    argocd-image-updater.argoproj.io/image-list: soulsolid=contre95/soulsolid:beta
+    argocd-image-updater.argoproj.io/image-list: soulsolid=kikiattias/soulsolid-deemix:latest
     argocd-image-updater.argoproj.io/soulsolid.update-strategy: digest
     argocd-image-updater.argoproj.io/soulsolid.jsonpath: /spec/template/spec/containers/0/image
 spec:
@@ -35,7 +35,7 @@ spec:
                   name: telegram-bot-secret
                   key: token
           name: soulsolid
-          image: contre95/soulsolid:beta
+          image: kikiattias/soulsolid-deemix:latest
           imagePullPolicy: Always
           # securityContext:
           #   allowPrivilegeEscalation: true
@@ -55,14 +55,8 @@ spec:
             - name: soulsolid-config-yml
               mountPath: /app/config.yaml
               subPath: config.yaml
-            - name: soulsolid-deemix-plugin
-              mountPath: /app/plugins/deemix
       restartPolicy: Always
       volumes:
-        - name: soulsolid-deemix-plugin
-          hostPath:
-            path: "/mnt/ugreen-media/soulsolid/plugins/soulsolid-deemix-plugin"
-            type: DirectoryOrCreate
         - name: nas-media-soulsolid-downloads-volume
           hostPath:
             path: "/mnt/ugreen-media/soulsolid/downloads"
