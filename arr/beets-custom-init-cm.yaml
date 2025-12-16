@@ -13,6 +13,7 @@ data:
     #!/bin/bash
     # Script to install drop2beets and its dependencies
     echo "Starting Beets Dropbox Watcher Daemon..."
+    beet update
     setsid nohup su root -c "beet dropbox" > /dev/null 2>&1 &
     echo "Beets Dropbox Watcher started."
 kind: ConfigMap
