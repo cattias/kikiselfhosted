@@ -1,4 +1,4 @@
-FROM contre95/soulsolid:v0.17.4
+FROM contre95/soulsolid:v0.18.1
 
 RUN apk add yt-dlp
 
