@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: soulsolid
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: soulsolid
+spec:
+  type: ClusterIP
+  ports:
+    - name: "3535"
+      port: 3535
+      targetPort: 3535
+  selector:
+    app.kubernetes.io/name: soulsolid

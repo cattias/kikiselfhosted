@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soulsolid
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: soulsolid
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: soulsolid=contre95/soulsolid:beta
+    argocd-image-updater.argoproj.io/soulsolid.update-strategy: digest
+    argocd-image-updater.argoproj.io/soulsolid.jsonpath: /spec/template/spec/containers/0/image
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: soulsolid
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: soulsolid
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "10"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: UTC
+            - name: TELEGRAM_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: telegram-bot-secret
+                  key: token
+          name: soulsolid
+          image: contre95/soulsolid:beta
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3535
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /downloads
+              name: nas-media-soulsolid-downloads-volume
+            - mountPath: /music
+              name: nas-media-soulsolid-music-volume
+            - name: soulsolid-config
+              mountPath: /app
+            - name: soulsolid-config-yml
+              mountPath: /app/config.yaml
+              subPath: config.yaml
+            - name: soulsolid-deemix-plugin
+              mountPath: /soulsolid-deemix-plugin
+      restartPolicy: Always
+      volumes:
+        - name: soulsolid-deemix-plugin
+          hostPath:
+            path: "/mnt/ugreen-media/soulsolid/plugins/soulsolid-deemix-plugin"
+            type: DirectoryOrCreate
+        - name: nas-media-soulsolid-downloads-volume
+          hostPath:
+            path: "/mnt/ugreen-media/soulsolid/downloads"
+            type: DirectoryOrCreate
+        - name: nas-media-soulsolid-music-volume
+          hostPath:
+            path: "/mnt/ugreen-media/soulsolid/music"
+            type: DirectoryOrCreate
+        - name: soulsolid-config
+          persistentVolumeClaim:
+            claimName: soulsolid-config-pvc
+        - configMap:
+            name: soulsolid-config-cm
+          name: soulsolid-config-yml

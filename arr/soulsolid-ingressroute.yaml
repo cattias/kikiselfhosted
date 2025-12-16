@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: soulsolid-router
+  namespace: arr
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`soulsolid.attias.io`)
+      kind: Rule
+      services:
+        - name: soulsolid
+          port: 3535
+  tls:
+    certResolver: le
