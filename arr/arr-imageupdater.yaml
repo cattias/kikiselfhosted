@@ -4,9 +4,9 @@ metadata:
   name: arr-image-updater
   namespace: argocd
 spec:
-  namespace: arr
+  namespace: argocd
   applicationRefs:
-    - namePattern: "*"
+    - namePattern: "arr"
       images:
         - alias: "bazarr"
           imageName: "linuxserver/bazarr"
