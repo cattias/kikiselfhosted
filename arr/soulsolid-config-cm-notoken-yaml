@@ -73,7 +73,7 @@ data:
       log: true
       log_path: /app/logs/jobs
       webhooks:
-        enabled: true
+        enabled: false
         job_types:
           - directory_import
           - download_album
