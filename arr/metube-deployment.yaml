@@ -22,7 +22,7 @@ spec:
             - name: AUDIO_DOWNLOAD_DIR
               value: /audio-downloads
             - name: GID
-              value: "1000"
+              value: "10"
             - name: UID
               value: "1000"
             - name: TZ
@@ -42,9 +42,9 @@ spec:
       volumes:
         - name: nas-metube-volume
           hostPath:
-            path: "/mnt/ugreen-media/metube/" 
+            path: "/mnt/ugreen-media/metube/downloads"
             type: DirectoryOrCreate
         - name: nas-music-volume
           hostPath:
-            path: "/mnt/ugreen-media/Music/" 
+            path: "/mnt/ugreen-media/metube/audio-downloads" 
             type: DirectoryOrCreate
