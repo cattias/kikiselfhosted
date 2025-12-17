@@ -46,5 +46,5 @@ spec:
             type: DirectoryOrCreate
         - name: nas-music-volume
           hostPath:
-            path: "/mnt/ugreen-media/metube/audio-downloads" 
+            path: "/mnt/ugreen-media/soulsolid/downloads"
             type: DirectoryOrCreate
