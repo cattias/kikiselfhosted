@@ -49,7 +49,7 @@ data:
         album:soundtrack: "%asciify{$albumartist}/%asciify{$album} [OST] (%if{$original_year,$original_year,$year})/%asciify{$track $title}"
         album:single: "%asciify{$albumartist}/%asciify{$album} [Single] (%if{$original_year,$original_year,$year})/%asciify{$track $title}"
         album:ep: "%asciify{$albumartist}/%asciify{$album} [EP] (%if{$original_year,$original_year,$year})/%asciify{$track $title}"
-        default_path: "%asciify{$albumartist}/%asciify{$album} (%if{$original_year,$original_year,$year})/%asciify{$track $title}"
+        default_path: "(%if{$albumartist,%asciify{$albumartist},No_Artist})/(%if{$album,%asciify{$album},No_Album}) (%if{$original_year,$original_year,$year})/%asciify{$track $title}"
       auto_start_watcher: true
     metadata:
       providers:
