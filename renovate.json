@@ -171,12 +171,6 @@
         "quay.io/ceph/ceph"
       ],
       "allowedVersions": "<20.0.0"
-    },
-    {
-      "versioning": "regex:^(?<compatibility>.*?)-(?<major>v?\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[\\.-]*(?<build>r?\\d+)*-*(?<tag>r?\\w+)*",
-      "matchPackageNames": [
-        "/^lscr.io\\/linuxserver\\//"
-      ]
     }
   ],
   "argocd": {
