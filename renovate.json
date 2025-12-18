@@ -191,6 +191,54 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/arr/beets-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*beets\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/beets:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "lscr.io/linuxserver/beets",
+      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<revision>\\d+)-ls(?<build>\\d+)$"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/arr/prowlarr-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*prowlarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/prowlarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "lscr.io/linuxserver/prowlarr",
+      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<revision>\\d+)-ls(?<build>\\d+)$"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/arr/radarr-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*radarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/radarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "lscr.io/linuxserver/radarr",
+      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<revision>\\d+)-ls(?<build>\\d+)$"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/arr/sabnzbd-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*sabnzbd\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/sabnzbd:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "lscr.io/linuxserver/sabnzbd",
+      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<revision>\\d+)-ls(?<build>\\d+)$"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/arr/bazarr-deployment\\.yaml/"
       ],
       "matchStrings": [
