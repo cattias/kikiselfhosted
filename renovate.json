@@ -233,8 +233,10 @@
       "allowedVersions": "<20.0.0"
     },
     {
-      "packagePatterns": ["^lscr.io\\/linuxserver\\/"],
-      "versionScheme": "regex:^(?<compatibility>.*?)-(?<major>v?\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[\\.-]*(?<build>r?\\d+)*-*(?<tag>r?\\w+)*"
+      "versioning": "regex:^(?<compatibility>.*?)-(?<major>v?\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[\\.-]*(?<build>r?\\d+)*-*(?<tag>r?\\w+)*",
+      "matchPackageNames": [
+        "/^lscr.io\\/linuxserver\\//"
+      ]
     }
   ],
   "argocd": {
