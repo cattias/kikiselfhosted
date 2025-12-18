@@ -187,6 +187,18 @@
       "datasourceTemplate": "docker",
       "depNameTemplate": "lscr.io/linuxserver/sonarr",
       "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<revision>\\d+)-ls(?<build>\\d+)$"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/arr/bazarr-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*bazarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/bazarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "lscr.io/linuxserver/bazarr",
+      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<revision>\\d+)-ls(?<build>\\d+)$"
     }
   ],
   "packageRules": [
