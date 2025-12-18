@@ -134,10 +134,10 @@
         "/arr/metube-deployment\\.yaml/"
       ],
       "matchStrings": [
-        "name:\\s*metube\\s*\\n\\s*image:\\s*ghcr\\.io\\/alexta69\\/metube:\\s*(?<currentValue>v?[0-9\\.]+)"
+        "name:\\s*metube\\s*\\n\\s*image:\\s*alexta69\\/metube:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "ghcr.io/alexta69/metube",
+      "depNameTemplate": "alexta69/metube",
       "versioningTemplate": "semver"
     },
     {
@@ -163,6 +163,18 @@
       "datasourceTemplate": "docker",
       "depNameTemplate": "quay.io/ceph/ceph",
       "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/arr/overseerr-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*overseerr\\s*\\n\\s*image:\\s*sctx\\/overseerr:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "sctx/overseerr",
+      "versioningTemplate": "semver"
     }
   ],
   "packageRules": [
@@ -171,6 +183,12 @@
         "quay.io/ceph/ceph"
       ],
       "allowedVersions": "<20.0.0"
+    },
+    {
+      "versioning": "regex:^(?<compatibility>.*?)-(?<major>v?\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[\\.-]*(?<build>r?\\d+)*-*(?<tag>r?\\w+)*",
+      "matchPackageNames": [
+        "/^lscr.io\\/linuxserver\\//"
+      ]
     }
   ],
   "argocd": {
