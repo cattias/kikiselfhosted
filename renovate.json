@@ -131,6 +131,42 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/arr/sonarr-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*sonarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/sonarr:\\s*(?<currentValue>v?[0-9\\.\\-ls]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "lscr.io/linuxserver/sonarr",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/arr/radarr-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*radarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/radarr:\\s*(?<currentValue>v?[0-9\\.\\-ls]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "lscr.io/linuxserver/radarr",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/arr/prowlarr-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*prowlarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/prowlarr:\\s*(?<currentValue>v?[0-9\\.\\-ls]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "lscr.io/linuxserver/prowlarr",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/arr/deemix-deployment\\.yaml/"
       ],
       "matchStrings": [
