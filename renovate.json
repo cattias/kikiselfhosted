@@ -126,7 +126,7 @@
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "lscr.io/linuxserver/bazarr",
-      "versioningTemplate": "loose"
+      "versioningTemplate": "semver"
     },
     {
       "customType": "regex",
