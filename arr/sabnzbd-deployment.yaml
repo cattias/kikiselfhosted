@@ -25,9 +25,9 @@ spec:
               value: "1000"
             - name: TZ
               value: Etc/UTC
+          name: sabnzbd
           image: lscr.io/linuxserver/sabnzbd:4.5.5-ls239
           imagePullPolicy: IfNotPresent
-          name: sabnzbd
           ports:
             - containerPort: 8080
               protocol: TCP
