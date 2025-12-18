@@ -19,7 +19,7 @@ spec:
           - name: backup-cleanup-runner
             # Use a minimal image with the 'find' utility (like busybox or alpine)
             image: busybox:latest
-            imagePullPolicy: IfNotPresent
+            imagePullPolicy: Always
             
             # Volume Mount: Mount the same PVC as the backup job
             volumeMounts:

@@ -22,7 +22,7 @@ spec:
             - name: rsync-backup
               # rsync is a standard tool for efficient, incremental backups
               image: instrumentisto/rsync-ssh:latest 
-              imagePullPolicy: IfNotPresent
+              imagePullPolicy: Always
               
               # The rsync command: 
               # -a: archive mode (preserves permissions, ownership, timestamps)

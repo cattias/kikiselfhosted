@@ -18,7 +18,7 @@ spec:
           - name: postgres-backup-runner
             # Use the official Postgres image, which includes pg_dump and psql tools
             image: postgres:latest
-            imagePullPolicy: IfNotPresent
+            imagePullPolicy: Always
             
             # Define environment variables sourced from the Secret
             env:
