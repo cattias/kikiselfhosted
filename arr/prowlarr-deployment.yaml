@@ -27,7 +27,7 @@ spec:
               value: UTC
           image: linuxserver/prowlarr:2.3.0.5236-ls134
           name: prowlarr
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9696
               protocol: TCP

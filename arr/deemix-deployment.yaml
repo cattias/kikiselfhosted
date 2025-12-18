@@ -29,7 +29,7 @@ spec:
               value: "true"
           name: deemix
           image: ghcr.io/bambanah/deemix:v4.4.0
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 6595
               protocol: TCP

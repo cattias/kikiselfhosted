@@ -27,7 +27,7 @@ spec:
               value: UTC
           name: beets
           image: lscr.io/linuxserver/beets:2.5.1-ls301
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8337
               protocol: TCP

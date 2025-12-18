@@ -31,7 +31,7 @@ spec:
               value: UTC
           name: overseerr
           image: sctx/overseerr:1.34.0
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5055
               protocol: TCP

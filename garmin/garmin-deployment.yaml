@@ -18,8 +18,8 @@ spec:
         runAsGroup: 0
       containers:
         - name: garmin-fetch-data
-          image: thisisarpanghosh/garmin-fetch-data:latest
-          imagePullPolicy: Always
+          image: thisisarpanghosh/garmin-fetch-data:v0.3.0
+          imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
                 name: fetch-data-config
