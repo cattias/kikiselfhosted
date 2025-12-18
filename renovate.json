@@ -186,7 +186,7 @@
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "lscr.io/linuxserver/sonarr",
-      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
+      "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     },
     {
       "customType": "regex",
@@ -198,7 +198,7 @@
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "lscr.io/linuxserver/beets",
-      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
+      "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     },
     {
       "customType": "regex",
@@ -210,7 +210,7 @@
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "lscr.io/linuxserver/prowlarr",
-      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
+      "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     },
     {
       "customType": "regex",
@@ -222,7 +222,7 @@
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "lscr.io/linuxserver/radarr",
-      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
+      "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     },
     {
       "customType": "regex",
@@ -234,7 +234,7 @@
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "lscr.io/linuxserver/sabnzbd",
-      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
+      "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     },
     {
       "customType": "regex",
@@ -246,7 +246,7 @@
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "lscr.io/linuxserver/bazarr",
-      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
+      "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     }
   ],
   "packageRules": [
