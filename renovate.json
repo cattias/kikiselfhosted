@@ -119,6 +119,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/arr/bazarr-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*bazarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/bazarr:\\s*(?<currentValue>v?[0-9\\.\\-ls]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "lscr.io/linuxserver/bazarr",
+      "versioningTemplate": "loose"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/apps/templates/rook-ceph-cluster\\.yaml/"
       ],
       "matchStrings": [
