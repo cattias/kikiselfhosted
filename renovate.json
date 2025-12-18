@@ -155,6 +155,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/arr/overseerr-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*overseerr\\s*\\n\\s*image:\\s*sctx\\/overseerr:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "sctx/overseerr",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/plex/tautulli-deployment\\.yaml/"
       ],
       "matchStrings": [
