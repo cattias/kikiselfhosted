@@ -131,6 +131,30 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/arr/deemix-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*deemix\\s*\\n\\s*image:\\s*ghcr\\.io\\/bambanah\\/deemix:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/bambanah/deemix",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/arr/metube-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*metube\\s*\\n\\s*image:\\s*ghcr\\.io\\/alexta69\\/metube:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/alexta69/metube",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/plex/tautulli-deployment\\.yaml/"
       ],
       "matchStrings": [
