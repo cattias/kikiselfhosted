@@ -131,6 +131,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/plex/tautulli-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*tautulli\\s*\\n\\s*image:\\s*ghcr\\.io\\/tautulli\\/tautulli:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/tautulli/tautulli",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/apps/templates/rook-ceph-cluster\\.yaml/"
       ],
       "matchStrings": [
@@ -147,6 +159,10 @@
         "quay.io/ceph/ceph"
       ],
       "allowedVersions": "<20.0.0"
+    },
+    {
+      "packagePatterns": ["^lscr.io\\/linuxserver\\/"],
+      "versionScheme": "regex:^(?<compatibility>.*?)-(?<major>v?\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)[\\.-]*(?<build>r?\\d+)*-*(?<tag>r?\\w+)*"
     }
   ],
   "argocd": {
