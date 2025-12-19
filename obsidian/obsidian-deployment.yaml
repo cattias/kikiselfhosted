@@ -34,6 +34,8 @@ spec:
             - containerPort: 3001
               protocol: TCP
           volumeMounts:
+            - mountPath: /vault
+              name: obsidian-vault-volume
             - mountPath: /config
               name: obsidian-config
       restartPolicy: Always
@@ -41,3 +43,6 @@ spec:
         - name: obsidian-config
           persistentVolumeClaim:
             claimName: obsidian-config-pvc
+        - name: obsidian-vault-volume
+          persistentVolumeClaim:
+            claimName: obsidian-vault-pvc
