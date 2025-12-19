@@ -43,7 +43,7 @@ data:
     import:
       move: true
       always_queue: false # When true, it will queue every single imported track for manual review.
-      duplicates: skip
+      duplicates: queue
       paths:
         compilations: "%asciify{$albumartist}/%asciify{$album} (%if{$original_year,$original_year,$year})/%asciify{$track $title}"
         album:soundtrack: "%asciify{$albumartist}/%asciify{$album} [OST] (%if{$original_year,$original_year,$year})/%asciify{$track $title}"
