@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: obsidian
+  namespace: documents
+  labels:
+    app.kubernetes.io/name: obsidian
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: obsidian
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: obsidian
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: UTC
+          name: obsidian
+          image: lscr.io/linuxserver/obsidian:v1.10.6-ls101
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+            - containerPort: 3001
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /config
+              name: obsidian-config
+      restartPolicy: Always
+      volumes:
+        - name: obsidian-config
+          persistentVolumeClaim:
+            claimName: obsidian-config-pvc
