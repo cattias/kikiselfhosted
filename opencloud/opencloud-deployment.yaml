@@ -31,7 +31,10 @@ spec:
             - name: FRONTEND_CHECK_FOR_UPDATES
               value: "true"
             - name: IDM_ADMIN_PASSWORD
-              value: yolo
+              valueFrom:
+                secretKeyRef:
+                  name: cloud-secret
+                  key: admin-password
             - name: IDM_CREATE_DEMO_USERS
               value: "false"
             - name: NOTIFICATIONS_SMTP_AUTHENTICATION
@@ -43,7 +46,10 @@ spec:
             - name: NOTIFICATIONS_SMTP_INSECURE
               value: "false"
             - name: NOTIFICATIONS_SMTP_PASSWORD
-              value: vpmc ckwn sgyy jrsq
+              valueFrom:
+                secretKeyRef:
+                  name: cloud-secret
+                  key: smtp-password
             - name: NOTIFICATIONS_SMTP_PORT
               value: "587"
             - name: NOTIFICATIONS_SMTP_SENDER
@@ -93,8 +99,8 @@ spec:
           image: opencloudeu/opencloud-rolling:4.1.0
           name: opencloud
           securityContext:
-            runAsGroup: 1000
-            runAsUser: 1000
+            runAsGroup: 0
+            runAsUser: 0
           volumeMounts:
             - mountPath: /etc/opencloud
               name: opencloud-config
