@@ -24,5 +24,7 @@ spec:
     chart: keycloak
     helm:
       valuesObject:
+        postgresql:
+          enabled: false
         serviceMonitor:
           enabled: true
