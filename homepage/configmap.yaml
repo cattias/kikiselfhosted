@@ -62,23 +62,23 @@ data:
     - KikiNode:
         - k0s Dashboard - Node:
             icon: kubernetes-dashboard.png
-            href: https://k0snode.attias.io/
+            href: https://k0s.node.attias.io/
             description: The k0s admin dashboard on Kikinode
         - ArgoCD Dashboard - Node:
             icon: argo-cd.png
-            href: https://argocdnode.attias.io/
+            href: https://argocd.node.attias.io/
             description: The ArgoCD dashboard on Kikinode
         - Prometheus Dashboard - Node:
             icon: prometheus.png
-            href: https://prometheusnode.attias.io/
+            href: https://prometheus.node.attias.io/
             description: The Query and Alerts dashboard to target prometheus
         - Alertmanager Dashboard - Node:
             icon: alertmanager.png
-            href: https://alertmanagernode.attias.io/
+            href: https://alertmanager.node.attias.io/
             description: The Alerts dashboard
         - Traefik Dashboard - Node:
             icon: traefik.png
-            href: https://traefiknode.attias.io/
+            href: https://traefik.node.attias.io/
             description: The Traefik admin dashboard on Kikinode
         - Renovate Dasboard - Node:
             icon: renovate.png
