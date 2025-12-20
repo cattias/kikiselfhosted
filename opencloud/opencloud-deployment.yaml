@@ -53,7 +53,7 @@ spec:
             - name: NOTIFICATIONS_SMTP_PORT
               value: "587"
             - name: NOTIFICATIONS_SMTP_SENDER
-              value: OpenCloud Notifications <notifications@cloud.attias.io
+              value: "OpenCloud Notifications <notifications@cloud.attias.io>"
             - name: NOTIFICATIONS_SMTP_USERNAME
               value: christophe.attias@gmail.com
             - name: OC_ADD_RUN_SERVICES
