@@ -690,7 +690,7 @@ spec:
                 # Storage class
                 storageClass: "ceph-block"
                 # Access mode (ReadWriteOnce or ReadWriteMany for multiple replicas)
-                accessMode: ReadWriteMany
+                accessMode: ReadWriteOnce
 
         # =====================================================================
         # GATEWAY-API HTTPRoute
