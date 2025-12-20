@@ -86,8 +86,6 @@ spec:
               value: "true"
             - name: OC_URL
               value: https://cloud.attias.io
-            - name: PROXY_CSP_CONFIG_FILE_LOCATION
-              value: /etc/opencloud/csp.yaml
             - name: PROXY_ENABLE_BASIC_AUTH
               value: "false"
             - name: PROXY_TLS
