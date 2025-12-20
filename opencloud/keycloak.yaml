@@ -26,28 +26,18 @@ spec:
       valuesObject:
         postgresql:
           enabled: false
-
-        extraEnv: |
+        extraEnv:
+          - name: KC_HOSTNAME
+            value: keycloak.attias.io
           - name: KEYCLOAK_USER
-            value: /secrets/admin-creds/adminUser
+            valueFrom:
+              secretKeyRef:
+                name: cloud-keycloak-secret
+                key: adminUser
           - name: KEYCLOAK_PASSWORD
-            value: /secrets/admin-creds/adminPassword
-
-        extraVolumeMounts: |
-          - name: db-creds
-            mountPath: /secrets/db-creds
-            readOnly: true
-          - name: admin-creds
-            mountPath: /secrets/admin-creds
-            readOnly: true
-
-        extraVolumes: |
-          - name: db-creds
-            secret:
-              secretName: keycloak-db-app
-          - name: admin-creds
-            secret:
-              secretName: cloud-keycloak-secret
-
+            valueFrom:
+              secretKeyRef:
+                name: cloud-keycloak-secret
+                key: adminPassword
         serviceMonitor:
           enabled: true
