@@ -230,7 +230,7 @@ spec:
         # Tika settings for full-text search
         tika:
           # Enable Tika
-          enabled: true
+          enabled: false
           # Tika image settings
           image:
             # Tika image registry
@@ -253,7 +253,7 @@ spec:
         # Web Extensions settings
         webExtensions:
           # Enable web extensions
-          enabled: true
+          enabled: false
           # Common image settings for all extensions
           image:
             # Registry for web extensions
@@ -329,7 +329,7 @@ spec:
         # OnlyOffice settings for document collaboration
         onlyoffice:
           # Enable OnlyOffice
-          enabled: true
+          enabled: false
           # OnlyOffice image settings
           image:
             # OnlyOffice image registry
