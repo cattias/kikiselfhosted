@@ -68,8 +68,6 @@ spec:
               value: info
             - name: OC_LOG_PRETTY
               value: "true"
-            - name: OC_PASSWORD_POLICY_BANNED_PASSWORDS_LIST
-              value: banned-password-list.txt
             - name: OC_PASSWORD_POLICY_DISABLED
               value: "false"
             - name: OC_PASSWORD_POLICY_MIN_CHARACTERS
