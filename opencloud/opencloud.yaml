@@ -24,24 +24,6 @@ spec:
     chart: opencloud
     helm:
       valuesObject:
-        # OpenCloud Helm Chart Values
-        # This is a YAML-formatted file with configuration values for the OpenCloud Helm chart.
-        # The file is organized into logical sections for different components of the system.
-
-        # =====================================================================
-        # SECURITY WARNING
-        # =====================================================================
-        # IMPORTANT: The following default credentials MUST be changed in production environments.
-        # Using these default values in production is a significant security risk.
-        #
-        # Credentials that need to be changed:
-        # 1. Keycloak Admin: adminUser: admin, adminPassword: admin
-        # 2. OpenCloud Admin: adminPassword: admin
-        # 3. PostgreSQL: user: keycloak, password: keycloak
-        # 4. MinIO: rootUser: opencloud, rootPassword: opencloud-secret-key
-        # 5. RabbitMQ: url: amqp://guest:guest@localhost
-
-
         # =====================================================================
         # GLOBAL SETTINGS
         # =====================================================================
@@ -53,7 +35,7 @@ spec:
             # Main domain for OpenCloud
             opencloud: cloud.attias.io
             # Domain for Keycloak
-            # keycloak: keycloak.attias.io
+            keycloak: keycloak.attias.io
             # Domain for MinIO
             # minio: minio.attias.io
             # Domain for WOPI server
@@ -124,7 +106,7 @@ spec:
           # Internal Keycloak deployment
           internal:
             # Enable internal Keycloak instance
-            enabled: false
+            enabled: true
             # Keycloak image settings
             image:
               # Keycloak image registry
