@@ -26,5 +26,40 @@ spec:
       valuesObject:
         postgresql:
           enabled: false
+
+        extraEnv: |
+          - name: DB_VENDOR
+            value: postgres
+          - name: DB_ADDR
+            value: /secrets/db-creds/host
+          - name: DB_PORT
+            value: /secrets/db-creds/port
+          - name: DB_DATABASE
+            value: /secrets/db-creds/dbname
+          - name: DB_USER_FILE
+            value: /secrets/db-creds/user
+          - name: DB_PASSWORD_FILE
+            value: /secrets/db-creds/password
+          - name: KEYCLOAK_USER
+            value: /secrets/admin-creds/adminUser
+          - name: KEYCLOAK_PASSWORD
+            value: /secrets/admin-creds/adminPassword
+
+        extraVolumeMounts: |
+          - name: db-creds
+            mountPath: /secrets/db-creds
+            readOnly: true
+          - name: admin-creds
+            mountPath: /secrets/admin-creds
+            readOnly: true
+
+        extraVolumes: |
+          - name: db-creds
+            secret:
+              secretName: keycloak-db-app
+          - name: admin-creds
+            secret:
+              secretName: cloud-keycloak-secret
+
         serviceMonitor:
           enabled: true
