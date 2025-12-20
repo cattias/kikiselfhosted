@@ -132,7 +132,7 @@ spec:
             # adminPassword: admin
 
             # Keycloak realm
-            realm: "KikiCloud"
+            realm: "openCloud"
 
             # CORS settings for cross-origin requests
             cors:
