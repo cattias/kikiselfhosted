@@ -33,6 +33,8 @@ spec:
         extraEnv: |
           - name: KC_HOSTNAME
             value: keycloak.attias.io
+          - name: KC_HOSTNAME_ADMIN
+            value: kcadmin.attias.io
           - name: DB_VENDOR
             value: postgres
           - name: DB_ADDR
