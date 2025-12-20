@@ -41,7 +41,7 @@ spec:
               - name: Kikinode
                 type: prometheus
                 access: proxy
-                url: https://prometheusnode.attias.io
+                url: https://prometheus.node.attias.io
               - name: Kikinas
                 type: prometheus
                 access: proxy
