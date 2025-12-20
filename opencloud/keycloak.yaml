@@ -33,5 +33,13 @@ spec:
         extraEnv: |
           - name: KC_HOSTNAME
             value: keycloak.attias.io
+          - name: DB_VENDOR
+            value: postgres
+          - name: DB_ADDR
+            value: keycloak-db-rw
+          - name: DB_PORT
+            value: 5432
+          - name: DB_DATABASE
+            value: app
         serviceMonitor:
           enabled: true
