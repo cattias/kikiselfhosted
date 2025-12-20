@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: opencloud-router
+  namespace: documents
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`cloud.attias.io`)
+      kind: Rule
+      services:
+        - name: opencloud-opencloud
+          port: 9200
+  tls:
+    certResolver: le
