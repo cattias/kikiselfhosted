@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: keycloak
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      enabled: false
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  destination:
+    namespace: documents
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: oci://ghcr.io/codecentric/helm-charts/keycloak
+    targetRevision: 18.10.0
+    chart: keycloak
+    helm:
+      valuesObject:
+        serviceMonitor:
+          enabled: true

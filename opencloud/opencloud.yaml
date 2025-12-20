@@ -106,7 +106,7 @@ spec:
           # Internal Keycloak deployment
           internal:
             # Enable internal Keycloak instance
-            enabled: true
+            enabled: false
             # Keycloak image settings
             image:
               # Keycloak image registry
@@ -158,7 +158,7 @@ spec:
         # PostgreSQL settings for Keycloak
         postgres:
           # Enable PostgreSQL
-          enabled: true
+          enabled: false
           # PostgreSQL image settings
           image:
             # PostgreSQL image registry
