@@ -97,12 +97,12 @@ spec:
               value: "false"
             - name: WOPISERVER_DOMAIN
               value: wopiserver.attias.io
-            - name: OC_RUNTIME_HOST
-              value: cloud.attias.io
-            # - name: OC_CONFIG_DIR
-            #   value: /etc/opencloud
-            # - name: OC_DATA_DIR
-            #   name: /var/lib/opencloud
+            # - name: OC_RUNTIME_HOST
+            #   value: cloud.attias.io
+            - name: OC_CONFIG_DIR
+              value: /etc/opencloud
+            - name: OC_DATA_DIR
+              name: /var/lib/opencloud
           name: opencloud
           image: opencloudeu/opencloud-rolling:4.1.0
           ports:
