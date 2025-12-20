@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: opencloud
+  namespace: documents
+  labels:
+    app.kubernetes.io/name: opencloud
+spec:
+  type: ClusterIP
+  ports:
+    - name: "80"
+      port: 80
+      targetPort: 80
+  selector:
+    app.kubernetes.io/name: opencloud
