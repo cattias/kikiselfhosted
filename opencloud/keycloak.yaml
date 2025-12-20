@@ -26,7 +26,7 @@ spec:
       valuesObject:
         postgresql:
           enabled: false
-        extraEnvFrom: "cloud-keycloak-secret"
+        #extraEnvFrom: "cloud-keycloak-secret"
         extraEnv: |
           - name: KC_HOSTNAME
             value: keycloak.attias.io
