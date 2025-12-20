@@ -53,9 +53,9 @@ spec:
             # Main domain for OpenCloud
             opencloud: cloud.attias.io
             # Domain for Keycloak
-            keycloak: keycloak.attias.io
+            # keycloak: keycloak.attias.io
             # Domain for MinIO
-            minio: minio.attias.io
+            # minio: minio.attias.io
             # Domain for WOPI server
             wopi: wopiserver.attias.io
             # Domain for Collabora CODE
@@ -357,9 +357,9 @@ spec:
             # Enable persistence
             enabled: true
             # Name of existing PVC to use (overrides all other persistence values)
-            existingClaim: ""
+            existingClaim: "opencloud-onlyoffice-pvc"
             # Size of the persistent volume
-            size: 2Gi
+            # size: 2Gi
           # Resources allocation
           resources:
             requests:
@@ -451,9 +451,9 @@ spec:
           # Log level
           logLevel: info
           # Log color
-          logColor: false
+          logColor: true
           # Log pretty
-          logPretty: false
+          logPretty: true
           # Insecure mode (for self-signed certificates)
           insecure: true
           
@@ -562,24 +562,24 @@ spec:
           # SMTP settings for email notifications
           smtp:
             # Enable SMTP
-            enabled: false
+            enabled: true
             # SMTP host
-            host: ""
+            host: "smtp.gmail.com"
             # SMTP port
             port: "587"
             # SMTP sender
-            sender: ""
+            sender: "OpenCloud Notifications <opencloud@attias.io>"
             
             # Use existing secret for opencloud smtp credentials (Note: secretKeyName must be smtpUser and smtpPassword)
-            existingSecret: ""
+            existingSecret: "cloud-secret"
             
-            # SMTP username
-            # ignored if opencloud.smtp.existingSecret is set
-            username: ""
+            # # SMTP username
+            # # ignored if opencloud.smtp.existingSecret is set
+            # username: ""
 
-            # SMTP password
-            # ignored if opencloud.smtp.existingSecret is set
-            password: ""
+            # # SMTP password
+            # # ignored if opencloud.smtp.existingSecret is set
+            # password: ""
 
             # SMTP insecure (allow self-signed certificates)
             insecure: "false"
