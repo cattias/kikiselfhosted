@@ -158,51 +158,51 @@ spec:
         # PostgreSQL settings for Keycloak
         postgres:
           # Enable PostgreSQL
-          enabled: false
-          # # PostgreSQL image settings
-          # image:
-          #   # PostgreSQL image registry
-          #   registry: docker.io
-          #   # PostgreSQL image repository
-          #   repository: postgres
-          #   # PostgreSQL image tag
-          #   tag: "alpine"
-          #   # Image pull policy
-          #   pullPolicy: IfNotPresent
+          enabled: true
+          # PostgreSQL image settings
+          image:
+            # PostgreSQL image registry
+            registry: docker.io
+            # PostgreSQL image repository
+            repository: postgres
+            # PostgreSQL image tag
+            tag: "alpine"
+            # Image pull policy
+            pullPolicy: IfNotPresent
 
-          # # Database name
-          # database: keycloak
+          # Database name
+          database: keycloak
 
-          # # Use existing secret for postgres credentials (Note: secretKeyName must be username and password)
-          # existingSecret: ""
+          # Use existing secret for postgres credentials (Note: secretKeyName must be username and password)
+          existingSecret: ""
 
-          # # Database user
-          # # ignored if postgres.existingSecret is set
-          # user: keycloak
+          # Database user
+          # ignored if postgres.existingSecret is set
+          user: keycloak
 
-          # # Database password
-          # # ignored if postgres.existingSecret is set
-          # password: keycloak
+          # Database password
+          # ignored if postgres.existingSecret is set
+          password: keycloak
 
-          # # Resources allocation
-          # resources:
-          #   requests:
-          #     cpu: 100m
-          #     memory: 128Mi
-          #   limits:
-          #     cpu: 500m
-          #     memory: 512Mi
-          # # Persistence configuration
-          # persistence:
-          #   enabled: true
-          #   # Name of existing PVC to use (overrides all other persistence values)
-          #   existingClaim: ""
-          #   # Size of the persistent volume
-          #   size: 1Gi
-          #   # Storage class
-          #   storageClass: ""
-          #   # Access mode
-          #   accessMode: ReadWriteOnce
+          # Resources allocation
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          # Persistence configuration
+          persistence:
+            enabled: true
+            # Name of existing PVC to use (overrides all other persistence values)
+            existingClaim: "opencloud-keycloak-pvc"
+            # # Size of the persistent volume
+            # size: 1Gi
+            # # Storage class
+            # storageClass: ""
+            # # Access mode
+            # accessMode: ReadWriteOnce
 
 
         # =====================================================================
