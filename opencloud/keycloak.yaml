@@ -28,10 +28,6 @@ spec:
           enabled: false
 
         extraEnv: |
-          - name: KC_DB
-            value: postgres
-          - name: KC_DB_URL
-            value: /secrets/db-creds/fqdn-jdbc-uri
           - name: KEYCLOAK_USER
             value: /secrets/admin-creds/adminUser
           - name: KEYCLOAK_PASSWORD

@@ -11,6 +11,6 @@ spec:
       kind: Rule
       services:
         - name: keycloak-http
-          port: 80
+          port: 9990
   tls:
     certResolver: le
