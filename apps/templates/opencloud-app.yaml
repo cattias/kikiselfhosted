@@ -124,7 +124,7 @@ spec:
           # Internal Keycloak deployment
           internal:
             # Enable internal Keycloak instance
-            enabled: true
+            enabled: false
             # Keycloak image settings
             image:
               # Keycloak image registry
