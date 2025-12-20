@@ -8,8 +8,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - name: "9140"
-      port: 9140
-      targetPort: 9140
+    - name: "9250"
+      port: 9250
+      targetPort: 9250
   selector:
     app.kubernetes.io/name: opencloud

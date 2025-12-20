@@ -106,7 +106,7 @@ spec:
           name: opencloud
           image: opencloudeu/opencloud-rolling:4.1.0
           ports:
-            - containerPort: 9140
+            - containerPort: 9250
               protocol: TCP
           securityContext:
             runAsGroup: 0

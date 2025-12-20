@@ -11,6 +11,6 @@ spec:
       kind: Rule
       services:
         - name: opencloud
-          port: 9140
+          port: 9250
   tls:
     certResolver: le
