@@ -36,9 +36,9 @@ spec:
             value: /secrets/db-creds/port
           - name: DB_DATABASE
             value: /secrets/db-creds/dbname
-          - name: DB_USER_FILE
+          - name: DB_USER
             value: /secrets/db-creds/user
-          - name: DB_PASSWORD_FILE
+          - name: DB_PASSWORD
             value: /secrets/db-creds/password
           - name: KEYCLOAK_USER
             value: /secrets/admin-creds/adminUser
