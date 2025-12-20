@@ -26,17 +26,10 @@ spec:
       valuesObject:
         postgresql:
           enabled: false
-        extraEnvFrom: 
-          - name: KEYCLOAK_USER
-            valueFrom:
-              secretKeyRef:
-                name: cloud-keycloak-secret
-                key: adminUser
-          - name: KEYCLOAK_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: cloud-keycloak-secret
-                key: adminPassword
+
+        extraEnvFrom: |
+          - secretRef:
+              name: 'cloud-keycloak-secret'
         extraEnv: |
           - name: KC_HOSTNAME
             value: keycloak.attias.io
