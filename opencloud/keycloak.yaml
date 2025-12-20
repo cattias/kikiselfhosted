@@ -38,7 +38,7 @@ spec:
           - name: DB_ADDR
             value: keycloak-db-rw
           - name: DB_PORT
-            value: 5432
+            value: "5432"
           - name: DB_DATABASE
             value: app
         serviceMonitor:
