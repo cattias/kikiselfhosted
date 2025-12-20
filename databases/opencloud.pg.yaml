@@ -1,0 +1,13 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: opencloud-db
+  namespace: documents
+spec:
+  instances: 2
+
+  primaryUpdateStrategy: unsupervised
+
+  storage:
+    size: 50Gi
+    storageClass: ceph-block
