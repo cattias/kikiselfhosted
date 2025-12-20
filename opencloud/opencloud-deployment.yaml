@@ -92,8 +92,11 @@ spec:
               value: "false"
             - name: WOPISERVER_DOMAIN
               value: wopiserver.attias.io
-          image: opencloudeu/opencloud-rolling:4.1.0
           name: opencloud
+          image: opencloudeu/opencloud-rolling:4.1.0
+          ports:
+            - containerPort: 9140
+              protocol: TCP
           securityContext:
             runAsGroup: 0
             runAsUser: 0
