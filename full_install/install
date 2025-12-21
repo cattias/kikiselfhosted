@@ -53,6 +53,9 @@ chmod a+x argocd
 sudo mv argocd /usr/local/bin
 # Setup admin pwd
 argocd admin initial-password -n argocd
+# Add kikivault repo
+argocd repo add https://github.com/cattias/kikivault.git --username token --password GIT_TOKEN_ARGOCD
+
 
 # Update the fd limits
 /etc/systemd/system.conf
@@ -75,7 +78,7 @@ fs.inotify.max_user_watches = 524288
 sudo sysctl --system
 
 # Create Secret
-create secrets from list
+argocd sync https://github.com/cattias/kikivault.git
 
 # ArgoCD ignore diff patch ?
 
