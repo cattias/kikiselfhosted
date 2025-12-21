@@ -53,7 +53,6 @@ spec:
           type: Deployment
         service:
           type: LoadBalancer
-          port: 80
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
