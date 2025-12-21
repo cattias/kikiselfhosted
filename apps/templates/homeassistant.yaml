@@ -30,6 +30,8 @@ spec:
           storageClass: "ceph-block"
         serviceMonitor:
           enabled: true
+        ingress:
+          external: true
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
