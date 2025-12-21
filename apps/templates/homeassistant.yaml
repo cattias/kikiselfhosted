@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: home-assistant
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  destination:
+    namespace: home
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: home-assistant
+    repoURL: http://pajikos.github.io/home-assistant-helm-chart/
+    targetRevision: 0.3.36
+    helm:
+      releaseName: home-assistant
+      valuesObject:
+        persistence:
+          enabled: true
+          storageClass: "ceph-block"
+        serviceMonitor:
+          enabled: true
