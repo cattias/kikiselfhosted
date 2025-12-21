@@ -34,8 +34,14 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: homeassistant-config
+            - name: ha-config-cm
+              mountPath: /config/configuration.yaml
+              subPath: configuration.yaml
       restartPolicy: Always
       volumes:
         - name: homeassistant-config
           persistentVolumeClaim:
             claimName: homeassistant-config-pvc
+        - configMap:
+            name: homeassistant-config-cm
+          name: ha-config-cm
