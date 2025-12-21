@@ -46,6 +46,13 @@ spec:
         configuration:
           enable: true
           forceInit: true
+        addons:
+          codeserver:
+            enabled: true
+        controller:
+          type: Deployment
+        service:
+          type: LoadBalancer
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
