@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homeassistant
+  namespace: home
+  labels:
+    app.kubernetes.io/name: homeassistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: homeassistant
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: homeassistant
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: UTC
+          name: homeassistant
+          image: home-assistant/home-assistant:2025.12.4
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8123
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /config
+              name: homeassistant-config
+      restartPolicy: Always
+      volumes:
+        - name: homeassistant-config
+          persistentVolumeClaim:
+            claimName: homeassistant-config-pvc
