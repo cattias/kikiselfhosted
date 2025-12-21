@@ -182,6 +182,10 @@ data:
             icon: actual-budget.png
             href: https://budget.attias.io/
             description: Le budget de Kiki
+        - Kiki Home:
+            icon: home-assistant.png
+            href: https://homeassistant.attias.io/
+            description: Toute la maison de Kiki
 
   widgets.yaml: |
     - kubernetes:
