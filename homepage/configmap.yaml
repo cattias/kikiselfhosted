@@ -110,6 +110,10 @@ data:
             icon: fritzbox.png
             href: http://192.168.178.1/
             description: Fritzbox router admin portal
+        - Tailscale Admin Console:
+            icon: tailscale.png
+            href: https://login.tailscale.com/admin/machines
+            description: Tailscale Admin Console
 
     - Arr Stack:
         - Prowlarr:
