@@ -3,3 +3,6 @@ spec:
     server: https://kubernetes.default.svc
   source:
     registry: https://github.com/cattias
+
+applications:
+  - name: homeassistant

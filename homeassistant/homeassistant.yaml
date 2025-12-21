@@ -130,12 +130,6 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
             - /bin/sh /mnt/init/init.sh
-            # env:
-            # - name: FORCE_INIT
-            #   valueFrom:
-            #     configMapKeyRef:
-            #       name: init-script
-            #       key: forceInit
             # Home Assistant configuration volume will be mounted to /config automatically
             volumeMounts:
               - name: init-volume
