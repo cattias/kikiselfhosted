@@ -167,6 +167,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/homeassistant/ha-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*homeassistant\\s*\\n\\s*image:\\s*ghcr\\.io\\/home-assistant\\/home-assistant:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/home-assistant/home-assistant",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/arr/overseerr-deployment\\.yaml/"
       ],
       "matchStrings": [
@@ -288,6 +300,7 @@
       "**/rook-ceph-cluster-addition\\.yaml",
       "**/homepage\\.yaml",
       "**/nextcloud/**",
+      "**/opencloud/**",
       "**/dsm\\.yaml"
     ]
   }
