@@ -28,7 +28,7 @@ spec:
             - name: DEEMIX_SINGLE_USER
               value: "true"
           name: deemix
-          image: ghcr.io/bambanah/deemix:v4.4.0
+          image: ghcr.io/bambanah/deemix:v4.4.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 6595
