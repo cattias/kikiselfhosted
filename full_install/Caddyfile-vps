@@ -1,3 +1,16 @@
+
+{
+    # Global options block
+    log {
+        output file /var/log/caddy/access.log
+        format json
+    }
+}
+
+:80, :443 {
+    abort
+}
+
 plex.attias.io {
     reverse_proxy http://100.114.55.101:32400
 }
