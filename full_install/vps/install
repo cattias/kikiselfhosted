@@ -1,0 +1,37 @@
+
+curl -fsSL https://tailscale.com/install.sh | sh
+tailscale up
+tailscale set --ssh
+apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+chmod o+r /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+chmod o+r /etc/apt/sources.list.d/caddy-stable.list
+apt update
+apt install caddy
+vi /etc/caddy/Caddyfile 
+systemctl restart caddy
+apt install unattended-upgrades -y
+dpkg-reconfigure -plow unattended-upgrades
+vi /etc/apt/apt.conf.d/20auto-upgrades
+vi /etc/apt/apt.conf.d/50unattended-upgrades
+
+curl -s https://install.crowdsec.net | sudo sh
+apt upgrade
+apt install crowdsec
+apt install crowdsec-firewall-bouncer-iptables
+cscli collections install crowdsecurity/caddy
+vi /etc/crowdsec/acquis.yaml
+vi /etc/ssh/sshd_config.d/kiki.conf
+systemctl daemon-reload
+systemctl restart ssh.socket
+
+sudo cscli console enroll $ENROLLMENT_KEY
+sudo systemctl restart crowdsec
+
+ufw allow in on tailscale0
+ufw deny 22/tcp
+ufw allow 80/tcp
+ufw allow 443/tcp
+ufw enable
+ufw reload
