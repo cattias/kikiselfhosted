@@ -132,6 +132,8 @@ spec:
               {{- end }}
               {{ end }}
         prometheus-node-exporter:
+          extraArgs:
+              - --collector.textfile.directory=/var/lib/node_exporter/custom_metrics
           serviceAccount:
             automountServiceAccountToken: true
             create: true
