@@ -8,6 +8,8 @@ metadata:
 data:
   kubernetes.yaml: |
     mode: cluster
+    ingress: true
+    traefik: true
   settings.yaml: |
     title: Kiki's home delivery services
     background: 
