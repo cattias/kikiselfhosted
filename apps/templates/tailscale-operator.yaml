@@ -44,7 +44,7 @@ metadata:
   name: offsite-nas-tailnet
   namespace: tailscale
   annotations:
-    tailscale.com/tailnet-fqdn: kikioffsite.tail6c6d09.ts.net
+    tailscale.com/tailnet-ip: 100.114.250.7
 spec:
   externalName: yolo
   type: ExternalName
