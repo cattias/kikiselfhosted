@@ -20,9 +20,7 @@ spec:
     spec:
       serviceAccountName: homepage
       automountServiceAccountToken: true
-      hostNetwork: true
-      dnsPolicy: ClusterFirstWithHostNet
-      # dnsPolicy: ClusterFirst
+      dnsPolicy: ClusterFirst
       enableServiceLinks: true
       containers:
         - name: homepage
