@@ -5,7 +5,15 @@ metadata:
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/compare-options: ServerSideDiff=true
 spec:
+  ignoreDifferences:
+    - group: ""
+      kind: Service
+      name: offsite-nas-tailnet
+      jsonPointers:
+        - /spec/externalName
   syncPolicy:
     automated:
       enabled: true
@@ -14,6 +22,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
+      - RespectIgnoreDifferences=true
   destination:
     namespace: tailscale
     server: https://kubernetes.default.svc

@@ -1,0 +1,12 @@
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-pod-cidrs-kikiserver
+  namespace: tailscale
+spec:
+  replicas: 1
+  hostnamePrefix: ts-pod-cidrs-kikiserver
+  subnetRouter:
+    advertiseRoutes:
+      - "10.244.0.0/24"
+      - "10.96.0.0/12"
