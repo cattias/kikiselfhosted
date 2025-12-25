@@ -6,6 +6,12 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  ignoreDifferences:
+    - group: ""
+      kind: Service
+      name: offsite-nas-tailnet
+      jsonPointers:
+        - /spec/externalName
   syncPolicy:
     automated:
       enabled: true
