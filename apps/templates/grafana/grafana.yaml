@@ -5,6 +5,15 @@ metadata:
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: The Grafana dashboard to monitor all services
+    gethomepage.dev/group: KikiServer
+    gethomepage.dev/icon: grafana.png
+    gethomepage.dev/name: Monitoring Dasboard
+    gethomepage.dev/widget.type: "grafana"
+    gethomepage.dev/widget.url: "https://obs.attias.io"
+    gethomepage.dev/pod-selector: ""
 spec:
   syncPolicy:
     automated:
