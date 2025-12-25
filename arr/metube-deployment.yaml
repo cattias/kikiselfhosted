@@ -28,7 +28,7 @@ spec:
             - name: TZ
               value: UTC
           name: metube
-          image: alexta69/metube:2025.12.14
+          image: alexta69/metube:2025.12.25
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081
