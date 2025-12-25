@@ -192,22 +192,30 @@ data:
   widgets.yaml: |
     - kubernetes:
         cluster:
-          show: true
-          cpu: true
-          memory: true
-          showLabel: true
-          label: "cluster"
+          show: false
         nodes:
           show: true
           cpu: true
           memory: true
           showLabel: true
     - resources:
-        backend: resources
+        label: System
         expanded: true
         cpu: true
         memory: true
-        network: default
+        cputemp: true
+        # tempmin: 0 # optional, minimum cpu temp
+        # tempmax: 100 # optional, maximum cpu temp
+        uptime: true
+        units: metric
+        refresh: 3000 # optional, in ms
+        network: true # optional, uses 'default' if true or specify a network interface name
+    - resources:
+        label: Storage
+        expanded: true
+        disk: 
+            - /mnt/ugreen/media
+            - /mnt/homefs
     - search:
         provider: duckduckgo
         target: _blank

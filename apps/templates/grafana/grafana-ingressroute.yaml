@@ -13,6 +13,8 @@ metadata:
     gethomepage.dev/name: Monitoring
     gethomepage.dev/widget.type: "grafana"
     gethomepage.dev/widget.url: "https://obs.attias.io"
+    gethomepage.dev/widget.username: "admin"
+    gethomepage.dev/widget.password: ""
     gethomepage.dev/pod-selector: ""
 spec:
   entryPoints:
