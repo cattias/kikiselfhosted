@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         app: paperless-ngx
+        app.kubernetes.io/name: paperless
     spec:
       containers:
       - name: paperless-ngx
