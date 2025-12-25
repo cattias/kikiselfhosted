@@ -46,4 +46,5 @@ metadata:
   annotations:
     tailscale.com/tailnet-fqdn: kikioffsite.tail6c6d09.ts.net
 spec:
+  externalName: yolo
   type: ExternalName
