@@ -3,6 +3,17 @@ kind: IngressRoute
 metadata:
   name: grafana-router
   namespace: monitoring
+  annotations:
+    gethomepage.dev/href: "https://obs.attias.io"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Monitoring Dashboard for all services
+    gethomepage.dev/group: KikiServer
+    gethomepage.dev/icon: grafana.png
+    gethomepage.dev/app: grafana
+    gethomepage.dev/name: Monitoring
+    gethomepage.dev/widget.type: "grafana"
+    gethomepage.dev/widget.url: "https://obs.attias.io"
+    gethomepage.dev/pod-selector: ""
 spec:
   entryPoints:
     - websecure
