@@ -45,7 +45,7 @@ spec:
 
           # --- Other Static Local Entries ---
           - address=/pihole.kiki.home/192.168.178.110
-          # - address=/pihole2.kiki.home/192.168.178.210
+          - address=/pihole2.kiki.home/192.168.178.203
           - address=/kiki.node/node.kiki.home/192.168.178.34
           - address=/nas.kiki.home/192.168.178.33
           - address=/offsite.kiki.home/100.114.250.7
@@ -60,7 +60,7 @@ spec:
 
         # kubernetes services for web admin
         serviceWeb:
-          # loadBalancerIP: 192.168.178.110
+          loadBalancerIP: 192.168.178.203
           annotations:
             metallb.universe.tf/allow-shared-ip: pihole-svc
           type: LoadBalancer
@@ -69,7 +69,7 @@ spec:
         # port 53 outside of cluster on the local network
         serviceDns:
           mixedService: true
-          # loadBalancerIP: 192.168.178.110
+          loadBalancerIP: 192.168.178.203
           annotations:
             metallb.universe.tf/allow-shared-ip: pihole-svc
             tailscale.com/expose: "true"
