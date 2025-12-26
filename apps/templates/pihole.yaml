@@ -1,0 +1,76 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pihole
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  destination:
+    namespace: pihole
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: pihole
+    repoURL: https://mojo2600.github.io/pihole-kubernetes/
+    targetRevision: 2.35.0
+    helm:
+      releaseName: pihole
+      valuesObject:
+        image:
+          repository: pihole/pihole
+          tag: 2025.11.1
+          pullPolicy: IfNotPresent
+
+        dnsmasq:
+          enableCustomDnsMasq: true
+          customDnsEntries:
+          # --- Specific Overrides (External VPS) ---
+          - address=/plex.attias.io/photos.attias.io/overseerr.attias.io/91.98.236.199
+          - address=/kiki.vps/vps.kiki.home/100.113.17.84
+
+          # --- Nested Wildcard for MiniPC Nodes (*.node.attias.io) ---
+          - address=/node.attias.io/192.168.178.103
+
+          # --- General Wildcard for Main Traefik LB (*.attias.io) ---
+          - address=/attias.io/192.168.178.200
+
+          # --- Other Static Local Entries ---
+          - address=/pihole.kiki.home/192.168.178.110
+          # - address=/pihole2.kiki.home/192.168.178.210
+          - address=/kiki.node/node.kiki.home/192.168.178.34
+          - address=/nas.kiki.home/192.168.178.33
+          - address=/offsite.kiki.home/100.114.250.7
+          - address=/kiki.server/server.kiki.home/192.168.178.69
+
+        persistentVolumeClaim:
+          enabled: true
+          storageClass: local-path
+
+        admin:
+          existingSecret: "pihole-secret"
+
+        # kubernetes services for web admin
+        serviceWeb:
+          # loadBalancerIP: 192.168.178.110
+          annotations:
+            metallb.universe.tf/allow-shared-ip: pihole-svc
+          type: LoadBalancer
+        
+        # create a kubernetes service and expose
+        # port 53 outside of cluster on the local network
+        serviceDns:
+          mixedService: true
+          # loadBalancerIP: 192.168.178.110
+          annotations:
+            metallb.universe.tf/allow-shared-ip: pihole-svc
+            tailscale.com/expose: "true"
+          type: LoadBalancer
