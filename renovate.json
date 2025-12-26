@@ -11,6 +11,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/apps/templates/pihole\\.yaml/"
+      ],
+      "matchStrings": [
+        "image:\\s*\\n\\s*repository:\\s*pihole\\/pihole\\s*\\n\\s*tag:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/pi-hole/pihole",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/apps/templates/immich/immich\\.yaml/"
       ],
       "matchStrings": [
