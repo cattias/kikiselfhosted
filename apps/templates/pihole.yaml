@@ -53,7 +53,7 @@ spec:
 
         persistentVolumeClaim:
           enabled: true
-          storageClass: local-path
+          storageClass: ceph-block
 
         admin:
           existingSecret: "pihole-secret"
