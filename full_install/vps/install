@@ -35,3 +35,14 @@ ufw allow 80/tcp
 ufw allow 443/tcp
 ufw enable
 ufw reload
+
+
+apt install pipx -y
+pipx ensurepath
+pipx install "glances[web]"
+
+vi /usr/lib/systemd/system/glancesweb.service
+systemctl daemon-reload
+systemctl start glancesweb
+systemctl enable glancesweb
+# ss -antpl | grep glances
