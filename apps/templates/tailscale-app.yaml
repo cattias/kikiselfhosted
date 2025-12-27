@@ -14,6 +14,11 @@ spec:
       name: offsite-nas-tailnet
       jsonPointers:
         - /spec/externalName
+    - group: ""
+      kind: Service
+      name: vps-tailnet
+      jsonPointers:
+        - /spec/externalName
   syncPolicy:
     automated:
       enabled: true
