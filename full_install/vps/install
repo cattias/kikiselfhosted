@@ -46,3 +46,11 @@ systemctl daemon-reload
 systemctl start glancesweb
 systemctl enable glancesweb
 # ss -antpl | grep glances
+
+HEADSCALE_VERSION="" # See above URL for latest version, e.g. "X.Y.Z" (NOTE: do not add the "v" prefix!)
+HEADSCALE_ARCH="" # Your system architecture, e.g. "amd64"
+wget --output-document=headscale.deb \
+ "https://github.com/juanfont/headscale/releases/download/v${HEADSCALE_VERSION}/headscale_${HEADSCALE_VERSION}_linux_${HEADSCALE_ARCH}.deb"
+sudo apt install ./headscale.deb
+sudo vi /etc/headscale/config.yaml
+sudo systemctl enable --now headscale

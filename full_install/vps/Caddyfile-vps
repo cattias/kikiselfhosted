@@ -11,6 +11,10 @@
     abort
 }
 
+tailscale.attias.io {
+    reverse_proxy localhost:8880
+}
+
 plex.attias.io {
     reverse_proxy http://100.114.55.101:32400
 }
