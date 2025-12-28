@@ -48,7 +48,7 @@ spec:
           - address=/pihole2.kiki.home/192.168.178.203
           - address=/kiki.node/node.kiki.home/192.168.178.34
           - address=/nas.kiki.home/192.168.178.33
-          - address=/offsite.kiki.home/100.114.250.7
+          - address=/offsite.kiki.home/100.64.0.6
           - address=/kiki.server/server.kiki.home/192.168.178.69
 
         persistentVolumeClaim:
