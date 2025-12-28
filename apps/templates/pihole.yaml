@@ -72,4 +72,5 @@ spec:
           loadBalancerIP: 192.168.178.203
           annotations:
             metallb.universe.tf/allow-shared-ip: pihole-svc
+            tailscale.com/expose: "true"
           type: LoadBalancer
