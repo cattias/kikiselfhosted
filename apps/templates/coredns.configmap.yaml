@@ -19,14 +19,14 @@ data:
     }
     kiki.home:53 {
         errors
-        forward . 192.168.178.110:53 {
+        forward . 192.168.178.203:53 {
             force_tcp
             health_check 5s
         }
     }
     attias.io:53 {
         errors
-        forward . 192.168.178.110:53 {
+        forward . 192.168.178.203:53 {
             force_tcp
             health_check 5s
         }
