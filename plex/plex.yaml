@@ -45,8 +45,6 @@ spec:
           port: 32400
           targetPort: 32400
           externalTrafficPolicy: Local
-          annotations:
-            tailscale.com/expose: "true"
         extraEnv:
           TZ: "Etc/UTC"
           PLEX_UID: "1000"

@@ -11,6 +11,10 @@
     abort
 }
 
+glances.vps.attias.io {
+    reverse_proxy localhost:61208
+}
+
 headplane.attias.io {
     reverse_proxy localhost:3000
 }
