@@ -1,0 +1,11 @@
+services:
+  headplane:
+    image: ghcr.io/tale/headplane:latest
+    container_name: headplane
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - '/etc/headplane/config.yaml:/etc/headplane/config.yaml'
+      - '/var/lib/headplane:/var/lib/headplane'
+      - '/etc/headscale/config.yaml:/etc/headscale/config.yaml'

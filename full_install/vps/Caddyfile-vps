@@ -11,6 +11,10 @@
     abort
 }
 
+headplane.attias.io {
+    reverse_proxy localhost:3000
+}
+
 tailscale.attias.io {
     reverse_proxy localhost:8880
 }
