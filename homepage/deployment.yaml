@@ -36,8 +36,6 @@ spec:
               containerPort: 3000
               protocol: TCP
           volumeMounts:
-            - mountPath: /mnt/ugreen/media
-              name: nas-nfs-volume
             - mountPath: /mnt/homefs
               name: homefs-volume
             - mountPath: /app/config/custom.js
@@ -70,10 +68,6 @@ spec:
         - name: homepage-config
           configMap:
             name: homepage
-        - name: nas-nfs-volume
-          hostPath:
-            path: "/mnt/ugreen-media/" 
-            type: DirectoryOrCreate
         - name: homefs-volume
           hostPath:
             path: "/home" 
