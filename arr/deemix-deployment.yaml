@@ -38,6 +38,31 @@ spec:
               name: nas-media-deemix-volume
             - mountPath: /config
               name: deemix-config
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - "timeout 5 stat /downloads > /dev/null"
+            initialDelaySeconds: 60  # Give it a minute to start up
+            periodSeconds: 30       # Check every 30 seconds
+            timeoutSeconds: 10      # If the 'stat' command hangs for 10s, fail
+            failureThreshold: 3     # Kill the pod after 3 consecutive failures
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - "ls /downloads"
+            initialDelaySeconds: 30
+            periodSeconds: 60
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
       restartPolicy: Always
       volumes:
         - name: nas-media-deemix-volume
