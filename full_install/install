@@ -43,6 +43,8 @@ kubectl create namespace rook-ceph
 kubectl create namespace tailscale
 kubectl create namespace traefik
 kubectl create namespace vaultwarden
+kubectl create namespace authentik
+kubectl create namespace pihole
 
 # Install argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
