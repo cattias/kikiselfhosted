@@ -10,6 +10,6 @@ spec:
   ports:
     - name: "8765"
       port: 8765
-      targetPort: 8765
+      targetPort: 80
   selector:
     app.kubernetes.io/name: speedtest

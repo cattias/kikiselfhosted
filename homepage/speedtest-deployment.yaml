@@ -31,7 +31,7 @@ spec:
           image: henrywhitaker3/speedtest-tracker:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8765
+            - containerPort: 80
               protocol: TCP
           volumeMounts:
             - mountPath: /config
