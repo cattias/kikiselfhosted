@@ -31,28 +31,16 @@ spec:
           log_level: info
           # -- Secret key used for cookie singing and unique user IDs,
           # don't change this after the first install
-          secret_key:
-            valueFrom:
-              secretKeyRef:
-                name: authentik-secret
-                key: secret_key 
+          secret_key: file:///authentik-secret/secret_key 
           email:
             # -- SMTP Server emails are sent from, fully optional
             host: "smtp.gmail.com"
             # -- SMTP server port
             port: 587
             # -- SMTP credentials, when left empty, no authentication will be done
-            username: 
-              valueFrom:
-                secretKeyRef:
-                  name: authentik-secret
-                  key: smtp_username 
+            username: file:///authentik-secret/smtp_username 
             # -- SMTP credentials, when left empty, no authentication will be done
-            password: 
-              valueFrom:
-                secretKeyRef:
-                  name: authentik-secret
-                  key: smtp_password 
+            password: file:///authentik-secret/smtp_password
             # -- Use StartTLS. Enable either use_tls or use_ssl, they can't be enabled at the same time.
             use_tls: true
             # -- Use SSL. Enable either use_tls or use_ssl, they can't be enabled at the same time.
@@ -65,30 +53,14 @@ spec:
             # -- set the postgresql hostname to talk to
             # if unset and .Values.postgresql.enabled == true, will generate the default
             # @default -- `{{ .Release.Name }}-postgresql`
-            host: 
-              valueFrom:
-                secretKeyRef:
-                  name: authentik-db-app
-                  key: host 
+            host: file:///postgres-creds/host
             # -- postgresql Database name
             # @default -- `authentik`
-            name:
-              valueFrom:
-                secretKeyRef:
-                  name: authentik-db-app
-                  key: dbname 
+            name: file:///postgres-creds/dbname
             # -- postgresql Username
             # @default -- `authentik`
-            user:
-              valueFrom:
-                secretKeyRef:
-                  name: authentik-db-app
-                  key: user 
-            password:
-              valueFrom:
-                secretKeyRef:
-                  name: authentik-db-app
-                  key: password
+            user: file:///postgres-creds/user
+            password: file:///postgres-creds/password
             port: 5432
         server:
           metrics:
@@ -97,6 +69,21 @@ spec:
             serviceMonitor:
               # -- enable a prometheus ServiceMonitor
               enabled: true
+          volumes:
+            - name: postgres-creds
+              secret:
+                secretName: authentik-db-app
+            - name: authentik-secret
+              secret:
+                secretName: authentik-secret
+          volumeMounts:
+            - name: postgres-creds
+              mountPath: /postgres-creds
+              readOnly: true
+            - name: authentik-secret
+              mountPath: /authentik-secret
+              readOnly: true
+
         worker:
           metrics:
             # -- deploy metrics service
@@ -104,4 +91,17 @@ spec:
             serviceMonitor:
               # -- enable a prometheus ServiceMonitor
               enabled: true
-
+          volumes:
+            - name: postgres-creds
+              secret:
+                secretName: authentik-db-app
+            - name: authentik-secret
+              secret:
+                secretName: authentik-secret
+          volumeMounts:
+            - name: postgres-creds
+              mountPath: /postgres-creds
+              readOnly: true
+            - name: authentik-secret
+              mountPath: /authentik-secret
+              readOnly: true
