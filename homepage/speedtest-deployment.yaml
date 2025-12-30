@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: speedtest
+  namespace: home
+  labels:
+    app.kubernetes.io/name: speedtest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: speedtest
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: speedtest
+    spec:
+      containers:
+        - env:
+            - name: OOKLA_EULA_GDPR
+              value: "true"
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: UTC
+          name: speedtest
+          image: henrywhitaker3/speedtest-tracker:v1.12.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8765
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /config
+              name: speedtest-config
+      restartPolicy: Always
+      volumes:
+        - name: speedtest-config
+          persistentVolumeClaim:
+            claimName: speedtest-config-pvc

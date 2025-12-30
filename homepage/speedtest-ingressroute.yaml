@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: speedtest-router
+  namespace: home
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`speedtest.attias.io`)
+      kind: Rule
+      services:
+        - name: speedtest
+          port: 8765
+  tls:
+    certResolver: le
