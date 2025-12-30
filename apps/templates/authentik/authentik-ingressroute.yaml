@@ -11,6 +11,6 @@ spec:
       kind: Rule
       services:
         - name: authentik-server
-          port: 30080
+          port: 80
   tls:
     certResolver: le
