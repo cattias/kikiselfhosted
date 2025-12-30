@@ -10,7 +10,7 @@ spec:
     - match: Host(`authentik.attias.io`)
       kind: Rule
       services:
-        - name: server
+        - name: authentik-server
           port: 30080
   tls:
     certResolver: le
