@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: authentik-router
+  namespace: authentik
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`authentik.attias.io`)
+      kind: Rule
+      services:
+        - name: server
+          port: 30080
+  tls:
+    certResolver: le
