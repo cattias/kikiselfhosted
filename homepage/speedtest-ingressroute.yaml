@@ -11,6 +11,6 @@ spec:
       kind: Rule
       services:
         - name: speedtest
-          port: 80
+          port: 8765
   tls:
     certResolver: le
