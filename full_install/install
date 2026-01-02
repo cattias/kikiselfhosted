@@ -9,7 +9,6 @@ sudo vi /etc/apt/apt.conf.d/50unattended-upgrades
 
 # Necessary for NFS mounts
 sudo apt install nfs-common
-sudo apt-get install autofs
 # Necessary for ceph disks cleanup
 sudo apt install ceph
 cleanup_disks
