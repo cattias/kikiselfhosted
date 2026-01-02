@@ -115,6 +115,10 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "ClusterIP"}}'
 # on P700
 sudo ip route add 100.64.0.0/10 via 192.168.178.33
 # on UGreen
+# route to api.telegram.org
+sudo ip route add 149.154.166.110 via 192.168.178.1 dev eth1
+# route to vps
+sudo ip route add 91.98.236.199 via 192.168.178.1 dev eth1
 # Enable forwarding in the kernel for the current session
 sudo sysctl -w net.ipv4.ip_forward=1
 # Make it permanent so it survives reboots
