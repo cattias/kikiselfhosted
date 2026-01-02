@@ -33,6 +33,9 @@ ufw allow in on tailscale0
 ufw deny 22/tcp
 ufw allow 80/tcp
 ufw allow 443/tcp
+ufw allow 3478/udp
+ufw allow 51820/udp
+
 ufw enable
 ufw reload
 
