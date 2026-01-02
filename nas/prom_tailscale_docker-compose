@@ -48,3 +48,25 @@ services:
     cap_add:
       - net_admin
     privileged: true
+
+
+services:
+  backrest:
+    image: garethgeorge/backrest
+    container_name: backrest
+    hostname: KikiNAS
+    ports:
+      - "9898:9898"
+    environment:
+      - BACKREST_DATA=/data
+      - BACKREST_CONFIG=/config/config.json
+      - XDG_CACHE_HOME=/cache
+      - TMPDIR=/tmp
+    restart: unless-stopped
+    volumes:
+      - ./cache:/cache
+      - ./tmp:/tmp
+      - ./data:/data
+      - ./config:/config
+      - /volume1/backup:/volume1/backup:ro
+      - /home/kiki:/data/kiki:ro
