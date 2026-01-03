@@ -39,7 +39,6 @@ kubectl create namespace plex
 kubectl create namespace postgres-operator
 kubectl create namespace redis-operator
 kubectl create namespace rook-ceph
-kubectl create namespace tailscale
 kubectl create namespace traefik
 kubectl create namespace vaultwarden
 kubectl create namespace authentik
