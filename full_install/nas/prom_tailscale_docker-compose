@@ -70,3 +70,31 @@ services:
       - ./config:/config
       - /volume1/backup:/volume1/backup:ro
       - /home/kiki:/data/kiki:ro
+
+
+services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: WATCHTOWER
+    hostname: watchtower
+    mem_limit: 512m
+    mem_reservation: 128m
+    cpu_shares: 512
+    security_opt:
+      - no-new-privileges=true
+    read_only: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      TZ: UTC
+      WATCHTOWER_CLEANUP: true # Remove old images after updating
+      WATCHTOWER_REMOVE_VOLUMES: false # Remove attached volumes after updating
+      DOCKER_API_VERSION: 1.45 # SSH docker version 1.41 for Docker engine version 20.10 - 1.43 for Docker engine version 24 - 1.45 for Docker engine version 26.1
+      WATCHTOWER_INCLUDE_RESTARTING: true # Restart containers after update
+      WATCHTOWER_INCLUDE_STOPPED: false # Update stopped containers
+      WATCHTOWER_SCHEDULE: "0 0 5 * * *" # Update & Scan containers every day at 5am
+      WATCHTOWER_LABEL_ENABLE: false
+      WATCHTOWER_ROLLING_RESTART: true #or false if you are using containers that have depends_on.
+      WATCHTOWER_TIMEOUT: 30s
+      WATCHTOWER_LOG_FORMAT: pretty
+    restart: on-failure:5
