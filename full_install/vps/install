@@ -57,3 +57,12 @@ wget --output-document=headscale.deb \
 sudo apt install ./headscale.deb
 sudo vi /etc/headscale/config.yaml
 sudo systemctl enable --now headscale
+
+tailscale up --accept-dns --accept-routes --advertise-exit-node --login-server=http://localhost:8880 --ssh
+
+# Reload systemd to see the new file
+sudo systemctl daemon-reload
+# Enable the service for future boots
+sudo systemctl enable tailscale-eth-tuning.service
+# Start it now to apply the settings immediately
+sudo systemctl start tailscale-eth-tuning.service
