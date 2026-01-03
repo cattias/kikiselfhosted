@@ -62,9 +62,12 @@ echo "91.98.236.199 tailscale.attias.io" >> /etc/hosts
 
 tailscale up --accept-dns --accept-routes --advertise-exit-node --login-server=http://localhost:8880 --ssh
 
+sudo vi /etc/systemd/system/tailscale-eth-tuning.service
 # Reload systemd to see the new file
 sudo systemctl daemon-reload
 # Enable the service for future boots
 sudo systemctl enable tailscale-eth-tuning.service
 # Start it now to apply the settings immediately
 sudo systemctl start tailscale-eth-tuning.service
+# check
+ethtool -k eth0 | grep -E "rx-udp-gro-forwarding|rx-gro-list"
