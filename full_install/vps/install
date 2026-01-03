@@ -58,6 +58,8 @@ sudo apt install ./headscale.deb
 sudo vi /etc/headscale/config.yaml
 sudo systemctl enable --now headscale
 
+echo "91.98.236.199 tailscale.attias.io" >> /etc/hosts
+
 tailscale up --accept-dns --accept-routes --advertise-exit-node --login-server=http://localhost:8880 --ssh
 
 # Reload systemd to see the new file
