@@ -1,6 +1,2 @@
-#nas.kiki.home:/volume1/backup /mnt/ugreen-backup nfs defaults,noatime,_netdev,nofail,x-systemd.automount 0 0
-#nas.kiki.home:/volume1/media /mnt/ugreen-media nfs defaults,soft,timeo=50,retrans=2,noatime,_netdev,nofail,x-systemd.automount 0 0
-#172.16.10.2:/volume1/backup /mnt/ugreen-backup nfs defaults,noatime,_netdev,nofail,x-systemd.automount 0 0
-#172.16.10.2:/volume1/media /mnt/ugreen-media nfs defaults,soft,timeo=50,retrans=2,noatime,_netdev,nofail,x-systemd.automount 0 0
-172.16.10.2:/volume1/backup /mnt/ugreen-backup nfs defaults,noauto,noatime,_netdev,nofail,x-systemd.automount,x-systemd.idle-timeout=10min,x-systemd.mount-timeout=10,x-systemd.device-timeout=10,sec=sys 0 0
-172.16.10.2:/volume1/media /mnt/ugreen-media nfs defaults,noauto,noatime,_netdev,nofail,x-systemd.automount,x-systemd.idle-timeout=10min,x-systemd.mount-timeout=10,x-systemd.device-timeout=10,sec=sys 0 0
+172.16.10.2:/volume1/media  /mnt/ugreen-media  nfs  defaults,nofail,_netdev,rw,hard,intr,tcp,rsize=1048576,wsize=1048576,noatime,async  0  0
+172.16.10.2:/volume1/backup  /mnt/ugreen-backup  nfs  defaults,nofail,_netdev,rw,hard,intr,tcp,rsize=1048576,wsize=1048576,noatime,nodiratime,async  0  0
