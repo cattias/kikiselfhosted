@@ -30,3 +30,4 @@ sudo reboot
 # after reboot
 kubectl uncordon kikiserver
 kubectl -n argocd scale statefulset/argocd-application-controller --replicas=1
+sudo systemctl restart tailscaled
