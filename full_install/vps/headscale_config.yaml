@@ -78,7 +78,7 @@ derp:
   server:
     # If enabled, runs the embedded DERP server and merges it into the rest of the DERP config
     # The Headscale server_url defined above MUST be using https, DERP requires TLS to be in place
-    enabled: true
+    enabled: true 
 
     # Region ID to use for the embedded DERP server.
     # The local DERP prevails if the region ID collides with other region ID coming from
@@ -175,7 +175,6 @@ database:
     # https://www.sqlite.org/c3ref/wal_autocheckpoint.html
     # Set to 0 to disable automatic checkpointing.
     wal_autocheckpoint: 1000
-
   # # Postgres config
   # Please note that using Postgres is highly discouraged as it is only supported for legacy reasons.
   # See database.type for more information.
@@ -194,14 +193,14 @@ database:
   #   # in the 'ssl' field. Refers to https://www.postgresql.org/docs/current/libpq-ssl.html Table 34.1.
   #   ssl: false
 
-### TLS configuration
-#
-## Let's encrypt / ACME
-#
-# headscale supports automatically requesting and setting up
-# TLS for a domain with Let's Encrypt.
-#
-# URL to ACME directory
+  ### TLS configuration
+  #
+  ## Let's encrypt / ACME
+  #
+  # headscale supports automatically requesting and setting up
+  # TLS for a domain with Let's Encrypt.
+  #
+  # URL to ACME directory
 acme_url: https://acme-v02.api.letsencrypt.org/directory
 
 # Email to register with ACME provider
@@ -246,6 +245,7 @@ policy:
   # If the mode is set to "file", the path to a
   # HuJSON file containing ACL policies.
   path: "/etc/headscale/acl.hujson"
+  # path: ""
 
 ## DNS
 #
@@ -286,17 +286,8 @@ dns:
   # List of DNS servers to expose to clients.
   nameservers:
     global:
-      - 1.1.1.1
-      - 1.0.0.1
-      - 2606:4700:4700::1111
-      - 2606:4700:4700::1001
-
-      # NextDNS (see https://tailscale.com/kb/1218/nextdns/).
-      # "abc123" is example NextDNS ID, replace with yours.
-      # - https://dns.nextdns.io/abc123
-
-    # Split DNS (see https://tailscale.com/kb/1054/dns/),
-    # a map of domains and which DNS server to use for each.
+      - 192.168.178.110
+      - 192.168.178.203
     split: {}
       # foo.bar.com:
       #   - 1.1.1.1
@@ -306,7 +297,9 @@ dns:
 
   # Set custom DNS search domains. With MagicDNS enabled,
   # your tailnet base_domain is always the first search domain.
-  search_domains: []
+  search_domains:
+    - attias.io
+    - kiki.home
 
   # Extra DNS records
   # so far only A and AAAA records are supported (on the tailscale side)
@@ -323,8 +316,8 @@ dns:
   # Headscale processes this file on each change.
   # extra_records_path: /var/lib/headscale/extra-records.json
 
-# Unix socket used for the CLI to connect without authentication
-# Note: for production you will want to set this to something like:
+  # Unix socket used for the CLI to connect without authentication
+  # Note: for production you will want to set this to something like:
 unix_socket: /var/run/headscale/headscale.sock
 unix_socket_permission: "0770"
 
