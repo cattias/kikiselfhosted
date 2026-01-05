@@ -1,7 +1,4 @@
-
-curl -fsSL https://tailscale.com/install.sh | sh
-tailscale up --login-server https://tailscale.attias.io
-tailscale set --ssh
+# caddy
 apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
@@ -11,11 +8,14 @@ apt update
 apt install caddy
 vi /etc/caddy/Caddyfile 
 systemctl restart caddy
+
+# unattented upgrades
 apt install unattended-upgrades -y
 dpkg-reconfigure -plow unattended-upgrades
 vi /etc/apt/apt.conf.d/20auto-upgrades
 vi /etc/apt/apt.conf.d/50unattended-upgrades
 
+# crowdsec
 curl -s https://install.crowdsec.net | sudo sh
 apt upgrade
 apt install crowdsec
@@ -29,38 +29,40 @@ systemctl restart ssh.socket
 sudo cscli console enroll $ENROLLMENT_KEY
 sudo systemctl restart crowdsec
 
+# Firewall
 ufw allow in on tailscale0
 ufw deny 22/tcp
 ufw allow 80/tcp
 ufw allow 443/tcp
 ufw allow 3478/udp
 ufw allow 51820/udp
-
 ufw enable
 ufw reload
 
-
+# glances
 apt install pipx -y
 pipx ensurepath
 pipx install "glances[web]"
-
 vi /usr/lib/systemd/system/glancesweb.service
 systemctl daemon-reload
 systemctl start glancesweb
 systemctl enable glancesweb
 # ss -antpl | grep glances
 
+# headscale
 HEADSCALE_VERSION="" # See above URL for latest version, e.g. "X.Y.Z" (NOTE: do not add the "v" prefix!)
 HEADSCALE_ARCH="" # Your system architecture, e.g. "amd64"
-wget --output-document=headscale.deb \
- "https://github.com/juanfont/headscale/releases/download/v${HEADSCALE_VERSION}/headscale_${HEADSCALE_VERSION}_linux_${HEADSCALE_ARCH}.deb"
+wget --output-document=headscale.deb "https://github.com/juanfont/headscale/releases/download/v${HEADSCALE_VERSION}/headscale_${HEADSCALE_VERSION}_linux_${HEADSCALE_ARCH}.deb"
 sudo apt install ./headscale.deb
 sudo vi /etc/headscale/config.yaml
 sudo systemctl enable --now headscale
 
 echo "91.98.236.199 tailscale.attias.io" >> /etc/hosts
 
+# tailscale
+curl -fsSL https://tailscale.com/install.sh | sh
 tailscale up --accept-dns --accept-routes --advertise-exit-node --login-server=http://localhost:8880 --ssh
+tailscale set --auto-update=true
 
 sudo vi /etc/systemd/system/tailscale-eth-tuning.service
 # Reload systemd to see the new file
