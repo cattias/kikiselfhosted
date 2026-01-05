@@ -17,6 +17,7 @@ spec:
       labels:
         app.kubernetes.io/name: soulsolid
     spec:
+      shareProcessNamespace: true
       containers:
         - env:
             - name: PGID
