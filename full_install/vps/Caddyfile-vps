@@ -1,3 +1,26 @@
+# The Caddyfile is an easy way to configure your Caddy web server.
+#
+# Unless the file starts with a global options block, the first
+# uncommented line is always the address of your site.
+#
+# To use your own domain name (with automatic HTTPS), first make
+# sure your domain's A/AAAA DNS records are properly pointed to
+# this machine's public IP, then replace ":80" below with your
+# domain name.
+
+#:80 {
+#       # Set this path to your site's directory.
+#       root * /usr/share/caddy
+#
+#       # Enable the static file server.
+#       file_server
+#
+#       # Another common task is to set up a reverse proxy:
+#       # reverse_proxy localhost:8080
+#
+#       # Or serve a PHP site through php-fpm:
+#       # php_fastcgi localhost:9000
+#}
 
 {
     # Global options block
@@ -19,22 +42,33 @@ headplane.attias.io {
     reverse_proxy localhost:3000
 }
 
+uptime.attias.io {
+    reverse_proxy localhost:3001
+}
+
+status.kikiflix.attias.io {
+    reverse_proxy localhost:3001
+}
+
 tailscale.attias.io {
     reverse_proxy localhost:8880
 }
 
 plex.attias.io {
-    reverse_proxy http://100.114.55.101:32400
+    reverse_proxy http://192.168.178.201:32400
 }
 
 photos.attias.io {
-    reverse_proxy http://100.74.99.88:2283
+    reverse_proxy http://192.168.178.202:2283
 }
 
 overseerr.attias.io {
-    reverse_proxy https://100.90.241.99:443 {
-	transport http {
-	    tls_insecure_skip_verify
-	}
+    reverse_proxy https://192.168.178.200:443 {
+        transport http {
+            tls_insecure_skip_verify
+        }
     }
 }
+
+# Refer to the Caddy docs for more information:
+# https://caddyserver.com/docs/caddyfile
