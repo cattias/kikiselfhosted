@@ -68,6 +68,7 @@ spec:
               options:
                 path: /var/lib/grafana/dashboards
         dashboardsConfigMaps:
+          smartclt: "smartctl-dashboard"
           ceph: "ceph-dashboard"
           node: "node-dashboard"
           k8s: "k8s-dashboard"
