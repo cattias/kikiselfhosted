@@ -103,7 +103,7 @@ data:
               "instant": true,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "{{instance}}:{{device}}",
+              "legendFormat": "{{ "{{" }}instance{{ "}}" }}:{{ "{{" }}device{{ "}}" }}",
               "refId": "A"
             }
           ],
@@ -387,7 +387,7 @@ data:
               "instant": false,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "{{instance}} {{device}} {{model_name}}",
+              "legendFormat": "{{ "{{" }}instance{{ "}}" }} {{ "{{" }}device{{ "}}" }} {{ "{{" }}model_name{{ "}}" }}",
               "range": true,
               "refId": "A"
             }
@@ -597,7 +597,7 @@ data:
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "Critical Warnings {{device}}",
+              "legendFormat": "Critical Warnings {{ "{{" }}device{{ "}}" }}",
               "range": true,
               "refId": "A"
             }
@@ -1075,7 +1075,7 @@ data:
               "instant": false,
               "interval": "1m",
               "intervalFactor": 1,
-              "legendFormat": "{{instance}} {{device}} {{model_name}}",
+              "legendFormat": "{{ "{{" }}instance{{ "}}" }} {{ "{{" }}device{{ "}}" }} {{ "{{" }}model_name{{ "}}" }}",
               "refId": "B"
             }
           ],
