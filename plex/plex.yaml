@@ -48,7 +48,8 @@ spec:
         extraEnv:
           TZ: "Etc/UTC"
           PLEX_UID: "1000"
-          PLEX_GID: "1000"
+          PLEX_GID: "10"
+          UMASK: "022"
           # PLEX_CLAIM: "claim-xxx-first-time-use"
         extraVolumes:
           - name: nas-media-volume
