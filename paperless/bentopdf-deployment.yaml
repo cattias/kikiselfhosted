@@ -1,0 +1,34 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bentopdf
+  namespace: documents
+  labels:
+    app: bentopdf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bentopdf
+  template:
+    metadata:
+      labels:
+        app: bentopdf
+        app.kubernetes.io/name: bentopdf
+    spec:
+      containers:
+      - name: bentopdf
+        image: bentopdf/bentopdf:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+              - nc -z 127.0.0.1 8080 || exit 1
+          failureThreshold: 3
+          initialDelaySeconds: 90
+          periodSeconds: 10
+          timeoutSeconds: 5
+        ports:
+          - containerPort: 8080
+            protocol: TCP
