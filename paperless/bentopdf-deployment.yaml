@@ -19,8 +19,8 @@ spec:
     spec:
       containers:
       - name: bentopdf
-        image: bentopdf/bentopdf:1.15.4
-        imagePullPolicy: IfNotPresent
+        image: bentopdf/bentopdf:latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
