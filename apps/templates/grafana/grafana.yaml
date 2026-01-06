@@ -34,6 +34,7 @@ spec:
             apiVersion: 1
             datasources:
               - name: Kikiserver
+                uid: PC1D92E498B278DEE
                 type: prometheus
                 access: proxy
                 url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
@@ -46,10 +47,6 @@ spec:
                 type: prometheus
                 access: proxy
                 url: http://nas.kiki.home:9090/
-              # - name: Kikioffsite
-              #   type: prometheus
-              #   access: proxy
-              #   url: http://offsite.kiki.home:9090
               - uid: DS_GARMIN_STATS
                 name: GarminInflux
                 type: influxdb
