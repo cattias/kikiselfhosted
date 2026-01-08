@@ -71,13 +71,25 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/paperless/deployment\\.yaml/"
+        "/paperless/paperless-deployment\\.yaml/"
       ],
       "matchStrings": [
         "name:\\s*paperless-ngx\\s*\\n\\s*image:\\s*ghcr\\.io\\/paperless-ngx\\/paperless-ngx:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "ghcr.io/paperless-ngx/paperless-ngx",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/paperless/bentopdf-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*bentopdf\\s*\\n\\s*image:\\s*bentopdf\\/bentopdf:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "bentopdf/bentopdf",
       "versioningTemplate": "semver"
     },
     {
