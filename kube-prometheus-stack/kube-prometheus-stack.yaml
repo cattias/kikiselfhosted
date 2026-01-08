@@ -227,7 +227,7 @@ spec:
                 /opt/version-check.sh
                 while true; do
                   /opt/version-check.sh
-                  sleep 6h
+                  sleep 1h
                 done
           sidecarVolumeMount: # Mount the script into the Sidecar container
             - name: version-check-script-volume-mount
