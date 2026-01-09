@@ -25,25 +25,25 @@ spec:
     helm:
       releaseName: grafana
       valuesObject:
-        grafana.ini:
-          auth:
-            signout_redirect_url: "https://authentik.attias.io/application/o/grafana/end-session/"
-            oauth_auto_login: true
-          auth.generic_oauth:
-            name: authentik
-            enabled: true
-            client_id: "<path:namespaces/monitoring/secrets/admin-user-secret#client_id>"
-            client_secret: "<path:namespaces/monitoring/secrets/admin-user-secret#client_secret>"
-            scopes: "openid profile email"
-            auth_url: "https://authentik.attias.io/application/o/authorize/"
-            token_url: "https://authentik.attias.io/application/o/token/"
-            api_url: "https://authentik.attias.io/application/o/userinfo/"
-            # Optionally map user groups to Grafana roles
-            # role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
-        # admin:
-        #   existingSecret: admin-user-secret
-        #   userKey: admin-user
-        #   passwordKey: admin-password
+        # grafana.ini:
+        #   auth:
+        #     signout_redirect_url: "https://authentik.attias.io/application/o/grafana/end-session/"
+        #     oauth_auto_login: true
+        #   auth.generic_oauth:
+        #     name: authentik
+        #     enabled: true
+        #     client_id: "<path:namespaces/monitoring/secrets/admin-user-secret#client_id>"
+        #     client_secret: "<path:namespaces/monitoring/secrets/admin-user-secret#client_secret>"
+        #     scopes: "openid profile email"
+        #     auth_url: "https://authentik.attias.io/application/o/authorize/"
+        #     token_url: "https://authentik.attias.io/application/o/token/"
+        #     api_url: "https://authentik.attias.io/application/o/userinfo/"
+        #     # Optionally map user groups to Grafana roles
+        #     # role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
+        admin:
+          existingSecret: admin-user-secret
+          userKey: admin-user
+          passwordKey: admin-password
         datasources:
           datasources.yaml:
             apiVersion: 1
