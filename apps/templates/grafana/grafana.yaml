@@ -32,16 +32,8 @@ spec:
           auth.generic_oauth:
             name: authentik
             enabled: true
-            client_id: 
-              valueFrom:
-                secretKeyRef:
-                  name: admin-user-secret
-                  key: client_id
-            client_secret: 
-              valueFrom:
-                secretKeyRef:
-                  name: admin-user-secret
-                  key: client_secret
+            client_id: "<path:namespaces/monitoring/secrets/admin-user-secret#client_id>"
+            client_secret: "<path:namespaces/monitoring/secrets/admin-user-secret#client_secret>"
             scopes: "openid profile email"
             auth_url: "https://authentik.attias.io/application/o/authorize/"
             token_url: "https://authentik.attias.io/application/o/token/"
