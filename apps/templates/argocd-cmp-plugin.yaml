@@ -2,12 +2,14 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cmp-plugin
+  namespace: argocd
 data:
   avp.yaml: |
     apiVersion: argoproj.io/v1alpha1
     kind: ConfigManagementPlugin
     metadata:
       name: argocd-vault-plugin
+      namespace: argocd
     spec:
       allowConcurrency: true
       discover:
