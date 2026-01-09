@@ -46,6 +46,8 @@ kubectl create namespace pihole
 
 # Install argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply -n argocd -f ../apps/templates/argocd-cmp-plugin.yaml
+kubectl patch deployment argocd-repo-server -n argocd --patch-file argocd-repo-server-deployment.yaml
 # Expose it as NodePort to start with
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
 # Get the cli
