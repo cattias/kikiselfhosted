@@ -10,10 +10,10 @@ spec:
           emptyDir: {}
       initContainers:
       - name: download-tools
-        image: alpine/curl:latest
+        image: registry.access.redhat.com/ubi8
         env:
           - name: AVP_VERSION
-            value: 1.16.1
+            value: 1.18.1
         command: [sh, -c]
         args:
           - >-
