@@ -21,7 +21,7 @@ spec:
       priority: 15
       services:
           - kind: Service
-            name: authentik-server
+            name: ak-outpost-authentik-embedded-outpost
             namespace: authentik
             port: 9000
   tls:
