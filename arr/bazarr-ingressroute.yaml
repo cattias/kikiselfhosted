@@ -12,5 +12,8 @@ spec:
       services:
         - name: bazarr
           port: 6767
+      middlewares:
+        - name: authentik
+          namespace: traefik
   tls:
     certResolver: le
