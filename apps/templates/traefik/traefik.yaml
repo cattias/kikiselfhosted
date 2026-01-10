@@ -32,6 +32,8 @@ spec:
             enabled: true
             # -- Allows IngressRoute to reference resources in namespace other than theirs
             allowCrossNamespace: true
+            # -- Allows to reference ExternalName services in IngressRoute
+            allowExternalNameServices: true
         service:
           loadBalancerIP: 192.168.178.200
           type: LoadBalancer
