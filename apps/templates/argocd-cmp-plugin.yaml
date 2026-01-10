@@ -18,21 +18,18 @@ data:
             - sh
             - "-c"
             - |
-              # Only proceed if it's NOT a Helm chart
-              if [ ! -f "Chart.yaml" ]; then
-                # Look for files containing AVP placeholders
-                find . -name "*.yaml" -not -name "Chart.yaml" | xargs -I {} grep -l "<path\|avp\.kubernetes\.io" {}
-              else
-                # If Chart.yaml exists, return non-zero to let Argo handle it via Helm
+              # Skip if Chart.yaml exists to let Argo's native Helm handler take over
+              if [ -f "Chart.yaml" ]; then
                 exit 1
               fi
-          command:
-            - sh
-            - "-c"
-            - "find . -name 'grafana.yaml' | xargs -I {} grep \"<path\\|avp\\.kubernetes\\.io\" {} | grep ."
+              # Search for AVP placeholders in non-Helm YAML files
+              find . -name "*.yaml" | xargs -I {} grep -l "<path\|avp\.kubernetes\.io" {}
       generate:
         command:
-          - argocd-vault-plugin
-          - generate
-          - "."
+          - sh
+          - "-c"
+          - |
+            # Only process files that are NOT Chart.yaml
+            # We use '-' to tell AVP to read from the piped stream
+            find . -name "*.yaml" -not -name "Chart.yaml" | xargs -I {} cat {} | argocd-vault-plugin generate -
       lockRepo: false
