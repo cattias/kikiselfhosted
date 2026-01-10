@@ -72,6 +72,32 @@ spec:
                 secretKeyRef:
                   name: mealie-smtp-secret
                   key: password
+            - name: OIDC_AUTH_ENABLED
+              value: "true"
+            - name: OIDC_PROVIDER_NAME
+              value: "authentik"
+            - name: OIDC_CONFIGURATION_URL
+              value: "https://authentik.attias.io/application/o/mealie/.well-known/openid-configuration"
+            - name: OIDC_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-secret
+                  key: OIDC_CLIENT_ID
+            - name: OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-secret
+                  key: OIDC_CLIENT_SECRET
+            - name: OIDC_SIGNUP_ENABLED
+              value: "true"
+            - name: OIDC_USER_GROUP
+              value: "mealie-users"
+            - name: OIDC_ADMIN_GROUP
+              value: "mealie-admins"
+            - name: OIDC_AUTO_REDIRECT
+              value: "true"
+            - name: OIDC_REMEMBER_ME
+              value: "true"
           name: mealie
           image: ghcr.io/mealie-recipes/mealie:v3.9.2
           ports:
