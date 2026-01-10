@@ -28,8 +28,7 @@ spec:
           enabled: true
           existingClaim: budget-data-pvc
         extraEnvVars:
-          - name: ACTUAL_OPENID_ENFORCE
-            value: "true"
+          ACTUAL_OPENID_ENFORCE: "true"
         login:
           method: openid
           allowedLoginMethods:
