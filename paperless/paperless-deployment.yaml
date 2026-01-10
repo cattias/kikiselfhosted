@@ -84,6 +84,11 @@ spec:
         - name: PAPERLESS_LOGOUT_REDIRECT_URL
           value: "https://authentik.attias.io/application/o/paperless-ngx/end-session/"
 
+        - name: PAPERLESS_DISABLE_REGULAR_LOGIN
+          value: "true"
+        - name: PAPERLESS_REDIRECT_LOGIN_TO_SSO
+          value: "true"
+
         volumeMounts:
         - name: media-volume
           mountPath: /media 
