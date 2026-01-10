@@ -67,7 +67,23 @@ spec:
           value: "/data"
         - name: PAPERLESS_MEDIA_ROOT
           value: "/media"
-        
+
+        - name: PAPERLESS_ENABLE_ALLAUTH
+          value: true
+        - name: PAPERLESS_APPS
+          value: allauth.socialaccount.providers.openid_connect
+        - name: PAPERLESS_SOCIALACCOUNT_PROVIDERS
+          valueFrom:
+            secretKeyRef:
+              name: paperless-openid-secret
+              key: authentik 
+        - name: PAPERLESS_AUTO_LOGIN
+          value: true
+        - name: PAPERLESS_AUTO_CREATE
+          value: true
+        - name: PAPERLESS_LOGOUT_REDIRECT_URL
+          value: "https://authentik.attias.io/application/o/paperless-ngx/end-session/"
+
         volumeMounts:
         - name: media-volume
           mountPath: /media 
