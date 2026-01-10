@@ -27,3 +27,7 @@ spec:
         persistence:
           enabled: true
           existingClaim: budget-data-pvc
+        login:
+          method: openid
+          allowedLoginMethods:
+            - openid
