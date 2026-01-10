@@ -29,15 +29,3 @@ spec:
           existingClaim: budget-data-pvc
         extraEnvVars:
           ACTUAL_OPENID_ENFORCE: "true"
-          ACTUAL_OPENID_DISCOVERY_URL: "https://authentik.attias.io/application/o/budget/"
-          ACTUAL_OPENID_SERVER_HOSTNAME: "https://budget.attias.io"
-          ACTUAL_OPENID_CLIENT_ID:
-            valueFrom:
-              secretKeyRef:
-                name: actualbudget-openid-secret
-                key: clientId
-          ACTUAL_OPENID_CLIENT_SECRET:
-            valueFrom:
-              secretKeyRef:
-                name: actualbudget-openid-secret
-                key: clientSecret
