@@ -1,0 +1,27 @@
+# /etc/fail2ban/jail.local
+ignoreip = 127.0.0.1/8 ::1 192.168.178.0/24 100.64.0.3
+bantime  = 1h
+findtime  = 10m
+maxretry = 5
+banaction = ufw
+
+destemail = christophe.attias+fail2ban@gmail.com
+sender = fail2ban@attias.io
+
+[sshd]
+enabled = true
+port    = ssh
+filter  = sshd
+maxretry = 3
+bantime  = 1h
+logpath = %(sshd_log)s
+backend = %(sshd_backend)s
+
+[caddy-auth]
+enabled = true
+port    = http,https
+filter  = caddy-auth
+logpath = /var/log/caddy/access.log
+maxretry = 5
+bantime  = 24h
+

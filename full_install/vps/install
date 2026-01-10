@@ -73,3 +73,7 @@ sudo systemctl enable tailscale-eth-tuning.service
 sudo systemctl start tailscale-eth-tuning.service
 # check
 ethtool -k eth0 | grep -E "rx-udp-gro-forwarding|rx-gro-list"
+
+# fail2ban
+apt install fail2ban
+systemctl enable --now fail2ban
