@@ -12,8 +12,17 @@ spec:
       services:
         - name: bazarr
           port: 6767
+      priority: 10
       middlewares:
         - name: authentik
           namespace: traefik
+    - kind: Rule
+      match: "Host(`bazarr.attias.io`) && PathPrefix(`/outpost.goauthentik.io/`)"
+      priority: 15
+      services:
+          - kind: Service
+            name: authentik-server
+            namespace: authentik
+            port: 9000
   tls:
     certResolver: le
