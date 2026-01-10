@@ -27,21 +27,3 @@ spec:
         persistence:
           enabled: true
           existingClaim: budget-data-pvc
-        login:
-          method: openid
-          allowedLoginMethods:
-            - password
-            - openid
-          openid:
-            enforce: true
-            providerName: "authentik"
-            discoveryUrl: "https://authentik.attias.io/application/o/budget/"
-            existingSecret:
-              name: "actualbudget-openid-secret"
-              clientIdKey: "clientId"
-              clientSecretKey: "clientSecret"
-
-          # ACTUAL_OPENID_DISCOVERY_URL=https://authentik.attias.io/application/o/budget/
-          # ACTUAL_OPENID_CLIENT_ID=Your Client ID from authentik
-          # ACTUAL_OPENID_CLIENT_SECRET=Your Client Secret from authentik
-          # ACTUAL_OPENID_SERVER_HOSTNAME=https://actual.company
