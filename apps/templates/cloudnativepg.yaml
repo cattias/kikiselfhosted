@@ -16,7 +16,7 @@ spec:
       - ServerSideApply=true
   destination:
     namespace: postgres-operator
-    server: {{ .Values.spec.destination.server }}
+    server: https://kubernetes.default.svc
   project: default
   source:
     repoURL: https://cloudnative-pg.github.io/charts

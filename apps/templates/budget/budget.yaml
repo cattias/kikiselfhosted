@@ -16,7 +16,7 @@ spec:
       - ServerSideApply=true
   destination:
     namespace: budget
-    server: {{ .Values.spec.destination.server }}
+    server: https://kubernetes.default.svc
   project: default
   source:
     repoURL: https://community-charts.github.io/helm-charts

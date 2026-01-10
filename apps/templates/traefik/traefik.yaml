@@ -16,7 +16,7 @@ spec:
       - ServerSideApply=true
   destination:
     namespace: traefik
-    server: {{ .Values.spec.destination.server }}
+    server: https://kubernetes.default.svc
   project: default
   source:
     repoURL: https://traefik.github.io/charts
