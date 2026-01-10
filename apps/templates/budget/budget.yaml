@@ -27,7 +27,7 @@ spec:
         persistence:
           enabled: true
           existingClaim: budget-data-pvc
-        env:
+        extraEnvVars:
           - name: ACTUAL_OPENID_ENFORCE
             value: "true"
         login:
