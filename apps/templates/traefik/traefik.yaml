@@ -26,6 +26,12 @@ spec:
       valuesObject:
         image:
           tag: v3.6.4
+        providers:  # @schema additionalProperties: false
+          kubernetesCRD:
+            # -- Load Kubernetes IngressRoute provider
+            enabled: true
+            # -- Allows IngressRoute to reference resources in namespace other than theirs
+            allowCrossNamespace: true
         service:
           loadBalancerIP: 192.168.178.200
           type: LoadBalancer
