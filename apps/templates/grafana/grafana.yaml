@@ -26,15 +26,9 @@ spec:
       releaseName: grafana
       valuesObject:
         envFromSecret: admin-user-secret
-        # env:
-        #   AUTH_CLIENT_ID: /etc/secrets/grafana/client_id
-        #   AUTH_CLIENT_SECRET: /etc/secrets/grafana/client_secret
-        # extraSecretMounts:
-        #   - name: admin-user-secret
-        #     secretName: admin-user-secret
-        #     mountPath: /etc/secrets/grafana
-        #     readOnly: true
         grafana.ini:
+          server:
+            root_url: https://obs.attias.io
           auth:
             signout_redirect_url: "https://authentik.attias.io/application/o/grafana/end-session/"
             oauth_auto_login: true
