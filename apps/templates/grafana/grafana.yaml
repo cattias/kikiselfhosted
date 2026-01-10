@@ -25,11 +25,13 @@ spec:
     helm:
       releaseName: grafana
       valuesObject:
+        env:
+          AUTH_CLIENT_ID: /etc/secrets/grafana/client_id
+          AUTH_CLIENT_SECRET: /etc/secrets/grafana/client_secret
         extraSecretMounts:
           - name: admin-user-secret
             secretName: admin-user-secret
             mountPath: /etc/secrets/grafana
-            defaultMode: 0444
             readOnly: true
         grafana.ini:
           auth:
@@ -38,8 +40,8 @@ spec:
           auth.generic_oauth:
             name: authentik
             enabled: true
-            client_id: $__file{/etc/secrets/grafana/client_id}
-            client_secret: $__file{/etc/secrets/grafana/client_secret}
+            client_id: $__env{AUTH_CLIENT_ID}
+            client_secret: $__env{AUTH_CLIENT_SECRET}
             scopes: "openid profile email"
             auth_url: "https://authentik.attias.io/application/o/authorize/"
             token_url: "https://authentik.attias.io/application/o/token/"
