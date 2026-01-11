@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fritzbox
+  namespace: home
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: fritzbox
+  namespace: home
+subsets:
+  - addresses:
+      - ip: 192.168.178.1
+    ports:
+      - port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: fritzbox-router
+  namespace: home
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`fritzbox.attias.io`)
+      kind: Rule
+      services:
+        - name: fritzbox
+          port: 80
+      priority: 10
+      middlewares:
+        - name: authentik
+          namespace: traefik
+    - kind: Rule
+      match: "Host(`fritzbox.attias.io`) && PathPrefix(`/outpost.goauthentik.io/`)"
+      priority: 15
+      services:
+          - kind: Service
+            name: ak-outpost-authentik-embedded-outpost
+            namespace: authentik
+            port: 9000
+  tls:
+    certResolver: le
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: asus
+  namespace: home
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: asus
+  namespace: home
+subsets:
+  - addresses:
+      - ip: 192.168.178.64
+    ports:
+      - port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: asus-router
+  namespace: home
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`asus.attias.io`)
+      kind: Rule
+      services:
+        - name: asus
+          port: 80
+      priority: 10
+      middlewares:
+        - name: authentik
+          namespace: traefik
+    - kind: Rule
+      match: "Host(`asus.attias.io`) && PathPrefix(`/outpost.goauthentik.io/`)"
+      priority: 15
+      services:
+          - kind: Service
+            name: ak-outpost-authentik-embedded-outpost
+            namespace: authentik
+            port: 9000
+  tls:
+    certResolver: le
