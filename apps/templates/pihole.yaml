@@ -54,7 +54,7 @@ spec:
         persistentVolumeClaim:
           enabled: true
           storageClass: ceph-block
-          size: "500Mi"
+          size: "5Gi"
 
         admin:
           existingSecret: "pihole-secret"
