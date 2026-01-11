@@ -79,6 +79,6 @@ spec:
             emptyDir:
               medium: Memory
               sizeLimit: 256Mi
-        extraVolumeMounts: {}
+        extraVolumeMounts:
           - name: shm-volume
             mountPath: /dev/shm
