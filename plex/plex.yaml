@@ -40,6 +40,24 @@ spec:
         pms:
           storageClassName: ceph-block
           configStorage: 10Gi
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  # Search for any file with 000 permissions in /data/videos/Movies. 
+                  # If the output of find is NOT empty, we exit with 1 (triggering a restart).
+                  if [ -n "$(find /data/videos/Movies -maxdepth 2 -perm 000 -type f -print -quit)" ]; then
+                    echo "Stale mount or 000 permission detected!"
+                    exit 1
+                  else
+                    exit 0
+                  fi
+            initialDelaySeconds: 60  # Give Plex time to start and mount the share
+            periodSeconds: 300       # Check every 5 minutes
+            failureThreshold: 1      # Require 1 consecutive failures before restarting
+            timeoutSeconds: 30       # NFS lookups can be slow if the mount is hanging
         service:
           type: LoadBalancer
           port: 32400
@@ -59,21 +77,3 @@ spec:
         extraVolumeMounts:
           - name: nas-media-volume
             mountPath: "/data/videos"
-        livenessProbe:
-          exec:
-            command:
-              - /bin/sh
-              - -c
-              - |
-                # Search for any file with 000 permissions in /data/videos/Movies. 
-                # If the output of find is NOT empty, we exit with 1 (triggering a restart).
-                if [ -n "$(find /data/videos/Movies -maxdepth 2 -perm 000 -type f -print -quit)" ]; then
-                  echo "Stale mount or 000 permission detected!"
-                  exit 1
-                else
-                  exit 0
-                fi
-          initialDelaySeconds: 60  # Give Plex time to start and mount the share
-          periodSeconds: 300       # Check every 5 minutes
-          failureThreshold: 1      # Require 1 consecutive failures before restarting
-          timeoutSeconds: 30       # NFS lookups can be slow if the mount is hanging
