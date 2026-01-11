@@ -25,24 +25,7 @@ sudo k0s kubeconfig admin > .kube/config
 sudo snap install kubectl --classic
 
 # Create namespaces (even tho some are automatically created)
-kubectl create namespace argocd
-kubectl create namespace arr
-kubectl create namespace budget
-kubectl create namespace documents
-kubectl create namespace home
-kubectl create namespace kubernetes-dashboard
-kubectl create namespace mealie
-kubectl create namespace metallb
-kubectl create namespace monitoring
-kubectl create namespace photos
-kubectl create namespace plex
-kubectl create namespace postgres-operator
-kubectl create namespace redis-operator
-kubectl create namespace rook-ceph
-kubectl create namespace traefik
-kubectl create namespace vaultwarden
-kubectl create namespace authentik
-kubectl create namespace pihole
+kubectl apply -f all-namespaces.yaml
 
 # Install argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
