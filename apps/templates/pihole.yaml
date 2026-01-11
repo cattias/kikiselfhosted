@@ -54,7 +54,6 @@ spec:
         persistentVolumeClaim:
           enabled: true
           storageClass: ceph-block
-          size: 5Gi
 
         admin:
           existingSecret: "pihole-secret"
@@ -74,3 +73,12 @@ spec:
           annotations:
             metallb.universe.tf/allow-shared-ip: pihole-svc
           type: LoadBalancer
+
+        extraVolumes: 
+          - name: shm-volume
+            emptyDir:
+              medium: Memory
+              sizeLimit: 256Mi
+        extraVolumeMounts: {}
+          - name: shm-volume
+            mountPath: /dev/shm
