@@ -24,3 +24,5 @@ spec:
     targetRevision: 4.12.1
     helm:
       releaseName: csi-driver-nfs
+      valuesObject:
+        kubeletDir: /var/lib/k0s/kubelet
