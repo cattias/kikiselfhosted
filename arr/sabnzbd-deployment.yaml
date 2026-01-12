@@ -23,6 +23,8 @@ spec:
               value: "10"
             - name: PUID
               value: "1000"
+            - name: UMASK
+              value: "022"
             - name: TZ
               value: Etc/UTC
           name: sabnzbd

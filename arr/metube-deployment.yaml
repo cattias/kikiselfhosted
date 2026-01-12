@@ -27,6 +27,8 @@ spec:
               value: "1000"
             - name: TZ
               value: UTC
+            - name: UMASK
+              value: "022"
           name: metube
           image: alexta69/metube:2025.12.30
           imagePullPolicy: IfNotPresent

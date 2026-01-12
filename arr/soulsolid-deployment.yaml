@@ -24,6 +24,8 @@ spec:
               value: "10"
             - name: PUID
               value: "1000"
+            - name: UMASK
+              value: "022"
             - name: TZ
               value: UTC
             - name: TELEGRAM_TOKEN
@@ -34,11 +36,6 @@ spec:
           name: soulsolid
           image: kikiattias/soulsolid-plugins:latest
           imagePullPolicy: Always
-          # securityContext:
-          #   allowPrivilegeEscalation: true
-          #   capabilities: {}
-          #   privileged: true
-          #   readOnlyRootFilesystem: false
           ports:
             - containerPort: 3535
               protocol: TCP
