@@ -52,7 +52,12 @@ spec:
                     echo "Stale mount or 000 permission detected!"
                     exit 1
                   else
-                    exit 0
+                    if [ -n "$(find '/data/videos/TV Shows' -maxdepth 2 -perm 000 -type f -print -quit)" ]; then
+                      echo "Stale mount or 000 permission detected!"
+                      exit 1
+                    else
+                      exit 0
+                    fi
                   fi
             initialDelaySeconds: 60  # Give Plex time to start and mount the share
             periodSeconds: 300       # Check every 5 minutes
