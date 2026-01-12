@@ -53,9 +53,9 @@ spec:
           # PLEX_CLAIM: "claim-xxx-first-time-use"
         extraVolumes:
           - name: nas-media-volume
-            hostPath:
-              path: "/mnt/ugreen-media" 
-              type: DirectoryOrCreate
+            nfs:
+              server: 172.16.10.2
+              path: /volume1/media
         extraVolumeMounts:
           - name: nas-media-volume
             mountPath: "/data/videos"
