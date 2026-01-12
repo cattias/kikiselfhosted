@@ -58,3 +58,4 @@ spec:
         extraVolumeMounts:
           - name: nas-media-volume
             mountPath: "/data/videos"
+            readOnly: true
