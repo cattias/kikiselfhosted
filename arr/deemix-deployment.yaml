@@ -37,7 +37,8 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /downloads
-              name: nas-media-deemix-volume
+              name: nas-media-volume
+              subPath: "deemix/inbox"
             - mountPath: /config
               name: deemix-config
           livenessProbe:
@@ -67,10 +68,13 @@ spec:
               memory: "1Gi"
       restartPolicy: Always
       volumes:
-        - name: nas-media-deemix-volume
-          hostPath:
-            path: "/mnt/ugreen-media/deemix/inbox"
-            type: DirectoryOrCreate
+        - name: nas-media-volume
+          persistentVolumeClaim:
+            claimName: arr-media-pvc
+        # - name: nas-media-deemix-volume
+        #   hostPath:
+        #     path: "/mnt/ugreen-media/deemix/inbox"
+        #     type: DirectoryOrCreate
         - name: deemix-config
           persistentVolumeClaim:
             claimName: deemix-config-pvc
