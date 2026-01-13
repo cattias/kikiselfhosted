@@ -12,17 +12,17 @@ spec:
       services:
         - name: radarr
           port: 7878
-    #   priority: 10
-    #   middlewares:
-    #     - name: authentik
-    #       namespace: traefik
-    # - kind: Rule
-    #   match: "Host(`radarr.attias.io`) && PathPrefix(`/outpost.goauthentik.io/`)"
-    #   priority: 15
-    #   services:
-    #       - kind: Service
-    #         name: ak-outpost-authentik-embedded-outpost
-    #         namespace: authentik
-    #         port: 9000
+      priority: 10
+      middlewares:
+        - name: authentik
+          namespace: traefik
+    - kind: Rule
+      match: "Host(`radarr.attias.io`) && PathPrefix(`/outpost.goauthentik.io/`)"
+      priority: 15
+      services:
+          - kind: Service
+            name: ak-outpost-authentik-embedded-outpost
+            namespace: authentik
+            port: 9000
   tls:
     certResolver: le
