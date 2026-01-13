@@ -37,9 +37,11 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /downloads
-              name: nas-metube-volume
+              name: nas-media-volume
+              subPath: "metube/downloads"
             - mountPath: /audio-downloads
-              name: nas-music-volume
+              name: nas-media-volume
+              subPath: "soulsolid/downloads"
           livenessProbe:
             exec:
               command:
@@ -67,11 +69,6 @@ spec:
               memory: "1Gi"
       restartPolicy: Always
       volumes:
-        - name: nas-metube-volume
-          hostPath:
-            path: "/mnt/ugreen-media/metube/downloads"
-            type: DirectoryOrCreate
-        - name: nas-music-volume
-          hostPath:
-            path: "/mnt/ugreen-media/soulsolid/downloads"
-            type: DirectoryOrCreate
+        - name: nas-media-volume
+          persistentVolumeClaim:
+            claimName: arr-media-pvc
