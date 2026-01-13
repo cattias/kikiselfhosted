@@ -77,6 +77,7 @@ spec:
                 # 2. Destination: Backup PV (NFS)
                 - name: backup-volume
                   mountPath: /mnt/destination
+                  subPath: budget
           
           restartPolicy: OnFailure
 
@@ -87,6 +88,5 @@ spec:
                 claimName: budget-data-pvc
             # 2. Destination Volume (The NFS mount)
             - name: backup-volume
-              hostPath:
-                path: "/mnt/ugreen-backup/budget" 
-                type: DirectoryOrCreate
+              persistentVolumeClaim:
+                claimName: budget-backup-pvc
