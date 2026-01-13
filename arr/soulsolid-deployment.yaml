@@ -41,9 +41,11 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /downloads
-              name: nas-media-soulsolid-downloads-volume
+              name: nas-media-volume
+              subPath: "soulsolid/downloads"
             - mountPath: /music
-              name: nas-media-soulsolid-music-volume
+              name: nas-media-volume
+              subPath: "soulsolid/music"
             - name: soulsolid-db
               mountPath: /app/db
             - name: soulsolid-config-yml
@@ -76,14 +78,9 @@ spec:
               memory: "1Gi"
       restartPolicy: Always
       volumes:
-        - name: nas-media-soulsolid-downloads-volume
-          hostPath:
-            path: "/mnt/ugreen-media/soulsolid/downloads"
-            type: DirectoryOrCreate
-        - name: nas-media-soulsolid-music-volume
-          hostPath:
-            path: "/mnt/ugreen-media/soulsolid/music"
-            type: DirectoryOrCreate
+        - name: nas-media-volume
+          persistentVolumeClaim:
+            claimName: arr-media-pvc
         - name: soulsolid-db
           persistentVolumeClaim:
             claimName: soulsolid-db-pvc

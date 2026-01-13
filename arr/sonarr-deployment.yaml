@@ -66,9 +66,8 @@ spec:
       restartPolicy: Always
       volumes:
         - name: nas-media-volume
-          hostPath:
-            path: "/mnt/ugreen-media" 
-            type: DirectoryOrCreate
+          persistentVolumeClaim:
+            claimName: arr-media-pvc
         - name: sonarr-config
           persistentVolumeClaim:
             claimName: sonarr-config-pvc
