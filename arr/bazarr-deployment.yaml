@@ -35,9 +35,11 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /movies
-              name: nas-media-movies-volume
+              name: nas-media-volume
+              subPath: Movies
             - mountPath: /tv
-              name: nas-media-tv-volume
+              name: nas-media-volume
+              subPath: "TV Shows"
             - mountPath: /config
               name: bazarr-config
           livenessProbe:
@@ -67,14 +69,9 @@ spec:
               memory: "1Gi"
       restartPolicy: Always
       volumes:
-        - name: nas-media-movies-volume
-          hostPath:
-            path: "/mnt/ugreen-media/Movies"
-            type: DirectoryOrCreate
-        - name: nas-media-tv-volume
-          hostPath:
-            path: "/mnt/ugreen-media/TV Shows"
-            type: DirectoryOrCreate
+        - name: nas-media-volume
+          persistentVolumeClaim:
+            claimName: arr-media-pvc
         - name: bazarr-config
           persistentVolumeClaim:
             claimName: bazarr-config-pvc
