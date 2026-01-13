@@ -35,9 +35,11 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /downloads
-              name: nas-media-deemix-volume
+              name: nas-media-volume
+              subPath: "deemix/inbox"
             - mountPath: /music
-              name: nas-media-music-volume
+              name: nas-media-volume
+              subPath: "Music"
             - name: beets-config
               mountPath: /config
             - name: beets-config-yml
@@ -76,14 +78,9 @@ spec:
               memory: "1Gi"
       restartPolicy: Always
       volumes:
-        - name: nas-media-deemix-volume
-          hostPath:
-            path: "/mnt/ugreen-media/deemix/inbox"
-            type: DirectoryOrCreate
-        - name: nas-media-music-volume
-          hostPath:
-            path: "/mnt/ugreen-media/Music"
-            type: DirectoryOrCreate
+        - name: nas-media-volume
+          persistentVolumeClaim:
+            claimName: arr-media-pvc
         - name: beets-config
           persistentVolumeClaim:
             claimName: beets-config-pvc
