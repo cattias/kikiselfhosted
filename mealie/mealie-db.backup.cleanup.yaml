@@ -25,6 +25,7 @@ spec:
             volumeMounts:
             - name: backup-storage
               mountPath: "/mnt/nfs-backup"
+              subPath: mealie
 
             # Command: The core cleanup script
             command: ["/bin/sh", "-c"]
@@ -60,6 +61,5 @@ spec:
           # Volume Definition: Reference the PVC created previously
           volumes:
           - name: backup-storage
-            hostPath:
-              path: "/mnt/ugreen-backup/mealie" 
-              type: DirectoryOrCreate
+            persistentVolumeClaim:
+              claimName: mealie-backup-pvc

@@ -41,11 +41,13 @@ spec:
                 - name: paperless-data-volume
                   mountPath: /mnt/data
                 # 3. Destination: Backup PV (NFS)
-                - name: backup-media-volume
+                - name: backup-volume
                   mountPath: /mnt/destinationmedia
+                  subPath: "documents/media"
                 # 4. Destination: Backup PV (NFS)
-                - name: backup-data-volume
+                - name: backup-volume
                   mountPath: /mnt/destinationdata
+                  subPath: "documents/data"
           
           restartPolicy: OnFailure
 
@@ -58,13 +60,6 @@ spec:
             - name: paperless-data-volume
               persistentVolumeClaim:
                 claimName: paperless-data-pvc
-            # 3. Destination Volume (The NFS mount)
-            - name: backup-media-volume
-              hostPath:
-                path: "/mnt/ugreen-backup/documents/media" 
-                type: DirectoryOrCreate
-            # 4. Destination Volume (The NFS mount)
-            - name: backup-data-volume
-              hostPath:
-                path: "/mnt/ugreen-backup/documents/data" 
-                type: DirectoryOrCreate
+            - name: backup-volume
+              persistentVolumeClaim:
+                claimName: paperless-backup-pvc
