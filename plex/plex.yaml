@@ -53,9 +53,12 @@ spec:
           # PLEX_CLAIM: "claim-xxx-first-time-use"
         extraVolumes:
           - name: nas-media-volume
-            nfs:
-              server: 172.16.10.2
-              path: /volume1/media
+            persistentVolumeClaim:
+              claimName: plex-media-pvc
+            # nfs:
+            #   server: 172.16.10.2
+            #   path: /volume1/media
         extraVolumeMounts:
           - name: nas-media-volume
             mountPath: "/data/videos"
+            readOnly: true
