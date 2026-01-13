@@ -1,12 +1,35 @@
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: arr-media-pvc
-#   namespace: arr
-# spec:
-#   accessModes: [ReadWriteMany]
-#   resources:
-#     requests:
-#       storage: 10Ti
-#   volumeName: universal-media-pv
-#   storageClassName: ""
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: arr-media-pv
+spec:
+  capacity:
+    storage: 10Ti
+  accessModes: [ReadWriteMany]
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: nfs.csi.k8s.io
+    volumeHandle: arr-nas-media-share
+    volumeAttributes:
+      server: 172.16.10.2
+      share: /volume1/media
+  mountOptions:
+    # - nfsvers=4.1
+    - hard
+    - timeo=600
+    - retrans=2
+    - noatime
+    - tcp
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: arr-media-pvc
+  namespace: arr
+spec:
+  accessModes: [ReadWriteMany]
+  resources:
+    requests:
+      storage: 10Ti
+  volumeName: arr-media-pv
+  storageClassName: ""
