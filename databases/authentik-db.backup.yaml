@@ -47,6 +47,7 @@ spec:
             volumeMounts:
             - name: backup-storage
               mountPath: "/mnt/nfs-backup"
+              subPath: authentik
 
             # Command: The core backup script
             # 1. Sets the destination directory and filename with a timestamp.
@@ -91,7 +92,5 @@ spec:
           # Volume Definition: Reference the PVC created previously
           volumes:
           - name: backup-storage
-            hostPath:
-              path: "/mnt/ugreen-backup/authentik" 
-              type: DirectoryOrCreate
-
+            persistentVolumeClaim:
+              claimName: authentik-backup-pvc
