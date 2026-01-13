@@ -1,12 +1,12 @@
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: arr-media-pvc
-#   namespace: arr
-# spec:
-#   accessModes: [ReadWriteMany]
-#   resources:
-#     requests:
-#       storage: 10Ti
-#   volumeName: universal-media-pv
-#   storageClassName: ""
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: arr-media-pvc
+  namespace: arr
+spec:
+  accessModes: [ReadWriteMany]
+  resources:
+    requests:
+      storage: 10Ti
+  volumeName: universal-media-pv
+  storageClassName: ""
