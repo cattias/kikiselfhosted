@@ -67,7 +67,3 @@ spec:
         - name: nas-media-volume
           persistentVolumeClaim:
             claimName: arr-media-pvc
-        # - name: nas-media-volume-sabnzbd
-        #   hostPath:
-        #     path: "/mnt/ugreen-media/sabnzbd" 
-        #     type: DirectoryOrCreate

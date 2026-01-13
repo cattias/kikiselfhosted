@@ -71,10 +71,6 @@ spec:
         - name: nas-media-volume
           persistentVolumeClaim:
             claimName: arr-media-pvc
-        # - name: nas-media-deemix-volume
-        #   hostPath:
-        #     path: "/mnt/ugreen-media/deemix/inbox"
-        #     type: DirectoryOrCreate
         - name: deemix-config
           persistentVolumeClaim:
             claimName: deemix-config-pvc

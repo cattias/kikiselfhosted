@@ -1,2 +1,0 @@
-172.16.10.2:/volume1/media  /mnt/ugreen-media  nfs  defaults,nofail,_netdev,rw,hard,intr,tcp,rsize=1048576,wsize=1048576,noatime,async  0  0
-172.16.10.2:/volume1/backup  /mnt/ugreen-backup  nfs  defaults,nofail,_netdev,rw,hard,intr,tcp,rsize=1048576,wsize=1048576,noatime,nodiratime,async  0  0

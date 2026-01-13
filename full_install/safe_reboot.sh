@@ -17,10 +17,7 @@ echo "🛑 Stopping k0s..."
 sudo k0s stop
 
 # 5. Flush NFS
-echo "💾 Unmounting NFS..."
 # sync
-sudo umount -fl /mnt/ugreen-media
-sudo umount -fl /mnt/ugreen-backup
 sudo modprobe -r ceph
 sudo modprobe -r libceph
 
