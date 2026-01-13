@@ -40,6 +40,7 @@ spec:
             volumeMounts:
             - name: backup-storage
               mountPath: "/mnt/nfs-backup"
+              subPath: immich
 
             command: ["/bin/bash", "-c"]
             args:
@@ -77,6 +78,5 @@ spec:
 
           volumes:
           - name: backup-storage
-            hostPath:
-              path: "/mnt/ugreen-backup/immich" 
-              type: DirectoryOrCreate
+            persistentVolumeClaim:
+              claimName: immich-backup-pvc
