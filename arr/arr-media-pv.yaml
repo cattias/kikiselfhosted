@@ -16,6 +16,7 @@ spec:
   mountOptions:
     # - nfsvers=4.1
     - hard
+    - noac
     - timeo=600
     - retrans=2
     - noatime
