@@ -32,7 +32,7 @@ spec:
             args:
               - |
                 BACKUP_DIR="/mnt/nfs-backup"
-                RETENTION_DAYS="30"
+                RETENTION_DAYS="7"
                 
                 echo "Starting cleanup of backups in ${BACKUP_DIR} older than ${RETENTION_DAYS} days."
                 
