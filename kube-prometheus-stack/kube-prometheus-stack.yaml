@@ -139,7 +139,7 @@ spec:
                 mountPath: /var/lib/node_exporter/custom_metrics
                 hostPath: /var/lib/node_exporter/custom_metrics
                 type: "DirectoryOrCreate"
-                mountPropagation: Bidirectional
+                # mountPropagation: Bidirectional
           serviceAccount:
             automountServiceAccountToken: true
             create: true
