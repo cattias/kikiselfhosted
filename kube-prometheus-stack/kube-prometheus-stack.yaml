@@ -188,7 +188,7 @@ spec:
                 #!/bin/sh
 
                 # Set the output file path where Prometheus will read the metrics
-                OUTPUT_FILE="/var/lib/node_exporter/custom_metrics/versions.prom"
+                OUTPUT_FILE="/var/lib/ne/custom_metrics/versions.prom"
 
                 # --- k0s Version Check ---
                 K0S_LATEST=$(curl -sSL https://api.github.com/repos/k0sproject/k0s/releases/latest | grep '"tag_name":' | head -1 | awk -F '"' '{print $4}' | tr -d 'v' | cut -d '+' -f1)
@@ -238,5 +238,7 @@ spec:
           sidecarVolumeMount: # Mount the script into the Sidecar container
             - name: version-check-script-volume-mount
               mountPath: /opt
-            # - name: textfilecollector
-            #   mountPath: /var/lib/node_exporter/custom_metrics # Must match where script writes
+          sidecarHostVolumeMounts:
+            - name: textfilecollector
+              hostPath: /var/lib/node_exporter/custom_metrics
+              mountPath: /var/lib/ne/custom_metrics # Must match where script writes
