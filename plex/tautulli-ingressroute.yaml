@@ -7,6 +7,15 @@ spec:
   entryPoints:
     - websecure
   routes:
+    - match: Host(`tautulli.attias.io`) && PathPrefix(`/api/`)
+      kind: Rule
+      priority: 100
+      middlewares:
+        - name: internal-only
+          namespace: traefik
+      services:
+        - name: tautulli
+          port: 8181
     - match: Host(`tautulli.attias.io`)
       kind: Rule
       services:
