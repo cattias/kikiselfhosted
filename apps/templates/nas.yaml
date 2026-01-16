@@ -195,8 +195,9 @@ spec:
     - match: Host(`glances.nas.attias.io`) && PathPrefix(`/api/`)
       kind: Rule
       priority: 100
-      # middlewares:
-      #   - name: internal-only
+      middlewares:
+        - name: internal-only
+          namespace: traefik
       services:
         - name: glances-nas-service
           port: 61208
