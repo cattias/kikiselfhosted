@@ -135,8 +135,8 @@ spec:
     - match: Host(`glances.vps.attias.io`) && PathPrefix(`/api/`)
       kind: Rule
       priority: 100
-      # middlewares:
-      #   - name: internal-only
+      middlewares:
+        - name: internal-only
       services:
         - name: glances-vps-service
           port: 80
