@@ -219,3 +219,42 @@ spec:
             port: 9000
   tls:
     certResolver: le
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-nas-service
+  namespace: nas
+spec:
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: prometheus-nas-service
+  namespace: nas
+subsets:
+  - addresses:
+      - ip: 192.168.178.33
+    ports:
+      - port: 9090
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nas-prometheus-router
+  namespace: nas
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`prometheus.nas.attias.io`)
+      kind: Rule
+      services:
+        - name: prometheus-nas-service
+          port: 9090
+  tls:
+    certResolver: le

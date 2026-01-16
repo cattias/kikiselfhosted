@@ -64,7 +64,7 @@ spec:
               - name: Kikinas
                 type: prometheus
                 access: proxy
-                url: http://nas.kiki.home:9090/
+                url: https://prometheus.nas.attias.io
               - uid: DS_GARMIN_STATS
                 name: GarminInflux
                 type: influxdb
