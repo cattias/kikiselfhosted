@@ -35,7 +35,7 @@ spec:
           customDnsEntries:
           # --- Specific Overrides (External VPS) ---
           - address=/hc.attias.io/status.kikiflix.attias.io/tailscale.attias.io/plex.attias.io/photos.attias.io/overseerr.attias.io/91.98.236.199
-          - address=/uptime.attias.io/glances.vps.attias.io/kiki.vps/vps.kiki.home/100.64.0.2
+          - address=/kiki.vps/vps.kiki.home/100.64.0.2
 
           # --- Nested Wildcard for MiniPC Nodes (*.node.attias.io) ---
           - address=/node.attias.io/192.168.178.103
