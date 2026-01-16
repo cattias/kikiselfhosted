@@ -146,7 +146,9 @@ spec:
           sidecars:
             - name: version-checker
               image: alpine/curl:latest
-              # Arguments to run the script every 6 hours
+              securityContext:
+                runAsUser: 0
+                runAsGroup: 0
               args:
               - /bin/sh
               - -c
