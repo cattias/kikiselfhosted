@@ -6,14 +6,16 @@ metadata:
 spec:
   entryPoints:
     - websecure
+  services:
+    headplane-vps-service:
+      loadBalancer:
+        servers:
+          # Use the Tailscale IP of your VPS to keep traffic off the public internet
+          - url: "http://100.64.0.2:80"
   routes:
     - match: Host(`headplane.attias.io`)
       kind: Rule
-      services:
-        - name: vps-headplane
-          loadBalancer:
-            servers:
-              - url: "http://100.64.0.2:80"
+      services: headplane-vps-service
     #   priority: 10
     #   middlewares:
     #     - name: authentik
