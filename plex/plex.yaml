@@ -77,12 +77,22 @@ spec:
             args:
               - |
                 while true; do
+                  # 1. Perform the deep scan. 
+                  # We look for ANY file with 000 permissions.
+                  # Using -print -quit makes it stop the moment it finds the FIRST broken file.
                   if find /data/Movies "/data/TV Shows" -perm 000 -type f -print -quit | grep -q .; then
                     echo "plex_nfs_permission_ok 0" > /node-metrics/plex_status.prom
+                    echo "Alert: Found files with 000 permissions."
                   else
                     echo "plex_nfs_permission_ok 1" > /node-metrics/plex_status.prom
                   fi
+
+                  # 2. Update timestamp so Prometheus knows the metric is fresh
+                  echo "plex_nfs_last_check_timestamp $(date +%s)" >> /node-metrics/plex_status.prom
+                  
                   chmod 644 /node-metrics/plex_status.prom
+
+                  # 3. Wait for 1 hour
                   sleep 3600
                 done
             volumeMounts:
