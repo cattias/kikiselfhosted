@@ -77,9 +77,7 @@ spec:
             args:
               - |
                 while true; do
-                  # Check a specific "canary" file or the root of the mount
-                  PERM=$(stat -c "%a" /data/canary.txt)
-                  if [ "$PERM" = "0" ]; then
+                  if find /data/Movies "/data/TV Shows" -perm 000 -type f -print -quit | grep -q .; then
                     echo "plex_nfs_permission_ok 0" > /node-metrics/plex_status.prom
                   else
                     echo "plex_nfs_permission_ok 1" > /node-metrics/plex_status.prom
@@ -91,6 +89,5 @@ spec:
               - name: nas-media-volume
                 mountPath: /data
                 readOnly: true
-                subPath: "TV Shows"
               - name: node-exporter-textfiles
                 mountPath: /node-metrics
