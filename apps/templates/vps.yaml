@@ -134,7 +134,9 @@ spec:
     # --- API Bypass (Higher Priority) ---
     - match: Host(`glances.vps.attias.io`) && PathPrefix(`/api/`)
       kind: Rule
-      priority: 100  # High priority to catch API calls first
+      priority: 100
+      middlewares:
+        - name: internal-only
       services:
         - name: glances-vps-service
           port: 80
