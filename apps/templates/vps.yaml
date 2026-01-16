@@ -80,6 +80,16 @@ spec:
   entryPoints:
     - websecure
   routes:
+    # --- API Bypass (Higher Priority) ---
+    - match: Host(`uptime.attias.io`) && PathPrefix(`/api/`)
+      kind: Rule
+      priority: 100
+      middlewares:
+        - name: internal-only
+          namespace: traefik
+      services:
+        - name: uptime-vps-service
+          port: 80
     - match: Host(`uptime.attias.io`)
       kind: Rule
       services:
