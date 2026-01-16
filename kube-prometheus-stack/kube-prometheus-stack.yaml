@@ -147,8 +147,7 @@ spec:
             - name: version-checker
               image: alpine/curl:latest
               securityContext:
-                runAsUser: 0
-                runAsGroup: 0
+                readOnlyRootFilesystem: false
               args:
               - /bin/sh
               - -c
