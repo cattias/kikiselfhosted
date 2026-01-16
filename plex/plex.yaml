@@ -70,7 +70,7 @@ spec:
               - |
                 while true; do
                   # Check a specific "canary" file or the root of the mount
-                  PERM=$(stat -c "%a" /data/videos/canary.txt)
+                  PERM=$(stat -c "%a" /data/canary.txt)
                   if [ "$PERM" = "000" ]; then
                     echo "plex_nfs_permission_ok 0" > /tmp/metrics
                   else
@@ -78,3 +78,8 @@ spec:
                   fi
                   sleep 60
                 done
+            volumeMounts:
+              - name: nas-media-volume
+                mountPath: /data
+                readOnly: true
+                subPath: "TV Shows"
