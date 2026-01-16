@@ -17,6 +17,19 @@ spec:
       labels:
         app.kubernetes.io/name: tautulli
     spec:
+      initContainers:
+      - name: copy-tools
+        image: alpine:latest
+        command: [sh, -c]
+        args:
+          - >-
+            cp /tmp/config.ini /config/config.ini
+        volumeMounts:
+          - mountPath: /config
+            name: tautulli-config
+          - name: tautulli-config-ini
+            mountPath: /tmp/config.ini
+            subPath: config.ini
       containers:
         - env:
             - name: PGID
@@ -33,9 +46,6 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: tautulli-config
-            - name: tautulli-config-ini
-              mountPath: /config/config.ini
-              subPath: config.ini
       restartPolicy: Always
       volumes:
         - name: tautulli-config
