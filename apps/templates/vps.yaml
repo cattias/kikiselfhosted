@@ -137,6 +137,7 @@ spec:
       priority: 100
       middlewares:
         - name: internal-only
+          namespace: traefik
       services:
         - name: glances-vps-service
           port: 80
