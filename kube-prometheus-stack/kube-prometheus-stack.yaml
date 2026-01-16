@@ -143,6 +143,11 @@ spec:
           extraInitContainers:
             - name: init-permissions
               image: alpine:latest
+              securityContext:
+                runAsUser: 0            # Run as root to allow chown
+                runAsNonRoot: false     # Explicitly allow root
+                privileged: true        # Required on some hardened clusters to touch hostPath
+                allowPrivilegeEscalation: true
               command: ["/bin/sh", "-c", "chown -R 1000:1000 /var/lib/node_exporter/custom_metrics && chmod 775 /var/lib/node_exporter/custom_metrics"]
               volumeMounts:
                 - name: custom-metrics
