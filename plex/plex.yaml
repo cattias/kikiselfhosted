@@ -79,7 +79,7 @@ spec:
                 while true; do
                   # Check a specific "canary" file or the root of the mount
                   PERM=$(stat -c "%a" /data/canary.txt)
-                  if [ "$PERM" = "000" ]; then
+                  if [ "$PERM" = "0" ]; then
                     echo "plex_nfs_permission_ok 0" > /node-metrics/plex_status.prom
                   else
                     echo "plex_nfs_permission_ok 1" > /node-metrics/plex_status.prom
