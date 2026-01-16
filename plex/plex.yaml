@@ -83,7 +83,7 @@ spec:
                     echo "plex_nfs_permission_ok 1" > /node-metrics/plex_status.prom
                   fi
                   chmod 644 /node-metrics/plex_status.prom
-                  sleep 60
+                  sleep 3600
                 done
             volumeMounts:
               - name: nas-media-volume

@@ -14,9 +14,10 @@ spec:
       server: 172.16.10.2
       share: /volume1/media
   mountOptions:
-    # - nfsvers=4.1
     - hard
     - noac
+    - lookupcache=none
+    - nordirplus
     - timeo=600
     - retrans=2
     - noatime
