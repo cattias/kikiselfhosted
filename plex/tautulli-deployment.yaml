@@ -33,8 +33,14 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: tautulli-config
+            - name: tautulli-config-ini
+              mountPath: /config/config.ini
+              subPath: config.ini
       restartPolicy: Always
       volumes:
         - name: tautulli-config
           persistentVolumeClaim:
             claimName: tautulli-config-pvc
+        - configMap:
+            name: tautulli-config
+          name: tautulli-config-ini
