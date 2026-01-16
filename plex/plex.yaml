@@ -58,6 +58,10 @@ spec:
             # nfs:
             #   server: 172.16.10.2
             #   path: /volume1/media
+          - name: node-exporter-textfiles
+            hostPath:
+              path: /var/lib/node_exporter/custom_metrics 
+              type: DirectoryOrCreate
         extraVolumeMounts:
           - name: nas-media-volume
             mountPath: "/data/videos"
@@ -65,6 +69,10 @@ spec:
         extraContainers:
           - name: permission-checker
             image: alpine:latest
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 1000
+              allowPrivilegeEscalation: false
             command: ["/bin/sh", "-c"]
             args:
               - |
@@ -72,10 +80,11 @@ spec:
                   # Check a specific "canary" file or the root of the mount
                   PERM=$(stat -c "%a" /data/canary.txt)
                   if [ "$PERM" = "000" ]; then
-                    echo "plex_nfs_permission_ok 0" > /tmp/metrics
+                    echo "plex_nfs_permission_ok 0" > /node-metrics/plex_status.prom
                   else
-                    echo "plex_nfs_permission_ok 1" > /tmp/metrics
+                    echo "plex_nfs_permission_ok 1" > /node-metrics/plex_status.prom
                   fi
+                  chmod 644 /node-metrics/plex_status.prom
                   sleep 60
                 done
             volumeMounts:
@@ -83,3 +92,5 @@ spec:
                 mountPath: /data
                 readOnly: true
                 subPath: "TV Shows"
+              - name: node-exporter-textfiles
+                mountPath: /node-metrics
