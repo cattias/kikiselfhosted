@@ -140,6 +140,13 @@ spec:
                 hostPath: /var/lib/node_exporter/custom_metrics
                 type: "DirectoryOrCreate"
                 # mountPropagation: Bidirectional
+          extraInitContainers:
+            - name: init-permissions
+              image: alpine:latest
+              command: ["/bin/sh", "-c", "chown -R 1000:1000 /var/lib/node_exporter/custom_metrics && chmod 775 /var/lib/node_exporter/custom_metrics"]
+              volumeMounts:
+                - name: custom-metrics
+                  mountPath: /var/lib/node_exporter/custom_metrics
           serviceAccount:
             automountServiceAccountToken: true
             create: true
@@ -147,6 +154,9 @@ spec:
             - name: version-checker
               image: alpine/curl:latest
               securityContext:
+                runAsUser: 1000
+                runAsGroup: 1000
+                allowPrivilegeEscalation: false
                 readOnlyRootFilesystem: false
               args:
               - /bin/sh
