@@ -93,7 +93,7 @@ spec:
                   chmod 644 /node-metrics/plex_status.prom
 
                   # 3. Wait for 1 hour
-                  sleep 600
+                  sleep 1800
                 done
             volumeMounts:
               - name: nas-media-volume
