@@ -37,6 +37,9 @@ spec:
             - name: ha-config-cm
               mountPath: /config/configuration.yaml
               subPath: configuration.yaml
+            - name: ssh-key-volume
+              mountPath: /config/.ssh
+              readOnly: true
       restartPolicy: Always
       volumes:
         - name: homeassistant-config
@@ -45,3 +48,7 @@ spec:
         - configMap:
             name: homeassistant-config-cm
           name: ha-config-cm
+        - name: ssh-key-volume
+          secret:
+            secretName: nas-ssh-key
+            defaultMode: 0400
