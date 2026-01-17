@@ -55,49 +55,7 @@ spec:
           - name: nas-media-volume
             persistentVolumeClaim:
               claimName: plex-media-smb-pvc
-            # nfs:
-            #   server: 172.16.10.2
-            #   path: /volume1/media
-          - name: node-exporter-textfiles
-            hostPath:
-              path: /var/lib/node_exporter/custom_metrics 
-              type: DirectoryOrCreate
         extraVolumeMounts:
           - name: nas-media-volume
             mountPath: "/data/videos"
             readOnly: true
-        extraContainers:
-          - name: permission-checker
-            image: alpine:latest
-            securityContext:
-              runAsUser: 1000
-              runAsGroup: 1000
-              allowPrivilegeEscalation: false
-            command: ["/bin/sh", "-c"]
-            args:
-              - |
-                while true; do
-                  # 1. Perform the deep scan. 
-                  # We look for ANY file with 000 permissions.
-                  # Using -print -quit makes it stop the moment it finds the FIRST broken file.
-                  if find /data -perm 000 -type f -print -quit | grep -q .; then
-                    echo "plex_nfs_permission_ok 0" > /node-metrics/plex_status.prom
-                    echo "Alert: Found files with 000 permissions."
-                  else
-                    echo "plex_nfs_permission_ok 1" > /node-metrics/plex_status.prom
-                  fi
-
-                  # 2. Update timestamp so Prometheus knows the metric is fresh
-                  echo "plex_nfs_last_check_timestamp $(date +%s)" >> /node-metrics/plex_status.prom
-                  
-                  chmod 644 /node-metrics/plex_status.prom
-
-                  # 3. Wait for 30 min
-                  sleep 1800
-                done
-            volumeMounts:
-              - name: nas-media-volume
-                mountPath: /data
-                readOnly: true
-              - name: node-exporter-textfiles
-                mountPath: /node-metrics
