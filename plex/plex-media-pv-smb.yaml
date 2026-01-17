@@ -25,3 +25,16 @@ spec:
     - noserverino
     - vers=3.0
     - cache=none
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex-media-smb-pvc
+  namespace: plex
+spec:
+  accessModes: [ReadWriteMany]
+  resources:
+    requests:
+      storage: 10Ti
+  volumeName: plex-media-smb-pv
+  storageClassName: ""
