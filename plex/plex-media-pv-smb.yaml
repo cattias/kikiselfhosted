@@ -12,7 +12,7 @@ spec:
     driver: smb.csi.k8s.io
     volumeHandle: plex-media-smb-share
     volumeAttributes:
-      source: "//172.16.10.2//volume1/media"
+      source: "//172.16.10.2/media"
     nodeStageSecretRef:
       name: smbcreds
       namespace: plex
