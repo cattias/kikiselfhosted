@@ -23,11 +23,16 @@ spec:
           command: ["/bin/sh", "-c"]
           args:
             - |
-              # Check if HACS is already installed to avoid unnecessary downloads
+              # Check if HACS is already installed
               if [ ! -d "/config/custom_components/hacs" ]; then
-                echo "HACS not found, installing..."
-                apk add --no-cache wget unzip
-                wget -O - https://get.hacs.xyz | bash -
+                echo "HACS not found, installing dependencies..."
+                # Add bash to the list of packages
+                apk add --no-cache wget unzip bash 
+                
+                echo "Downloading and running HACS install script..."
+                # Download to a temporary file first, then execute with bash
+                wget -O /tmp/hacs_install.sh https://get.hacs.xyz
+                bash /tmp/hacs_install.sh
               else
                 echo "HACS already installed, skipping."
               fi
