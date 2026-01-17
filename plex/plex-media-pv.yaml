@@ -33,5 +33,5 @@ spec:
   resources:
     requests:
       storage: 10Ti
-  volumeName: plex-media-pv
+  volumeName: plex-media-smb-pv
   storageClassName: ""
