@@ -80,7 +80,7 @@ spec:
                   # 1. Perform the deep scan. 
                   # We look for ANY file with 000 permissions.
                   # Using -print -quit makes it stop the moment it finds the FIRST broken file.
-                  if find /data/Movies "/data/TV Shows" -perm 000 -type f -print -quit | grep -q .; then
+                  if find /data -perm 000 -type f -print -quit | grep -q .; then
                     echo "plex_nfs_permission_ok 0" > /node-metrics/plex_status.prom
                     echo "Alert: Found files with 000 permissions."
                   else
@@ -92,7 +92,7 @@ spec:
                   
                   chmod 644 /node-metrics/plex_status.prom
 
-                  # 3. Wait for 1 hour
+                  # 3. Wait for 30 min
                   sleep 1800
                 done
             volumeMounts:
