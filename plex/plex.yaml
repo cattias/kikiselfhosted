@@ -54,7 +54,7 @@ spec:
         extraVolumes:
           - name: nas-media-volume
             persistentVolumeClaim:
-              claimName: plex-media-pvc
+              claimName: plex-media-smb-pvc
             # nfs:
             #   server: 172.16.10.2
             #   path: /volume1/media
