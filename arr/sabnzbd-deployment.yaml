@@ -34,9 +34,11 @@ spec:
             - containerPort: 8080
               protocol: TCP
           volumeMounts:
-            - mountPath: /config
+            - mountPath: /data
               name: nas-media-volume
               subPath: "sabnzbd"
+            - mountPath: /config
+              name: sabnzbd-config
           livenessProbe:
             exec:
               command:
@@ -67,3 +69,6 @@ spec:
         - name: nas-media-volume
           persistentVolumeClaim:
             claimName: arr-media-smb-pvc
+        - name: sabnzbd-config
+          persistentVolumeClaim:
+            claimName: sabnzbd-config-pvc
