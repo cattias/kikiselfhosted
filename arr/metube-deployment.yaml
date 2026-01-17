@@ -71,4 +71,4 @@ spec:
       volumes:
         - name: nas-media-volume
           persistentVolumeClaim:
-            claimName: arr-media-pvc
+            claimName: arr-media-smb-pvc

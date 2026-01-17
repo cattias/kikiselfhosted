@@ -80,7 +80,7 @@ spec:
       volumes:
         - name: nas-media-volume
           persistentVolumeClaim:
-            claimName: arr-media-pvc
+            claimName: arr-media-smb-pvc
         - name: soulsolid-db
           persistentVolumeClaim:
             claimName: soulsolid-db-pvc
