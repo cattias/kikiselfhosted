@@ -17,6 +17,23 @@ spec:
       labels:
         app.kubernetes.io/name: homeassistant
     spec:
+      initContainers:
+        - name: install-hacs
+          image: alpine:latest
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              # Check if HACS is already installed to avoid unnecessary downloads
+              if [ ! -d "/config/custom_components/hacs" ]; then
+                echo "HACS not found, installing..."
+                apk add --no-cache wget unzip
+                wget -O - https://get.hacs.xyz | bash -
+              else
+                echo "HACS already installed, skipping."
+              fi
+          volumeMounts:
+            - name: homeassistant-config
+              mountPath: /config
       containers:
         - env:
             - name: PGID
