@@ -1,0 +1,363 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: speedtest-dashboard
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true
+data:
+  speedtest.json: |
+    {
+      "__inputs": [],
+      "__elements": [],
+      "__requires": [
+        {
+          "type": "panel",
+          "id": "gauge",
+          "name": "Gauge",
+          "version": ""
+        },
+        {
+          "type": "grafana",
+          "id": "grafana",
+          "name": "Grafana",
+          "version": "8.4.3"
+        },
+        {
+          "type": "datasource",
+          "id": "prometheus",
+          "name": "Prometheus",
+          "version": "1.0.0"
+        },
+        {
+          "type": "panel",
+          "id": "stat",
+          "name": "Stat",
+          "version": ""
+        },
+        {
+          "type": "panel",
+          "id": "timeseries",
+          "name": "Time series",
+          "version": ""
+        }
+      ],
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "target": {
+              "limit": 100,
+              "matchAny": false,
+              "tags": [],
+              "type": "dashboard"
+            },
+            "type": "dashboard"
+          }
+        ]
+      },
+      "description": "Dashboard for Speedtest Exporter with Dynamic Datasource Selection",
+      "editable": true,
+      "fiscalYearStartMonth": 0,
+      "graphTooltip": 0,
+      "id": null,
+      "links": [],
+      "liveNow": false,
+      "panels": [
+        {
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "thresholds" },
+              "mappings": [
+                {
+                  "options": { "0": { "index": 1, "text": "DOWN" }, "1": { "index": 0, "text": "UP" } },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": null },
+                  { "color": "red", "value": 0 },
+                  { "color": "green", "value": 1 }
+                ]
+              }
+            }
+          },
+          "gridPos": { "h": 3, "w": 12, "x": 0, "y": 0 },
+          "id": 16,
+          "options": {
+            "colorMode": "background",
+            "graphMode": "none",
+            "justifyMode": "center",
+            "reduceOptions": { "calcs": ["lastNotNull"] },
+            "textMode": "value"
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "${datasource}" },
+              "expr": "speedtest_up{instance=\"$instance\", job=\"$job\"}",
+              "refId": "A"
+            }
+          ],
+          "title": "Status of the Speedtest-Exporter",
+          "type": "stat"
+        },
+        {
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "thresholds" },
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] }
+            }
+          },
+          "gridPos": { "h": 3, "w": 12, "x": 12, "y": 0 },
+          "id": 15,
+          "options": {
+            "colorMode": "value",
+            "justifyMode": "center",
+            "reduceOptions": { "calcs": ["lastNotNull"] },
+            "textMode": "value"
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "${datasource}" },
+              "expr": "speedtest_server_id{instance=\"$instance\", job=\"$job\"}",
+              "refId": "A"
+            }
+          ],
+          "title": "ServerID (Last test done)",
+          "type": "stat"
+        },
+        {
+          "fieldConfig": {
+            "defaults": {
+              "min": 0,
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] },
+              "unit": "Mbits"
+            }
+          },
+          "gridPos": { "h": 8, "w": 6, "x": 0, "y": 4 },
+          "id": 10,
+          "options": {
+            "reduceOptions": { "calcs": ["lastNotNull"] }
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "${datasource}" },
+              "expr": "speedtest_download_bits_per_second{instance=\"$instance\", job=\"$job\"}*10^-6",
+              "refId": "A"
+            }
+          ],
+          "title": "Download Speed",
+          "type": "gauge"
+        },
+        {
+          "fieldConfig": {
+            "defaults": {
+              "min": 0,
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] },
+              "unit": "Mbits"
+            }
+          },
+          "gridPos": { "h": 8, "w": 6, "x": 6, "y": 4 },
+          "id": 12,
+          "options": {
+            "reduceOptions": { "calcs": ["lastNotNull"] }
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "${datasource}" },
+              "expr": "speedtest_upload_bits_per_second{instance=\"$instance\", job=\"$job\"}*10^-6",
+              "refId": "A"
+            }
+          ],
+          "title": "Upload Speed",
+          "type": "gauge"
+        },
+        {
+          "fieldConfig": {
+            "defaults": {
+              "min": 0,
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] },
+              "unit": "ms"
+            }
+          },
+          "gridPos": { "h": 8, "w": 6, "x": 12, "y": 4 },
+          "id": 13,
+          "options": {
+            "reduceOptions": { "calcs": ["lastNotNull"] }
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "${datasource}" },
+              "expr": "speedtest_ping_latency_milliseconds{instance=\"$instance\", job=\"$job\"}",
+              "refId": "A"
+            }
+          ],
+          "title": "Ping",
+          "type": "gauge"
+        },
+        {
+          "fieldConfig": {
+            "defaults": {
+              "min": 0,
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] },
+              "unit": "ms"
+            }
+          },
+          "gridPos": { "h": 8, "w": 6, "x": 18, "y": 4 },
+          "id": 11,
+          "options": {
+            "reduceOptions": { "calcs": ["lastNotNull"] }
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "${datasource}" },
+              "expr": "speedtest_jitter_latency_milliseconds{instance=\"$instance\", job=\"$job\"}",
+              "refId": "A"
+            }
+          ],
+          "title": "Jitter",
+          "type": "gauge"
+        },
+        {
+          "fieldConfig": {
+            "defaults": {
+              "custom": { "fillOpacity": 100, "lineWidth": 1 },
+              "unit": "Mbits"
+            }
+          },
+          "gridPos": { "h": 9, "w": 24, "x": 0, "y": 13 },
+          "id": 2,
+          "options": {
+            "legend": { "calcs": ["mean", "max", "min"], "displayMode": "table", "placement": "bottom" }
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "${datasource}" },
+              "expr": "speedtest_download_bits_per_second{instance=\"$instance\", job=\"$job\"}*10^-6",
+              "legendFormat": "Download Speed (Mbits/s)",
+              "refId": "A"
+            }
+          ],
+          "title": "Download Speed (Mbits/s)",
+          "type": "timeseries"
+        },
+        {
+          "fieldConfig": {
+            "defaults": {
+              "custom": { "fillOpacity": 100, "lineWidth": 1 },
+              "unit": "Mbits"
+            }
+          },
+          "gridPos": { "h": 9, "w": 24, "x": 0, "y": 22 },
+          "id": 3,
+          "options": {
+            "legend": { "calcs": ["mean", "max", "min"], "displayMode": "table", "placement": "bottom" }
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "${datasource}" },
+              "expr": "speedtest_upload_bits_per_second{instance=\"$instance\", job=\"$job\"}*10^-6",
+              "legendFormat": "Upload Speed (Mbits/s)",
+              "refId": "A"
+            }
+          ],
+          "title": "Upload Speed (Mbits/s)",
+          "type": "timeseries"
+        },
+        {
+          "fieldConfig": {
+            "defaults": {
+              "custom": { "fillOpacity": 100, "lineWidth": 1 },
+              "unit": "ms"
+            }
+          },
+          "gridPos": { "h": 9, "w": 24, "x": 0, "y": 31 },
+          "id": 4,
+          "options": {
+            "legend": { "calcs": ["mean", "max", "min"], "displayMode": "table", "placement": "bottom" }
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "${datasource}" },
+              "expr": "speedtest_ping_latency_milliseconds{instance=\"$instance\", job=\"$job\"}",
+              "legendFormat": "Ping (ms)",
+              "refId": "A"
+            },
+            {
+              "datasource": { "type": "prometheus", "uid": "${datasource}" },
+              "expr": "speedtest_jitter_latency_milliseconds{instance=\"$instance\", job=\"$job\"}",
+              "legendFormat": "Jitter (ms)",
+              "refId": "B"
+            }
+          ],
+          "title": "Ping and Jitter (ms)",
+          "type": "timeseries"
+        }
+      ],
+      "refresh": "5m",
+      "schemaVersion": 35,
+      "style": "dark",
+      "templating": {
+        "list": [
+          {
+            "description": "Select Datasource (Kikiserver or Kikinode)",
+            "hide": 0,
+            "includeAll": false,
+            "label": "Data Source",
+            "multi": false,
+            "name": "datasource",
+            "options": [],
+            "query": "prometheus",
+            "refresh": 1,
+            "regex": "/Kikiserver|Kikinode/",
+            "skipUrlSync": false,
+            "type": "datasource"
+          },
+          {
+            "datasource": "${datasource}",
+            "definition": "label_values(speedtest_up, instance)",
+            "hide": 0,
+            "includeAll": false,
+            "label": "Instance",
+            "multi": false,
+            "name": "instance",
+            "options": [],
+            "query": {
+              "query": "label_values(speedtest_up, instance)",
+              "refId": "StandardVariableQuery"
+            },
+            "refresh": 1,
+            "type": "query"
+          },
+          {
+            "datasource": "${datasource}",
+            "definition": "label_values(speedtest_up, job)",
+            "hide": 0,
+            "includeAll": false,
+            "label": "Job",
+            "multi": false,
+            "name": "job",
+            "options": [],
+            "query": {
+              "query": "label_values(speedtest_up, job)",
+              "refId": "StandardVariableQuery"
+            },
+            "refresh": 1,
+            "type": "query"
+          }
+        ]
+      },
+      "time": { "from": "now-24h", "to": "now" },
+      "title": "Speedtest-Exporter Dashboard",
+      "uid": "speedtest-dynamic-ds",
+      "version": 11
+    }

@@ -86,5 +86,6 @@ spec:
           smartclt: "smartctl-dashboard"
           ceph: "ceph-dashboard"
           node: "node-dashboard"
+          speedtest: "speedtest-dashboard"
           k8s: "k8s-dashboard"
           garmin: "garmin-dashboard"
