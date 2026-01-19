@@ -14,4 +14,3 @@ spec:
           port: 80
   tls:
     certResolver: le
-    # secretName: argocd-server-tls
