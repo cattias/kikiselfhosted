@@ -1,0 +1,35 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: speedexporter
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/name: speedexporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: speedexporter
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: speedexporter
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: UTC
+          name: prometheus-speedtest-exporter
+          image: billimek/prometheus-speedtest-exporter:1.3.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9469
+              protocol: TCP
+      restartPolicy: Always

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: speedexporter
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/name: speedexporter
+spec:
+  type: ClusterIP
+  ports:
+    - name: "9469"
+      port: 9469
+      targetPort: 9469
+  selector:
+    app.kubernetes.io/name: speedexporter
