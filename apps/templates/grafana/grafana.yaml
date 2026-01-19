@@ -41,12 +41,7 @@ spec:
             auth_url: "https://authentik.attias.io/application/o/authorize/"
             token_url: "https://authentik.attias.io/application/o/token/"
             api_url: "https://authentik.attias.io/application/o/userinfo/"
-            # Optionally map user groups to Grafana roles
-            # role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
-        # admin:
-        #   existingSecret: admin-user-secret
-        #   userKey: admin-user
-        #   passwordKey: admin-password
+            role_attribute_path: contains(groups, 'grafana-admins') && 'Admin' || contains(groups, 'grafana-editors') && 'Editor' || contains(groups, 'grafana-viewers') && 'Viewer'
         datasources:
           datasources.yaml:
             apiVersion: 1
