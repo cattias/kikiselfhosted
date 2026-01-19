@@ -27,6 +27,11 @@ spec:
       valuesObject:
         metrics:
           enabled: true
+          serviceMonitor:
+            interval: 5m
+            scrapeTimeout: 1m
+            labels:
+              release: kube-prometheus-stack
           prometheusRule:
             enabled: true
             # -- Download speed you want alerts to be triggered in Mbps
