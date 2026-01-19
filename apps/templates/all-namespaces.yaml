@@ -76,27 +76,12 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: vaultwarden
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: authentik
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: pihole
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: nas
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: vps
 ---
 apiVersion: v1
 kind: Namespace
