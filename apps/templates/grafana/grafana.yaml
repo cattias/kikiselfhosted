@@ -47,16 +47,18 @@ spec:
             apiVersion: 1
             datasources:
               - name: Kikiserver
-                uid: PC1D92E498B278DEE
+                uid: DS_KIKISERVER
                 type: prometheus
                 access: proxy
                 url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
                 isDefault: true
               - name: Kikinode
+                uid: DS_KIKINODE
                 type: prometheus
                 access: proxy
                 url: https://prometheus.node.attias.io
               - name: Kikinas
+                uid: DS_KIKINAS
                 type: prometheus
                 access: proxy
                 url: https://prometheus.nas.attias.io

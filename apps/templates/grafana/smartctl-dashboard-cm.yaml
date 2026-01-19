@@ -36,7 +36,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PC1D92E498B278DEE"
+            "uid": "DS_KIKISERVER"
           },
           "fieldConfig": {
             "defaults": {
@@ -95,7 +95,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "expr": "sort_desc(100 - smartctl_device_attribute{instance=~\"$node\", device=~\"$disk\", attribute_name=\"Wear_Leveling_Count\",attribute_value_type=\"value\"} * on(instance, device) group_left(interface,serial_number,model_family,model_name) smartctl_device{interface=~\"sat\",serial_number=~\"$serial_number\",model_name=~\"$device_model\"})",
@@ -113,7 +113,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PC1D92E498B278DEE"
+            "uid": "DS_KIKISERVER"
           },
           "fieldConfig": {
             "defaults": {
@@ -162,7 +162,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "exemplar": false,
@@ -178,7 +178,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PC1D92E498B278DEE"
+            "uid": "DS_KIKISERVER"
           },
           "fieldConfig": {
             "defaults": {
@@ -264,7 +264,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "exemplar": false,
@@ -291,7 +291,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PC1D92E498B278DEE"
+            "uid": "DS_KIKISERVER"
           },
           "fieldConfig": {
             "defaults": {
@@ -377,7 +377,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "exemplar": false,
@@ -398,7 +398,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PC1D92E498B278DEE"
+            "uid": "DS_KIKISERVER"
           },
           "fieldConfig": {
             "defaults": {
@@ -455,7 +455,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "expr": "count((smartctl_device_smart_status{instance=~\"$node\",device=~\"$disk\"} * on(instance, device) group_left(interface,serial_number,model_family,model_name) smartctl_device) == 0)",
@@ -480,7 +480,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PC1D92E498B278DEE"
+            "uid": "DS_KIKISERVER"
           },
           "fieldConfig": {
             "defaults": {
@@ -590,7 +590,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "expr": "smartctl_device_critical_warning{instance=~\"$node\", device=~\"$disk\"} * on(instance, device) group_left(interface,serial_number,model_family,model_name) smartctl_device{interface=~\"$type\",serial_number=~\"$serial_number\",model_name=~\"$device_model\"} > 0",
@@ -608,7 +608,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PC1D92E498B278DEE"
+            "uid": "DS_KIKISERVER"
           },
           "fieldConfig": {
             "defaults": {
@@ -665,7 +665,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "exemplar": false,
@@ -682,7 +682,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PC1D92E498B278DEE"
+            "uid": "DS_KIKISERVER"
           },
           "fieldConfig": {
             "defaults": {
@@ -890,7 +890,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "expr": "max(smartctl_device_bytes_written{instance=~\"$node\", device=~\"$disk\"} * on(instance, device) group_left(interface,serial_number,model_family,model_name) smartctl_device{interface=~\"$type\",serial_number=~\"$serial_number\",model_name=~\"$device_model\"}) by (device, instance, model_name, serial_number)",
@@ -904,7 +904,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "exemplar": false,
@@ -975,7 +975,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PC1D92E498B278DEE"
+            "uid": "DS_KIKISERVER"
           },
           "fieldConfig": {
             "defaults": {
@@ -1066,7 +1066,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "expr": "avg(smartctl_device_temperature{instance=~\"$node\", device=~\"$disk\"} * on(instance, device) group_left(interface,serial_number,model_name) smartctl_device{interface=~\"$type\",serial_number=~\"$serial_number\",model_name=~\"$device_model\"}) by (instance,device,model_name)",
@@ -1085,7 +1085,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PC1D92E498B278DEE"
+            "uid": "DS_KIKISERVER"
           },
           "fieldConfig": {
             "defaults": {
@@ -1311,7 +1311,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "expr": "max(smartctl_device_power_on_seconds{instance=~\"$node\", device=~\"$disk\"} * on(instance, device) group_left(interface,serial_number,model_family,model_name) smartctl_device{interface=~\"$type\",serial_number=~\"$serial_number\",model_name=~\"$device_model\"}) by (instance, device, model_name)",
@@ -1325,7 +1325,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PC1D92E498B278DEE"
+                "uid": "DS_KIKISERVER"
               },
               "editorMode": "code",
               "expr": "max(smartctl_device_power_cycle_count{instance=~\"$node\", device=~\"$disk\"} * on(instance, device) group_left(interface,serial_number,model_family,model_name) smartctl_device{interface=~\"$type\",serial_number=~\"$serial_number\",model_name=~\"$device_model\"}) by (instance, device, model_name)",
@@ -1368,7 +1368,7 @@ data:
             },
             "datasource": {
               "type": "prometheus",
-              "uid": "PC1D92E498B278DEE"
+              "uid": "DS_KIKISERVER"
             },
             "definition": "label_values(smartctl_version,instance)",
             "includeAll": true,
@@ -1394,7 +1394,7 @@ data:
             },
             "datasource": {
               "type": "prometheus",
-              "uid": "PC1D92E498B278DEE"
+              "uid": "DS_KIKISERVER"
             },
             "definition": "label_values(smartctl_device,device)",
             "includeAll": true,
@@ -1420,7 +1420,7 @@ data:
             },
             "datasource": {
               "type": "prometheus",
-              "uid": "PC1D92E498B278DEE"
+              "uid": "DS_KIKISERVER"
             },
             "definition": "label_values(smartctl_device,interface)",
             "includeAll": true,
@@ -1446,7 +1446,7 @@ data:
             },
             "datasource": {
               "type": "prometheus",
-              "uid": "PC1D92E498B278DEE"
+              "uid": "DS_KIKISERVER"
             },
             "definition": "label_values(smartctl_device,model_name)",
             "includeAll": true,
@@ -1472,7 +1472,7 @@ data:
             },
             "datasource": {
               "type": "prometheus",
-              "uid": "PC1D92E498B278DEE"
+              "uid": "DS_KIKISERVER"
             },
             "definition": "label_values(smartctl_device,serial_number)",
             "includeAll": true,
