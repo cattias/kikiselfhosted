@@ -10,354 +10,938 @@ metadata:
 data:
   speedtest.json: |
     {
-      "__inputs": [],
-      "__elements": [],
-      "__requires": [
-        {
-          "type": "panel",
-          "id": "gauge",
-          "name": "Gauge",
-          "version": ""
-        },
-        {
-          "type": "grafana",
-          "id": "grafana",
-          "name": "Grafana",
-          "version": "8.4.3"
-        },
-        {
-          "type": "datasource",
-          "id": "prometheus",
-          "name": "Prometheus",
-          "version": "1.0.0"
-        },
-        {
-          "type": "panel",
-          "id": "stat",
-          "name": "Stat",
-          "version": ""
-        },
-        {
-          "type": "panel",
-          "id": "timeseries",
-          "name": "Time series",
-          "version": ""
-        }
-      ],
       "annotations": {
         "list": [
           {
             "builtIn": 1,
-            "datasource": "-- Grafana --",
+            "datasource": {
+              "type": "grafana",
+              "uid": "-- Grafana --"
+            },
             "enable": true,
             "hide": true,
             "iconColor": "rgba(0, 211, 255, 1)",
             "name": "Annotations & Alerts",
-            "target": {
-              "limit": 100,
-              "matchAny": false,
-              "tags": [],
-              "type": "dashboard"
-            },
             "type": "dashboard"
           }
         ]
       },
-      "description": "Dashboard for Speedtest Exporter with Dynamic Datasource Selection",
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": null,
+      "id": 12,
       "links": [],
-      "liveNow": false,
       "panels": [
         {
+          "collapsed": false,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          },
+          "id": 100,
+          "panels": [],
+          "title": "Kikiserver",
+          "type": "row"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "Kikiserver"
+          },
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "thresholds" },
-              "mappings": [
-                {
-                  "options": { "0": { "index": 1, "text": "DOWN" }, "1": { "index": 0, "text": "UP" } },
-                  "type": "value"
-                }
-              ],
+              "mappings": [],
+              "min": 0,
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "color": "green", "value": null },
-                  { "color": "red", "value": 0 },
-                  { "color": "green", "value": 1 }
+                  {
+                    "color": "red",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 400
+                  },
+                  {
+                    "color": "green",
+                    "value": 500
+                  }
                 ]
-              }
-            }
-          },
-          "gridPos": { "h": 3, "w": 12, "x": 0, "y": 0 },
-          "id": 16,
-          "options": {
-            "colorMode": "background",
-            "graphMode": "none",
-            "justifyMode": "center",
-            "reduceOptions": { "calcs": ["lastNotNull"] },
-            "textMode": "value"
-          },
-          "targets": [
-            {
-              "datasource": { "type": "prometheus", "uid": "${datasource}" },
-              "expr": "speedtest_up{instance=\"$instance\", job=\"$job\"}",
-              "refId": "A"
-            }
-          ],
-          "title": "Status of the Speedtest-Exporter",
-          "type": "stat"
-        },
-        {
-          "fieldConfig": {
-            "defaults": {
-              "color": { "mode": "thresholds" },
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] }
-            }
-          },
-          "gridPos": { "h": 3, "w": 12, "x": 12, "y": 0 },
-          "id": 15,
-          "options": {
-            "colorMode": "value",
-            "justifyMode": "center",
-            "reduceOptions": { "calcs": ["lastNotNull"] },
-            "textMode": "value"
-          },
-          "targets": [
-            {
-              "datasource": { "type": "prometheus", "uid": "${datasource}" },
-              "expr": "speedtest_server_id{instance=\"$instance\", job=\"$job\"}",
-              "refId": "A"
-            }
-          ],
-          "title": "ServerID (Last test done)",
-          "type": "stat"
-        },
-        {
-          "fieldConfig": {
-            "defaults": {
-              "min": 0,
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] },
+              },
               "unit": "Mbits"
-            }
+            },
+            "overrides": []
           },
-          "gridPos": { "h": 8, "w": 6, "x": 0, "y": 4 },
-          "id": 10,
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 1
+          },
+          "id": 103,
           "options": {
-            "reduceOptions": { "calcs": ["lastNotNull"] }
+            "minVizHeight": 75,
+            "minVizWidth": 75,
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
+          "pluginVersion": "12.3.1",
           "targets": [
             {
-              "datasource": { "type": "prometheus", "uid": "${datasource}" },
-              "expr": "speedtest_download_bits_per_second{instance=\"$instance\", job=\"$job\"}*10^-6",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "Kikiserver"
+              },
+              "expr": "speedtest_download_bits_per_second*10^-6",
               "refId": "A"
             }
           ],
-          "title": "Download Speed",
+          "title": "Kikiserver Download",
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "Kikiserver"
+          },
           "fieldConfig": {
             "defaults": {
+              "mappings": [],
               "min": 0,
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 50
+                  },
+                  {
+                    "color": "green",
+                    "value": 70
+                  }
+                ]
+              },
               "unit": "Mbits"
-            }
+            },
+            "overrides": []
           },
-          "gridPos": { "h": 8, "w": 6, "x": 6, "y": 4 },
-          "id": 12,
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 1
+          },
+          "id": 104,
           "options": {
-            "reduceOptions": { "calcs": ["lastNotNull"] }
+            "minVizHeight": 75,
+            "minVizWidth": 75,
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
+          "pluginVersion": "12.3.1",
           "targets": [
             {
-              "datasource": { "type": "prometheus", "uid": "${datasource}" },
-              "expr": "speedtest_upload_bits_per_second{instance=\"$instance\", job=\"$job\"}*10^-6",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "Kikiserver"
+              },
+              "expr": "speedtest_upload_bits_per_second*10^-6",
               "refId": "A"
             }
           ],
-          "title": "Upload Speed",
+          "title": "Kikiserver Upload",
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "Kikiserver"
+          },
           "fieldConfig": {
             "defaults": {
+              "mappings": [],
               "min": 0,
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 5
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              },
               "unit": "ms"
-            }
+            },
+            "overrides": []
           },
-          "gridPos": { "h": 8, "w": 6, "x": 12, "y": 4 },
-          "id": 13,
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 12,
+            "y": 1
+          },
+          "id": 105,
           "options": {
-            "reduceOptions": { "calcs": ["lastNotNull"] }
+            "minVizHeight": 75,
+            "minVizWidth": 75,
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
+          "pluginVersion": "12.3.1",
           "targets": [
             {
-              "datasource": { "type": "prometheus", "uid": "${datasource}" },
-              "expr": "speedtest_ping_latency_milliseconds{instance=\"$instance\", job=\"$job\"}",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "Kikiserver"
+              },
+              "expr": "speedtest_ping_latency_milliseconds",
               "refId": "A"
             }
           ],
-          "title": "Ping",
+          "title": "Kikiserver Ping",
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "Kikiserver"
+          },
           "fieldConfig": {
             "defaults": {
+              "mappings": [],
               "min": 0,
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 10
+                  },
+                  {
+                    "color": "red",
+                    "value": 20
+                  }
+                ]
+              },
               "unit": "ms"
-            }
+            },
+            "overrides": []
           },
-          "gridPos": { "h": 8, "w": 6, "x": 18, "y": 4 },
-          "id": 11,
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 18,
+            "y": 1
+          },
+          "id": 106,
           "options": {
-            "reduceOptions": { "calcs": ["lastNotNull"] }
+            "minVizHeight": 75,
+            "minVizWidth": 75,
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
+          "pluginVersion": "12.3.1",
           "targets": [
             {
-              "datasource": { "type": "prometheus", "uid": "${datasource}" },
-              "expr": "speedtest_jitter_latency_milliseconds{instance=\"$instance\", job=\"$job\"}",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "Kikiserver"
+              },
+              "expr": "speedtest_jitter_latency_milliseconds",
               "refId": "A"
             }
           ],
-          "title": "Jitter",
+          "title": "Kikiserver Jitter",
           "type": "gauge"
         },
         {
+          "collapsed": false,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 9
+          },
+          "id": 101,
+          "panels": [],
+          "title": "Kikinode",
+          "type": "row"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "Kikinode"
+          },
           "fieldConfig": {
             "defaults": {
-              "custom": { "fillOpacity": 100, "lineWidth": 1 },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 400
+                  },
+                  {
+                    "color": "green",
+                    "value": 500
+                  }
+                ]
+              },
               "unit": "Mbits"
-            }
+            },
+            "overrides": []
           },
-          "gridPos": { "h": 9, "w": 24, "x": 0, "y": 13 },
-          "id": 2,
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 10
+          },
+          "id": 107,
           "options": {
-            "legend": { "calcs": ["mean", "max", "min"], "displayMode": "table", "placement": "bottom" }
+            "minVizHeight": 75,
+            "minVizWidth": 75,
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
+          "pluginVersion": "12.3.1",
           "targets": [
             {
-              "datasource": { "type": "prometheus", "uid": "${datasource}" },
-              "expr": "speedtest_download_bits_per_second{instance=\"$instance\", job=\"$job\"}*10^-6",
-              "legendFormat": "Download Speed (Mbits/s)",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "Kikinode"
+              },
+              "expr": "speedtest_download_bits_per_second*10^-6",
               "refId": "A"
             }
           ],
-          "title": "Download Speed (Mbits/s)",
-          "type": "timeseries"
+          "title": "Kikinode Download",
+          "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "Kikinode"
+          },
           "fieldConfig": {
             "defaults": {
-              "custom": { "fillOpacity": 100, "lineWidth": 1 },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 50
+                  },
+                  {
+                    "color": "green",
+                    "value": 70
+                  }
+                ]
+              },
               "unit": "Mbits"
-            }
+            },
+            "overrides": []
           },
-          "gridPos": { "h": 9, "w": 24, "x": 0, "y": 22 },
-          "id": 3,
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 10
+          },
+          "id": 108,
           "options": {
-            "legend": { "calcs": ["mean", "max", "min"], "displayMode": "table", "placement": "bottom" }
+            "minVizHeight": 75,
+            "minVizWidth": 75,
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
+          "pluginVersion": "12.3.1",
           "targets": [
             {
-              "datasource": { "type": "prometheus", "uid": "${datasource}" },
-              "expr": "speedtest_upload_bits_per_second{instance=\"$instance\", job=\"$job\"}*10^-6",
-              "legendFormat": "Upload Speed (Mbits/s)",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "Kikinode"
+              },
+              "expr": "speedtest_upload_bits_per_second*10^-6",
               "refId": "A"
             }
           ],
-          "title": "Upload Speed (Mbits/s)",
-          "type": "timeseries"
+          "title": "Kikinode Upload",
+          "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "Kikinode"
+          },
           "fieldConfig": {
             "defaults": {
-              "custom": { "fillOpacity": 100, "lineWidth": 1 },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 5
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              },
               "unit": "ms"
-            }
+            },
+            "overrides": []
           },
-          "gridPos": { "h": 9, "w": 24, "x": 0, "y": 31 },
-          "id": 4,
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 12,
+            "y": 10
+          },
+          "id": 109,
           "options": {
-            "legend": { "calcs": ["mean", "max", "min"], "displayMode": "table", "placement": "bottom" }
+            "minVizHeight": 75,
+            "minVizWidth": 75,
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
+          "pluginVersion": "12.3.1",
           "targets": [
             {
-              "datasource": { "type": "prometheus", "uid": "${datasource}" },
-              "expr": "speedtest_ping_latency_milliseconds{instance=\"$instance\", job=\"$job\"}",
-              "legendFormat": "Ping (ms)",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "Kikinode"
+              },
+              "expr": "speedtest_ping_latency_milliseconds",
+              "refId": "A"
+            }
+          ],
+          "title": "Kikinode Ping",
+          "type": "gauge"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "Kikinode"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 10
+                  },
+                  {
+                    "color": "red",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 18,
+            "y": 10
+          },
+          "id": 110,
+          "options": {
+            "minVizHeight": 75,
+            "minVizWidth": 75,
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
+          },
+          "pluginVersion": "12.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "Kikinode"
+              },
+              "expr": "speedtest_jitter_latency_milliseconds",
+              "refId": "A"
+            }
+          ],
+          "title": "Kikinode Jitter",
+          "type": "gauge"
+        },
+        {
+          "collapsed": false,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 18
+          },
+          "id": 102,
+          "panels": [],
+          "title": "Comparisons",
+          "type": "row"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Mixed --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "bars",
+                "fillOpacity": 80,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "Mbits"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 19
+          },
+          "id": 111,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "uid": "Kikiserver"
+              },
+              "expr": "speedtest_download_bits_per_second*10^-6",
+              "legendFormat": "Kikiserver",
               "refId": "A"
             },
             {
-              "datasource": { "type": "prometheus", "uid": "${datasource}" },
-              "expr": "speedtest_jitter_latency_milliseconds{instance=\"$instance\", job=\"$job\"}",
-              "legendFormat": "Jitter (ms)",
+              "datasource": {
+                "uid": "Kikinode"
+              },
+              "expr": "speedtest_download_bits_per_second*10^-6",
+              "legendFormat": "Kikinode",
               "refId": "B"
             }
           ],
-          "title": "Ping and Jitter (ms)",
+          "title": "Download Comparison",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Mixed --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "bars",
+                "fillOpacity": 80,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "Mbits"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 19
+          },
+          "id": 112,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "uid": "Kikiserver"
+              },
+              "expr": "speedtest_upload_bits_per_second*10^-6",
+              "legendFormat": "Kikiserver",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "uid": "Kikinode"
+              },
+              "expr": "speedtest_upload_bits_per_second*10^-6",
+              "legendFormat": "Kikinode",
+              "refId": "B"
+            }
+          ],
+          "title": "Upload Comparison",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Mixed --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "bars",
+                "fillOpacity": 80,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 19
+          },
+          "id": 113,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "uid": "Kikiserver"
+              },
+              "expr": "speedtest_ping_latency_milliseconds",
+              "legendFormat": "Ping Kikiserver",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "uid": "Kikinode"
+              },
+              "expr": "speedtest_ping_latency_milliseconds",
+              "legendFormat": "Ping Kikinode",
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "uid": "Kikiserver"
+              },
+              "expr": "speedtest_jitter_latency_milliseconds",
+              "legendFormat": "Jitter Kikiserver",
+              "refId": "C"
+            },
+            {
+              "datasource": {
+                "uid": "Kikinode"
+              },
+              "expr": "speedtest_jitter_latency_milliseconds",
+              "legendFormat": "Jitter Kikinode",
+              "refId": "D"
+            }
+          ],
+          "title": "Ping & Jitter Comparison",
           "type": "timeseries"
         }
       ],
+      "preload": false,
       "refresh": "5m",
-      "schemaVersion": 35,
-      "style": "dark",
+      "schemaVersion": 42,
+      "tags": [],
       "templating": {
-        "list": [
-          {
-            "description": "Select Datasource (Kikiserver or Kikinode)",
-            "hide": 0,
-            "includeAll": false,
-            "label": "Data Source",
-            "multi": false,
-            "name": "datasource",
-            "options": [],
-            "query": "prometheus",
-            "refresh": 1,
-            "regex": "/Kikiserver|Kikinode/",
-            "skipUrlSync": false,
-            "type": "datasource"
-          },
-          {
-            "datasource": "${datasource}",
-            "definition": "label_values(speedtest_up, instance)",
-            "hide": 0,
-            "includeAll": false,
-            "label": "Instance",
-            "multi": false,
-            "name": "instance",
-            "options": [],
-            "query": {
-              "query": "label_values(speedtest_up, instance)",
-              "refId": "StandardVariableQuery"
-            },
-            "refresh": 1,
-            "type": "query"
-          },
-          {
-            "datasource": "${datasource}",
-            "definition": "label_values(speedtest_up, job)",
-            "hide": 0,
-            "includeAll": false,
-            "label": "Job",
-            "multi": false,
-            "name": "job",
-            "options": [],
-            "query": {
-              "query": "label_values(speedtest_up, job)",
-              "refId": "StandardVariableQuery"
-            },
-            "refresh": 1,
-            "type": "query"
-          }
-        ]
+        "list": []
       },
-      "time": { "from": "now-24h", "to": "now" },
-      "title": "Speedtest-Exporter Dashboard",
-      "uid": "speedtest-dynamic-ds",
-      "version": 11
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "",
+      "title": "Network Master View (Zoomable Bars)",
+      "uid": "network-master-zoomable-bars",
+      "version": 2
     }
