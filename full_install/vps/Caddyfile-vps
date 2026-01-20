@@ -57,3 +57,11 @@ overseerr.attias.io {
         }
     }
 }
+
+authentik.attias.io {
+    reverse_proxy https://192.168.178.200:443 {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
+}

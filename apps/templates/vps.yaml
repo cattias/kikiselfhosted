@@ -170,6 +170,7 @@ spec:
             port: 9000
   tls:
     certResolver: le
+---
 apiVersion: v1
 kind: Service
 metadata:
