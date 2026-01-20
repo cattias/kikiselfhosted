@@ -84,7 +84,8 @@ spec:
             serviceMonitor:
               enabled: true
             prometheusRule:
-              enabled: true
+              enabled: false
+              # one or more objects failed to apply, reason: admission webhook "prometheusrulemutate.monitoring.coreos.com" denied the request: Cannot unmarshal rules from spec. 
               additionalLabels:
                 release: kube-prometheus-stack
         env:
