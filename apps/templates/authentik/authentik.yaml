@@ -62,6 +62,7 @@ spec:
             user: file:///postgres-creds/user
             password: file:///postgres-creds/password
             port: 5432
+
         server:
           metrics:
             # -- deploy metrics service
