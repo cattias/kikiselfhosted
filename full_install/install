@@ -96,8 +96,19 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "ClusterIP"}}'
 
 
 # P700 tailscale
+sudo vi /etc/systemd/system/tailscale-eth-tuning.service
+# Reload systemd to see the new file
+sudo systemctl daemon-reload
+# Enable the service for future boots
+sudo systemctl enable tailscale-eth-tuning.service
+# Start it now to apply the settings immediately
+sudo systemctl start tailscale-eth-tuning.service
+# check
+ethtool -k bond0 | grep -E "rx-udp-gro-forwarding|rx-gro-list"
+
+
 curl -fsSL https://tailscale.com/install.sh | sh
-sudo tailscale up --login-server=https://tailscale.attias.io --accept-dns=false --accept-routes=false
+sudo tailscale up --login-server=https://tailscale.attias.io --accept-dns=false --accept-routes=false --advertise-routes=192.168.178.0/24
 sudo tailscale set --auto-update=true
 
 # Authentik signals / Z processes

@@ -1,0 +1,14 @@
+[Unit]
+Description=Tailscale Ethtool UDP GRO Tuning
+After=network.target
+# Ensure it waits for the specific device (replace bond0 if different)
+Requires=sys-subsystem-net-devices-bond0.device
+After=sys-subsystem-net-devices-bond0.device
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/ethtool -K bond0 rx-udp-gro-forwarding on rx-gro-list off
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
