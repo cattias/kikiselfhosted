@@ -27,7 +27,10 @@ http://uptime.attias.io {
 }
 
 http://hc.attias.io {
-    reverse_proxy localhost:8000
+    reverse_proxy localhost:8000 {
+        header_up X-Forwarded-Proto {header.X-Forwarded-Proto}
+        header_up Host {host}
+    }
 }
 
 # Real public shit
