@@ -85,7 +85,6 @@ spec:
               enabled: true
             prometheusRule:
               enabled: true
-              namespace: monitoring
               additionalLabels:
                 release: kube-prometheus-stack
         env:
