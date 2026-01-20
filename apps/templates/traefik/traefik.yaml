@@ -83,6 +83,11 @@ spec:
           prometheus:
             serviceMonitor:
               enabled: true
+            prometheusRule:
+              enabled: true
+              namespace: monitoring
+              additionalLabels:
+                release: kube-prometheus-stack
         env:
           - name: CF_API_EMAIL
             value: christophe.attias@gmail.com
@@ -115,9 +120,9 @@ spec:
         access:
           enabled: true
           format: "json"
-          filePath: "/var/log/traefik/access.log"
+          # filePath: "/var/log/traefik/access.log"
         logs:
           access:
             enabled: true
             format: "json"
-            filePath: "/var/log/traefik/access.log"
+            filePath: "/data/access.log"
