@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: glances-nas-service
+  namespace: nas
+spec:
+  ports:
+    - protocol: TCP
+      port: 61208
+      targetPort: 61208
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: glances-nas-service
+  namespace: nas
+subsets:
+  - addresses:
+      - ip: 192.168.178.33
+    ports:
+      - port: 61208
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nas-glances-router
+  namespace: nas
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`glances.nas.attias.io`) && PathPrefix(`/api/`)
+      kind: Rule
+      priority: 100
+      middlewares:
+        - name: internal-only
+          namespace: traefik
+      services:
+        - name: glances-nas-service
+          port: 61208
+    - match: Host(`glances.nas.attias.io`)
+      kind: Rule
+      services:
+        - name: glances-nas-service
+          port: 61208
+      priority: 10
+      middlewares:
+        - name: authentik
+          namespace: traefik
+    - kind: Rule
+      match: "Host(`glances.nas.attias.io`) && PathPrefix(`/outpost.goauthentik.io/`)"
+      priority: 15
+      services:
+          - kind: Service
+            name: ak-outpost-authentik-embedded-outpost
+            namespace: authentik
+            port: 9000
+  tls:
+    certResolver: le
