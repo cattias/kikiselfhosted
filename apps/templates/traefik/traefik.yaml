@@ -57,6 +57,10 @@ spec:
             exposedPort: 443
             targetPort: 8443
             protocol: TCP
+            forwardedHeaders:
+              trustedIPs:
+               - 127.0.0.1/32
+               - 100.64.0.2/32
             transport:
               respondingTimeouts:
                 readTimeout: 600s
