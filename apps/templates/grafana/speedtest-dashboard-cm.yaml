@@ -941,7 +941,7 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "Network Master View (Zoomable Bars)",
-      "uid": "network-master-zoomable-bars",
+      "title": "Speedtest Exporter Dashboard",
+      "uid": "speedtest-exporter-dashboard",
       "version": 2
     }
