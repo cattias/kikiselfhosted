@@ -10,9 +10,6 @@ spec:
     - match: Host(`tautulli.attias.io`) && PathPrefix(`/api/`)
       kind: Rule
       priority: 100
-      middlewares:
-        - name: internal-only
-          namespace: traefik
       services:
         - name: tautulli
           port: 8181
