@@ -264,21 +264,14 @@ spec:
     - match: (Host(`hc.attias.io`) && PathPrefix(`/api/`)) || (Host(`hc.attias.io`) && PathPrefix(`/ping/`))
       kind: Rule
       priority: 100
-      # middlewares:
-      #   - name: internal-only
-      #     namespace: traefik
       services:
         - name: hc-vps-service
           port: 80
-          scheme: https
-          serversTransport: vps-insecure-transport
     - match: Host(`hc.attias.io`)
       kind: Rule
       services:
         - name: hc-vps-service
           port: 80
-          scheme: https
-          serversTransport: vps-insecure-transport
       priority: 10
       middlewares:
         - name: authentik
