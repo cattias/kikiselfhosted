@@ -105,3 +105,10 @@ spec:
             - name: authentik-secret
               mountPath: /authentik-secret
               readOnly: true
+
+        prometheus:
+          rules:
+            enabled: true
+            namespace: monitoring
+            labels: 
+              release: kube-prometheus-stack
