@@ -52,7 +52,7 @@ spec:
                 - "100.64.0.2/32"
                 - "127.0.0.1/32"
                 - "10.244.0.0/16"
-              insecure: true
+              insecure: false
             transport:
               respondingTimeouts:
                 readTimeout: 600s
@@ -70,7 +70,7 @@ spec:
                 - "100.64.0.2/32"
                 - "127.0.0.1/32"
                 - "10.244.0.0/16"
-              insecure: true
+              insecure: false
             transport:
               respondingTimeouts:
                 readTimeout: 600s
