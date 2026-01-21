@@ -48,10 +48,8 @@ spec:
             targetPort: 8000
             protocol: TCP
             forwardedHeaders:
-              trustedIPs:
-               - 127.0.0.1/32
-               - 100.64.0.2/32
-               - 10.244.0.0/16
+              trustedIPs: [100.64.0.2]
+              insecure: true
             transport:
               respondingTimeouts:
                 readTimeout: 600s
@@ -65,10 +63,8 @@ spec:
             targetPort: 8443
             protocol: TCP
             forwardedHeaders:
-              trustedIPs:
-               - 127.0.0.1/32
-               - 100.64.0.2/32
-               - 10.244.0.0/16
+              trustedIPs: [100.64.0.2]
+              insecure: true
             transport:
               respondingTimeouts:
                 readTimeout: 600s
