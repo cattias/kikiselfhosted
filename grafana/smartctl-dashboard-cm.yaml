@@ -1507,7 +1507,7 @@ data:
         ]
       },
       "timezone": "browser",
-      "title": "SMARTctl Exporter Dashboard",
-      "uid": "ce8j0dmrrej9cc",
-      "version": 2
+      "title": "Kikiserver - SMARTctl Exporter Dashboard",
+      "uid": "smartctl-kikiserver",
+      "version": 1
     }
