@@ -517,7 +517,7 @@ data:
             "type": "prometheus",
             "uid": "DS_KIKINAS"
           },
-          "description": "Used Root FS",
+          "description": "Used Storage on the NAS /volume1",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -593,7 +593,7 @@ data:
               "step": 240
             }
           ],
-          "title": "Root FS Used",
+          "title": "NAS Storage Used",
           "type": "gauge"
         },
         {
@@ -905,7 +905,7 @@ data:
             {
               "editorMode": "code",
               "exemplar": false,
-              "expr": "node_filesystem_size_bytes{instance=\"$node\",job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"}",
+              "expr": "node_filesystem_size_bytes{instance=\"$node\",job=\"$job\",mountpoint=\"/home\",fstype!=\"rootfs\"}",
               "format": "time_series",
               "instant": true,
               "range": false,
@@ -913,7 +913,7 @@ data:
               "step": 240
             }
           ],
-          "title": "RootFS Total",
+          "title": "NAS Storage Total",
           "type": "stat"
         },
         {
