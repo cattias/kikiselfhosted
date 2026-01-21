@@ -334,7 +334,7 @@
       "**/plex-app\\.yaml",
       "**/arr\\.yaml",
       "**/rook-ceph-cluster-addition\\.yaml",
-      "**/homepage\\.yaml",
+      "**/homepage-app\\.yaml",
       "**/nextcloud/**",
       "**/opencloud/**",
       "**/dsm\\.yaml"
