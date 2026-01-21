@@ -59,6 +59,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/homepage/homepage-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*homepage\\s*\\n\\s*image:\\s*ghcr\\.io\\/gethomepage\\/homepage:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/gethomepage/homepage",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/paperless/paperless-deployment\\.yaml/"
       ],
       "matchStrings": [
