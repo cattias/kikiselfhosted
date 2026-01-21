@@ -10,44 +10,6 @@ metadata:
 data:
   node-kikinas.json: |
     {
-      "__requires": [
-        {
-          "type": "panel",
-          "id": "bargauge",
-          "name": "Bar gauge",
-          "version": ""
-        },
-        {
-          "type": "panel",
-          "id": "gauge",
-          "name": "Gauge",
-          "version": ""
-        },
-        {
-          "type": "grafana",
-          "id": "grafana",
-          "name": "Grafana",
-          "version": "11.6.1"
-        },
-        {
-          "type": "datasource",
-          "id": "prometheus",
-          "name": "Prometheus",
-          "version": "1.0.0"
-        },
-        {
-          "type": "panel",
-          "id": "stat",
-          "name": "Stat",
-          "version": ""
-        },
-        {
-          "type": "panel",
-          "id": "timeseries",
-          "name": "Time series",
-          "version": ""
-        }
-      ],
       "annotations": {
         "list": [
           {
@@ -73,7 +35,7 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 1,
-      "id": null,
+      "id": 3,
       "links": [
         {
           "icon": "external link",
@@ -126,7 +88,8 @@ data:
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   },
                   {
                     "color": "dark-yellow",
@@ -174,7 +137,7 @@ data:
             "text": {},
             "valueMode": "color"
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -253,7 +216,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": 0
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -291,7 +255,7 @@ data:
             "showThresholdMarkers": true,
             "sizing": "auto"
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -336,7 +300,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": 0
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -374,7 +339,7 @@ data:
             "showThresholdMarkers": true,
             "sizing": "auto"
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -409,7 +374,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": 0
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -447,7 +413,7 @@ data:
             "showThresholdMarkers": true,
             "sizing": "auto"
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -492,7 +458,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": 0
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -530,7 +497,7 @@ data:
             "showThresholdMarkers": true,
             "sizing": "auto"
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -574,7 +541,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": 0
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -612,12 +580,12 @@ data:
             "showThresholdMarkers": true,
             "sizing": "auto"
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
               "exemplar": false,
-              "expr": "(\n  (node_filesystem_size_bytes{instance=\"$node\", job=\"$job\", mountpoint=\"/\", fstype!=\"rootfs\"}\n   - node_filesystem_avail_bytes{instance=\"$node\", job=\"$job\", mountpoint=\"/\", fstype!=\"rootfs\"})\n  / node_filesystem_size_bytes{instance=\"$node\", job=\"$job\", mountpoint=\"/\", fstype!=\"rootfs\"}\n) * 100\n",
+              "expr": "(\n  (node_filesystem_size_bytes{instance=\"$node\", job=\"$job\", mountpoint=\"/home\", fstype!=\"rootfs\"}\n   - node_filesystem_avail_bytes{instance=\"$node\", job=\"$job\", mountpoint=\"/home\", fstype!=\"rootfs\"})\n  / node_filesystem_size_bytes{instance=\"$node\", job=\"$job\", mountpoint=\"/home\", fstype!=\"rootfs\"}\n) * 100\n",
               "format": "time_series",
               "instant": true,
               "range": false,
@@ -654,7 +622,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   }
                 ]
               },
@@ -687,7 +656,7 @@ data:
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -729,7 +698,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   },
                   {
                     "color": "red",
@@ -766,7 +736,7 @@ data:
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -808,7 +778,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   },
                   {
                     "color": "red",
@@ -845,7 +816,7 @@ data:
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -887,7 +858,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": 0
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -928,7 +900,7 @@ data:
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -971,7 +943,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   },
                   {
                     "color": "red",
@@ -1008,7 +981,7 @@ data:
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -1071,6 +1044,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "never",
+                "showValues": false,
                 "spanNulls": false,
                 "stacking": {
                   "group": "A",
@@ -1087,7 +1061,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   }
                 ]
               },
@@ -1192,7 +1167,7 @@ data:
               "sort": "desc"
             }
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -1289,6 +1264,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "never",
+                "showValues": false,
                 "spanNulls": false,
                 "stacking": {
                   "group": "A",
@@ -1305,7 +1281,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   }
                 ]
               },
@@ -1406,7 +1383,7 @@ data:
               "sort": "none"
             }
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -1492,6 +1469,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "never",
+                "showValues": false,
                 "spanNulls": false,
                 "stacking": {
                   "group": "A",
@@ -1507,7 +1485,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   }
                 ]
               },
@@ -1548,7 +1527,7 @@ data:
               "sort": "none"
             }
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -1607,6 +1586,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "never",
+                "showValues": false,
                 "spanNulls": false,
                 "stacking": {
                   "group": "A",
@@ -1624,7 +1604,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": 0
                   }
                 ]
               },
@@ -1652,7 +1633,7 @@ data:
               "sort": "none"
             }
           },
-          "pluginVersion": "11.6.1",
+          "pluginVersion": "12.3.1",
           "targets": [
             {
               "editorMode": "code",
@@ -15371,7 +15352,7 @@ data:
                         "id": "custom.hideFrom",
                         "value": {
                           "legend": false,
-                          "tooltip": false,
+                          "tooltip": true,
                           "viz": true
                         }
                       }
@@ -15532,7 +15513,7 @@ data:
                         "id": "custom.hideFrom",
                         "value": {
                           "legend": false,
-                          "tooltip": false,
+                          "tooltip": true,
                           "viz": true
                         }
                       }
@@ -15683,8 +15664,9 @@ data:
           "type": "row"
         }
       ],
+      "preload": false,
       "refresh": "1m",
-      "schemaVersion": 41,
+      "schemaVersion": 42,
       "tags": [
         "linux",
         "node_exporter",
@@ -15762,7 +15744,5 @@ data:
       "timezone": "browser",
       "title": "Kikinas - Node Exporter Full",
       "uid": "node-exporter-kikinas",
-      "version": 1,
-      "weekStart": "",
-      "gnetId": 1860
+      "version": 1
     }
