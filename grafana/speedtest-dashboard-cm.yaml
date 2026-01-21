@@ -931,7 +931,11 @@ data:
       "preload": false,
       "refresh": "5m",
       "schemaVersion": 42,
-      "tags": [],
+      "tags": [
+        "speedtest",
+        "kikiserver",
+        "kikinode"
+      ],
       "templating": {
         "list": []
       },

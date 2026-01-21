@@ -6563,8 +6563,9 @@ data:
         "refresh": "",
         "schemaVersion": 42,
         "tags": [
-            "Prometheus",
-            "Kubernetes"
+            "prometheus",
+            "kubernetes",
+            "kikiserver"
         ],
         "templating": {
             "list": [
@@ -13289,8 +13290,9 @@ data:
         "refresh": "",
         "schemaVersion": 42,
         "tags": [
-            "Prometheus",
-            "Kubernetes"
+            "prometheus",
+            "kubernetes",
+            "kikinode"
         ],
         "templating": {
             "list": [

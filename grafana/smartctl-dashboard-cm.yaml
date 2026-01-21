@@ -1355,7 +1355,8 @@ data:
       "tags": [
         "prometheus",
         "node_exporter",
-        "smartmon"
+        "smartmon",
+        "kikiserver"
       ],
       "templating": {
         "list": [
