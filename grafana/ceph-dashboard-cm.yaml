@@ -2609,7 +2609,7 @@ data:
               "expr": "(ceph_pool_bytes_used{}) *on (pool_id) group_left(name)(ceph_pool_metadata{})",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{ "{{" }}name{{ "}}" }}",
+              "legendFormat": "{{name}}",
               "refId": "A",
               "step": 300
             }
@@ -2700,7 +2700,7 @@ data:
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "{{ "{{" }}name{{ "}}" }} Avail",
+              "legendFormat": "{{name}} Avail",
               "range": true,
               "refId": "A"
             },
@@ -2711,7 +2711,7 @@ data:
               "hide": false,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "{{ "{{" }}name{{ "}}" }} Stored",
+              "legendFormat": "{{name}} Stored",
               "range": true,
               "refId": "B"
             }
@@ -2805,7 +2805,7 @@ data:
               "expr": "(ceph_pool_objects{}) *on (pool_id) group_left(name)(ceph_pool_metadata{})",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{ "{{" }}name{{ "}}" }}",
+              "legendFormat": "{{name}}",
               "refId": "A"
             }
           ],
@@ -2898,7 +2898,7 @@ data:
               "expr": "(ceph_pool_quota_bytes{}) *on (pool_id) group_left(name)(ceph_pool_metadata{})",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{ "{{" }}name{{ "}}" }}",
+              "legendFormat": "{{name}}",
               "refId": "A"
             }
           ],
@@ -2991,7 +2991,7 @@ data:
               "expr": "(ceph_pool_quota_objects{}) *on (pool_id) group_left(name)(ceph_pool_metadata{})",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{ "{{" }}name{{ "}}" }}",
+              "legendFormat": "{{name}}",
               "refId": "A"
             }
           ],
@@ -3474,7 +3474,7 @@ data:
                   "expr": "node_memory_Active_anon_bytes{}",
                   "format": "time_series",
                   "intervalFactor": 1,
-                  "legendFormat": "{{ "{{" }}instance{{ "}}" }}",
+                  "legendFormat": "{{instance}}",
                   "refId": "A"
                 },
                 {
@@ -3572,7 +3572,7 @@ data:
                   "expr": "avg by(instance)(irate(node_cpu_seconds_total{job='node',mode!=\"idle\"}[$interval])) * 100",
                   "format": "time_series",
                   "intervalFactor": 1,
-                  "legendFormat": "{{ "{{" }}instance{{ "}}" }}",
+                  "legendFormat": "{{instance}}",
                   "refId": "A"
                 }
               ],
@@ -3662,7 +3662,7 @@ data:
                   "expr": "sum by (instance)(irate(node_disk_read_bytes_total{}[$interval]))",
                   "format": "time_series",
                   "intervalFactor": 1,
-                  "legendFormat": "{{ "{{" }}instance{{ "}}" }}",
+                  "legendFormat": "{{instance}}",
                   "refId": "A"
                 }
               ],
@@ -3752,7 +3752,7 @@ data:
                   "expr": "sum by (instance)(irate(node_disk_written_bytes_total{}[$interval]))",
                   "format": "time_series",
                   "intervalFactor": 1,
-                  "legendFormat": "{{ "{{" }}instance{{ "}}" }}",
+                  "legendFormat": "{{instance}}",
                   "refId": "A"
                 }
               ],
@@ -3838,7 +3838,7 @@ data:
                   "expr": "(node_filesystem_free_bytes{ mountpoint=\"/\", device != \"rootfs\"})*100 / (node_filesystem_size_bytes{ mountpoint=\"/\", device != \"rootfs\"})",
                   "format": "time_series",
                   "intervalFactor": 1,
-                  "legendFormat": "{{ "{{" }}instance{{ "}}" }}",
+                  "legendFormat": "{{instance}}",
                   "range": true,
                   "refId": "A"
                 }
