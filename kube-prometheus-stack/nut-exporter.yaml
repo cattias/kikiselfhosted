@@ -27,12 +27,11 @@ spec:
       valuesObject:
         metrics:
           enabled: true
-      #     serviceMonitor:
-      #       enabled: true
-      #       targets: [localhost]
-      #       labels:
-      #         release: kube-prometheus-stack
-      #     prometheusRule:
-      #       enabled: true
-      #       labels:
-      #         release: kube-prometheus-stack
+          serviceMonitor:
+            targets: [localhost]
+            labels:
+              release: kube-prometheus-stack
+          prometheusRule:
+            enabled: true
+            labels:
+              release: kube-prometheus-stack
