@@ -1,0 +1,2 @@
+# /etc/udev/rules.d/99-nut-ups.rules
+SUBSYSTEM=="usb", ATTR{idVendor}=="0764", ATTR{idProduct}=="0601", MODE="0660", GROUP="nut"

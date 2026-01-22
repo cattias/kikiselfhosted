@@ -1,0 +1,86 @@
+P700 UPS Installation Runbook
+1. Physical Connection
+Connect the USB Type-B (square end) to the UPS.
+Connect the USB Type-A (flat end) to a USB port on the P700.
+Ensure the P700 power cable is plugged into a "Battery + Surge" outlet on the back of the UPS.
+
+2. Install Packages
+Bash
+sudo apt update
+sudo apt install nut nut-client nut-server usbutils -y
+3. Identify Hardware & Permissions
+Create a udev rule to ensure the nut user has permission to access the USB path.
+
+Bash
+# Verify the IDs (Vendor: 0764, Product: 0601)
+lsusb | grep "Cyber Power"
+
+# Create the rule file
+sudo vi /etc/udev/rules.d/99-nut-ups.rules
+Paste inside: SUBSYSTEM=="usb", ATTR{idVendor}=="0764", ATTR{idProduct}=="0601", MODE="0660", GROUP="nut"
+
+Apply the rule:
+
+Bash
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+4. Configure NUT Drivers (ups.conf)
+Define the UPS device.
+
+Bash
+sudo vi /etc/nut/ups.conf
+Add at the bottom:
+
+Ini, TOML
+[cyberpower]
+    driver = usbhid-ups
+    port = auto
+    vendorid = "0764"
+    productid = "0601"
+    desc = "CyberPower CP1600EPFCLCD"
+5. Configure NUT Mode (nut.conf)
+Bash
+sudo vi /etc/nut/nut.conf
+Change to: MODE=standalone
+
+6. Rebuild and Start Services
+This is the critical step for NUT 2.8.3+ to sync with systemd.
+
+Bash
+sudo /usr/libexec/nut-driver-enumerator.sh --rebuild
+sudo systemctl daemon-reload
+sudo systemctl restart nut-driver-enumerator.service
+sudo systemctl enable --now nut-driver@cyberpower
+sudo systemctl restart nut-server nut-client
+7. Configure Monitoring & Shutdown (upsmon.conf)
+Set up the watchdog that triggers the shutdown.
+
+Bash
+sudo vi /etc/nut/upsmon.conf
+Add/Modify:
+
+Plaintext
+MONITOR cyberpower@localhost 1 upsmon fixme master
+NOTIFYCMD /usr/local/bin/ups-notify.sh
+NOTIFYFLAG ONLINE SYSLOG+WALL+EXEC
+NOTIFYFLAG ONBATT SYSLOG+WALL+EXEC
+NOTIFYFLAG LOWBATT SYSLOG+WALL+EXEC
+8. Create Telegram Alert Script
+Bash
+sudo vi /usr/local/bin/ups-notify.sh
+sudo chmod +x /usr/local/bin/ups-notify.sh
+Script Content:
+
+Bash
+#!/bin/bash
+TOKEN="YOUR_BOT_TOKEN"
+CHAT_ID="YOUR_CHAT_ID"
+curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" -d chat_id="$CHAT_ID" -d text="🚨 P700 UPS: $@"
+9. Verification Commands
+Store these for regular health checks:
+
+Check real-time stats: upsc cyberpower@localhost
+
+Check service health: systemctl status nut-server nut-client nut-driver@cyberpower
+
+Test Telegram: /usr/local/bin/ups-notify.sh "Test manual alert"
