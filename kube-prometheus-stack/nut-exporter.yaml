@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nut-exporter
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: nut-exporter
+    repoURL: https://github.com/DRuggeri/nut_exporter
+    targetRevision: 1.0.0
+    helm:
+      releaseName: nut-exporter
+      valuesObject:
+        dashboard:
+          enabled: true
+          namespace: "monitoring"
+          labels:
+            grafana_dashboard: "1"
+        serviceMonitor:
+          enabled: true
+          labels:
+            release: kube-prometheus-stack
+        rules:
+          enabled: true
+          labels:
+            release: kube-prometheus-stack
