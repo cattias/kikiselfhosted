@@ -19,22 +19,20 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: nut-exporter
-    repoURL: https://github.com/DRuggeri/nut_exporter/charts
-    targetRevision: 1.0.0
+    chart: prometheus-nut-exporter
+    repoURL: https://k8s-at-home.com/charts/
+    targetRevision: 5.4.2
     helm:
-      releaseName: nut-exporter
+      releaseName: prometheus-nut-exporter
       valuesObject:
-        dashboard:
+        metrics:
           enabled: true
-          namespace: "monitoring"
-          labels:
-            grafana_dashboard: "1"
-        serviceMonitor:
-          enabled: true
-          labels:
-            release: kube-prometheus-stack
-        rules:
-          enabled: true
-          labels:
-            release: kube-prometheus-stack
+          serviceMonitor:
+            enabled: true
+            targets: [localhost]
+            labels:
+              release: kube-prometheus-stack
+          prometheusRule:
+            enabled: true
+            labels:
+              release: kube-prometheus-stack
