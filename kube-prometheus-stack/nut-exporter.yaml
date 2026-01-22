@@ -24,15 +24,15 @@ spec:
     targetRevision: 5.4.2
     helm:
       releaseName: prometheus-nut-exporter
-      valuesObject:
-        metrics:
-          enabled: true
-          serviceMonitor:
-            enabled: true
-            targets: [localhost]
-            labels:
-              release: kube-prometheus-stack
-          prometheusRule:
-            enabled: true
-            labels:
-              release: kube-prometheus-stack
+      # valuesObject:
+      #   metrics:
+      #     enabled: true
+      #     serviceMonitor:
+      #       enabled: true
+      #       targets: [localhost]
+      #       labels:
+      #         release: kube-prometheus-stack
+      #     prometheusRule:
+      #       enabled: true
+      #       labels:
+      #         release: kube-prometheus-stack
