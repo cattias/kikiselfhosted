@@ -20,7 +20,7 @@ spec:
   project: default
   source:
     chart: nut-exporter
-    repoURL: https://github.com/DRuggeri/nut_exporter
+    repoURL: https://github.com/DRuggeri/nut_exporter/charts
     targetRevision: 1.0.0
     helm:
       releaseName: nut-exporter
