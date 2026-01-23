@@ -71,6 +71,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/kube-prometheus-stack/nut-exporter-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*nut-exporter\\s*\\n\\s*image:\\s*ghcr\\.io\\/druggeri\\/nut_exporter:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/druggeri/nut_exporter",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/paperless/paperless-deployment\\.yaml/"
       ],
       "matchStrings": [
