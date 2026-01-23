@@ -18,6 +18,7 @@ spec:
       labels:
         app.kubernetes.io/name: nut-exporter
     spec:
+      hostNetwork: true
       containers:
         - name: nut-exporter
           image: ghcr.io/druggeri/nut_exporter:3.2.3
