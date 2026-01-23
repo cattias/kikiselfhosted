@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nut-exporter
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/name: nut-exporter
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nut-exporter
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nut-exporter
+    spec:
+      containers:
+        - name: nut-exporter
+          image: ghcr.io/druggeri/nut_exporter:3.2.3
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: NUT_EXPORTER_SERVER
+              value: "127.0.0.1"
+            - name: NUT_EXPORTER_USERNAME
+              value: "admin"
+          ports:
+          - containerPort: 9199
+            name: http
+            protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /ups_metrics
+              port: http
+            initialDelaySeconds: 10
+            failureThreshold: 5
+            timeoutSeconds: 2
+
+          readinessProbe:
+            httpGet:
+              path: /ups_metrics
+              port: http
+            initialDelaySeconds: 10
+            failureThreshold: 5
+            timeoutSeconds: 2
