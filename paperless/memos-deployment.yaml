@@ -30,6 +30,8 @@ spec:
         image: neosmemo/memos:0.25.3
         ports:
         - containerPort: 5230
+          name: http
+          protocol: TCP
         env:
         - name: MEMOS_MODE
           value: "prod"
@@ -49,6 +51,9 @@ metadata:
 spec:
   selector:
     app: memos
+  type: ClusterIP
   ports:
-  - port: 5230
-    targetPort: 5230
+    - port: 5230
+      targetPort: http
+      protocol: TCP
+      name: http
