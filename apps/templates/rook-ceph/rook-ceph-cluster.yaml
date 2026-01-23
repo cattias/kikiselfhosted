@@ -42,6 +42,9 @@ spec:
         monitoring:
           enabled: true
           metricsDisabled: false
+          prometheusRule:
+            labels:
+              release: kube-prometheus-stack
         cephClusterSpec:
           cephVersion:
             # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
