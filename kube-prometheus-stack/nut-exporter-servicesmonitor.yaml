@@ -13,3 +13,5 @@ spec:
     port: http
     scheme: http
   jobLabel: nut-exporter
+  selector:
+    app.kubernetes.io/name: nut-exporter
