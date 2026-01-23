@@ -19,7 +19,13 @@ fstab and mount
 
 # Install k0s and kubectl
 curl -sSLf https://get.k0s.sh | sudo sh
-sudo k0s install controller --single
+sudo k0s install controller --single -c /etc/k0s/k0s.yaml
+sudo systemctl edit k0scontroller --full
+# => ExecStart=/usr/local/bin/k0s controller --config=/etc/k0s/k0s.yaml --single=true --profile=heavy-nodes
+# Reload systemd
+sudo systemctl daemon-reload
+# Restart the whole k0s process
+sudo systemctl restart k0scontroller
 sudo k0s start
 sudo k0s kubeconfig admin > .kube/config
 sudo snap install kubectl --classic
