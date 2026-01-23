@@ -9,7 +9,7 @@ spec:
   revisionHistoryLimit: 3
   replicas: 1
   strategy:
-    type: RollingUpdate
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/name: nut-exporter
@@ -26,10 +26,6 @@ spec:
           env:
             - name: NUT_EXPORTER_SERVER
               value: "localhost"
-            # - name: NUT_EXPORTER_USERNAME
-            #   value: "cyberpower"
-            # - name: NUT_EXPORTER_PASSWORD
-            #   value: "fixme"
           ports:
           - containerPort: 9199
             name: http
