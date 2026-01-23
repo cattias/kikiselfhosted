@@ -51,7 +51,7 @@ metadata:
 spec:
   selector:
     app: memos
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - port: 5230
       targetPort: http
