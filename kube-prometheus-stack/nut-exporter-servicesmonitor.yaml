@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    release: kube-prometheus-stack
+    app.kubernetes.io/name: nut-exporter
+  name: nut-exporter
+  namespace: monitoring
+spec:
+  endpoints:
+  - interval: 15s
+    path: /ups_metrics
+    port: http
+    scheme: http
+  jobLabel: nut-exporter
