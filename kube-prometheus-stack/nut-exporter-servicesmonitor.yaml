@@ -14,4 +14,5 @@ spec:
     scheme: http
   jobLabel: nut-exporter
   selector:
-    app.kubernetes.io/name: nut-exporter
+    matchLabels:
+      app.kubernetes.io/name: nut-exporter
