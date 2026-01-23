@@ -32,9 +32,17 @@ spec:
         - containerPort: 5230
           name: http
           protocol: TCP
+        # args:
+        # - --port 5230
+        #   --addr 0.0.0.0
+        #   --
         env:
         - name: MEMOS_MODE
           value: "prod"
+        - name: MEMOS_PORT
+          value: "5230"
+        - name: MEMOS_ADDR
+          value: "0.0.0.0"
         volumeMounts:
         - name: data
           mountPath: /var/opt/memos
