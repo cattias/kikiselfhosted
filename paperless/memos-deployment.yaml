@@ -24,6 +24,7 @@ spec:
     metadata:
       labels:
         app: memos
+        app.kubernetes.io/name: memos
     spec:
       containers:
       - name: memos
