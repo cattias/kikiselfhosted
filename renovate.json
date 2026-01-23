@@ -107,6 +107,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/paperless/memos-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*memos\\s*\\n\\s*image:\\s*neosmemo\\/memos:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "neosmemo/memos",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/plex/kometa-cron\\.yaml/"
       ],
       "matchStrings": [
