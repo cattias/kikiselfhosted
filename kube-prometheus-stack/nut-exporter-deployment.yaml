@@ -26,10 +26,10 @@ spec:
           env:
             - name: NUT_EXPORTER_SERVER
               value: "localhost"
-            - name: NUT_EXPORTER_USERNAME
-              value: "cyberpower"
-            - name: NUT_EXPORTER_PASSWORD
-              value: "fixme"
+            # - name: NUT_EXPORTER_USERNAME
+            #   value: "cyberpower"
+            # - name: NUT_EXPORTER_PASSWORD
+            #   value: "fixme"
           ports:
           - containerPort: 9199
             name: http
