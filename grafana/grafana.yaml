@@ -91,3 +91,4 @@ spec:
           speedtest: "speedtest-dashboard"
           k8s: "k8s-dashboard"
           garmin: "garmin-dashboard"
+          ups: "ups-dashboard"
