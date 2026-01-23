@@ -123,10 +123,6 @@ spec:
         persistence:
           enabled: true
           existingClaim: traefik-data-pvc
-        access:
-          enabled: true
-          format: "json"
-          # filePath: "/var/log/traefik/access.log"
         logs:
           access:
             enabled: true
