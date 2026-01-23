@@ -24,7 +24,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: NUT_EXPORTER_SERVER
-              value: "127.0.0.1"
+              value: "localhost"
             - name: NUT_EXPORTER_USERNAME
               value: "cyberpower"
             - name: NUT_EXPORTER_PASSWORD
