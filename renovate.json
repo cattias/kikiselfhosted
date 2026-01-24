@@ -98,10 +98,10 @@
         "/paperless/bentopdf-deployment\\.yaml/"
       ],
       "matchStrings": [
-        "name:\\s*bentopdf\\s*\\n\\s*image:\\s*bentopdf\\/bentopdf:\\s*(?<currentValue>v?[0-9\\.]+)"
+        "name:\\s*bentopdf\\s*\\n\\s*image:\\s*ghcr\\.io\\/bentopdf\\/bentopdf-simple:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "bentopdf/bentopdf",
+      "depNameTemplate": "ghcr.io/bentopdf/bentopdf-simple",
       "versioningTemplate": "semver"
     },
     {

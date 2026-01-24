@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: bentopdf
-        image: bentopdf/bentopdf-simple@sha256:6f36762b201bf902aa4a20cabd5459cea46cd537f59a961492d423dfbda69434
+        image: ghcr.io/bentopdf/bentopdf-simple:1.15.4
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:
