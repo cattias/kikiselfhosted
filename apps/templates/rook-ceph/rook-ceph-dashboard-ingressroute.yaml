@@ -21,6 +21,6 @@ spec:
         - name: rook-ceph-mgr-dashboard
           port: 8443
           scheme: https
-          serversTransport: nas-insecure-transport
+          serversTransport: ceph-insecure-transport
   tls:
     certResolver: le
