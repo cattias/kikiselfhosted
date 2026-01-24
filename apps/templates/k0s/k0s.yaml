@@ -35,7 +35,7 @@ spec:
       releaseName: kubernetes-dashboard
       valuesObject:
         kong:
-          enabled: true
+          enabled: false
           proxy:
             type: ClusterIP
             http:
