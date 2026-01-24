@@ -34,25 +34,6 @@ spec:
     helm:
       releaseName: kubernetes-dashboard
       valuesObject:
-        auth:
-          containers:
-            env:
-              - name: OIDC_CLIENT_SECRET
-                valueFrom:
-                  secretKeyRef:
-                    name: dashboard-oidc-secret
-                    key: client-secret
-              - name: OIDC_CLIENT_ID
-                valueFrom:
-                  secretKeyRef:
-                    name: dashboard-oidc-secret
-                    key: client-id
-            args:
-              - --oidc-issuer-url=https://authentik.attias.io/application/o/k0s-server/
-              - --oidc-client-id=$(OIDC_CLIENT_ID)
-              - --oidc-client-secret=$(OIDC_CLIENT_SECRET)
-              - --oidc-username-claim=preferred_username
-              - --oidc-groups-claim=groups
         kong:
           enabled: true
           proxy:
@@ -78,9 +59,6 @@ subjects:
 - kind: ServiceAccount
   name: admin-user
   namespace: kubernetes-dashboard
-- kind: User
-  name: kiki
-  apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: v1
 kind: Secret
