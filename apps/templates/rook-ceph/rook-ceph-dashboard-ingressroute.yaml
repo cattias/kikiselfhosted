@@ -1,4 +1,12 @@
 apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: ceph-insecure-transport
+  namespace: rook-ceph
+spec:
+  insecureSkipVerify: true
+---
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: rook-ceph-dashboard-router
@@ -12,5 +20,7 @@ spec:
       services:
         - name: rook-ceph-mgr-dashboard
           port: 8443
+          scheme: https
+          serversTransport: nas-insecure-transport
   tls:
     certResolver: le
