@@ -35,7 +35,11 @@ spec:
       releaseName: kubernetes-dashboard
       valuesObject:
         kong:
-          enabled: false
+          enabled: true
+          proxy:
+            type: ClusterIP
+            http:
+              enabled: true
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -55,12 +59,6 @@ subjects:
 - kind: ServiceAccount
   name: admin-user
   namespace: kubernetes-dashboard
-- kind: User
-  name: kiki@attias.io
-  apiGroup: rbac.authorization.k8s.io
-- kind: User
-  name: kiki
-  apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: v1
 kind: Secret
