@@ -12,5 +12,9 @@ spec:
       services:
         - name: kubernetes-dashboard-kong-proxy
           port: 80
+      priority: 10
+      middlewares:
+        - name: inject-admin-token
+          namespace: kubernetes-dashboard
   tls:
     certResolver: le
