@@ -10,6 +10,7 @@ spec:
         trustForwardHeader: true
         authResponseHeaders:
             - Authorization
+            - authorization
             - X-authentik-username
             - X-authentik-groups
             - X-authentik-entitlements
