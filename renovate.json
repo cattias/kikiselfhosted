@@ -266,10 +266,10 @@
         "/arr/sonarr-deployment\\.yaml/"
       ],
       "matchStrings": [
-        "name:\\s*sonarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/sonarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+        "name:\\s*sonarr\\s*\\n\\s*image:\\s*ghcr\\.io\\/linuxserver\\/sonarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "lscr.io/linuxserver/sonarr",
+      "depNameTemplate": "ghcr.io/linuxserver/sonarr",
       "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     },
     {
@@ -278,10 +278,10 @@
         "/arr/beets-deployment\\.yaml/"
       ],
       "matchStrings": [
-        "name:\\s*beets\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/beets:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+        "name:\\s*beets\\s*\\n\\s*image:\\s*ghcr\\.io\\/linuxserver\\/beets:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "lscr.io/linuxserver/beets",
+      "depNameTemplate": "ghcr.io/linuxserver/beets",
       "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     },
     {
@@ -290,10 +290,10 @@
         "/arr/prowlarr-deployment\\.yaml/"
       ],
       "matchStrings": [
-        "name:\\s*prowlarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/prowlarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+        "name:\\s*prowlarr\\s*\\n\\s*image:\\s*ghcr\\.io\\/linuxserver\\/prowlarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "lscr.io/linuxserver/prowlarr",
+      "depNameTemplate": "ghcr.io/linuxserver/prowlarr",
       "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     },
     {
@@ -302,10 +302,10 @@
         "/arr/radarr-deployment\\.yaml/"
       ],
       "matchStrings": [
-        "name:\\s*radarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/radarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+        "name:\\s*radarr\\s*\\n\\s*image:\\s*ghcr\\.io\\/linuxserver\\/radarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "lscr.io/linuxserver/radarr",
+      "depNameTemplate": "ghcr.io/linuxserver/radarr",
       "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     },
     {
@@ -314,10 +314,10 @@
         "/arr/sabnzbd-deployment\\.yaml/"
       ],
       "matchStrings": [
-        "name:\\s*sabnzbd\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/sabnzbd:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+        "name:\\s*sabnzbd\\s*\\n\\s*image:\\s*ghcr\\.io\\/linuxserver\\/sabnzbd:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "lscr.io/linuxserver/sabnzbd",
+      "depNameTemplate": "ghcr.io/linuxserver/sabnzbd",
       "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     },
     {
@@ -326,22 +326,10 @@
         "/arr/bazarr-deployment\\.yaml/"
       ],
       "matchStrings": [
-        "name:\\s*bazarr\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/bazarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+        "name:\\s*bazarr\\s*\\n\\s*image:\\s*ghcr\\.io\\/linuxserver\\/bazarr:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "lscr.io/linuxserver/bazarr",
-      "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
-    },
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/obsidian/obsidian-deployment\\.yaml/"
-      ],
-      "matchStrings": [
-        "name:\\s*obsidian\\s*\\n\\s*image:\\s*lscr\\.io\\/linuxserver\\/obsidian:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
-      ],
-      "datasourceTemplate": "docker",
-      "depNameTemplate": "lscr.io/linuxserver/obsidian",
+      "depNameTemplate": "ghcr.io/linuxserver/bazarr",
       "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
     }
   ],
