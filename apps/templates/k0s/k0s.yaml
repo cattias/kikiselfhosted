@@ -36,10 +36,10 @@ spec:
       valuesObject:
         kong:
           enabled: false
-          proxy:
-            type: ClusterIP
-            http:
-              enabled: true
+        app:
+          api:
+            args:
+              - --enable-insecure-login
 ---
 apiVersion: v1
 kind: ServiceAccount
