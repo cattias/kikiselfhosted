@@ -38,14 +38,16 @@ spec:
         config:
           existingSecret: k0s-dashboard-secret
         extraArgs:
-          provider: "oidc"
+          provider: oidc
           oidc-issuer-url: "https://authentik.attias.io/application/o/k0s-server/"
           email-domain: "*"
           upstream: "http://kubernetes-dashboard-web.kubernetes-dashboard.svc.cluster.local:8000"
-          pass-authorization-header: "true"
-          set-authorization-header: "true"
+          pass-authorization-header: true
+          set-authorization-header: true
           scope: "openid email profile"
-          cookie-secure: "true"
+          cookie-secure: true
           cookie-domain: ".attias.io"
           whitelist-domain: ".attias.io"
-          skip-provider-button: "true"
+          skip-provider-button: true
+          reverse-proxy: true
+          set-xauthrequest: true
