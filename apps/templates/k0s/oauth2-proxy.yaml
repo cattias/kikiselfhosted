@@ -44,6 +44,7 @@ spec:
           upstream: "http://kubernetes-dashboard-web.kubernetes-dashboard.svc.cluster.local:8000"
           pass-authorization-header: true
           set-authorization-header: true
+          idtoken-header: "Authorization"
           scope: "openid email profile"
           cookie-secure: true
           cookie-domain: ".attias.io"
@@ -51,3 +52,4 @@ spec:
           skip-provider-button: true
           reverse-proxy: true
           set-xauthrequest: true
+          code-challenge-method: "S256"
