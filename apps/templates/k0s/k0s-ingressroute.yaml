@@ -10,7 +10,19 @@ spec:
     - match: Host(`k0s.attias.io`)
       kind: Rule
       services:
-        - name: oauth2-proxy
-          port: 80
+        - name: kubernetes-dashboard-web
+          port: 8000
+      priority: 10
+      middlewares:
+        - name: inject-admin-token
+          namespace: kubernetes-dashboard
+    # - kind: Rule
+    #   match: "Host(`k0s.attias.io`) && PathPrefix(`/outpost.goauthentik.io/`)"
+    #   priority: 15
+    #   services:
+    #       - kind: Service
+    #         name: ak-outpost-authentik-embedded-outpost
+    #         namespace: authentik
+    #         port: 9000
   tls:
     certResolver: le
