@@ -41,6 +41,10 @@ spec:
             args:
               - --enable-insecure-login
               - --authentication-mode=header
+              - --oidc-issuer-url="https://authentik.attias.io/application/o/k0s-server/"
+              - --oidc-client-id="cNIhIPUOSAGIGVnDErJMumRqNCDrcqF3YtMAF3rl"
+              - --oidc-username-claim="email"
+              - --oidc-groups-claim="groups"
 ---
 apiVersion: v1
 kind: ServiceAccount
