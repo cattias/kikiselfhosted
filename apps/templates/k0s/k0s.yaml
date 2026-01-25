@@ -64,6 +64,12 @@ subjects:
 - kind: ServiceAccount
   name: admin-user
   namespace: kubernetes-dashboard
+- kind: User
+  name: kiki@attias.io
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: kiki
+  apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: v1
 kind: Secret
@@ -73,16 +79,3 @@ metadata:
   annotations:
     kubernetes.io/service-account.name: "admin-user"   
 type: kubernetes.io/service-account-token
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: authentik-user-admin
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: User
-  name: kiki@attias.io
-  apiGroup: rbac.authorization.k8s.io
