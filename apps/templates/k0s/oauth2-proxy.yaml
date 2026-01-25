@@ -48,6 +48,4 @@ spec:
           cookie-secure: "true"
           cookie-domain: ".attias.io"
           whitelist-domain: ".attias.io"
-          # This helps skip the "Sign in with OpenID Connect" button on the proxy itself
           skip-provider-button: "true"
-          pass-id-token: "true"
