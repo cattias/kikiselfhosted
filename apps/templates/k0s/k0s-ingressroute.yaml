@@ -13,9 +13,9 @@ spec:
         - name: kubernetes-dashboard-web
           port: 8000
       priority: 10
-      middlewares:
-        - name: inject-admin-token
-          namespace: kubernetes-dashboard
+      # middlewares:
+      #   - name: inject-admin-token
+      #     namespace: kubernetes-dashboard
     # - kind: Rule
     #   match: "Host(`k0s.attias.io`) && PathPrefix(`/outpost.goauthentik.io/`)"
     #   priority: 15
