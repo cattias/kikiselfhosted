@@ -16,5 +16,15 @@ spec:
       middlewares:
         - name: inject-admin-token
           namespace: kubernetes-dashboard
+        - name: authentik
+          namespace: traefik
+    - kind: Rule
+      match: "Host(`k0s.attias.io`) && PathPrefix(`/outpost.goauthentik.io/`)"
+      priority: 15
+      services:
+          - kind: Service
+            name: ak-outpost-authentik-embedded-outpost
+            namespace: authentik
+            port: 9000
   tls:
     certResolver: le
