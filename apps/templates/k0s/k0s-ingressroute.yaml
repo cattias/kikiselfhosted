@@ -10,8 +10,8 @@ spec:
     - match: Host(`k0s.attias.io`)
       kind: Rule
       services:
-        - name: kubernetes-dashboard-web
-          port: 8000
+        - name: kubernetes-dashboard-kong-proxy
+          port: 80
       priority: 10
       # middlewares:
       #   - name: inject-admin-token
