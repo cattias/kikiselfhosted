@@ -11,6 +11,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/apps/templates/vault/vault\\.yaml/"
+      ],
+      "matchStrings": [
+        "image:\\s*\\n\\s*repository:\\s*vaultwarden\\/server\\s*\\n\\s*tag:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "vaultwarden/server",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/apps/templates/pihole\\.yaml/"
       ],
       "matchStrings": [
