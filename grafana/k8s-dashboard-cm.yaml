@@ -7059,7 +7059,6 @@ data:
             "fieldConfig": {
                 "defaults": {
                 "mappings": [],
-                "max": 100,
                 "min": 1,
                 "thresholds": {
                     "mode": "absolute",
@@ -7541,7 +7540,6 @@ data:
                 "defaults": {
                 "decimals": 1,
                 "mappings": [],
-                "max": 2000000000000,
                 "min": 1,
                 "thresholds": {
                     "mode": "absolute",
@@ -7659,7 +7657,6 @@ data:
                 "defaults": {
                 "decimals": 1,
                 "mappings": [],
-                "max": 500,
                 "min": 1,
                 "thresholds": {
                     "mode": "absolute",
