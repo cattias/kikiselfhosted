@@ -37,7 +37,7 @@ data:
         "editable": true,
         "fiscalYearStartMonth": 0,
         "graphTooltip": 0,
-        "id": 4,
+        "id": 6,
         "links": [
             {
             "icon": "bolt",
@@ -314,7 +314,6 @@ data:
             "fieldConfig": {
                 "defaults": {
                 "mappings": [],
-                "max": 100,
                 "min": 1,
                 "thresholds": {
                     "mode": "absolute",
@@ -796,7 +795,6 @@ data:
                 "defaults": {
                 "decimals": 1,
                 "mappings": [],
-                "max": 2000000000000,
                 "min": 1,
                 "thresholds": {
                     "mode": "absolute",
@@ -836,7 +834,7 @@ data:
                 },
                 "maxVizHeight": 300,
                 "minVizHeight": 10,
-                "minVizWidth": 0,
+                "minVizWidth": 163,
                 "namePlacement": "auto",
                 "orientation": "vertical",
                 "reduceOptions": {
@@ -914,7 +912,6 @@ data:
                 "defaults": {
                 "decimals": 1,
                 "mappings": [],
-                "max": 500,
                 "min": 1,
                 "thresholds": {
                     "mode": "absolute",
@@ -2987,6 +2984,9 @@ data:
                     "cellOptions": {
                     "type": "color-background"
                     },
+                    "footer": {
+                    "reducers": []
+                    },
                     "inspect": false
                 },
                 "decimals": 0,
@@ -3017,7 +3017,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": 0
                     }
                     ]
                 },
@@ -3141,14 +3142,6 @@ data:
             "id": 92,
             "options": {
                 "cellHeight": "sm",
-                "footer": {
-                "countRows": false,
-                "fields": "",
-                "reducer": [
-                    "sum"
-                ],
-                "show": false
-                },
                 "showHeader": true,
                 "sortBy": [
                 {
@@ -3157,7 +3150,7 @@ data:
                 }
                 ]
             },
-            "pluginVersion": "10.4.1",
+            "pluginVersion": "12.3.1",
             "targets": [
                 {
                 "datasource": {
@@ -3279,6 +3272,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -3295,6 +3289,7 @@ data:
                     "type": "linear"
                     },
                     "showPoints": "never",
+                    "showValues": false,
                     "spanNulls": false,
                     "stacking": {
                     "group": "A",
@@ -3310,7 +3305,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": 0
                     },
                     {
                         "color": "red",
@@ -3342,11 +3338,12 @@ data:
                 "sortDesc": true
                 },
                 "tooltip": {
+                "hideZeros": false,
                 "mode": "multi",
                 "sort": "desc"
                 }
             },
-            "pluginVersion": "10.4.1",
+            "pluginVersion": "12.3.1",
             "targets": [
                 {
                 "datasource": {
@@ -3386,6 +3383,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -3402,6 +3400,7 @@ data:
                     "type": "linear"
                     },
                     "showPoints": "never",
+                    "showValues": false,
                     "spanNulls": false,
                     "stacking": {
                     "group": "A",
@@ -3418,7 +3417,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": 0
                     },
                     {
                         "color": "red",
@@ -3450,11 +3450,12 @@ data:
                 "sortDesc": true
                 },
                 "tooltip": {
+                "hideZeros": false,
                 "mode": "multi",
                 "sort": "desc"
                 }
             },
-            "pluginVersion": "10.4.1",
+            "pluginVersion": "12.3.1",
             "targets": [
                 {
                 "datasource": {
@@ -3505,6 +3506,9 @@ data:
                     "type": "auto"
                     },
                     "filterable": false,
+                    "footer": {
+                    "reducers": []
+                    },
                     "inspect": false
                 },
                 "displayName": "",
@@ -3515,7 +3519,8 @@ data:
                     "mode": "percentage",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": 0
                     },
                     {
                         "color": "#EAB839",
@@ -3586,7 +3591,8 @@ data:
                         "mode": "absolute",
                         "steps": [
                             {
-                            "color": "green"
+                            "color": "green",
+                            "value": 0
                             },
                             {
                             "color": "#EAB839",
@@ -3868,7 +3874,8 @@ data:
                         "mode": "absolute",
                         "steps": [
                             {
-                            "color": "green"
+                            "color": "green",
+                            "value": 0
                             },
                             {
                             "color": "orange",
@@ -3922,14 +3929,6 @@ data:
             "id": 47,
             "options": {
                 "cellHeight": "sm",
-                "footer": {
-                "countRows": false,
-                "fields": "",
-                "reducer": [
-                    "sum"
-                ],
-                "show": false
-                },
                 "showHeader": true,
                 "sortBy": [
                 {
@@ -3938,7 +3937,7 @@ data:
                 }
                 ]
             },
-            "pluginVersion": "10.4.1",
+            "pluginVersion": "12.3.1",
             "targets": [
                 {
                 "datasource": {
@@ -4381,6 +4380,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -4397,6 +4397,7 @@ data:
                     "type": "linear"
                     },
                     "showPoints": "never",
+                    "showValues": false,
                     "spanNulls": false,
                     "stacking": {
                     "group": "A",
@@ -4412,7 +4413,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": 0
                     },
                     {
                         "color": "red",
@@ -4443,11 +4445,12 @@ data:
                 "showLegend": true
                 },
                 "tooltip": {
+                "hideZeros": false,
                 "mode": "multi",
                 "sort": "desc"
                 }
             },
-            "pluginVersion": "10.4.1",
+            "pluginVersion": "12.3.1",
             "targets": [
                 {
                 "datasource": {
@@ -4487,6 +4490,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -4503,6 +4507,7 @@ data:
                     "type": "linear"
                     },
                     "showPoints": "never",
+                    "showValues": false,
                     "spanNulls": false,
                     "stacking": {
                     "group": "A",
@@ -4518,7 +4523,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": 0
                     },
                     {
                         "color": "red",
@@ -4549,11 +4555,12 @@ data:
                 "showLegend": true
                 },
                 "tooltip": {
+                "hideZeros": false,
                 "mode": "multi",
                 "sort": "desc"
                 }
             },
-            "pluginVersion": "10.4.1",
+            "pluginVersion": "12.3.1",
             "targets": [
                 {
                 "datasource": {
@@ -4625,6 +4632,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -4641,6 +4649,7 @@ data:
                     "type": "linear"
                     },
                     "showPoints": "never",
+                    "showValues": false,
                     "spanNulls": false,
                     "stacking": {
                     "group": "A",
@@ -4656,7 +4665,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": 0
                     },
                     {
                         "color": "red",
@@ -4687,11 +4697,12 @@ data:
                 "showLegend": true
                 },
                 "tooltip": {
+                "hideZeros": false,
                 "mode": "multi",
                 "sort": "desc"
                 }
             },
-            "pluginVersion": "10.4.1",
+            "pluginVersion": "12.3.1",
             "targets": [
                 {
                 "datasource": {
@@ -4779,6 +4790,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -4795,6 +4807,7 @@ data:
                     "type": "linear"
                     },
                     "showPoints": "never",
+                    "showValues": false,
                     "spanNulls": false,
                     "stacking": {
                     "group": "A",
@@ -4810,7 +4823,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": 0
                     },
                     {
                         "color": "red",
@@ -4859,11 +4873,12 @@ data:
                 "sortDesc": true
                 },
                 "tooltip": {
+                "hideZeros": false,
                 "mode": "multi",
                 "sort": "desc"
                 }
             },
-            "pluginVersion": "10.4.1",
+            "pluginVersion": "12.3.1",
             "targets": [
                 {
                 "datasource": {
@@ -4920,6 +4935,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -4936,6 +4952,7 @@ data:
                     "type": "linear"
                     },
                     "showPoints": "never",
+                    "showValues": false,
                     "spanNulls": false,
                     "stacking": {
                     "group": "A",
@@ -4951,7 +4968,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": 0
                     },
                     {
                         "color": "red",
@@ -5000,11 +5018,12 @@ data:
                 "sortDesc": true
                 },
                 "tooltip": {
+                "hideZeros": false,
                 "mode": "multi",
                 "sort": "desc"
                 }
             },
-            "pluginVersion": "10.4.1",
+            "pluginVersion": "12.3.1",
             "targets": [
                 {
                 "datasource": {
@@ -5060,6 +5079,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -5076,6 +5096,7 @@ data:
                     "type": "linear"
                     },
                     "showPoints": "never",
+                    "showValues": false,
                     "spanNulls": false,
                     "stacking": {
                     "group": "A",
@@ -5091,7 +5112,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": 0
                     },
                     {
                         "color": "red",
@@ -5121,11 +5143,12 @@ data:
                 "showLegend": true
                 },
                 "tooltip": {
+                "hideZeros": false,
                 "mode": "multi",
                 "sort": "desc"
                 }
             },
-            "pluginVersion": "10.4.1",
+            "pluginVersion": "12.3.1",
             "targets": [
                 {
                 "datasource": {
@@ -5148,7 +5171,7 @@ data:
             "type": "timeseries"
             },
             {
-            "collapsed": true,
+            "collapsed": false,
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -5156,1407 +5179,1427 @@ data:
                 "y": 68
             },
             "id": 61,
-            "panels": [
-                {
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "DS_KIKISERVER"
-                },
-                "fieldConfig": {
-                    "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "custom": {
-                        "align": "center",
-                        "cellOptions": {
-                        "type": "auto"
-                        },
-                        "filterable": false,
-                        "inspect": false
-                    },
-                    "displayName": "",
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "percentage",
-                        "steps": [
-                        {
-                            "color": "green"
-                        }
-                        ]
-                    },
-                    "unit": "none"
-                    },
-                    "overrides": [
-                    {
-                        "matcher": {
-                        "id": "byRegexp",
-                        "options": ".*%"
-                        },
-                        "properties": [
-                        {
-                            "id": "unit",
-                            "value": "percentunit"
-                        },
-                        {
-                            "id": "custom.cellOptions",
-                            "value": {
-                            "mode": "gradient",
-                            "type": "gauge",
-                            "valueDisplayMode": "color"
-                            }
-                        },
-                        {
-                            "id": "max",
-                            "value": 1
-                        },
-                        {
-                            "id": "min",
-                            "value": 0
-                        },
-                        {
-                            "id": "color",
-                            "value": {
-                            "mode": "continuous-GrYlRd"
-                            }
-                        },
-                        {
-                            "id": "decimals",
-                            "value": 0
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byRegexp",
-                        "options": ".*Memory Usage$|.*Memory Limits$|.*Memory Requirements$|.*Disk Usage$|.*Disk Limits$"
-                        },
-                        "properties": [
-                        {
-                            "id": "unit",
-                            "value": "bytes"
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Namespace"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 92
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Container Name"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 187
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Total CPU Core Usage"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 100
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Pod"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 44
-                        },
-                        {
-                            "id": "custom.cellOptions",
-                            "value": {
-                            "type": "color-background"
-                            }
-                        },
-                        {
-                            "id": "color",
-                            "value": {
-                            "fixedColor": "blue",
-                            "mode": "fixed"
-                            }
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Average CPU Usage%"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 116
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Average RSS Memory Usage%"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 141
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Average WSS Memory Usage%"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 165
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Total CPU Limit"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 86
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Total Memory Limit"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 86
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byRegexp",
-                        "options": "/.*Limit$/"
-                        },
-                        "properties": [
-                        {
-                            "id": "color",
-                            "value": {
-                            "fixedColor": "blue",
-                            "mode": "fixed"
-                            }
-                        },
-                        {
-                            "id": "custom.cellOptions",
-                            "value": {
-                            "type": "color-background"
-                            }
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byRegexp",
-                        "options": "/.*Memory Usage$|.*Core Usage$/"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.cellOptions",
-                            "value": {
-                            "type": "color-text"
-                            }
-                        },
-                        {
-                            "id": "color",
-                            "value": {
-                            "fixedColor": "orange",
-                            "mode": "fixed"
-                            }
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Total RSS Memory Usage"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 107
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Total WSS Memory Usage"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 113
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Average Disk Usage"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 96
-                        },
-                        {
-                            "id": "custom.cellOptions",
-                            "value": {
-                            "type": "color-background"
-                            }
-                        },
-                        {
-                            "id": "thresholds",
-                            "value": {
-                            "mode": "absolute",
-                            "steps": [
-                                {
-                                "color": "green"
-                                },
-                                {
-                                "color": "orange",
-                                "value": 10737418240
-                                },
-                                {
-                                "color": "red",
-                                "value": 16106127360
-                                }
-                            ]
-                            }
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Average Disk Limit"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 96
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Total CPU Demand"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 80
-                        }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                        "id": "byName",
-                        "options": "Total Memory Demand"
-                        },
-                        "properties": [
-                        {
-                            "id": "custom.width",
-                            "value": 80
-                        }
-                        ]
-                    }
-                    ]
-                },
-                "gridPos": {
-                    "h": 9,
-                    "w": 24,
-                    "x": 0,
-                    "y": 3
-                },
-                "id": 87,
-                "options": {
-                    "cellHeight": "sm",
-                    "footer": {
-                    "countRows": false,
-                    "enablePagination": true,
-                    "fields": "",
-                    "reducer": [
-                        "sum"
-                    ],
-                    "show": false
-                    },
-                    "showHeader": true,
-                    "sortBy": [
-                    {
-                        "desc": true,
-                        "displayName": "Average WSS Memory Usage%"
-                    }
-                    ]
-                },
-                "pluginVersion": "10.4.1",
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": false,
-                    "expr": "sum(irate(container_cpu_usage_seconds_total{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}[2m])) by (container) / (sum(container_spec_cpu_quota{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}/100000) by (container))",
-                    "format": "table",
-                    "hide": false,
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": false,
-                    "expr": "sum(irate(container_cpu_usage_seconds_total{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}[2m])) by (container)",
-                    "format": "table",
-                    "hide": false,
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "Total Cores Used",
-                    "refId": "L"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "exemplar": false,
-                    "expr": "sum(kube_pod_container_resource_requests{origin_prometheus=~\"$origin_prometheus\",resource=\"cpu\", unit=\"core\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "format": "table",
-                    "hide": false,
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "B"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "exemplar": false,
-                    "expr": "sum(kube_pod_container_resource_limits{origin_prometheus=~\"$origin_prometheus\",resource=\"cpu\", unit=\"core\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "format": "table",
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "C"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": false,
-                    "expr": "sum (container_memory_working_set_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)/ sum(container_spec_memory_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "format": "table",
-                    "hide": false,
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "I"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "exemplar": false,
-                    "expr": "sum (container_memory_working_set_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "format": "table",
-                    "hide": false,
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "D"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": false,
-                    "expr": "sum (container_memory_rss{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)/ sum(container_spec_memory_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "format": "table",
-                    "hide": false,
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "Average Memory%(RSS)",
-                    "refId": "H"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "exemplar": false,
-                    "expr": "sum (container_memory_rss{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "format": "table",
-                    "hide": false,
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "Total Memory Usage (RSS) ",
-                    "refId": "K"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": false,
-                    "expr": "sum by(container) (kube_pod_container_resource_requests{origin_prometheus=~\"$origin_prometheus\",resource=\"memory\", unit=\"byte\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"})",
-                    "format": "table",
-                    "hide": false,
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "E"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "exemplar": false,
-                    "expr": "sum(kube_pod_container_resource_limits{origin_prometheus=~\"$origin_prometheus\",resource=\"memory\", unit=\"byte\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "format": "table",
-                    "hide": false,
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "F"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": false,
-                    "expr": "avg(container_fs_usage_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "format": "table",
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "J"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": false,
-                    "expr": "count(kube_pod_container_info{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by(container,namespace)",
-                    "format": "table",
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "G"
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": false,
-                    "expr": "avg(container_fs_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "format": "table",
-                    "hide": false,
-                    "instant": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "M"
-                    }
-                ],
-                "title": "Microservices (Container Name) Resource Statistics",
-                "transformations": [
-                    {
-                    "id": "merge",
-                    "options": {}
-                    },
-                    {
-                    "id": "organize",
-                    "options": {
-                        "excludeByName": {
-                        "Time": true,
-                        "Time 1": true,
-                        "Time 10": true,
-                        "Time 11": true,
-                        "Time 12": true,
-                        "Time 2": true,
-                        "Time 3": true,
-                        "Time 4": true,
-                        "Time 5": true,
-                        "Time 6": true,
-                        "Time 7": true,
-                        "Time 8": true,
-                        "Time 9": true
-                        },
-                        "includeByName": {},
-                        "indexByName": {
-                        "Time": 15,
-                        "Value #A": 3,
-                        "Value #B": 13,
-                        "Value #C": 6,
-                        "Value #D": 9,
-                        "Value #E": 14,
-                        "Value #F": 8,
-                        "Value #G": 2,
-                        "Value #H": 5,
-                        "Value #I": 4,
-                        "Value #J": 12,
-                        "Value #K": 10,
-                        "Value #L": 7,
-                        "Value #M": 11,
-                        "container": 1,
-                        "namespace": 0
-                        },
-                        "renameByName": {
-                        "Time 1": "",
-                        "Value #A": "Average CPU Usage%",
-                        "Value #B": "Total CPU Demand",
-                        "Value #C": "Total CPU Restrictions",
-                        "Value #D": "Total WSS Memory Usage",
-                        "Value #E": "Total Memory Requirements",
-                        "Value #F": "Total Memory Limit",
-                        "Value #G": "Pod",
-                        "Value #H": "Average RSS Memory Usage%",
-                        "Value #I": "Average WSS Memory Usage%",
-                        "Value #J": "Average Disk Usage",
-                        "Value #K": "Total RSS Memory Use",
-                        "Value #L": "Total CPU Core Usage",
-                        "Value #M": "Average Disk Limit",
-                        "container": "Container Name",
-                        "namespace": "Namespace"
-                        }
-                    }
-                    },
-                    {
-                    "id": "filterFieldsByName",
-                    "options": {}
-                    }
-                ],
-                "type": "table"
-                },
-                {
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "DS_KIKISERVER"
-                },
-                "fieldConfig": {
-                    "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                        "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                        "mode": "off"
-                        }
-                    },
-                    "links": [],
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                        {
-                            "color": "green"
-                        },
-                        {
-                            "color": "red",
-                            "value": 80
-                        }
-                        ]
-                    },
-                    "unit": "percent"
-                    },
-                    "overrides": []
-                },
-                "gridPos": {
-                    "h": 7,
-                    "w": 8,
-                    "x": 0,
-                    "y": 12
-                },
-                "id": 24,
-                "options": {
-                    "legend": {
-                    "calcs": [
-                        "max",
-                        "last",
-                        "mean"
-                    ],
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "showLegend": true
-                    },
-                    "tooltip": {
-                    "mode": "multi",
-                    "sort": "desc"
-                    }
-                },
-                "pluginVersion": "10.4.1",
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "exemplar": true,
-                    "expr": "sum(irate(container_cpu_usage_seconds_total{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}[2m])) by (container) / (sum(container_spec_cpu_quota{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}/100000) by (container)) * 100",
-                    "hide": false,
-                    "instant": false,
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "{{ container}}",
-                    "metric": "container_cpu",
-                    "refId": "A",
-                    "step": 10
-                    }
-                ],
-                "title": "Microservices (Container Name) Average CPU Usage (Maximum100%)",
-                "type": "timeseries"
-                },
-                {
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "DS_KIKISERVER"
-                },
-                "fieldConfig": {
-                    "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                        "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                        "mode": "off"
-                        }
-                    },
-                    "links": [],
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                        {
-                            "color": "green"
-                        },
-                        {
-                            "color": "red",
-                            "value": 80
-                        }
-                        ]
-                    },
-                    "unit": "percent"
-                    },
-                    "overrides": []
-                },
-                "gridPos": {
-                    "h": 7,
-                    "w": 8,
-                    "x": 8,
-                    "y": 12
-                },
-                "id": 89,
-                "options": {
-                    "legend": {
-                    "calcs": [
-                        "max",
-                        "last",
-                        "mean"
-                    ],
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "showLegend": true
-                    },
-                    "tooltip": {
-                    "mode": "multi",
-                    "sort": "desc"
-                    }
-                },
-                "pluginVersion": "10.4.1",
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "expr": "sum (container_memory_working_set_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)/ sum(container_spec_memory_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container) * 100",
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "WSS：{{ container }}",
-                    "metric": "container_memory_usage:sort_desc",
-                    "refId": "A",
-                    "step": 10
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "expr": "sum (container_memory_rss{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)/ sum(container_spec_memory_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container) * 100",
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "RSS：{{ container }}",
-                    "metric": "container_memory_usage:sort_desc",
-                    "refId": "B",
-                    "step": 10
-                    }
-                ],
-                "title": "Microservice (Container Name) Average Memory Utilization",
-                "type": "timeseries"
-                },
-                {
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "DS_KIKISERVER"
-                },
-                "fieldConfig": {
-                    "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                        "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                        "mode": "off"
-                        }
-                    },
-                    "links": [],
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                        {
-                            "color": "green"
-                        },
-                        {
-                            "color": "red",
-                            "value": 80
-                        }
-                        ]
-                    },
-                    "unit": "binbps"
-                    },
-                    "overrides": []
-                },
-                "gridPos": {
-                    "h": 7,
-                    "w": 8,
-                    "x": 16,
-                    "y": 12
-                },
-                "id": 16,
-                "options": {
-                    "legend": {
-                    "calcs": [
-                        "mean",
-                        "last",
-                        "max"
-                    ],
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "showLegend": true
-                    },
-                    "tooltip": {
-                    "mode": "multi",
-                    "sort": "desc"
-                    }
-                },
-                "pluginVersion": "10.4.1",
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": true,
-                    "expr": "sum(sum(irate(container_network_receive_bytes_total{origin_prometheus=~\"$origin_prometheus\",node=~\"^$Node$\",namespace=~\"$NameSpace\"}[2m])) by (pod)* on(pod) group_right kube_pod_container_info{origin_prometheus=~\"$origin_prometheus\",namespace=~\"$NameSpace\",container =~\"$Container\"}) by(container) *8",
-                    "hide": false,
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "Inflow:{{ container }}",
-                    "metric": "network",
-                    "range": true,
-                    "refId": "A",
-                    "step": 10
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": true,
-                    "expr": "sum(sum(irate(container_network_transmit_bytes_total{origin_prometheus=~\"$origin_prometheus\",node=~\"^$Node$\",namespace=~\"$NameSpace\"}[2m])) by (pod)* on(pod) group_right kube_pod_container_info{origin_prometheus=~\"$origin_prometheus\",namespace=~\"$NameSpace\",container =~\"$Container\"}) by(container) *8",
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "Outflow:{{ container }}",
-                    "metric": "network",
-                    "range": true,
-                    "refId": "B",
-                    "step": 10
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "expr": "sum (rate (container_network_receive_bytes_total{origin_prometheus=~\"$origin_prometheus\",pod=~\"$Pod\",image!=\"\",name=~\"^k8s_.*\",node=~\"^$Node$\",namespace=~\"$NameSpace\",pod=~\".*$Container.*\"}[2m])) by (pod)",
-                    "hide": true,
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "-> {{ pod }}",
-                    "metric": "network",
-                    "refId": "C",
-                    "step": 10
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "expr": "- sum (rate (container_network_transmit_bytes_total{origin_prometheus=~\"$origin_prometheus\",pod=~\"$Pod\",image!=\"\",name=~\"^k8s_.*\",node=~\"^$Node$\",namespace=~\"$NameSpace\",pod=~\".*$Container.*\"}[2m])) by (pod)",
-                    "hide": true,
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "<- {{ pod }}",
-                    "metric": "network",
-                    "refId": "D",
-                    "step": 10
-                    }
-                ],
-                "title": "Microservice (Container Name) Network bandwidth per second (Associable Nodes)",
-                "type": "timeseries"
-                },
-                {
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "DS_KIKISERVER"
-                },
-                "fieldConfig": {
-                    "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                        "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                        "mode": "off"
-                        }
-                    },
-                    "links": [],
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                        {
-                            "color": "green"
-                        },
-                        {
-                            "color": "red",
-                            "value": 80
-                        }
-                        ]
-                    },
-                    "unit": "none"
-                    },
-                    "overrides": [
-                    {
-                        "matcher": {
-                        "id": "byRegexp",
-                        "options": "/CPU Limit.*/"
-                        },
-                        "properties": [
-                        {
-                            "id": "color",
-                            "value": {
-                            "fixedColor": "red",
-                            "mode": "fixed"
-                            }
-                        }
-                        ]
-                    }
-                    ]
-                },
-                "gridPos": {
-                    "h": 8,
-                    "w": 8,
-                    "x": 0,
-                    "y": 19
-                },
-                "id": 91,
-                "options": {
-                    "legend": {
-                    "calcs": [
-                        "max",
-                        "last",
-                        "mean"
-                    ],
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "showLegend": true,
-                    "sortBy": "Max",
-                    "sortDesc": true
-                    },
-                    "tooltip": {
-                    "mode": "multi",
-                    "sort": "desc"
-                    }
-                },
-                "pluginVersion": "10.4.1",
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": true,
-                    "expr": "sum(kube_pod_container_resource_limits{origin_prometheus=~\"$origin_prometheus\",resource=\"cpu\", unit=\"core\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "hide": false,
-                    "instant": false,
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "CPU Limitations：{{ container}}",
-                    "metric": "container_cpu",
-                    "refId": "A",
-                    "step": 10
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "exemplar": true,
-                    "expr": "sum(irate(container_cpu_usage_seconds_total{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}[2m])) by (container)",
-                    "hide": false,
-                    "instant": false,
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "CPU Core Usage：{{ container}}",
-                    "metric": "container_cpu",
-                    "refId": "B",
-                    "step": 10
-                    }
-                ],
-                "title": "Microservices (Container Name) Overall CPU Cores Used",
-                "type": "timeseries"
-                },
-                {
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "DS_KIKISERVER"
-                },
-                "fieldConfig": {
-                    "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                        "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                        "mode": "off"
-                        }
-                    },
-                    "links": [],
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                        {
-                            "color": "green"
-                        },
-                        {
-                            "color": "red",
-                            "value": 80
-                        }
-                        ]
-                    },
-                    "unit": "bytes"
-                    },
-                    "overrides": [
-                    {
-                        "matcher": {
-                        "id": "byRegexp",
-                        "options": "/Memory Limit.*/"
-                        },
-                        "properties": [
-                        {
-                            "id": "color",
-                            "value": {
-                            "fixedColor": "red",
-                            "mode": "fixed"
-                            }
-                        }
-                        ]
-                    }
-                    ]
-                },
-                "gridPos": {
-                    "h": 8,
-                    "w": 8,
-                    "x": 8,
-                    "y": 19
-                },
-                "id": 90,
-                "options": {
-                    "legend": {
-                    "calcs": [
-                        "max",
-                        "last",
-                        "mean"
-                    ],
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "showLegend": true,
-                    "sortBy": "Max",
-                    "sortDesc": true
-                    },
-                    "tooltip": {
-                    "mode": "multi",
-                    "sort": "desc"
-                    }
-                },
-                "pluginVersion": "10.4.1",
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "expr": "sum (container_memory_working_set_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "WSS：{{ container }}",
-                    "metric": "container_memory_usage:sort_desc",
-                    "range": true,
-                    "refId": "A",
-                    "step": 10
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "expr": "sum(container_spec_memory_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "Memory Limit：{{ container }}",
-                    "metric": "container_memory_usage:sort_desc",
-                    "range": true,
-                    "refId": "B",
-                    "step": 10
-                    },
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "expr": "sum (container_memory_rss{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
-                    "hide": false,
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "RSS：{{ container }}",
-                    "metric": "container_memory_usage:sort_desc",
-                    "range": true,
-                    "refId": "C",
-                    "step": 10
-                    }
-                ],
-                "title": "Microservices (Container Name) Overall Memory Usage",
-                "type": "timeseries"
-                },
-                {
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "DS_KIKISERVER"
-                },
-                "fieldConfig": {
-                    "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                        "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                        "group": "A",
-                        "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                        "mode": "off"
-                        }
-                    },
-                    "links": [],
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                        {
-                            "color": "green"
-                        },
-                        {
-                            "color": "red",
-                            "value": 80
-                        }
-                        ]
-                    },
-                    "unit": "none"
-                    },
-                    "overrides": []
-                },
-                "gridPos": {
-                    "h": 8,
-                    "w": 8,
-                    "x": 16,
-                    "y": 19
-                },
-                "id": 59,
-                "options": {
-                    "legend": {
-                    "calcs": [
-                        "max",
-                        "last",
-                        "mean"
-                    ],
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "showLegend": true
-                    },
-                    "tooltip": {
-                    "mode": "multi",
-                    "sort": "desc"
-                    }
-                },
-                "pluginVersion": "10.4.1",
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "DS_KIKISERVER"
-                    },
-                    "editorMode": "code",
-                    "expr": "count(kube_pod_container_info{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by(container,namespace)",
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "{{namespace}}：{{ container }}",
-                    "metric": "container_memory_usage:sort_desc",
-                    "range": true,
-                    "refId": "A",
-                    "step": 10
-                    }
-                ],
-                "title": "Microservice (Container Name) Pod Number",
-                "type": "timeseries"
-                }
-            ],
+            "panels": [],
             "title": "Microservices (Container Name) Resource Overview：Selected Microservices:【$Container】",
             "type": "row"
+            },
+            {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "DS_KIKISERVER"
+            },
+            "fieldConfig": {
+                "defaults": {
+                "color": {
+                    "mode": "thresholds"
+                },
+                "custom": {
+                    "align": "center",
+                    "cellOptions": {
+                    "type": "auto"
+                    },
+                    "filterable": false,
+                    "footer": {
+                    "reducers": []
+                    },
+                    "inspect": false
+                },
+                "displayName": "",
+                "mappings": [],
+                "thresholds": {
+                    "mode": "percentage",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": 0
+                    }
+                    ]
+                },
+                "unit": "none"
+                },
+                "overrides": [
+                {
+                    "matcher": {
+                    "id": "byRegexp",
+                    "options": ".*%"
+                    },
+                    "properties": [
+                    {
+                        "id": "unit",
+                        "value": "percentunit"
+                    },
+                    {
+                        "id": "custom.cellOptions",
+                        "value": {
+                        "mode": "gradient",
+                        "type": "gauge",
+                        "valueDisplayMode": "color"
+                        }
+                    },
+                    {
+                        "id": "max",
+                        "value": 1
+                    },
+                    {
+                        "id": "min",
+                        "value": 0
+                    },
+                    {
+                        "id": "color",
+                        "value": {
+                        "mode": "continuous-GrYlRd"
+                        }
+                    },
+                    {
+                        "id": "decimals",
+                        "value": 0
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byRegexp",
+                    "options": ".*Memory Usage$|.*Memory Limits$|.*Memory Requirements$|.*Disk Usage$|.*Disk Limits$"
+                    },
+                    "properties": [
+                    {
+                        "id": "unit",
+                        "value": "bytes"
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Namespace"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 92
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Container Name"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 187
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Total CPU Core Usage"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 100
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Pod"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 44
+                    },
+                    {
+                        "id": "custom.cellOptions",
+                        "value": {
+                        "type": "color-background"
+                        }
+                    },
+                    {
+                        "id": "color",
+                        "value": {
+                        "fixedColor": "blue",
+                        "mode": "fixed"
+                        }
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Average CPU Usage%"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 116
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Average RSS Memory Usage%"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 141
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Average WSS Memory Usage%"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 165
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Total CPU Limit"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 86
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Total Memory Limit"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 86
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byRegexp",
+                    "options": "/.*Limit$/"
+                    },
+                    "properties": [
+                    {
+                        "id": "color",
+                        "value": {
+                        "fixedColor": "blue",
+                        "mode": "fixed"
+                        }
+                    },
+                    {
+                        "id": "custom.cellOptions",
+                        "value": {
+                        "type": "color-background"
+                        }
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byRegexp",
+                    "options": "/.*Memory Usage$|.*Core Usage$/"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.cellOptions",
+                        "value": {
+                        "type": "color-text"
+                        }
+                    },
+                    {
+                        "id": "color",
+                        "value": {
+                        "fixedColor": "orange",
+                        "mode": "fixed"
+                        }
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Total RSS Memory Usage"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 107
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Total WSS Memory Usage"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 113
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Average Disk Usage"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 96
+                    },
+                    {
+                        "id": "custom.cellOptions",
+                        "value": {
+                        "type": "color-background"
+                        }
+                    },
+                    {
+                        "id": "thresholds",
+                        "value": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                            "color": "green",
+                            "value": 0
+                            },
+                            {
+                            "color": "orange",
+                            "value": 10737418240
+                            },
+                            {
+                            "color": "red",
+                            "value": 16106127360
+                            }
+                        ]
+                        }
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Average Disk Limit"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 96
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Total CPU Demand"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 80
+                    }
+                    ]
+                },
+                {
+                    "matcher": {
+                    "id": "byName",
+                    "options": "Total Memory Demand"
+                    },
+                    "properties": [
+                    {
+                        "id": "custom.width",
+                        "value": 80
+                    }
+                    ]
+                }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 69
+            },
+            "id": 87,
+            "options": {
+                "cellHeight": "sm",
+                "enablePagination": true,
+                "showHeader": true,
+                "sortBy": [
+                {
+                    "desc": true,
+                    "displayName": "Average WSS Memory Usage%"
+                }
+                ]
+            },
+            "pluginVersion": "12.3.1",
+            "targets": [
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "sum(irate(container_cpu_usage_seconds_total{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}[2m])) by (container) / (sum(container_spec_cpu_quota{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}/100000) by (container))",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "sum(irate(container_cpu_usage_seconds_total{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}[2m])) by (container)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "interval": "",
+                "legendFormat": "Total Cores Used",
+                "refId": "L"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "exemplar": false,
+                "expr": "sum(kube_pod_container_resource_requests{origin_prometheus=~\"$origin_prometheus\",resource=\"cpu\", unit=\"core\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "B"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "exemplar": false,
+                "expr": "sum(kube_pod_container_resource_limits{origin_prometheus=~\"$origin_prometheus\",resource=\"cpu\", unit=\"core\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "C"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "sum (container_memory_working_set_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)/ sum(container_spec_memory_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "I"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "exemplar": false,
+                "expr": "sum (container_memory_working_set_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "D"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "sum (container_memory_rss{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)/ sum(container_spec_memory_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "interval": "",
+                "legendFormat": "Average Memory%(RSS)",
+                "refId": "H"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "exemplar": false,
+                "expr": "sum (container_memory_rss{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "interval": "",
+                "legendFormat": "Total Memory Usage (RSS) ",
+                "refId": "K"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "sum by(container) (kube_pod_container_resource_requests{origin_prometheus=~\"$origin_prometheus\",resource=\"memory\", unit=\"byte\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"})",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "E"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "exemplar": false,
+                "expr": "sum(kube_pod_container_resource_limits{origin_prometheus=~\"$origin_prometheus\",resource=\"memory\", unit=\"byte\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "F"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "avg(container_fs_usage_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "J"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "count(kube_pod_container_info{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by(container,namespace)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "G"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "avg(container_fs_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "M"
+                }
+            ],
+            "title": "Microservices (Container Name) Resource Statistics",
+            "transformations": [
+                {
+                "id": "merge",
+                "options": {}
+                },
+                {
+                "id": "organize",
+                "options": {
+                    "excludeByName": {
+                    "Time": true,
+                    "Time 1": true,
+                    "Time 10": true,
+                    "Time 11": true,
+                    "Time 12": true,
+                    "Time 2": true,
+                    "Time 3": true,
+                    "Time 4": true,
+                    "Time 5": true,
+                    "Time 6": true,
+                    "Time 7": true,
+                    "Time 8": true,
+                    "Time 9": true
+                    },
+                    "includeByName": {},
+                    "indexByName": {
+                    "Time": 15,
+                    "Value #A": 3,
+                    "Value #B": 13,
+                    "Value #C": 6,
+                    "Value #D": 9,
+                    "Value #E": 14,
+                    "Value #F": 8,
+                    "Value #G": 2,
+                    "Value #H": 5,
+                    "Value #I": 4,
+                    "Value #J": 12,
+                    "Value #K": 10,
+                    "Value #L": 7,
+                    "Value #M": 11,
+                    "container": 1,
+                    "namespace": 0
+                    },
+                    "renameByName": {
+                    "Time 1": "",
+                    "Value #A": "Average CPU Usage%",
+                    "Value #B": "Total CPU Demand",
+                    "Value #C": "Total CPU Restrictions",
+                    "Value #D": "Total WSS Memory Usage",
+                    "Value #E": "Total Memory Requirements",
+                    "Value #F": "Total Memory Limit",
+                    "Value #G": "Pod",
+                    "Value #H": "Average RSS Memory Usage%",
+                    "Value #I": "Average WSS Memory Usage%",
+                    "Value #J": "Average Disk Usage",
+                    "Value #K": "Total RSS Memory Use",
+                    "Value #L": "Total CPU Core Usage",
+                    "Value #M": "Average Disk Limit",
+                    "container": "Container Name",
+                    "namespace": "Namespace"
+                    }
+                }
+                },
+                {
+                "id": "filterFieldsByName",
+                "options": {}
+                }
+            ],
+            "type": "table"
+            },
+            {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "DS_KIKISERVER"
+            },
+            "fieldConfig": {
+                "defaults": {
+                "color": {
+                    "mode": "palette-classic"
+                },
+                "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                    "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                    "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": 0
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }
+                    ]
+                },
+                "unit": "percent"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 7,
+                "w": 8,
+                "x": 0,
+                "y": 78
+            },
+            "id": 24,
+            "options": {
+                "legend": {
+                "calcs": [
+                    "max",
+                    "last",
+                    "mean"
+                ],
+                "displayMode": "table",
+                "placement": "bottom",
+                "showLegend": true
+                },
+                "tooltip": {
+                "hideZeros": false,
+                "mode": "multi",
+                "sort": "desc"
+                }
+            },
+            "pluginVersion": "12.3.1",
+            "targets": [
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "exemplar": true,
+                "expr": "sum(irate(container_cpu_usage_seconds_total{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}[2m])) by (container) / (sum(container_spec_cpu_quota{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}/100000) by (container)) * 100",
+                "hide": false,
+                "instant": false,
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "{{ container}}",
+                "metric": "container_cpu",
+                "refId": "A",
+                "step": 10
+                }
+            ],
+            "title": "Microservices (Container Name) Average CPU Usage (Maximum100%)",
+            "type": "timeseries"
+            },
+            {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "DS_KIKISERVER"
+            },
+            "fieldConfig": {
+                "defaults": {
+                "color": {
+                    "mode": "palette-classic"
+                },
+                "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                    "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                    "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": 0
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }
+                    ]
+                },
+                "unit": "percent"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 7,
+                "w": 8,
+                "x": 8,
+                "y": 78
+            },
+            "id": 89,
+            "options": {
+                "legend": {
+                "calcs": [
+                    "max",
+                    "last",
+                    "mean"
+                ],
+                "displayMode": "table",
+                "placement": "bottom",
+                "showLegend": true
+                },
+                "tooltip": {
+                "hideZeros": false,
+                "mode": "multi",
+                "sort": "desc"
+                }
+            },
+            "pluginVersion": "12.3.1",
+            "targets": [
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "expr": "sum (container_memory_working_set_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)/ sum(container_spec_memory_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container) * 100",
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "WSS：{{ container }}",
+                "metric": "container_memory_usage:sort_desc",
+                "refId": "A",
+                "step": 10
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "expr": "sum (container_memory_rss{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)/ sum(container_spec_memory_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container) * 100",
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "RSS：{{ container }}",
+                "metric": "container_memory_usage:sort_desc",
+                "refId": "B",
+                "step": 10
+                }
+            ],
+            "title": "Microservice (Container Name) Average Memory Utilization",
+            "type": "timeseries"
+            },
+            {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "DS_KIKISERVER"
+            },
+            "fieldConfig": {
+                "defaults": {
+                "color": {
+                    "mode": "palette-classic"
+                },
+                "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                    "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                    "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": 0
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }
+                    ]
+                },
+                "unit": "binbps"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 7,
+                "w": 8,
+                "x": 16,
+                "y": 78
+            },
+            "id": 16,
+            "options": {
+                "legend": {
+                "calcs": [
+                    "mean",
+                    "last",
+                    "max"
+                ],
+                "displayMode": "table",
+                "placement": "bottom",
+                "showLegend": true
+                },
+                "tooltip": {
+                "hideZeros": false,
+                "mode": "multi",
+                "sort": "desc"
+                }
+            },
+            "pluginVersion": "12.3.1",
+            "targets": [
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": true,
+                "expr": "sum(sum(irate(container_network_receive_bytes_total{origin_prometheus=~\"$origin_prometheus\",node=~\"^$Node$\",namespace=~\"$NameSpace\"}[2m])) by (pod)* on(pod) group_right kube_pod_container_info{origin_prometheus=~\"$origin_prometheus\",namespace=~\"$NameSpace\",container =~\"$Container\"}) by(container) *8",
+                "hide": false,
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "Inflow:{{ container }}",
+                "metric": "network",
+                "range": true,
+                "refId": "A",
+                "step": 10
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": true,
+                "expr": "sum(sum(irate(container_network_transmit_bytes_total{origin_prometheus=~\"$origin_prometheus\",node=~\"^$Node$\",namespace=~\"$NameSpace\"}[2m])) by (pod)* on(pod) group_right kube_pod_container_info{origin_prometheus=~\"$origin_prometheus\",namespace=~\"$NameSpace\",container =~\"$Container\"}) by(container) *8",
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "Outflow:{{ container }}",
+                "metric": "network",
+                "range": true,
+                "refId": "B",
+                "step": 10
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "expr": "sum (rate (container_network_receive_bytes_total{origin_prometheus=~\"$origin_prometheus\",pod=~\"$Pod\",image!=\"\",name=~\"^k8s_.*\",node=~\"^$Node$\",namespace=~\"$NameSpace\",pod=~\".*$Container.*\"}[2m])) by (pod)",
+                "hide": true,
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "-> {{ pod }}",
+                "metric": "network",
+                "refId": "C",
+                "step": 10
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "expr": "- sum (rate (container_network_transmit_bytes_total{origin_prometheus=~\"$origin_prometheus\",pod=~\"$Pod\",image!=\"\",name=~\"^k8s_.*\",node=~\"^$Node$\",namespace=~\"$NameSpace\",pod=~\".*$Container.*\"}[2m])) by (pod)",
+                "hide": true,
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "<- {{ pod }}",
+                "metric": "network",
+                "refId": "D",
+                "step": 10
+                }
+            ],
+            "title": "Microservice (Container Name) Network bandwidth per second (Associable Nodes)",
+            "type": "timeseries"
+            },
+            {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "DS_KIKISERVER"
+            },
+            "fieldConfig": {
+                "defaults": {
+                "color": {
+                    "mode": "palette-classic"
+                },
+                "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                    "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                    "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": 0
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }
+                    ]
+                },
+                "unit": "none"
+                },
+                "overrides": [
+                {
+                    "matcher": {
+                    "id": "byRegexp",
+                    "options": "/CPU Limit.*/"
+                    },
+                    "properties": [
+                    {
+                        "id": "color",
+                        "value": {
+                        "fixedColor": "red",
+                        "mode": "fixed"
+                        }
+                    }
+                    ]
+                }
+                ]
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 8,
+                "x": 0,
+                "y": 85
+            },
+            "id": 91,
+            "options": {
+                "legend": {
+                "calcs": [
+                    "max",
+                    "last",
+                    "mean"
+                ],
+                "displayMode": "table",
+                "placement": "bottom",
+                "showLegend": true,
+                "sortBy": "Max",
+                "sortDesc": true
+                },
+                "tooltip": {
+                "hideZeros": false,
+                "mode": "multi",
+                "sort": "desc"
+                }
+            },
+            "pluginVersion": "12.3.1",
+            "targets": [
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": true,
+                "expr": "sum(kube_pod_container_resource_limits{origin_prometheus=~\"$origin_prometheus\",resource=\"cpu\", unit=\"core\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "hide": false,
+                "instant": false,
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "CPU Limitations：{{ container}}",
+                "metric": "container_cpu",
+                "refId": "A",
+                "step": 10
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "exemplar": true,
+                "expr": "sum(irate(container_cpu_usage_seconds_total{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}[2m])) by (container)",
+                "hide": false,
+                "instant": false,
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "CPU Core Usage：{{ container}}",
+                "metric": "container_cpu",
+                "refId": "B",
+                "step": 10
+                }
+            ],
+            "title": "Microservices (Container Name) Overall CPU Cores Used",
+            "type": "timeseries"
+            },
+            {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "DS_KIKISERVER"
+            },
+            "fieldConfig": {
+                "defaults": {
+                "color": {
+                    "mode": "palette-classic"
+                },
+                "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                    "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                    "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": 0
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }
+                    ]
+                },
+                "unit": "bytes"
+                },
+                "overrides": [
+                {
+                    "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Memory Limit.*/"
+                    },
+                    "properties": [
+                    {
+                        "id": "color",
+                        "value": {
+                        "fixedColor": "red",
+                        "mode": "fixed"
+                        }
+                    }
+                    ]
+                }
+                ]
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 8,
+                "x": 8,
+                "y": 85
+            },
+            "id": 90,
+            "options": {
+                "legend": {
+                "calcs": [
+                    "max",
+                    "last",
+                    "mean"
+                ],
+                "displayMode": "table",
+                "placement": "bottom",
+                "showLegend": true,
+                "sortBy": "Max",
+                "sortDesc": true
+                },
+                "tooltip": {
+                "hideZeros": false,
+                "mode": "multi",
+                "sort": "desc"
+                }
+            },
+            "pluginVersion": "12.3.1",
+            "targets": [
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "expr": "sum (container_memory_working_set_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "WSS：{{ container }}",
+                "metric": "container_memory_usage:sort_desc",
+                "range": true,
+                "refId": "A",
+                "step": 10
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "expr": "sum(container_spec_memory_limit_bytes{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "Memory Limit：{{ container }}",
+                "metric": "container_memory_usage:sort_desc",
+                "range": true,
+                "refId": "B",
+                "step": 10
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "expr": "sum (container_memory_rss{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by (container)",
+                "hide": false,
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "RSS：{{ container }}",
+                "metric": "container_memory_usage:sort_desc",
+                "range": true,
+                "refId": "C",
+                "step": 10
+                }
+            ],
+            "title": "Microservices (Container Name) Overall Memory Usage",
+            "type": "timeseries"
+            },
+            {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "DS_KIKISERVER"
+            },
+            "fieldConfig": {
+                "defaults": {
+                "color": {
+                    "mode": "palette-classic"
+                },
+                "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                    "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                    "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": 0
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }
+                    ]
+                },
+                "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 8,
+                "x": 16,
+                "y": 85
+            },
+            "id": 59,
+            "options": {
+                "legend": {
+                "calcs": [
+                    "max",
+                    "last",
+                    "mean"
+                ],
+                "displayMode": "table",
+                "placement": "bottom",
+                "showLegend": true
+                },
+                "tooltip": {
+                "hideZeros": false,
+                "mode": "multi",
+                "sort": "desc"
+                }
+            },
+            "pluginVersion": "12.3.1",
+            "targets": [
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "DS_KIKISERVER"
+                },
+                "editorMode": "code",
+                "expr": "count(kube_pod_container_info{origin_prometheus=~\"$origin_prometheus\",container =~\"$Container\",container !=\"\",container!=\"POD\",namespace=~\"$NameSpace\"}) by(container,namespace)",
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "{{namespace}}：{{ container }}",
+                "metric": "container_memory_usage:sort_desc",
+                "range": true,
+                "refId": "A",
+                "step": 10
+                }
+            ],
+            "title": "Microservice (Container Name) Pod Number",
+            "type": "timeseries"
             }
         ],
         "preload": false,
@@ -6709,6 +6752,7 @@ data:
         "uid": "k0s-kikiserver",
         "version": 1
     }
+
   k0s-kikinode.json: |
     {
         "annotations": {
