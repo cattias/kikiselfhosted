@@ -37,7 +37,7 @@ spec:
                 # Source
                 - name: prowlarr-volume
                   mountPath: /mnt/source
-                  subPath: "/config/Backups/scheduled"
+                  subPath: "config/Backups/scheduled"
                 # Destination
                 - name: backup-volume
                   mountPath: /mnt/destination
