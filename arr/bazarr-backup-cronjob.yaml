@@ -37,7 +37,7 @@ spec:
                 # Source
                 - name: bazarr-volume
                   mountPath: /mnt/source
-                  subPath: "Backups"
+                  subPath: "backup"
                 # Destination
                 - name: backup-volume
                   mountPath: /mnt/destination
