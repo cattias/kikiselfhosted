@@ -64,7 +64,25 @@ subjects:
   - kind: User
     name: kiki@attias.io
     apiGroup: rbac.authorization.k8s.io
+  - kind: ServiceAccount
+    name: admin-user
+    namespace: kube-system
 roleRef:
   kind: ClusterRole
   name: cluster-admin
   apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kube-system
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: admin-user
+  namespace: kube-system
+  annotations:
+    kubernetes.io/service-account.name: "admin-user"   
+type: kubernetes.io/service-account-token
