@@ -28,7 +28,7 @@ spec:
             - name: TZ
               value: UTC
           name: beets
-          image: ghcr.io/linuxserver/beets:2.5.1-ls307
+          image: ghcr.io/linuxserver/beets:2.5.1-ls308
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8337
