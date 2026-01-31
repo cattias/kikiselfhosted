@@ -8,3 +8,8 @@ spec:
   - name: heavy-nodes
     values:
       maxPods: 200
+  api:
+    extraArgs:
+      oidc-issuer-url: https://authentik.attias.io/application/o/headlamp-server/
+      oidc-client-id: qxfWENaBcHWiwOE8Mm4fcfFuWzG7THf8qjVmtXZj
+      oidc-username-claim: email
