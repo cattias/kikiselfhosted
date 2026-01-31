@@ -275,6 +275,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/arr/nzbget-deployment\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*nzbget\\s*\\n\\s*image:\\s*ghcr\\.io\\/linuxserver\\/nzbget:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/linuxserver/nzbget",
+      "versioningTemplate": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.(?<patch>\\d+))(?:\\.(?<revision>\\d+))?-ls(?<build>\\d+)$"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/arr/beets-deployment\\.yaml/"
       ],
       "matchStrings": [
