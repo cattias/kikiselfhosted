@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nzbget
+  namespace: arr
+  labels:
+    app.kubernetes.io/name: nzbget
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nzbget
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nzbget
+    spec:
+      containers:
+        - env:
+            - name: PGID
+              value: "10"
+            - name: PUID
+              value: "1000"
+            - name: UMASK
+              value: "022"
+            - name: TZ
+              value: Etc/UTC
+          name: nzbget
+          image: ghcr.io/linuxserver/nzbget:25.4-ls228
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 6789
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /intermediate
+              name: nas-media-volume
+              subPath: "nzbget/intermediate"
+            - mountPath: /completed
+              name: nas-media-volume
+              subPath: "nzbget/completed"
+            - mountPath: /config
+              name: nzbget-config
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - "timeout 5 stat /config > /dev/null"
+            initialDelaySeconds: 60  # Give it a minute to start up
+            periodSeconds: 30       # Check every 30 seconds
+            timeoutSeconds: 10      # If the 'stat' command hangs for 10s, fail
+            failureThreshold: 3     # Kill the pod after 3 consecutive failures
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - "ls /config"
+            initialDelaySeconds: 30
+            periodSeconds: 60
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+      restartPolicy: Always
+      volumes:
+        - name: nas-media-volume
+          persistentVolumeClaim:
+            claimName: arr-media-smb-pvc
+        - name: nzbget-config
+          persistentVolumeClaim:
+            claimName: nzbget-config-pvc
