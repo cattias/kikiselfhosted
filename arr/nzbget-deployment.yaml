@@ -28,7 +28,7 @@ spec:
             - name: TZ
               value: Etc/UTC
           name: nzbget
-          image: ghcr.io/linuxserver/nzbget:25.4-ls228
+          image: ghcr.io/linuxserver/nzbget:v25.4-ls228
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 6789
