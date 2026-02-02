@@ -5,6 +5,9 @@ metadata:
   namespace: photos
 spec:
   schedule: "0 23 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid # Ensures only one cleanup job runs at a time
   jobTemplate:
     spec:
       template:

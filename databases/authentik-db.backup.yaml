@@ -9,6 +9,9 @@ metadata:
 spec:
   # Schedule: Run every day at 02:00 AM UTC.
   schedule: "35 23 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid # Ensures only one cleanup job runs at a time
   jobTemplate:
     spec:
       template:

@@ -10,6 +10,8 @@ spec:
   # Schedule: Run every Sunday at 03:00 AM UTC (after the backup runs at 02:00 AM)
   schedule: "0 5 * * SUN"
   concurrencyPolicy: Forbid # Ensures only one cleanup job runs at a time
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
