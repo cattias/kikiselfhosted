@@ -4,7 +4,8 @@ metadata:
   name: lgtm-bot-deployment
   namespace: monitoring
 spec:
-  replicas: 1 
+  revisionHistoryLimit: 1
+  replicas: 1
   selector:
     matchLabels:
       app: lgtm-bot

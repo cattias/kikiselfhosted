@@ -4,6 +4,7 @@ metadata:
   name: garmin-fetch-data
   namespace: monitoring
 spec:
+  revisionHistoryLimit: 1
   replicas: 1
   selector:
     matchLabels:

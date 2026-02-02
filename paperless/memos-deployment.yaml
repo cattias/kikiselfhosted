@@ -16,6 +16,7 @@ metadata:
   name: memos
   namespace: documents
 spec:
+  revisionHistoryLimit: 1
   replicas: 1
   selector:
     matchLabels:
