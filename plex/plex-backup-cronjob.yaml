@@ -31,7 +31,7 @@ spec:
               # /mnt/source/ is used to copy the contents, not the folder itself
               command: ["/bin/sh", "-c"]
               args:
-                - "echo 'Starting Plex sync backup...'; rsync -avz --delete --exclude 'Cache/' --exclude 'Logs/' --exclude 'Crash Reports/' /mnt/source/ /mnt/destination/; echo 'DONE'"
+                - "echo 'Starting Plex sync backup...'; rsync -rltv --delete --exclude 'Cache/' --exclude 'Logs/' --exclude 'Crash Reports/' /mnt/source/ /mnt/destination/; echo 'DONE'"
 
               volumeMounts:
                 # Source
