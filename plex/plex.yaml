@@ -55,7 +55,9 @@ spec:
           - name: nas-media-volume
             persistentVolumeClaim:
               claimName: plex-media-smb-pvc
+          - name: new-config-volume
+            persistentVolumeClaim:
+              claimName: plex-config-pvc
         extraVolumeMounts:
-          - name: nas-media-volume
-            mountPath: "/data/videos"
-            readOnly: true
+          - name: new-config-volume
+            mountPath: "/data/newconfig"
