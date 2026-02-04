@@ -38,7 +38,8 @@ spec:
         ingress:
           enabled: false
         pms:
-          configExistingClaim: plex-config-pvc
+          storageClassName: ceph-block
+          configStorage: 10Gi
         service:
           type: LoadBalancer
           port: 32400
