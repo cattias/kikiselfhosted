@@ -39,7 +39,7 @@ spec:
           enabled: false
         pms:
           storageClassName: ceph-block
-          configStorage: 10Gi
+          configStorage: 50Gi
         service:
           type: LoadBalancer
           port: 32400

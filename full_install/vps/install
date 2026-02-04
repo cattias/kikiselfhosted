@@ -77,3 +77,17 @@ ethtool -k eth0 | grep -E "rx-udp-gro-forwarding|rx-gro-list"
 # fail2ban
 apt install fail2ban
 systemctl enable --now fail2ban
+
+# Caddy wait for tailscale
+systemctl edit caddy
+[Unit]
+# Wait for the networking stack and Tailscale/Headscale services
+After=network-online.target tailscaled.service headscale.service
+Wants=network-online.target tailscaled.service headscale.service
+
+[Service]
+# Give the interface an extra few seconds to settle if needed
+ExecStartPre=/usr/bin/sleep 5
+
+sysctl -w net.ipv4.ip_nonlocal_bind=1
+echo "net.ipv4.ip_nonlocal_bind=1" | sudo tee -a /etc/sysctl.conf

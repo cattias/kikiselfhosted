@@ -1,0 +1,8 @@
+[Unit]
+# Wait for the networking stack and Tailscale/Headscale services
+After=network-online.target tailscaled.service headscale.service
+Wants=network-online.target tailscaled.service headscale.service
+
+[Service]
+# Give the interface an extra few seconds to settle if needed
+ExecStartPre=/usr/bin/sleep 5
