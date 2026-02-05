@@ -12,6 +12,8 @@ sudo apt install nfs-common
 # Necessary for ceph disks cleanup
 sudo apt install ceph
 cleanup_disks
+# Sendmail
+sudo apt install sendmail
 
 # Update netplan to get the 10G dedicated IP then update the fstab with the mounts and mount them
 netplan
