@@ -59,6 +59,9 @@ DefaultLimitNOFILE=1048576
 
 sudo systemctl edit k0scontroller.service
 [Service]
+DefaultTimeoutStartSec=15s
+DefaultTimeoutStopSec=15s
+DefaultStartLimitIntervalSec=0
 LimitNOFILE=1048576
 
 sudo systemctl daemon-reload
