@@ -17,7 +17,13 @@ echo "🛑 Stopping k0s..."
 sudo k0s stop
 
 # 5. Flush NFS
-# sync
+echo "Unmapping Ceph RBD devices..."
+for dev in /dev/rbd*; do
+    if [ -b "$dev" ]; then
+        echo "Unmapping $dev"
+        rbd unmap "$dev" || true
+    fi
+done
 sudo modprobe -r ceph
 sudo modprobe -r libceph
 
@@ -25,6 +31,6 @@ echo "♻️ Rebooting now..."
 sudo reboot
 
 # after reboot
-kubectl uncordon kikiserver
-kubectl -n argocd scale statefulset/argocd-application-controller --replicas=1
-sudo systemctl restart tailscaled
+# kubectl uncordon kikiserver
+# kubectl -n argocd scale statefulset/argocd-application-controller --replicas=1
+# sudo systemctl restart tailscaled
