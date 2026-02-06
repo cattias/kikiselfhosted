@@ -1,0 +1,13 @@
+[Unit]
+Description=Restore Ceph and K8s workloads
+After=k0s.service
+Requires=k0s.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/safe_startup.sh
+ExecStartPre=/bin/sleep 30
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target

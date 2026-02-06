@@ -1,0 +1,13 @@
+[Unit]
+Description=Safely shutdown Ceph and K8s workloads
+DefaultDependencies=no
+Before=shutdown.target reboot.target halt.target k0s.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/true
+ExecStop=/usr/local/bin/safe_shutdown.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
