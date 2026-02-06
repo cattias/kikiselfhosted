@@ -1,7 +1,7 @@
 [Unit]
 Description=Restore Ceph and K8s workloads
-After=k0s.service
-Requires=k0s.service
+After=k0scontroller.service
+Requires=k0scontroller.service
 
 [Service]
 Type=oneshot

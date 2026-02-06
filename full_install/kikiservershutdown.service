@@ -1,7 +1,7 @@
 [Unit]
 Description=Safely shutdown Ceph and K8s workloads
 DefaultDependencies=no
-Before=shutdown.target reboot.target halt.target k0s.service
+Before=shutdown.target reboot.target halt.target k0scontroller.service
 
 [Service]
 Type=oneshot
