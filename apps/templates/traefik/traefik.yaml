@@ -125,6 +125,6 @@ spec:
           existingClaim: traefik-data-pvc
         logs:
           access:
-            enabled: true
+            enabled: false
             format: "json"
             filePath: "/data/access.log"
