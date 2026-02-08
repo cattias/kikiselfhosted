@@ -34,7 +34,7 @@ spec:
           secret_key: file:///authentik-secret/secret_key 
           email:
             # -- SMTP Server emails are sent from, fully optional
-            host: "smtp.gmail.com"
+            host: "smtp-relay.brevo.com"
             # -- SMTP server port
             port: 587
             # -- SMTP credentials, when left empty, no authentication will be done
@@ -48,7 +48,7 @@ spec:
             # -- Connection timeout
             timeout: 30
             # -- Email from address, can either be in the format "foo@bar.baz" or "authentik <foo@bar.baz>"
-            from: "Authentik <authentik@attias.io>"
+            from: "Authentikiki <authentik@attias.io>"
           postgresql:
             # -- set the postgresql hostname to talk to
             # if unset and .Values.postgresql.enabled == true, will generate the default
