@@ -148,8 +148,8 @@
       "matchStrings": [
         "tag:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
       ],
-      "datasourceTemplate": "custom.plex",
-      "depNameTemplate": "plex",
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "plexinc/pms-docker",
       "versioningTemplate": "loose"
     },
     {
