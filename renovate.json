@@ -143,6 +143,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/plex/plex\\.yaml/"
+      ],
+      "matchStrings": [
+        "tag:\\s*(?<currentValue>[a-zA-Z0-9\\.\\-]+)"
+      ],
+      "datasourceTemplate": "custom.plex",
+      "depNameTemplate": "plex",
+      "versioningTemplate": "loose"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/mealie/mealie-deployment\\.yaml/"
       ],
       "matchStrings": [
