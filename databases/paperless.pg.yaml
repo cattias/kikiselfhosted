@@ -9,7 +9,7 @@ spec:
   primaryUpdateStrategy: unsupervised
 
   storage:
-    size: 50Gi
+    size: 2Gi
     storageClass: ceph-block
 
   walStorage:
