@@ -11,3 +11,11 @@ spec:
   storage:
     size: 10Gi
     storageClass: ceph-block
+
+  walStorage:
+    enabled: true
+    size: 1Gi
+    storageClass: ceph-block
+
+  monitoring:
+    enabled: true
