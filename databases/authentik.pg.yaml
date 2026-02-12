@@ -9,5 +9,5 @@ spec:
   primaryUpdateStrategy: unsupervised
 
   storage:
-    size: 5Gi
+    size: 10Gi
     storageClass: ceph-block
