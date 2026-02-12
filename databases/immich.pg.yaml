@@ -13,12 +13,11 @@ spec:
     storageClass: ceph-block
 
   walStorage:
-    enabled: true
     size: 1Gi
     storageClass: ceph-block
 
   monitoring:
-    enabled: true
+    enablePodMonitor: true
 
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.4.3
 
