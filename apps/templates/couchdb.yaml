@@ -24,6 +24,9 @@ spec:
     chart: couchdb
     helm:
       valuesObject:
+        couchdbConfig:
+          couchdb:
+            uuid: lecouchdbdesuperkikipourobsidian
         persistentVolume:
           enabled: true
           accessModes:
