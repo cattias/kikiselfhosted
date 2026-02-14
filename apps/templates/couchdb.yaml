@@ -39,6 +39,16 @@ spec:
         couchdbConfig:
           couchdb:
             uuid: lecouchdbdesuperkikipourobsidian
+
+          chttpd:
+            bind_address: any
+            # chttpd.require_valid_user disables all the anonymous requests to the port
+            # 5984 when is set to true.
+            require_valid_user: true
+          # required to use Fauxton if chttpd.require_valid_user is set to true
+            enable_cors: true
+          httpd:
+            WWW-Authenticate: "Basic realm=\"administrator\""
         persistentVolume:
           enabled: true
           accessModes:
