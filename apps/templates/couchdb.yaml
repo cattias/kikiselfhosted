@@ -57,7 +57,7 @@ spec:
           httpd:
             WWW-Authenticate: "Basic realm=\"administrator\""
           cors:
-            origins: app://obsidian.md, capacitor://localhost, http://localhost
+            origins: app://obsidian.md,capacitor://localhost,http://localhost
             credentials: true
         persistentVolume:
           enabled: true
