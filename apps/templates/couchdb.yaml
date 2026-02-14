@@ -39,7 +39,7 @@ spec:
         couchdbConfig:
           couchdb:
             uuid: lecouchdbdesuperkikipourobsidian
-
+            max_document_size: 1Gi
           chttpd:
             bind_address: any
             # chttpd.require_valid_user disables all the anonymous requests to the port
