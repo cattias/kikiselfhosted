@@ -5,7 +5,18 @@ metadata:
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/compare-options: ServerSideDiff=true
 spec:
+  ignoreDifferences:
+    - group: apps
+      kind: StatefulSet
+      name: couchdb-couchdb
+      jsonPointers:
+      # - /spec/template/metadata/creationTimestamp # Ignored for Pod Template
+      # - /metadata/creationTimestamp # Ignored for the StatefulSet itself
+      - /spec/volumeClaimTemplates/0/metadata/apiVersion
+      - /spec/volumeClaimTemplates/0/metadata/kind
   syncPolicy:
     automated:
       prune: true
@@ -14,6 +25,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
+      - RespectIgnoreDifferences=true
   destination:
     namespace: documents
     server: https://kubernetes.default.svc
