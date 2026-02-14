@@ -37,7 +37,7 @@ spec:
     helm:
       valuesObject:
         labels:
-          - app.kubernetes.io/name: couchdb
+          app.kubernetes.io/name: couchdb
         createAdminSecret: false
         extraSecretName: "couchdb-secret"
         adminUsernameKey: "username"
