@@ -56,6 +56,9 @@ spec:
             max_http_request_size: 1Gi
           httpd:
             WWW-Authenticate: "Basic realm=\"administrator\""
+          cors:
+            origins: app://obsidian.md, capacitor://localhost, http://localhost
+            credentials: true
         persistentVolume:
           enabled: true
           accessModes:
