@@ -36,6 +36,12 @@ spec:
     chart: couchdb
     helm:
       valuesObject:
+        createAdminSecret: false
+        extraSecretName: "couchdb-secret"
+        adminUsernameKey: "username"
+        adminPasswordKey: "password"
+        cookieAuthSecretKey: "cookieauthsecret"
+        erlangCookieKey: "erlangcookie"
         couchdbConfig:
           couchdb:
             uuid: lecouchdbdesuperkikipourobsidian
