@@ -1,16 +1,16 @@
-# apiVersion: traefik.io/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: seerr-router
-#   namespace: arr
-# spec:
-#   entryPoints:
-#     - websecure
-#   routes:
-#     - match: Host(`wish.attias.io`)
-#       kind: Rule
-#       services:
-#         - name: seerr
-#           port: 5055
-#   tls:
-#     certResolver: le
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: seerr-router
+  namespace: arr
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`wish.attias.io`)
+      kind: Rule
+      services:
+        - name: seerr-seerr-chart
+          port: 80
+  tls:
+    certResolver: le
