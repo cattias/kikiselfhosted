@@ -29,11 +29,8 @@ spec:
               value: "022"
             - name: TZ
               value: UTC
-            - name: TELEGRAM_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: telegram-bot-secret
-                  key: token
+            - name: SOULSOLID_CONFIG_PATH
+              value: /config/config.yaml
           name: soulsolid
           image: kikiattias/soulsolid-plugins:latest
           imagePullPolicy: Always
@@ -50,7 +47,7 @@ spec:
             - name: soulsolid-db
               mountPath: /app/db
             - name: soulsolid-config-yml
-              mountPath: /app/config.yaml
+              mountPath: /config/config.yaml
               subPath: config.yaml
           livenessProbe:
             exec:
