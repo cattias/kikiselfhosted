@@ -40,7 +40,7 @@ spec:
             - name: TZ
               value: UTC
           name: tautulli
-          image: ghcr.io/tautulli/tautulli:v2.16.0
+          image: ghcr.io/tautulli/tautulli:v2.16.1
           ports:
             - containerPort: 8181
               protocol: TCP
