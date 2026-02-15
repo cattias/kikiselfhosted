@@ -362,7 +362,12 @@
         "quay.io/ceph/ceph"
       ],
       "allowedVersions": "<20.0.0"
-    }
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/seerr-team/seerr/seerr-chart"],
+      "versioning": "helm"
+    }    
   ],
   "argocd": {
     "enabled": true,
