@@ -41,7 +41,7 @@ spec:
           - address=/node.attias.io/192.168.178.103
 
           # --- General Wildcard for Main Traefik LB (*.attias.io) ---
-          - address=/overseerr.attias.io/hc.attias.io/authentik.attias.io/attias.io/192.168.178.200
+          - address=/wish.attias.io/hc.attias.io/authentik.attias.io/attias.io/192.168.178.200
 
           # --- Other Static Local Entries ---
           - address=/pihole.kiki.home/192.168.178.110
