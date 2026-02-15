@@ -260,18 +260,6 @@
       "depNameTemplate": "ghcr.io/home-assistant/home-assistant",
       "versioningTemplate": "semver"
     },
-    // {
-    //   "customType": "regex",
-    //   "managerFilePatterns": [
-    //     "/arr/seerr-deployment\\.yaml/"
-    //   ],
-    //   "matchStrings": [
-    //     "name:\\s*seerr\\s*\\n\\s*image:\\s*ghcr\\.io\\/seerr-team\\/seerr:\\s*(?<currentValue>v?[0-9\\.]+)"
-    //   ],
-    //   "datasourceTemplate": "docker",
-    //   "depNameTemplate": "ghcr.io/seerr-team/seerr",
-    //   "versioningTemplate": "semver"
-    // },
     {
       "customType": "regex",
       "managerFilePatterns": [
