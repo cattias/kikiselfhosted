@@ -18,12 +18,13 @@ spec:
       labels:
         app.kubernetes.io/name: seerr
     spec:
+      shareProcessNamespace: true
       containers:
         - env:
             - name: PGID
-              value: "0"
+              value: "10"
             - name: PUID
-              value: "0"
+              value: "1000"
             - name: UMASK
               value: "022"
             - name: LOG_LEVEL
