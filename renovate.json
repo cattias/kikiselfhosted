@@ -59,6 +59,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/arr/seerr-helm\\.yaml/"
+      ],
+      "matchStrings": [
+        "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/seerr-team\\/seerr\\/seerr-chart\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*cert-manager"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/seerr-team/seerr/seerr-chart",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/apps/templates/immich/immich\\.yaml/"
       ],
       "matchStrings": [
