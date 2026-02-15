@@ -263,13 +263,13 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/arr/overseerr-deployment\\.yaml/"
+        "/arr/seerr-deployment\\.yaml/"
       ],
       "matchStrings": [
-        "name:\\s*overseerr\\s*\\n\\s*image:\\s*sctx\\/overseerr:\\s*(?<currentValue>v?[0-9\\.]+)"
+        "name:\\s*seerr\\s*\\n\\s*image:\\s*ghcr\\.io\\/seerr-team\\/seerr:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "sctx/overseerr",
+      "depNameTemplate": "ghcr.io/seerr-team/seerr",
       "versioningTemplate": "semver"
     },
     {
