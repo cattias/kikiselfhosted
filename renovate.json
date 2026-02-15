@@ -58,7 +58,9 @@
     },
     {
       "customType": "regex",
-      "fileMatch": ["/arr/seerr-helm\\.yaml$"],
+      "managerFilePatterns": [
+        "//arr/seerr-helm\\.yaml$/"
+      ],
       "matchStrings": [
         "repoURL:\\s*(?<registryUrl>oci:\\/\\/ghcr\\.io\\/[^\\s]+)\\s*\\ntargetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\nchart:\\s*(?<depName>[^\\s]+)"
       ],
