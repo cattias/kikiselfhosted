@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: overseerr
+  name: seerr
   namespace: arr
   labels:
-    app.kubernetes.io/name: overseerr
+    app.kubernetes.io/name: seerr
 spec:
   revisionHistoryLimit: 1
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: overseerr
+      app.kubernetes.io/name: seerr
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: overseerr
+        app.kubernetes.io/name: seerr
     spec:
       containers:
         - env:
@@ -32,17 +32,17 @@ spec:
               value: "5055"
             - name: TZ
               value: UTC
-          name: overseerr
-          image: sctx/overseerr:1.34.0
+          name: seerr
+          image: ghcr.io/seerr-team/seerr:v3.0.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5055
               protocol: TCP
           volumeMounts:
             - mountPath: /app/config
-              name: overseerr-config
+              name: seerr-config
       restartPolicy: Always
       volumes:
-        - name: overseerr-config
+        - name: seerr-config
           persistentVolumeClaim:
-            claimName: overseerr-config-pvc
+            claimName: seerr-config-pvc
