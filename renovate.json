@@ -60,7 +60,7 @@
       "customType": "regex",
       "managerFilePatterns": ["/arr/seerr-helm\\.yaml/"],
       "matchStrings": [
-        "repoURL:\\s*oci:\\/\\/(?<registryUrl>ghcr\\.io\\/seerr-team\\/seerr\\/seerr-chart)\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*(?<chartName>seerr)"
+        "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/seerr-team\\/seerr\\/seerr-chart\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*seerr"
       ],
       "depNameTemplate": "seerr-chart", 
       "packageNameTemplate": "ghcr.io/seerr-team/seerr/seerr-chart",
