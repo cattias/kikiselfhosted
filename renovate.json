@@ -64,7 +64,7 @@
       ],
       "depNameTemplate": "seerr", 
       "packageNameTemplate": "ghcr.io/seerr-team/seerr/seerr-chart",
-      "datasourceTemplate": "docker",
+      "datasourceTemplate": "helm",
       "versioningTemplate": "semver"
     },
     {
