@@ -19,10 +19,14 @@ spec:
         app.kubernetes.io/name: seerr
     spec:
       shareProcessNamespace: true
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        runAsGroup: 1000
       containers:
         - env:
             - name: PGID
-              value: "10"
+              value: "1000"
             - name: PUID
               value: "1000"
             - name: UMASK
@@ -36,6 +40,21 @@ spec:
           name: seerr
           image: ghcr.io/seerr-team/seerr:v3.0.1
           imagePullPolicy: IfNotPresent
+          podSecurityContext:
+            fsGroup: 1000
+            fsGroupChangePolicy: OnRootMismatch
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            privileged: false
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
           ports:
             - containerPort: 5055
               protocol: TCP
