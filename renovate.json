@@ -9,6 +9,36 @@
   "rebaseWhen": "conflicted",
   "customManagers": [
     {
+      "description": "Handle Seerr OCI Helm Chart",
+      "customType": "regex",
+      "fileMatch": ["arr/seerr-helm\\.yaml$"],
+      "matchStrings": [
+        "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/seerr-team\\/seerr\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>seerr-chart)"
+      ],
+      "datasourceTemplate": "helm",
+      "registryUrlTemplate": "oci://ghcr.io/seerr-team/seerr"
+    },
+    {
+      "description": "Handle Immich OCI Helm Chart",
+      "customType": "regex",
+      "fileMatch": ["apps/templates/immich/immich\\.yaml$"],
+      "matchStrings": [
+        "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>immich)"
+      ],
+      "datasourceTemplate": "helm",
+      "registryUrlTemplate": "oci://ghcr.io/immich-app/immich-charts"
+    },
+    {
+      "description": "Handle Cert-Manager OCI Helm Chart",
+      "customType": "regex",
+      "fileMatch": ["apps/templates/cert-manager/cert-manager\\.yaml$"],
+      "matchStrings": [
+        "repoURL:\\s*oci:\\/\\/quay\\.io\\/jetstack\\/charts\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>cert-manager)"
+      ],
+      "datasourceTemplate": "helm",
+      "registryUrlTemplate": "oci://quay.io/jetstack/charts"
+    },
+    {
       "customType": "regex",
       "managerFilePatterns": [
         "/apps/templates/vault/vault\\.yaml/"
@@ -345,6 +375,9 @@
       "/\\.yaml$/"
     ],
     "ignorePaths": [
+      "apps/templates/cert-manager/cert-manager.yaml",
+      "apps/templates/immich/immich.yaml",
+      "arr/seerr-helm.yaml",
       "apps/templates/arr\\.yaml",
       "apps/templates/databases\\.yaml",
       "apps/templates/grafana/garmin-grafana\\.yaml",
