@@ -360,7 +360,7 @@
     ],
     "ignorePaths": [
       "**/immich/**",
-      "**/cert-manager/**",
+      // "**/cert-manager/**",
       "**/databases\\.yaml",
       "**/paperless\\.yaml",
       "**/mealie\\.yaml",
