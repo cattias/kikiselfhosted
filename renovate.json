@@ -11,7 +11,9 @@
     {
       "description": "Handle Seerr OCI Helm Chart",
       "customType": "regex",
-      "fileMatch": ["arr/seerr-helm\\.yaml$"],
+      "managerFilePatterns": [
+        "/arr/seerr-helm\\.yaml$/"
+      ],
       "matchStrings": [
         "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/seerr-team\\/seerr\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>seerr-chart)"
       ],
@@ -21,7 +23,9 @@
     {
       "description": "Handle Immich OCI Helm Chart",
       "customType": "regex",
-      "fileMatch": ["apps/templates/immich/immich\\.yaml$"],
+      "managerFilePatterns": [
+        "/apps/templates/immich/immich\\.yaml$/"
+      ],
       "matchStrings": [
         "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>immich)"
       ],
@@ -31,7 +35,9 @@
     {
       "description": "Handle Cert-Manager OCI Helm Chart",
       "customType": "regex",
-      "fileMatch": ["apps/templates/cert-manager/cert-manager\\.yaml$"],
+      "managerFilePatterns": [
+        "/apps/templates/cert-manager/cert-manager\\.yaml$/"
+      ],
       "matchStrings": [
         "repoURL:\\s*oci:\\/\\/quay\\.io\\/jetstack\\/charts\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>cert-manager)"
       ],
@@ -354,7 +360,9 @@
   "packageRules": [
     {
       "description": "Stop Docker manager from misidentifying Helm OCI charts as images",
-      "matchManagers": ["docker"],
+      "matchManagers": [
+        "docker"
+      ],
       "matchFileNames": [
         "arr/seerr-helm.yaml",
         "apps/templates/cert-manager/cert-manager.yaml",
