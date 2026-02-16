@@ -29,8 +29,9 @@
       "matchStrings": [
         "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>immich)"
       ],
-      "datasourceTemplate": "docker"
-      // "registryUrlTemplate": "ghcr.io/immich-app/immich-charts/immich"
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/immich-app/immich-charts/immich",
+      "versioningTemplate": "semver"
     },
     {
       "description": "Handle Cert-Manager OCI Helm Chart",
@@ -42,8 +43,6 @@
         "repoURL:\\s*oci:\\/\\/quay\\.io\\/jetstack\\/charts\\/cert-manager\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>cert-manager)"
       ],
       "datasourceTemplate": "helm"
-      // "depNameTemplate": "quay.io/jetstack/charts/cert-manager",
-      // "versioningTemplate": "semver"
     },
     {
       "customType": "regex",
