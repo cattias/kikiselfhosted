@@ -351,7 +351,12 @@
         "quay.io/ceph/ceph"
       ],
       "allowedVersions": "<20.0.0"
-    }    
+    },
+    {
+      "matchManagers": ["docker"],
+      "matchFileNames": ["arr/seerr-helm.yaml"],
+      "enabled": false
+    }
   ],
   "argocd": {
     "enabled": true,
@@ -360,7 +365,6 @@
     ],
     "ignorePaths": [
       "**/immich/**",
-      // "**/cert-manager/**",
       "**/databases\\.yaml",
       "**/paperless\\.yaml",
       "**/mealie\\.yaml",
