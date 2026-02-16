@@ -44,18 +44,18 @@
       "depNameTemplate": "ghcr.io/immich-app/immich-charts/immich",
       "versioningTemplate": "semver"
     },
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/apps/templates/cert-manager/cert-manager\\.yaml/"
-      ],
-      "matchStrings": [
-        "repoURL:\\s*oci:\\/\\/quay\\.io\\/jetstack\\/charts\\/cert-manager\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*cert-manager"
-      ],
-      "datasourceTemplate": "docker",
-      "depNameTemplate": "quay.io/jetstack/charts/cert-manager",
-      "versioningTemplate": "semver"
-    },
+    // {
+    //   "customType": "regex",
+    //   "managerFilePatterns": [
+    //     "/apps/templates/cert-manager/cert-manager\\.yaml/"
+    //   ],
+    //   "matchStrings": [
+    //     "repoURL:\\s*oci:\\/\\/quay\\.io\\/jetstack\\/charts\\/cert-manager\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*cert-manager"
+    //   ],
+    //   "datasourceTemplate": "docker",
+    //   "depNameTemplate": "quay.io/jetstack/charts/cert-manager",
+    //   "versioningTemplate": "semver"
+    // },
     {
       "customType": "regex",
       "managerFilePatterns": [
