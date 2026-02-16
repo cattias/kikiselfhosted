@@ -32,18 +32,6 @@
       "depNameTemplate": "ghcr.io/pi-hole/pihole",
       "versioningTemplate": "semver"
     },
-    // {
-    //   "customType": "regex",
-    //   "managerFilePatterns": [
-    //     "/apps/templates/immich/immich\\.yaml/"
-    //   ],
-    //   "matchStrings": [
-    //     "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*immich"
-    //   ],
-    //   "datasourceTemplate": "docker",
-    //   "depNameTemplate": "ghcr.io/immich-app/immich-charts/immich",
-    //   "versioningTemplate": "semver"
-    // },
     {
       "customType": "regex",
       "managerFilePatterns": [
