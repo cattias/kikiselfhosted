@@ -323,8 +323,13 @@
   ],
   "packageRules": [
     {
+      "description": "Stop Docker manager from misidentifying Helm OCI charts as images",
       "matchManagers": ["docker"],
-      "matchFileNames": ["arr/seerr-helm.yaml"],
+      "matchFileNames": [
+        "arr/seerr-helm.yaml",
+        "apps/templates/cert-manager/cert-manager.yaml",
+        "apps/templates/immich/immich.yaml"
+      ],
       "enabled": false
     },
     {
