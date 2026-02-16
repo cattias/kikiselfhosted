@@ -338,21 +338,19 @@
     "enabled": true,
     "managerFilePatterns": [
       "/\\.yaml$/"
+    ],
+    "ignorePaths": [
+      "apps/templates/arr\\.yaml",
+      "apps/templates/databases\\.yaml",
+      "apps/templates/grafana/garmin-grafana\\.yaml",
+      "apps/templates/grafana/grafana-app\\.yaml",
+      "apps/templates/homeassistant-app\\.yaml",
+      "apps/templates/homepage-app\\.yaml",
+      "apps/templates/lgtm\\.yaml",
+      "apps/templates/mealie\\.yaml",
+      "apps/templates/paperless\\.yaml",
+      "apps/templates/plex-app\\.yaml",
+      "apps/templates/prometheus-app\\.yaml"
     ]
-    // "ignorePaths": [
-    //   "**/databases\\.yaml",
-    //   "**/paperless\\.yaml",
-    //   "**/mealie\\.yaml",
-    //   "**/lgtm\\.yaml",
-    //   "**/garmin-grafana\\.yaml",
-    //   "**/prometheus-app\\.yaml",
-    //   "**/plex-app\\.yaml",
-    //   "**/arr\\.yaml",
-    //   "**/rook-ceph-cluster-addition\\.yaml",
-    //   "**/homepage-app\\.yaml",
-    //   "**/nextcloud/**",
-    //   "**/opencloud/**",
-    //   "**/dsm\\.yaml"
-    // ]
   }
 }
