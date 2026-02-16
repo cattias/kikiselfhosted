@@ -32,28 +32,16 @@
       "depNameTemplate": "ghcr.io/pi-hole/pihole",
       "versioningTemplate": "semver"
     },
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/apps/templates/immich/immich\\.yaml/"
-      ],
-      "matchStrings": [
-        "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*immich"
-      ],
-      "datasourceTemplate": "docker",
-      "depNameTemplate": "ghcr.io/immich-app/immich-charts/immich",
-      "versioningTemplate": "semver"
-    },
     // {
     //   "customType": "regex",
     //   "managerFilePatterns": [
-    //     "/apps/templates/cert-manager/cert-manager\\.yaml/"
+    //     "/apps/templates/immich/immich\\.yaml/"
     //   ],
     //   "matchStrings": [
-    //     "repoURL:\\s*oci:\\/\\/quay\\.io\\/jetstack\\/charts\\/cert-manager\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*cert-manager"
+    //     "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*immich"
     //   ],
     //   "datasourceTemplate": "docker",
-    //   "depNameTemplate": "quay.io/jetstack/charts/cert-manager",
+    //   "depNameTemplate": "ghcr.io/immich-app/immich-charts/immich",
     //   "versioningTemplate": "semver"
     // },
     {
@@ -364,7 +352,6 @@
       "/\\.yaml$/"
     ],
     "ignorePaths": [
-      "**/immich/**",
       "**/databases\\.yaml",
       "**/paperless\\.yaml",
       "**/mealie\\.yaml",
