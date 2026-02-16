@@ -347,18 +347,21 @@
   ],
   "packageRules": [
     {
+      "matchCategories": [
+        "docker"
+      ],
+      "enabled": true,
+      "ignorePaths": [
+        "arr/seerr-helm.yaml"
+      ]
+    },
+    {
       "matchPackageNames": [
         "quay.io/ceph/ceph"
       ],
       "allowedVersions": "<20.0.0"
     }
   ],
-  "docker": {
-    "enabled": true,
-    "ignorePaths": [
-      "arr/seerr-helm.yaml"
-    ]
-  },
   "argocd": {
     "enabled": true,
     "managerFilePatterns": [
