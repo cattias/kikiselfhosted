@@ -347,12 +347,8 @@
   ],
   "packageRules": [
     {
-      "matchCategories": [
-        "docker"
-      ],
-      "matchPackageNames": [
-        "ghcr.io/seerr-team/seerr/seerr-chart/seerr"
-      ],
+      "matchManagers": ["docker"],
+      "matchFileNames": ["arr/seerr-helm.yaml"],
       "enabled": false
     },
     {
