@@ -18,7 +18,7 @@
         "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/seerr-team\\/seerr\\/seer-chart\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>seerr)"
       ],
       "datasourceTemplate": "helm",
-      "registryUrlTemplate": "oci://ghcr.io/seerr-team/seerr/seerr-chart"
+      "registryUrlTemplate": "ghcr.io/seerr-team/seerr/seerr-chart"
     },
     {
       "description": "Handle Immich OCI Helm Chart",
@@ -30,7 +30,7 @@
         "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>immich)"
       ],
       "datasourceTemplate": "helm",
-      "registryUrlTemplate": "oci://ghcr.io/immich-app/immich-charts/immich"
+      "registryUrlTemplate": "ghcr.io/immich-app/immich-charts/immich"
     },
     {
       "description": "Handle Cert-Manager OCI Helm Chart",
@@ -42,7 +42,7 @@
         "repoURL:\\s*oci:\\/\\/quay\\.io\\/jetstack\\/charts\\/cert-manager\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>cert-manager)"
       ],
       "datasourceTemplate": "helm",
-      "registryUrlTemplate": "oci://quay.io/jetstack/charts/cert-manager"
+      "registryUrlTemplate": "quay.io/jetstack/charts/cert-manager"
     },
     {
       "customType": "regex",
