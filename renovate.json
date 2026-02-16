@@ -350,10 +350,10 @@
       "matchCategories": [
         "docker"
       ],
-      "enabled": true,
-      "ignorePaths": [
-        "arr/seerr-helm.yaml"
-      ]
+      "matchPackageNames": [
+        "ghcr.io/seerr-team/seerr/seerr-chart/seerr"
+      ],
+      "enabled": false
     },
     {
       "matchPackageNames": [
