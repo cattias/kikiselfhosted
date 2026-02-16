@@ -17,8 +17,9 @@
       "matchStrings": [
         "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/seerr-team\\/seerr\\/seerr-chart\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>seerr)"
       ],
-      "datasourceTemplate": "docker"
-      //"registryUrlTemplate": "ghcr.io/seerr-team/seerr/seerr-chart"
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/seerr-team/seerr/seerr-chart",
+      "versioningTemplate": "semver"
     },
     {
       "description": "Handle Immich OCI Helm Chart",
