@@ -1,5 +1,5 @@
 #!/bin/sh
-docker buildx build \
+sudo docker buildx build \
   --platform linux/amd64 \
   -t kikiattias/soulsolid-plugins:latest \
   --push .
