@@ -133,7 +133,7 @@ spec:
         collabora:
           enabled: true
           collabora:
-            aliasgroups: [cloud.attias.io, collabora.attias.io]
+            aliasgroups: [cloud.attias.io]
             server_name: collabora.attias.io
             existingSecret:
               # set to true to to get collabora admin credentials from an existin secret
