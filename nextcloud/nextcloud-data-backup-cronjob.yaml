@@ -20,7 +20,7 @@ spec:
             - name: RCLONE_CONFIG_CEPH_TYPE
               value: "s3"
             - name: RCLONE_CONFIG_CEPH_PROVIDER
-              value: "ceph"
+              value: "Ceph"
             - name: RCLONE_CONFIG_CEPH_ENDPOINT
               value: "http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local"
             - name: RCLONE_CONFIG_CEPH_ACCESS_KEY_ID
@@ -46,7 +46,7 @@ spec:
                 secretKeyRef:
                   name: nextcloud-secret
                   key: NAS_USER
-            - name: RCLONE_CONFIG_NAS_PASS
+            - name: RCLONE_CONFIG_NAS_PASS_DECRYPTED
               valueFrom:
                 secretKeyRef:
                   name: nextcloud-secret
