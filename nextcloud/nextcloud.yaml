@@ -43,8 +43,7 @@ spec:
                 'overwriteprotocol' => 'https',
                 'overwrite.cli.url' => 'https://cloud.attias.io',
                 'allow_local_remote_servers' => true,
-                'user_oidc' => false,
-                'allow_multiple_user_backends' => false,
+                'user_oidc.allow_multiple_user_backends' => false,
               );
           ## Use an existing secret
           existingSecret:
