@@ -35,6 +35,15 @@ spec:
           host: cloud.attias.io
           defaultConfigs:
             imaginary.config.php: true
+          configs:
+            proxy.config.php: |-
+              <?php
+              $CONFIG = array (
+                'trusted_proxies' => array('10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16'),
+                'overwriteprotocol' => 'https',
+                'overwrite.cli.url' => 'https://cloud.attias.io',
+                'allow_local_remote_servers' => true,
+              );
           ## Use an existing secret
           existingSecret:
             enabled: true
