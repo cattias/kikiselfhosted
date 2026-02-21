@@ -34,6 +34,7 @@ spec:
           enableCustomDnsMasq: true
           customDnsEntries:
           # --- Specific Overrides (External VPS) ---
+          - address=/kikiflix.eu/91.98.236.199
           - address=/authentik.attias.io/status.kikiflix.attias.io/tailscale.attias.io/plex.attias.io/photos.attias.io/91.98.236.199
           - address=/kiki.vps/vps.kiki.home/100.64.0.2
 
@@ -41,7 +42,7 @@ spec:
           - address=/node.attias.io/192.168.178.103
 
           # --- General Wildcard for Main Traefik LB (*.attias.io) ---
-          - address=/wish.attias.io/hc.attias.io/authentik.attias.io/attias.io/192.168.178.200
+          - address=/wish.kikiflix.eu/hc.attias.io/authentik.attias.io/attias.io/192.168.178.200
 
           # --- Other Static Local Entries ---
           - address=/pihole.kiki.home/192.168.178.110

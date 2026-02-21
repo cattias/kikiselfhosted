@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`wish.attias.io`)
+    - match: Host(`wish.kikiflix.eu`)
       kind: Rule
       services:
         - name: seerr-seerr-chart
