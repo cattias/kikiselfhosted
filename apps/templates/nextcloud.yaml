@@ -1,0 +1,119 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nextcloud
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true 
+      - ServerSideApply=true 
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  destination:
+    namespace: documents
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: nextcloud
+    repoURL: https://nextcloud.github.io/helm/
+    targetRevision: 8.9.1
+    helm:
+      releaseName: nextcloud
+      valuesObject:
+        nextcloud:
+          host: cloud.attias.io
+          ## Use an existing secret
+          existingSecret:
+            enabled: true
+            secretName: nextcloud-secret
+            usernameKey: username
+            passwordKey: password
+            tokenKey: ""
+            smtpUsernameKey: smtp_username
+            smtpPasswordKey: smtp_password
+            smtpHostKey: smtp_host
+          # if set, we'll template this list to the NEXTCLOUD_TRUSTED_DOMAINS env var
+          trustedDomains: [cloud.attias.io, localhost, attias.io]
+          ## SMTP configuration
+          mail:
+            enabled: true
+            # the user we send email as
+            fromAddress: Kiki Cloud <cloud@attias.io>
+            # the domain we send email from
+            domain: attias.io
+            smtp:
+              host: domain.com
+              secure: ssl
+              port: 587
+              authtype: LOGIN
+          objectStore:
+            # https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/primary_storage.html#simple-storage-service-s3
+            s3:
+              enabled: true
+              # s3 endpoint to use; only required if you're not using AWS
+              host: "http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.local"
+              # use TLS/SSL for S3 connections
+              ssl: false
+              # default port that can be changed based on your object store, e.g. for minio, you can use 9000
+              port: "80"
+              # this is the default in the nextcloud docs
+              region: "eu-west-1"
+              # required if using s3, the name of the bucket you'd like to use
+              bucket: "nextcloud"
+              # object prefix in bucket
+              prefix: "nextcloud"
+              # use an existingSecret for S3 credentials. If set, we ignore the following under nextcloud.objectStore.s3
+              # endpoint, accessKey, secretKey
+              existingSecret: "nextcloud-secret"
+              secretKeys:
+                # key in nextcloud.objectStore.s3.existingSecret to use for s3 endpoint
+                host: "s3-host"
+                # key in nextcloud.objectStore.s3.existingSecret to use for s3 accessKeyID
+                accessKey: "s3-accesskey"
+                # key in nextcloud.objectStore.s3.existingSecret to use for s3 secretAccessKey
+                secretKey: "s3-secretkey"
+                # key in nextcloud.objectStore.s3.existingSecret to use for the s3 bucket
+                bucket: "s3-bucket"
+                # key in nextcloud.objectStore.s3.existingSecret to use for the s3 sse_c_key
+                sse_c_key: ""
+        metrics:
+          enabled: true
+          serviceMonitor:
+            enabled: true
+            namespace: monitoring
+            labels:
+              release: kube-prometheus-stack
+          rules:
+            enabled: true
+            labels:
+              release: kube-prometheus-stack
+        rbac:
+          enabled: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud-router
+  namespace: documents
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`cloud.attias.io`)
+      kind: Rule
+      services:
+        - name: nextcloud
+          port: 8080
+  tls:
+    certResolver: le
