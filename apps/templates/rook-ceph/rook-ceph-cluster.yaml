@@ -35,7 +35,7 @@ spec:
           [global]
           mon_allow_pool_delete = true
           osd_pool_default_size = 2
-          osd_pool_default_min_size = 2
+          osd_pool_default_min_size = 1
           osd_pool_default_crush_rule_type = 0
         toolbox:
           enabled: true
