@@ -1,0 +1,20 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: nextcloud-db
+  namespace: documents
+spec:
+  instances: 2
+
+  primaryUpdateStrategy: unsupervised
+
+  storage:
+    size: 20Gi
+    storageClass: ceph-block
+
+  walStorage:
+    size: 1Gi
+    storageClass: ceph-block
+
+  monitoring:
+    enablePodMonitor: true
