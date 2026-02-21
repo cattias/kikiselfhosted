@@ -38,11 +38,11 @@ tailscale.attias.io {
     reverse_proxy localhost:8880
 }
 
-status.kikiflix.attias.io {
+status.kikiflix.eu {
     reverse_proxy localhost:3001
 }
 
-plex.attias.io {
+kikiflix.eu {
     reverse_proxy http://192.168.178.201:32400
 }
 
@@ -50,7 +50,7 @@ photos.attias.io {
     reverse_proxy http://192.168.178.202:2283
 }
 
-overseerr.attias.io {
+wish.kikiflix.eu {
     reverse_proxy https://192.168.178.200:443 {
         transport http {
             tls_insecure_skip_verify

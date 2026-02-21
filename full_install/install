@@ -89,7 +89,7 @@ plex
     // plex.tv/claim
     PLEX_CLAIM: "claim-xVbzFJXTJsx_Md-mexyy"
 Remote : disable then enable again
-Custom server access URLs : plex.attias.io:443,https://plex.attias.io:443
+Custom server access URLs : kikiflix.eu:443,https://kikiflix.eu:443
 
 # Check restore scripts
 # For Immich DB : restore when the DB is completely empty, even removing the vchord extensions at first to avoid conflicts
