@@ -56,7 +56,7 @@ spec:
             smtpPasswordKey: smtp_password
             smtpHostKey: smtp_host
           # if set, we'll template this list to the NEXTCLOUD_TRUSTED_DOMAINS env var
-          trustedDomains: [cloud.attias.io, nextcloud.documents.svc.cluster.local:8080]
+          trustedDomains: [cloud.attias.io]
           ## SMTP configuration
           mail:
             enabled: true
