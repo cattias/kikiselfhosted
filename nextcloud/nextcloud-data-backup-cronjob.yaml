@@ -58,5 +58,9 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
               - |
-                rclone sync ceph:nextcloud nas:backup-$(date +%Y-%m-%d) --progress --stats-one-line
+                rclone sync ceph:nextcloud nas:nextcloud \
+                  --progress \
+                  --stats-one-line \
+                  --fast-list \
+                  --size-only
           restartPolicy: OnFailure
