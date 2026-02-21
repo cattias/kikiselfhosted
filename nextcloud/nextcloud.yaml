@@ -135,7 +135,6 @@ spec:
           collabora:
             aliasgroups: [cloud.attias.io, collabora.attias.io]
             server_name: collabora.attias.io
-            extra_params: --o:ssl.termination=true
             existingSecret:
               # set to true to to get collabora admin credentials from an existin secret
               # if set, ignores collabora.collabora.username and password
