@@ -74,7 +74,7 @@ spec:
             # the domain we send email from
             domain: attias.io
             smtp:
-              secure: ssl
+              secure: tls
               port: 587
               authtype: LOGIN
           objectStore:
