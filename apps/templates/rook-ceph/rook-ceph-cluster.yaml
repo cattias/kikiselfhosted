@@ -468,9 +468,8 @@ spec:
                   size: 3
               dataPool:
                 failureDomain: osd
-                erasureCoded:
-                  dataChunks: 2
-                  codingChunks: 1
+                replicated:
+                  size: 3
                 parameters:
                   bulk: "true"
               preservePoolsOnDelete: true
