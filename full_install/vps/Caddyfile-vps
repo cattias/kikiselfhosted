@@ -1,3 +1,4 @@
+
 {
     # Global options block
     log {
@@ -14,6 +15,11 @@
 http://glances.vps.attias.io {
     bind 100.64.0.2
     reverse_proxy localhost:61208
+}
+
+http://fail2banui.vps.attias.io {
+    bind 100.64.0.2
+    reverse_proxy localhost:8383
 }
 
 http://headplane.attias.io {
@@ -46,10 +52,6 @@ kikiflix.eu {
     reverse_proxy http://192.168.178.201:32400
 }
 
-photos.attias.io {
-    reverse_proxy http://192.168.178.202:2283
-}
-
 wish.kikiflix.eu {
     reverse_proxy https://192.168.178.200:443 {
         transport http {
@@ -58,10 +60,17 @@ wish.kikiflix.eu {
     }
 }
 
+photos.attias.io {
+    reverse_proxy http://192.168.178.202:2283
+}
+
 authentik.attias.io {
     reverse_proxy https://192.168.178.200:443 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
         transport http {
             tls_insecure_skip_verify
         }
     }
 }
+
