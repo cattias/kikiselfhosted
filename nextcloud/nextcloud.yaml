@@ -148,19 +148,12 @@ spec:
           prometheus:
             servicemonitor:
               enabled: true
-              namespace: monitoring
               labels:
                 release: kube-prometheus-stack
             rules:
               enabled: true
               additionalLabels:
                 release: kube-prometheus-stack
-          grafana:
-            dashboards:
-              enabled: true
-              namespace: monitoring
-              labels:
-                grafana_dashboard: "1"
         imaginary:
           enabled: true
         cronjob:

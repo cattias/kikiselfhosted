@@ -93,5 +93,5 @@ spec:
           garmin: "garmin-dashboard"
           ups: "ups-dashboard"
           cnpg-grafana-dashboard: "cnpg-grafana-dashboard"
-          overview: "nextcloud-collabora-grafana-dashboards-overview.json"
-          ha-allocation: "nextcloud-collabora-grafana-dashboards-ha-allocation.json"
+          # overview: "nextcloud-collabora-grafana-dashboards-overview.json"
+          # ha-allocation: "nextcloud-collabora-grafana-dashboards-ha-allocation.json"
