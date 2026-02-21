@@ -99,7 +99,8 @@ spec:
                 sse_c_key: ""
         metrics:
           enabled: true
-          https: false
+          https: true
+          server: https://cloud.attias.io
           info:
             apps: true
             update: true
