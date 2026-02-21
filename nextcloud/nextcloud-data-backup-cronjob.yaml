@@ -1,0 +1,60 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nextcloud-s3-backup
+  namespace: documents
+spec:
+  schedule: "0 2 * * *" # 2 AM
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid # Ensures only one cleanup job runs at a time
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: rclone
+            image: rclone/rclone:latest
+            env:
+            # --- CEPH CONFIG ---
+            - name: RCLONE_CONFIG_CEPH_TYPE
+              value: "s3"
+            - name: RCLONE_CONFIG_CEPH_PROVIDER
+              value: "ceph"
+            - name: RCLONE_CONFIG_CEPH_ENDPOINT
+              value: "http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local"
+            - name: RCLONE_CONFIG_CEPH_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-secret
+                  key: s3-accesskey
+            - name: RCLONE_CONFIG_CEPH_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-secret
+                  key: s3-secretkey
+            
+            # --- NAS CONFIG (WebDAV Example) ---
+            - name: RCLONE_CONFIG_NAS_TYPE
+              value: "webdav"
+            - name: RCLONE_CONFIG_NAS_URL
+              value: "https://webdav.nas.attias.io/backup/documents/nextcloud/"
+            - name: RCLONE_CONFIG_NAS_VENDOR
+              value: "other"
+            - name: RCLONE_CONFIG_NAS_USER
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-secret
+                  key: NAS_USER
+            - name: RCLONE_CONFIG_NAS_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-secret
+                  key: NAS_PASS
+
+            # --- COMMAND ---
+            command: ["/bin/sh", "-c"]
+            args:
+              - |
+                rclone sync ceph:nextcloud nas:backup-$(date +%Y-%m-%d) --progress --stats-one-line
+          restartPolicy: OnFailure
