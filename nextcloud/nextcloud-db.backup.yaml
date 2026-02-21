@@ -4,7 +4,7 @@ metadata:
   name: daily-postgres-nextcloud-nfs-backup
   namespace: documents
 spec:
-  schedule: "0 1 * * *"
+  schedule: "5 1 * * *"
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid # Ensures only one cleanup job runs at a time
