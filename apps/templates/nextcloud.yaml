@@ -61,8 +61,7 @@ spec:
             # https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/primary_storage.html#simple-storage-service-s3
             s3:
               enabled: true
-              # s3 endpoint to use; only required if you're not using AWS
-              host: "http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.local"
+              usePathStyle: true
               # use TLS/SSL for S3 connections
               ssl: false
               # default port that can be changed based on your object store, e.g. for minio, you can use 9000
