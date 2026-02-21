@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud-router
+  namespace: documents
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`cloud.attias.io`)
+      kind: Rule
+      services:
+        - name: nextcloud
+          port: 8080
+  tls:
+    certResolver: le
