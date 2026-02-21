@@ -134,7 +134,7 @@ spec:
           enabled: true
           collabora:
             aliasgroups: 
-              - host: "https://cloud.attias.io"
+              - host: "https://cloud.attias.io:443"
             server_name: collabora.attias.io
             extra_params: --o:ssl.enable=false --o:ssl.termination=true
             existingSecret:
