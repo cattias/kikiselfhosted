@@ -111,6 +111,9 @@ spec:
             passwordKey: password
             hostKey: host
             databaseKey: dbname
+        persistence:
+          enabled: true
+          existingClaim: nextcloud-data-pvc
         collabora:
           enabled: true
           collabora:
