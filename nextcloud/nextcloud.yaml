@@ -133,8 +133,10 @@ spec:
         collabora:
           enabled: true
           collabora:
-            aliasgroups: [cloud.attias.io]
+            aliasgroups: 
+              - host: "https://cloud.attias.io"
             server_name: collabora.attias.io
+            extra_params: --o:ssl.enable=false --o:ssl.termination=true
             existingSecret:
               # set to true to to get collabora admin credentials from an existin secret
               # if set, ignores collabora.collabora.username and password
