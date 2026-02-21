@@ -8,24 +8,24 @@ spec:
     - websecure
   routes:
     # --- Protected Admin & Interface Paths ---
-    # - match: Host(`authentik.attias.io`) && (PathPrefix(`/if/admin`) || PathPrefix(`/api/v3/admin`)) && ClientIP(`100.64.0.2`)
-    #   kind: Rule
-    #   priority: 1000
-    #   middlewares:
-    #     - name: internal-only-no-tailscale
-    #       namespace: traefik
-    #   services:
-    #     - name: authentik-server
-    #       port: 80
-    # - match: Host(`authentik.attias.io`) && (PathPrefix(`/if/admin`) || PathPrefix(`/api/v3/admin`))
-    #   kind: Rule
-    #   priority: 100
-    #   middlewares:
-    #     - name: internal-only
-    #       namespace: traefik
-    #   services:
-    #     - name: authentik-server
-    #       port: 80
+    - match: Host(`authentik.attias.io`) && (PathPrefix(`/if/admin`) || PathPrefix(`/api/v3/admin`)) && ClientIP(`100.64.0.2`)
+      kind: Rule
+      priority: 1000
+      middlewares:
+        - name: internal-only-no-tailscale
+          namespace: traefik
+      services:
+        - name: authentik-server
+          port: 80
+    - match: Host(`authentik.attias.io`) && (PathPrefix(`/if/admin`) || PathPrefix(`/api/v3/admin`))
+      kind: Rule
+      priority: 100
+      middlewares:
+        - name: internal-only
+          namespace: traefik
+      services:
+        - name: authentik-server
+          port: 80
     - match: Host(`authentik.attias.io`)
       kind: Rule
       priority: 50
