@@ -51,7 +51,7 @@ spec:
             secretName: nextcloud-secret
             usernameKey: username
             passwordKey: password
-            tokenKey: ""
+            tokenKey: api-token
             smtpUsernameKey: smtp_username
             smtpPasswordKey: smtp_password
             smtpHostKey: smtp_host
@@ -98,9 +98,8 @@ spec:
                 # key in nextcloud.objectStore.s3.existingSecret to use for the s3 sse_c_key
                 sse_c_key: ""
         metrics:
-          enabled: false
+          enabled: true
           https: true
-          token: ""
           serviceMonitor:
             enabled: true
             namespace: monitoring
