@@ -462,6 +462,7 @@ spec:
           - name: ceph-objectstore
             # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Object-Storage/ceph-object-store-crd.md#object-store-settings for available configuration
             spec:
+              defaultRealm: true
               metadataPool:
                 failureDomain: osd
                 replicated:
