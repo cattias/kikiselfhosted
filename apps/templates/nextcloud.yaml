@@ -111,12 +111,12 @@ spec:
             passwordKey: password
             hostKey: host
             databaseKey: dbname
-        externalRedis:
-          enabled: true
-          host: nextcloud-redis
-        persistence:
-          enabled: true
-          existingClaim: nextcloud-data-pvc
+        # externalRedis:
+        #   enabled: true
+        #   host: nextcloud-redis
+        # persistence:
+        #   enabled: true
+        #   existingClaim: nextcloud-data-pvc
         collabora:
           enabled: true
           collabora:
