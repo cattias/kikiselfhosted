@@ -99,7 +99,7 @@ spec:
                 sse_c_key: ""
         metrics:
           enabled: true
-          https: true
+          https: false
           serviceMonitor:
             enabled: true
             namespace: monitoring
