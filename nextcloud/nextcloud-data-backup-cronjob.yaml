@@ -37,8 +37,10 @@ spec:
             # --- NAS CONFIG (WebDAV Example) ---
             - name: RCLONE_CONFIG_NAS_TYPE
               value: "webdav"
+            - name: RCLONE_CONFIG_NAS_AUTH_REDIRECT
+              value: "true"
             - name: RCLONE_CONFIG_NAS_URL
-              value: "https://webdav.nas.attias.io/backup/documents/nextcloud/"
+              value: "https://webdav.nas.attias.io/backup/documents/nextcloud"
             - name: RCLONE_CONFIG_NAS_VENDOR
               value: "other"
             - name: RCLONE_CONFIG_NAS_USER
