@@ -46,14 +46,14 @@ spec:
                 'allow_local_remote_servers' => true,
                 'user_oidc.allow_multiple_user_backends' => false,
               );
-            logging.config.php: |-
-              <?php
-              $CONFIG = array (
-                'log_type' => 'file',
-                'logfile' => 'nextcloud.log',
-                'loglevel' => 0,
-                'logdateformat' => 'F d, Y H:i:s'
-              );
+            # logging.config.php: |-
+            #   <?php
+            #   $CONFIG = array (
+            #     'log_type' => 'file',
+            #     'logfile' => 'nextcloud.log',
+            #     'loglevel' => 0,
+            #     'logdateformat' => 'F d, Y H:i:s'
+            #   );
           ## Use an existing secret
           existingSecret:
             enabled: true
