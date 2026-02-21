@@ -33,6 +33,8 @@ spec:
       valuesObject:
         nextcloud:
           host: cloud.attias.io
+          defaultConfigs:
+            imaginary.config.php: true
           ## Use an existing secret
           existingSecret:
             enabled: true
@@ -49,11 +51,10 @@ spec:
           mail:
             enabled: true
             # the user we send email as
-            fromAddress: Kiki Cloud <cloud@attias.io>
+            fromAddress: cloud
             # the domain we send email from
             domain: attias.io
             smtp:
-              host: domain.com
               secure: ssl
               port: 587
               authtype: LOGIN
@@ -126,4 +127,6 @@ spec:
               usernameKey: "username"
               passwordKey: "password"
         imaginary:
+          enabled: true
+        cronjob:
           enabled: true
