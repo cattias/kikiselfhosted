@@ -99,6 +99,37 @@ spec:
               release: kube-prometheus-stack
         rbac:
           enabled: true
+        internalDatabase:
+          enabled: false
+        externalDatabase:
+          enabled: true
+          type: postgresql
+          existingSecret:
+            enabled: true
+            secretName: nextcloud-db-app
+            usernameKey: username
+            passwordKey: password
+            hostKey: host
+            databaseKey: dbname
+        externalRedis:
+          enabled: true
+          host: nextcloud-redis
+        persistence:
+          enabled: true
+          existingClaim: nextcloud-data-pvc
+        collabora:
+          enabled: true
+          collabora:
+            existingSecret:
+              # set to true to to get collabora admin credentials from an existin secret
+              # if set, ignores collabora.collabora.username and password
+              enabled: true
+              # name of existing Kubernetes Secret with collboara admin credentials
+              secretName: "nextcloud-secret"
+              usernameKey: "username"
+              passwordKey: "password"
+        imaginary:
+          enabled: true
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
