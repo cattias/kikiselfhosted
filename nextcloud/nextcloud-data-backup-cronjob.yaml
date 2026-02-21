@@ -48,7 +48,7 @@ spec:
                 secretKeyRef:
                   name: nextcloud-secret
                   key: NAS_USER
-            - name: RCLONE_CONFIG_NAS_PASS_DECRYPTED
+            - name: RCLONE_CONFIG_NAS_PASS
               valueFrom:
                 secretKeyRef:
                   name: nextcloud-secret
