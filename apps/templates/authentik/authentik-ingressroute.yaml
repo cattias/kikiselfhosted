@@ -17,15 +17,15 @@ spec:
       services:
         - name: authentik-server
           port: 80
-    - match: Host(`authentik.attias.io`) && (PathPrefix(`/if/admin`) || PathPrefix(`/api/v3/admin`))
-      kind: Rule
-      priority: 100
-      middlewares:
-        - name: internal-only
-          namespace: traefik
-      services:
-        - name: authentik-server
-          port: 80
+    # - match: Host(`authentik.attias.io`) && (PathPrefix(`/if/admin`) || PathPrefix(`/api/v3/admin`))
+    #   kind: Rule
+    #   priority: 100
+    #   middlewares:
+    #     - name: internal-only
+    #       namespace: traefik
+    #   services:
+    #     - name: authentik-server
+    #       port: 80
     - match: Host(`authentik.attias.io`)
       kind: Rule
       priority: 50
