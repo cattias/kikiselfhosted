@@ -5,6 +5,8 @@ metadata:
   namespace: renovate
 spec:
   schedule: '@hourly'
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
