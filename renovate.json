@@ -37,7 +37,7 @@
       "description": "Handle Immich OCI Helm Chart",
       "customType": "regex",
       "managerFilePatterns": [
-        "/apps/templates/immich/immich\\.yaml$/"
+        "/immich/immich\\.yaml$/"
       ],
       "matchStrings": [
         "repoURL:\\s*oci:\\/\\/ghcr\\.io\\/immich-app\\/immich-charts\\/immich\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>immich)"
@@ -60,7 +60,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/apps/templates/vault/vault\\.yaml/"
+        "/vaultwarden/vault\\.yaml/"
       ],
       "matchStrings": [
         "image:\\s*\\n\\s*repository:\\s*vaultwarden\\/server\\s*\\n\\s*tag:\\s*(?<currentValue>v?[0-9\\.]+)"
@@ -84,7 +84,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/apps/templates/immich/immich\\.yaml/"
+        "/immich/immich\\.yaml/"
       ],
       "matchStrings": [
         "main:\\s*\\n\\s*image:\\s*\\n\\s*tag:\\s*(?<currentValue>v?[0-9\\.]+)"
@@ -144,18 +144,6 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/paperless/memos-deployment\\.yaml/"
-      ],
-      "matchStrings": [
-        "name:\\s*memos\\s*\\n\\s*image:\\s*neosmemo\\/memos:\\s*(?<currentValue>v?[0-9\\.]+)"
-      ],
-      "datasourceTemplate": "docker",
-      "depNameTemplate": "neosmemo/memos",
-      "versioningTemplate": "semver"
-    },
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
         "/plex/kometa-cron\\.yaml/"
       ],
       "matchStrings": [
@@ -192,7 +180,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/databases/immich\\.pg\\.yaml/"
+        "/immich/immich\\.pg\\.yaml/"
       ],
       "matchStrings": [
         "imageName:\\s*ghcr\\.io\\/tensorchord\\/cloudnative-vectorchord:(?<currentValue>[^\\s\"']+)"
@@ -204,7 +192,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/databases/immich\\.redis\\.yaml/"
+        "/immich/immich\\.redis\\.yaml/"
       ],
       "matchStrings": [
         "kubernetesConfig:\\s*\\n\\s*image:\\s*quay\\.io\\/opstree\\/redis:(?<currentValue>v?[0-9\\.]+)"
@@ -397,7 +385,9 @@
     ],
     "ignorePaths": [
       "apps/templates/cert-manager/cert-manager\\.yaml",
-      "apps/templates/immich/immich\\.yaml",
+      "apps/templates/immich-app\\.yaml",
+      "apps/templates/authentik-app\\.yaml",
+      "apps/templates/vaultwarden-app\\.yaml",
       "apps/templates/nextcloud-app\\.yaml",
       "apps/templates/cnpg/cnpg-clusterimagecatalog\\.yaml",
       "apps/templates/renovate-app\\.yaml",
