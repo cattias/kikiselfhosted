@@ -17,4 +17,19 @@ spec:
     storageClass: ceph-block
 
   monitoring:
-    enablePodMonitor: true
+    enablePodMonitor: false
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: authentik-db
+  namespace: authentik
+  labels:
+    release: kube-prometheus-stack
+spec:
+  namespaceSelector: authentik
+  selector:
+    matchLabels:
+      cnpg.io/cluster: authentik-db
+  podMetricsEndpoints:
+  - port: metrics
