@@ -6,11 +6,6 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  ignoreDifferences:
-    - group: postgresql.cnpg.io
-      kind: Cluster
-      jsonPointers:
-        - /spec/imageName
   syncPolicy:
     automated:
       enabled: true
@@ -19,7 +14,6 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
-      - RespectIgnoreDifferences=true
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
