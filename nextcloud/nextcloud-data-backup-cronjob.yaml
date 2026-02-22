@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: nextcloud-s3-backup
+  name: nextcloud-data-s3-backup
   namespace: documents
 spec:
   schedule: "5 1 * * *"
