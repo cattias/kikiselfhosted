@@ -398,6 +398,8 @@
     "ignorePaths": [
       "apps/templates/cert-manager/cert-manager\\.yaml",
       "apps/templates/immich/immich\\.yaml",
+      "apps/templates/nextcloud-app\\.yaml",
+      "apps/templates/cnpg/cnpg-clusterimagecatalog\\.yaml",
       "apps/templates/renovate-app\\.yaml",
       "arr/seerr-helm.yaml",
       "apps/templates/arr\\.yaml",
