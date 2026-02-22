@@ -12,8 +12,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:latest
-              imagePullPolicy: Always
+              image: renovate/renovate:43.0.9
               # Environment Variables
               env:
                 - name: LOG_LEVEL

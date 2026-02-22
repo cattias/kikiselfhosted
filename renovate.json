@@ -9,6 +9,18 @@
   "rebaseWhen": "conflicted",
   "customManagers": [
     {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/renovate/renovate-cron\\.yaml/"
+      ],
+      "matchStrings": [
+        "name:\\s*renovate\\s*\\n\\s*image:\\s*renovate\\/renovate:\\s*(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "renovate/renovate",
+      "versioningTemplate": "semver"
+    },
+    {
       "description": "Handle Seerr OCI Helm Chart",
       "customType": "regex",
       "managerFilePatterns": [
