@@ -19,7 +19,7 @@ spec:
   monitoring:
     enablePodMonitor: false
 
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.12
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.8
 
   postgresql:
     shared_preload_libraries:
