@@ -180,6 +180,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/databases/immich\\.pg\\.yaml/"
+      ],
+      "matchStrings": [
+        "imageName:\\s*ghcr\\.io\\/tensorchord\\/cloudnative-vectorchord:(?<currentValue>v?[0-9\\.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/tensorchord/cloudnative-vectorchord",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/databases/immich\\.redis\\.yaml/"
       ],
       "matchStrings": [
