@@ -1,0 +1,18 @@
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: ceph-store
+  namespace: postgres-operator
+spec:
+  configuration:
+    destinationPath: s3://backup/
+    endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local:80
+    s3Credentials:
+      accessKeyId:
+        name: barman-secret
+        key: ACCESS_KEY_ID
+      secretAccessKey:
+        name: barman-secret
+        key: ACCESS_SECRET_KEY
+    wal:
+      compression: gzip
