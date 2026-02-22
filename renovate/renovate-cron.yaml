@@ -15,9 +15,9 @@ spec:
               # Update this to the latest available and then enable Renovate on
               # the manifest
               image: renovate/renovate:43.0.9
-              args:
-                - cattias/kikiselfhosted
-                - cattias/kikinodeapp
+              # args:
+              #   - cattias/kikiselfhosted
+              #   - cattias/kikinodeapp
               # Environment Variables
               env:
                 - name: LOG_LEVEL
