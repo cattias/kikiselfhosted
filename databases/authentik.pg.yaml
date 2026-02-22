@@ -27,7 +27,9 @@ metadata:
   labels:
     release: kube-prometheus-stack
 spec:
-  namespaceSelector: authentik
+  namespaceSelector: 
+    matchLabels:
+      namespace-label: authentik
   selector:
     matchLabels:
       cnpg.io/cluster: authentik-db
