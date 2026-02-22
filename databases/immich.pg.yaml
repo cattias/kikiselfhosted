@@ -13,13 +13,13 @@ spec:
     storageClass: ceph-block
 
   walStorage:
-    size: 1Gi
+    size: 20Gi
     storageClass: ceph-block
 
   monitoring:
     enablePodMonitor: false
 
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.12
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:18.2
 
   postgresql:
     shared_preload_libraries:
