@@ -17,6 +17,13 @@ spec:
     size: 5Gi
     storageClass: ceph-block
 
+  plugins:
+  - name: barman-cloud.cloudnative-pg.io
+    enabled: true
+    isWALArchiver: true
+    parameters:
+      barmanObjectName: mealie-ceph-store
+
   monitoring:
     enablePodMonitor: false
 ---
