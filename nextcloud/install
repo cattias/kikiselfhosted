@@ -16,3 +16,12 @@ WOPI allow list
             #   );
 
 php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
+
+install apps
+calendar
+contacts
+office
+OpenID Connect user backend
+two factor
+
+disable app photos
