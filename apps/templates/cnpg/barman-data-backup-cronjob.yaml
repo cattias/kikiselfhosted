@@ -63,4 +63,4 @@ spec:
                   --stats-one-line \
                   --fast-list \
                   --size-only
-          restartPolicy: OnFailure
+          restartPolicy: Never
