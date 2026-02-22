@@ -4,6 +4,7 @@ metadata:
   name: mealie-ceph-store
   namespace: mealie
 spec:
+  retentionPolicy: "7d"
   configuration:
     destinationPath: s3://backup/mealie
     endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local:80
