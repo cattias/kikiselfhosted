@@ -47,14 +47,14 @@ spec:
                 'user_oidc.allow_multiple_user_backends' => false,
                 'maintenance_window_start' => 1,
               );
-            # logging.config.php: |-
-            #   <?php
-            #   $CONFIG = array (
-            #     'log_type' => 'file',
-            #     'logfile' => 'nextcloud.log',
-            #     'loglevel' => 0,
-            #     'logdateformat' => 'F d, Y H:i:s'
-            #   );
+            logging.config.php: |-
+              <?php
+              $CONFIG = array (
+                'log_type' => 'file',
+                'logfile' => 'nextcloud.log',
+                'loglevel' => 0,
+                'logdateformat' => 'F d, Y H:i:s'
+              );
           ## Use an existing secret
           existingSecret:
             enabled: true
