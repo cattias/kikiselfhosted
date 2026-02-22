@@ -19,6 +19,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: authentik-app
+    path: authentik
     repoURL: https://github.com/cattias/kikiselfhosted
     targetRevision: HEAD
