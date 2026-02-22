@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: barman-s3-backup
+  name: immich-s3-backup
   namespace: photos
 spec:
   schedule: "5 1 * * *"
