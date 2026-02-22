@@ -31,6 +31,16 @@ spec:
     helm:
       releaseName: nextcloud
       valuesObject:
+        lifecycle:
+            postStartCommand:
+              - "/bin/sh"
+              - "-c"
+              - |
+                # Enable apps declaratively
+                su -s /bin/sh www-data -c "php occ app:install calendar || true"
+                su -s /bin/sh www-data -c "php occ app:install contacts || true"
+                su -s /bin/sh www-data -c "php occ app:enable calendar"
+                su -s /bin/sh www-data -c "php occ app:enable contacts"
         nextcloud:
           host: cloud.attias.io
           defaultConfigs:
