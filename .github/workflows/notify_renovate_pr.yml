@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    if: github.actor == 'renovate[bot]'
+    if: github.actor == 'cattias'
     
     steps:
       - name: Send Telegram Notification
