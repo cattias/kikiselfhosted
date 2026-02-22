@@ -58,7 +58,7 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
               - |
-                rclone sync ceph:backup/mealie nas:mealie \
+                rclone sync ceph:backup/mealie/mealie-db nas:mealie \
                   --progress \
                   --stats-one-line \
                   --fast-list \
