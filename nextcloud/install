@@ -1,0 +1,16 @@
+
+php occ maintenance:repair --include-expensive
+php occ db:add-missing-indices
+php occ config:app:set serverinfo token --value xxxx
+
+WOPI allow list
+'127.0.0.1,172.16.0.0/12,192.168.0.0/16,10.0.0.0/8'
+
+            # logging.config.php: |-
+            #   <?php
+            #   $CONFIG = array (
+            #     'log_type' => 'file',
+            #     'logfile' => 'nextcloud.log',
+            #     'loglevel' => 0,
+            #     'logdateformat' => 'F d, Y H:i:s'
+            #   );

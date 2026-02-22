@@ -8,9 +8,9 @@ metadata:
 spec:
   syncPolicy:
     automated:
-      enabled: false
+      enabled: true
       prune: true
-      selfHeal: false
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true 
       - ServerSideApply=true 
@@ -44,22 +44,9 @@ spec:
                 'overwrite.cli.url' => 'https://cloud.attias.io',
                 'overwritehost' => 'cloud.attias.io',
                 'allow_local_remote_servers' => true,
-                # 'user_oidc.allow_multiple_user_backends' => false,
+                'user_oidc.allow_multiple_user_backends' => false,
                 'maintenance_window_start' => 1,
               );
-            wopi.config.php: |-
-              <?php
-              $CONFIG = array (
-                'wopi_allowlist' => '127.0.0.1,172.16.0.0/12,192.168.0.0/16,10.0.0.0/8',
-              );
-            # logging.config.php: |-
-            #   <?php
-            #   $CONFIG = array (
-            #     'log_type' => 'file',
-            #     'logfile' => 'nextcloud.log',
-            #     'loglevel' => 0,
-            #     'logdateformat' => 'F d, Y H:i:s'
-            #   );
           ## Use an existing secret
           existingSecret:
             enabled: true
