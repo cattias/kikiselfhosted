@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: barman-s3-backup
-  namespace: postgres-operator
+  namespace: mealie
 spec:
   schedule: "5 1 * * *"
   successfulJobsHistoryLimit: 1
@@ -58,9 +58,12 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
               - |
-                rclone sync ceph:backup nas:. \
+                rclone sync ceph:backup/mealie/mealie-db/base nas:mealie \
                   --progress \
                   --stats-one-line \
                   --fast-list \
-                  --size-only
+                  --size-only \
+                  --header "Overwrite: T" \
+                  --webdav-nextcloud-chunk-size 0 \
+                  --ignore-checksum 
           restartPolicy: Never
