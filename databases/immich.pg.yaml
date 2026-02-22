@@ -25,11 +25,11 @@ spec:
     shared_preload_libraries:
       - "vchord.so"
 
-  # bootstrap:
-  #   initdb:
-  #     postInitApplicationSQL:
-  #       - CREATE EXTENSION vchord CASCADE;
-  #       - CREATE EXTENSION earthdistance CASCADE;
+  bootstrap:
+    initdb:
+      postInitApplicationSQL:
+        - CREATE EXTENSION vchord CASCADE;
+        - CREATE EXTENSION earthdistance CASCADE;
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
