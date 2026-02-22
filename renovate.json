@@ -216,7 +216,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/databases/paperless\\.redis\\.yaml/"
+        "/paperless/paperless\\.redis\\.yaml/"
       ],
       "matchStrings": [
         "kubernetesConfig:\\s*\\n\\s*image:\\s*quay\\.io\\/opstree\\/redis:(?<currentValue>v?[0-9\\.]+)"

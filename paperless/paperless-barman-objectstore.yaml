@@ -1,0 +1,19 @@
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: paperless-ceph-store
+  namespace: documents
+spec:
+  retentionPolicy: "7d"
+  configuration:
+    destinationPath: s3://backup/paperless
+    endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local:80
+    s3Credentials:
+      accessKeyId:
+        name: barman-secret
+        key: ACCESS_KEY_ID
+      secretAccessKey:
+        name: barman-secret
+        key: ACCESS_SECRET_KEY
+    wal:
+      compression: gzip
