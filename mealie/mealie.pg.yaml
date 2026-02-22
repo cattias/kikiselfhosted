@@ -26,7 +26,7 @@ spec:
     enabled: true
     isWALArchiver: true
     parameters:
-      barmanObjectName: ceph-store
+      barmanObjectName: mealie-ceph-store
 
   monitoring:
     enablePodMonitor: false
