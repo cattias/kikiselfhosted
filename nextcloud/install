@@ -14,3 +14,5 @@ WOPI allow list
             #     'loglevel' => 0,
             #     'logdateformat' => 'F d, Y H:i:s'
             #   );
+
+php occ config:app:set --value=0 user_oidc allow_multiple_user_backends

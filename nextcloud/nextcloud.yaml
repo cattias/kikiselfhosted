@@ -44,7 +44,6 @@ spec:
                 'overwrite.cli.url' => 'https://cloud.attias.io',
                 'overwritehost' => 'cloud.attias.io',
                 'allow_local_remote_servers' => true,
-                'user_oidc.allow_multiple_user_backends' => false,
                 'maintenance_window_start' => 1,
               );
           ## Use an existing secret
