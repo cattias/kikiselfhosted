@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: mealie-s3-backup
+  name: mealie-db-s3-backup
   namespace: mealie
 spec:
   schedule: "5 1 * * *"

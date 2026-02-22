@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: authentik-s3-backup
+  name: authentik-db-s3-backup
   namespace: authentik
 spec:
   schedule: "5 1 * * *"

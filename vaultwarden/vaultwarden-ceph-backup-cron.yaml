@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: vaultwarden-s3-backup
+  name: vaultwarden-db-s3-backup
   namespace: vaultwarden
 spec:
   schedule: "5 1 * * *"
