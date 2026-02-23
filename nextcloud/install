@@ -1,7 +1,21 @@
-
 php occ maintenance:repair --include-expensive
 php occ db:add-missing-indices
 php occ config:app:set serverinfo token --value xxxx
+
+php occ app:disable photos
+php occ app:install calendar
+php occ app:install contacts
+php occ app:install richdocuments
+php occ app:install user_oidc
+php occ app:install twofactor_webauthn
+
+php occ user:setting kiki settings email kiki@attias.io
+
+php occ user_oidc:provider Authentikiki \
+    --clientid="<YOUR_CLIENT_ID>" \
+    --clientsecret="<YOUR_CLIENT_SECRET>" \
+    --discoveryuri="https://<YOUR_AUTHENTIK_URL>/application/o/nextcloud/.well-known/openid-configuration" \
+    --scope="openid email profile groups"
 
 WOPI allow list
 '127.0.0.1,172.16.0.0/12,192.168.0.0/16,10.0.0.0/8'
@@ -17,11 +31,3 @@ WOPI allow list
 
 php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
 
-install apps
-calendar
-contacts
-office
-OpenID Connect user backend
-two factor
-
-disable app photos
