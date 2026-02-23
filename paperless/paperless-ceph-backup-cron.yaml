@@ -58,7 +58,7 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
               - |
-                rclone sync ceph:backup/paperless/paperless-db/base nas:paperless \
+                rclone sync ceph:backup-paperless/paperless-db/base nas:paperless \
                   --progress \
                   --stats-one-line \
                   --fast-list \

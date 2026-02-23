@@ -22,7 +22,7 @@ spec:
     enabled: true
     isWALArchiver: true
     parameters:
-      barmanObjectName: paperless-ceph-store
+      barmanObjectName: paperless-backup-store
 
   monitoring:
     enablePodMonitor: false
