@@ -1,0 +1,95 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nextcloud-maintenance-sa
+  namespace: documents
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: nextcloud-maintenance-role
+  namespace: documents
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "pods/exec"]
+    verbs: ["get", "list", "create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: nextcloud-maintenance-binding
+  namespace: documents
+subjects:
+  - kind: ServiceAccount
+    name: nextcloud-maintenance-sa
+    namespace: documents
+roleRef:
+  kind: Role
+  name: nextcloud-maintenance-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nextcloud-maintenance-on
+  namespace: documents
+spec:
+  schedule: "0 1 * * *" # 1:00 AM UTC
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: nextcloud-maintenance-sa
+          containers:
+            - name: maintenance-on
+              image: bitnami/kubectl:latest
+              command: ["/bin/sh", "-c"]
+              args:
+                - |
+                  # Find the first running Nextcloud pod
+                  POD_NAME=$(kubectl get pods -n documents -l app.kubernetes.io/name=nextcloud -o jsonpath='{.items[0].metadata.name}')
+
+                  if [ -z "$POD_NAME" ]; then
+                    echo "Error: No Nextcloud pod found!"
+                    exit 1
+                  fi
+
+                  echo "Putting Nextcloud ($POD_NAME) into maintenance mode..."
+                  kubectl exec -n documents $POD_NAME -- "php occ maintenance:mode --on"
+          restartPolicy: Never
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nextcloud-maintenance-off
+  namespace: documents
+spec:
+  schedule: "0 2 * * *" # 1:00 AM UTC
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: nextcloud-maintenance-sa
+          containers:
+            - name: maintenance-off
+              image: bitnami/kubectl:latest
+              command: ["/bin/sh", "-c"]
+              args:
+                - |
+                  # Find the first running Nextcloud pod
+                  POD_NAME=$(kubectl get pods -n documents -l app.kubernetes.io/name=nextcloud -o jsonpath='{.items[0].metadata.name}')
+
+                  if [ -z "$POD_NAME" ]; then
+                    echo "Error: No Nextcloud pod found!"
+                    exit 1
+                  fi
+
+                  echo "Removing Nextcloud ($POD_NAME) into maintenance mode..."
+                  kubectl exec -n documents $POD_NAME -- "php occ maintenance:mode --off"
+          restartPolicy: Never
