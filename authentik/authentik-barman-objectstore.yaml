@@ -21,7 +21,7 @@ spec:
 apiVersion: barmancloud.cnpg.io/v1
 kind: ObjectStore
 metadata:
-  name: authentik-update-store
+  name: authentik-backup-store
   namespace: authentik
 spec:
   retentionPolicy: "7d"
