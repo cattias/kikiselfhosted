@@ -58,7 +58,7 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
               - |
-                rclone sync ceph:backup/nextcloud/nextcloud-db/base nas:nextcloud \
+                rclone sync ceph:backup-nextcloud/nextcloud-db/base nas:nextcloud \
                   --progress \
                   --stats-one-line \
                   --fast-list \

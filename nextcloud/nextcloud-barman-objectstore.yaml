@@ -6,7 +6,7 @@ metadata:
 spec:
   retentionPolicy: "7d"
   configuration:
-    destinationPath: s3://backup/nextcloud
+    destinationPath: s3://backup-nextcloud
     endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local:80
     s3Credentials:
       accessKeyId:
