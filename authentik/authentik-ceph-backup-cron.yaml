@@ -58,7 +58,7 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
               - |
-                rclone sync ceph:backup/authentik/authentik-db/base nas:authentik \
+                rclone sync ceph:backup-authentik/authentik-db/base nas:authentik \
                   --progress \
                   --stats-one-line \
                   --fast-list \
