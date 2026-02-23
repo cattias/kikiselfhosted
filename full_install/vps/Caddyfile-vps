@@ -55,6 +55,10 @@ status.kikiflix.eu {
 
 wish.kikiflix.eu {
     reverse_proxy https://192.168.178.200:443 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+
         transport http {
             tls_insecure_skip_verify
         }
