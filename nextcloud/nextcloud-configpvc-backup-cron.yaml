@@ -39,7 +39,6 @@ spec:
                     /mnt/source/config \
                     /mnt/source/custom_apps \
                     /mnt/source/themes \
-                    /mnt/source/data \
                     $DEST/
                   
                   echo "Backup complete at $(date)"

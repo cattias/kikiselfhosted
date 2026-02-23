@@ -69,35 +69,6 @@ spec:
               secure: tls
               port: 587
               authtype: LOGIN
-          objectStore:
-            # https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/primary_storage.html#simple-storage-service-s3
-            s3:
-              enabled: true
-              usePathStyle: true
-              # use TLS/SSL for S3 connections
-              ssl: false
-              # default port that can be changed based on your object store, e.g. for minio, you can use 9000
-              port: "80"
-              # this is the default in the nextcloud docs
-              region: "ceph-objectstore"
-              # required if using s3, the name of the bucket you'd like to use
-              bucket: "nextcloud"
-              # object prefix in bucket
-              prefix: "nextcloud"
-              # use an existingSecret for S3 credentials. If set, we ignore the following under nextcloud.objectStore.s3
-              # endpoint, accessKey, secretKey
-              existingSecret: "nextcloud-secret"
-              secretKeys:
-                # key in nextcloud.objectStore.s3.existingSecret to use for s3 endpoint
-                host: "s3-host"
-                # key in nextcloud.objectStore.s3.existingSecret to use for s3 accessKeyID
-                accessKey: "s3-accesskey"
-                # key in nextcloud.objectStore.s3.existingSecret to use for s3 secretAccessKey
-                secretKey: "s3-secretkey"
-                # key in nextcloud.objectStore.s3.existingSecret to use for the s3 bucket
-                bucket: "s3-bucket"
-                # key in nextcloud.objectStore.s3.existingSecret to use for the s3 sse_c_key
-                sse_c_key: ""
         metrics:
           enabled: true
           https: true
@@ -131,6 +102,9 @@ spec:
         persistence:
           enabled: true
           existingClaim: nextcloud-data-pvc
+          nextcloudData:
+            enabled: true
+            existingClaim: nextcloud-documents-pvc
         collabora:
           enabled: true
           collabora:
