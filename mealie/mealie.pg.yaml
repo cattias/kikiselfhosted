@@ -22,7 +22,7 @@ spec:
     enabled: true
     isWALArchiver: true
     parameters:
-      barmanObjectName: mealie-ceph-store
+      barmanObjectName: mealie-backup-store
 
   monitoring:
     enablePodMonitor: false
