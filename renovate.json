@@ -386,6 +386,7 @@
     "ignorePaths": [
       "apps/templates/cert-manager/cert-manager\\.yaml",
       "apps/templates/immich-app\\.yaml",
+      "immich/immich\\.yaml",
       "apps/templates/authentik-app\\.yaml",
       "apps/templates/vaultwarden-app\\.yaml",
       "apps/templates/nextcloud-app\\.yaml",
