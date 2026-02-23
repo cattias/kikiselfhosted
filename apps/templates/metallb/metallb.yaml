@@ -29,7 +29,7 @@ spec:
           namespace: monitoring
           podMonitor:
             # enable support for Prometheus Operator
-            enabled: true
+            enabled: false
             additionalLabels:
               release: kube-prometheus-stack
           serviceMonitor:
