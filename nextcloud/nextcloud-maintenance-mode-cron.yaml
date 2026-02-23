@@ -46,6 +46,7 @@ spec:
           containers:
             - name: maintenance-on
               image: bitnami/kubectl:latest
+              imagePullPolicy: Always
               command: ["/bin/sh", "-c"]
               args:
                 - |
@@ -79,6 +80,7 @@ spec:
           containers:
             - name: maintenance-off
               image: bitnami/kubectl:latest
+              imagePullPolicy: Always
               command: ["/bin/sh", "-c"]
               args:
                 - |
