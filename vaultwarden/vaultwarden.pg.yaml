@@ -22,7 +22,7 @@ spec:
     enabled: true
     isWALArchiver: true
     parameters:
-      barmanObjectName: vaultwarden-ceph-store
+      barmanObjectName: vaultwarden-backup-store
 
   monitoring:
     enablePodMonitor: false
