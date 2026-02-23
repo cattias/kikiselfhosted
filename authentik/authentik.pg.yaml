@@ -22,7 +22,7 @@ spec:
     enabled: true
     isWALArchiver: true
     parameters:
-      barmanObjectName: authentik-ceph-store
+      barmanObjectName: authentik-backup-store
 
   monitoring:
     enablePodMonitor: false
