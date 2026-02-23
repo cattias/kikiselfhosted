@@ -1,26 +1,6 @@
 apiVersion: barmancloud.cnpg.io/v1
 kind: ObjectStore
 metadata:
-  name: immich-ceph-store
-  namespace: photos
-spec:
-  retentionPolicy: "7d"
-  configuration:
-    destinationPath: s3://backup/immich
-    endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local:80
-    s3Credentials:
-      accessKeyId:
-        name: barman-secret
-        key: ACCESS_KEY_ID
-      secretAccessKey:
-        name: barman-secret
-        key: ACCESS_SECRET_KEY
-    wal:
-      compression: gzip
----
-apiVersion: barmancloud.cnpg.io/v1
-kind: ObjectStore
-metadata:
   name: immich-backup-store
   namespace: photos
 spec:

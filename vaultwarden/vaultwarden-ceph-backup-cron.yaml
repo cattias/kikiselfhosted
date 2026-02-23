@@ -58,7 +58,7 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
               - |
-                rclone sync ceph:backup/vaultwarden/vaultwarden-db/base nas:vaultwarden \
+                rclone sync ceph:backup-vaultwarden/vaultwarden-db/base nas:vaultwarden \
                   --progress \
                   --stats-one-line \
                   --fast-list \
