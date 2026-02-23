@@ -24,3 +24,28 @@ spec:
     targetRevision: 0.15.3
     helm:
       releaseName: metallb
+      valuesObject:
+        prometheus:
+          namespace: monitoring
+          podMonitor:
+            # enable support for Prometheus Operator
+            enabled: true
+            additionalLabels:
+              release: kube-prometheus-stack
+          serviceMonitor:
+            # enable support for Prometheus Operator
+            enabled: true
+            speaker:
+              # optional additional labels for the speaker serviceMonitor
+            additionalLabels:
+              release: kube-prometheus-stack
+
+            controller:
+              # optional additional labels for the controller serviceMonitor
+            additionalLabels:
+              release: kube-prometheus-stack
+          prometheusRule:
+            # enable alertmanager alerts
+            enabled: true
+            additionalLabels:
+              release: kube-prometheus-stack
