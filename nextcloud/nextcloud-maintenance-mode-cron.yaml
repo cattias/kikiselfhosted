@@ -58,7 +58,7 @@ spec:
                   fi
 
                   echo "Putting Nextcloud ($POD_NAME) into maintenance mode..."
-                  kubectl exec -n documents $POD_NAME -- "php occ maintenance:mode --on"
+                  kubectl exec -n documents $POD_NAME -- su -s /bin/bash www-data -c "php occ maintenance:mode --on"
           restartPolicy: Never
 ---
 apiVersion: batch/v1
@@ -91,5 +91,5 @@ spec:
                   fi
 
                   echo "Removing Nextcloud ($POD_NAME) into maintenance mode..."
-                  kubectl exec -n documents $POD_NAME -- "php occ maintenance:mode --off"
+                  kubectl exec -n documents $POD_NAME -- su -s /bin/bash www-data -c "php occ maintenance:mode --off"
           restartPolicy: Never
