@@ -58,7 +58,7 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
               - |
-                rclone sync ceph:backup/immich/immich-db/base nas:immich \
+                rclone sync ceph:backup-immich/immich-db/base nas:immich \
                   --progress \
                   --stats-one-line \
                   --fast-list \
