@@ -27,6 +27,7 @@ spec:
       valuesObject:
         prometheus:
           namespace: monitoring
+          serviceAccount: "kube-prometheus-stack-prometheus"
           podMonitor:
             # enable support for Prometheus Operator
             enabled: false
