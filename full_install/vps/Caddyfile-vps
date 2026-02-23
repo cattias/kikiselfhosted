@@ -53,16 +53,16 @@ status.kikiflix.eu {
     reverse_proxy localhost:3001
 }
 
-kikiflix.eu {
-    reverse_proxy http://192.168.178.201:32400
-}
-
 wish.kikiflix.eu {
     reverse_proxy https://192.168.178.200:443 {
         transport http {
             tls_insecure_skip_verify
         }
     }
+}
+
+kikiflix.eu {
+    reverse_proxy http://192.168.178.201:32400
 }
 
 photos.attias.io {
