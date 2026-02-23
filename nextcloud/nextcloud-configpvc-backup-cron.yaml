@@ -35,7 +35,7 @@ spec:
                   # Syncing specific folders
                   # -rlptgo: recursive, links, perms, times, group, owner
                   # --ignore-errors: continue even if a log file is locked
-                  rsync -rlptgo --delete --ignore-errors \
+                  rsync -rltv --delete --ignore-errors \
                     /mnt/source/config \
                     /mnt/source/custom_apps \
                     /mnt/source/themes \
