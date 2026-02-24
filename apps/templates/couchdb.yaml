@@ -61,6 +61,8 @@ spec:
           cors:
             origins: app://obsidian.md,capacitor://localhost,http://localhost
             credentials: true
+          replicator:
+            auth_plugins: couch_replicator_auth_noop
         persistentVolume:
           enabled: true
           accessModes:
