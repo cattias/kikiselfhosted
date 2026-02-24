@@ -47,15 +47,16 @@
       "versioningTemplate": "semver"
     },
     {
-      "description": "Handle Cert-Manager OCI Helm Chart",
       "customType": "regex",
       "managerFilePatterns": [
-        "/apps/templates/cert-manager/cert-manager\\.yaml$/"
+        "/apps/templates/cert-manager/cert-manager\\.yaml/"
       ],
       "matchStrings": [
-        "repoURL:\\s*oci:\\/\\/quay\\.io\\/jetstack\\/charts\\/cert-manager\\s*\\n\\s*targetRevision:\\s*(?<currentValue>.*?)\\s*\\n\\s*chart:\\s*(?<depName>cert-manager)"
+        "repoURL:\\s*oci:\\/\\/quay\\.io\\/jetstack\\/charts\\/cert-manager\\s*\\n\\s*targetRevision:\\s*(?<currentValue>v?[0-9\\.]+)\\s*\\n\\s*chart:\\s*cert-manager"
       ],
-      "datasourceTemplate": "helm"
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "quay.io/jetstack/charts/cert-manager",
+      "versioningTemplate": "semver"
     },
     {
       "customType": "regex",
