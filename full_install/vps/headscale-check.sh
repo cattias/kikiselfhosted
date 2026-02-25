@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# --- Configuration ---
-TOKEN="YOUR_BOT_TOKEN"
-CHAT_ID="YOUR_CHAT_ID"
+# Configuration
+TOKEN="BOT"
+CHAT_ID="CHAT"
 REPO="juanfont/headscale"
 
 # 1. Check Service Status

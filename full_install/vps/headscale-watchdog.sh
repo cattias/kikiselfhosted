@@ -1,4 +1,3 @@
-# cat /usr/local/bin/headscale-watchdog.sh
 #!/bin/bash
 
 # Configuration
@@ -31,4 +30,3 @@ if ! ss -ulpn | grep -q ":$STUN_PORT"; then
     log_event "WARNING: STUN port $STUN_PORT is not listening. Restarting..."
     systemctl restart "$SERVICE"
 fi
-

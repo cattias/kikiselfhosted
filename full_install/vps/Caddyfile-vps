@@ -1,7 +1,30 @@
+# The Caddyfile is an easy way to configure your Caddy web server.
+#
+# Unless the file starts with a global options block, the first
+# uncommented line is always the address of your site.
+#
+# To use your own domain name (with automatic HTTPS), first make
+# sure your domain's A/AAAA DNS records are properly pointed to
+# this machine's public IP, then replace ":80" below with your
+# domain name.
+
+#:80 {
+#	# Set this path to your site's directory.
+#	root * /usr/share/caddy
+#
+#	# Enable the static file server.
+#	file_server
+#
+#	# Another common task is to set up a reverse proxy:
+#	# reverse_proxy localhost:8080
+#
+#	# Or serve a PHP site through php-fpm:
+#	# php_fastcgi localhost:9000
+#}
 
 {
     # Global options block
-    log {
+    log default {
         output file /var/log/caddy/access.log
         format json
     }
@@ -38,23 +61,26 @@ http://hc.attias.io {
     }
 }
 
-status.attias.io {
+http://status.attias.io {
     bind 100.64.0.2
     reverse_proxy localhost:3001
 }
 
 # Real public shit
 tailscale.attias.io {
+    log
     reverse_proxy localhost:8880
 }
 
 status.kikiflix.eu {
+    log
     reverse_proxy localhost:3001
 }
 
 wish.kikiflix.eu {
+    log
     reverse_proxy https://192.168.178.200:443 {
-        header_up Host {host}
+	header_up Host {host}
         header_up X-Real-IP {remote_host}
         header_up X-Forwarded-Proto {scheme}
 
@@ -65,16 +91,19 @@ wish.kikiflix.eu {
 }
 
 kikiflix.eu {
+    log
     reverse_proxy http://192.168.178.201:32400
 }
 
 photos.attias.io {
+    log
     reverse_proxy http://192.168.178.202:2283
 }
 
 authentik.attias.io {
+    log
     reverse_proxy https://192.168.178.200:443 {
-        header_up Host {host}
+	header_up Host {host}
         header_up X-Real-IP {remote_host}
         transport http {
             tls_insecure_skip_verify
@@ -82,3 +111,5 @@ authentik.attias.io {
     }
 }
 
+# Refer to the Caddy docs for more information:
+# https://caddyserver.com/docs/caddyfile

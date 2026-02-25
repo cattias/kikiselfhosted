@@ -5,7 +5,7 @@ findtime  = 10m
 maxretry = 5
 banaction = ufw
 
-destemail = christophe.attias+fail2ban@gmail.com
+destemail = fail2ban@attias.io
 sender = fail2ban@attias.io
 
 [sshd]

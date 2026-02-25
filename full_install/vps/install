@@ -47,7 +47,7 @@ vi /usr/lib/systemd/system/glancesweb.service
 systemctl daemon-reload
 systemctl start glancesweb
 systemctl enable glancesweb
-# ss -antpl | grep glances
+# TEST: ss -antpl | grep glances
 
 # headscale
 HEADSCALE_VERSION="" # See above URL for latest version, e.g. "X.Y.Z" (NOTE: do not add the "v" prefix!)
@@ -61,7 +61,8 @@ echo "91.98.236.199 tailscale.attias.io" >> /etc/hosts
 
 # tailscale
 curl -fsSL https://tailscale.com/install.sh | sh
-tailscale up --accept-dns --accept-routes --advertise-exit-node --login-server=http://localhost:8880 --ssh
+# tailscale up --accept-dns --accept-routes --advertise-exit-node --login-server=http://localhost:8880 --ssh
+tailscale up --accept-routes --login-server=http://localhost:8880 --ssh
 tailscale set --auto-update=true
 
 sudo vi /etc/systemd/system/tailscale-eth-tuning.service

@@ -4,6 +4,7 @@ volumes:
 services:
   db:
     image: postgres:16
+    restart: always
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
@@ -11,10 +12,14 @@ services:
       - POSTGRES_PASSWORD=$DB_PASSWORD
   web:
     image: healthchecks/healthchecks:latest
+    restart: always
     env_file:
         - .env
     ports:
         - "8000:8000"
+        # To enable SMTP on port 2525, set SMTPD_PORT=2525 in .env
+        # and uncomment the following line:
+        # - "2525:2525"
     depends_on:
         - db
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; uwsgi /opt/healthchecks/docker/uwsgi.ini'
