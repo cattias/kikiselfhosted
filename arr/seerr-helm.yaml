@@ -24,10 +24,10 @@ spec:
     chart: seerr
     helm:
       valuesObject:
-        # image:
-        #   registry: ghcr.io
-        #   repository: seerr-team/seerr
-        #   tag: v3.1.0
+        image:
+          registry: ghcr.io
+          repository: seerr-team/seerr
+          tag: v3.1.0
         config:
           persistence:
             # -- Size of persistent disk
