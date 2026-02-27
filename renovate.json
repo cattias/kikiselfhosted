@@ -42,7 +42,7 @@
         "image:\\s*\\n\\s*registry:\\s*ghcr\\.io\\s*\\n\\s*repository:\\s*seerr-team\\/seerr\\s*\\n\\s*tag:\\s*(?<currentValue>v?[0-9\\.]+)"
       ],
       "datasourceTemplate": "docker",
-      "depNameTemplate": "seerr-team/seerr",
+      "depNameTemplate": "ghcr.io/seerr-team/seerr",
       "versioningTemplate": "semver"
     },
     {
