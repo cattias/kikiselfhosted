@@ -27,7 +27,7 @@ spec:
         image:
           registry: ghcr.io
           repository: seerr-team/seerr
-          tag: 3.1.0
+          tag: v3.1.0
         config:
           persistence:
             # -- Size of persistent disk
