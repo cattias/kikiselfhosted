@@ -6,7 +6,7 @@ metadata:
   namespace: documents
 spec:
   kubernetesConfig:
-    image: quay.io/opstree/redis:v8.4.0
+    image: quay.io/opstree/redis:v8.4.2
     imagePullPolicy: IfNotPresent
   storage:
     volumeClaimTemplate:
