@@ -1,22 +1,33 @@
-# This is the network config written by 'subiquity'
 network:
+  version: 2
+  renderer: networkd
   bonds:
     bond0:
-      dhcp4: true
-      dhcp6: true
-      addresses: [192.168.178.69/24, 172.16.10.1/24]
+      dhcp4: no
+      dhcp6: no
+      addresses:
+        - 192.168.178.69/24
+        - 172.16.10.1/24
       interfaces:
-      - ens3f0
-      - ens3f1
+        - ens3f0
+        - ens3f1
       parameters:
         mode: active-backup
+        primary: ens3f0
+      routes:
+        - to: default
+          via: 192.168.178.1
+      nameservers:
+        addresses:
+          - 192.168.178.80
+          - 1.1.1.1
   ethernets:
     eno1:
-      accept-ra: true
+      dhcp4: no
     ens3f0: {}
     ens3f1: {}
     eth0:
       match:
         macaddress: 6c:0b:84:67:8b:91
       set-name: eth0
-  version: 2
+      dhcp4: no
