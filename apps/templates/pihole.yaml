@@ -45,6 +45,7 @@ spec:
           - address=/hc.attias.io/authentik.attias.io/attias.io/192.168.178.200
 
           # --- Other Static Local Entries ---
+          - address=/pihole.pve.kiki.home/192.168.178.80
           - address=/pihole.kiki.home/192.168.178.110
           - address=/pihole2.kiki.home/192.168.178.203
           - address=/kiki.node/node.kiki.home/192.168.178.34
