@@ -62,6 +62,11 @@ spec:
                 type: prometheus
                 access: proxy
                 url: https://prometheus.nas.attias.io
+              - name: kikipve
+                uid: DS_KIKIPVE
+                type: prometheus
+                access: proxy
+                url: http://192.168.178.84:9090
               - uid: DS_GARMIN_STATS
                 name: GarminInflux
                 type: influxdb
@@ -93,5 +98,6 @@ spec:
           garmin: "garmin-dashboard"
           ups: "ups-dashboard"
           cnpg-grafana-dashboard: "cnpg-grafana-dashboard"
+          pve: "pve-dashboard"
           # overview: "nextcloud-collabora-grafana-dashboards-overview.json"
           # ha-allocation: "nextcloud-collabora-grafana-dashboards-ha-allocation.json"
