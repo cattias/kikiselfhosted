@@ -29,7 +29,7 @@ spec:
             - name: TZ
               value: UTC
           name: bazarr
-          image: ghcr.io/linuxserver/bazarr:v1.5.6-ls339
+          image: ghcr.io/linuxserver/bazarr:v1.5.6-ls340
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 6767
