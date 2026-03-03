@@ -62,7 +62,7 @@ spec:
                 type: prometheus
                 access: proxy
                 url: https://prometheus.nas.attias.io
-              - name: kikipve
+              - name: Kikipve
                 uid: DS_KIKIPVE
                 type: prometheus
                 access: proxy
