@@ -31,7 +31,7 @@ spec:
           pullPolicy: IfNotPresent
 
         DNS1: "192.168.178.80#5335"
-        # DNS2: "8.8.4.4"
+        DNS2: ""
 
         dnsmasq:
           enableCustomDnsMasq: true
