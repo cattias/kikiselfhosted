@@ -30,6 +30,9 @@ spec:
           tag: 2025.11.1
           pullPolicy: IfNotPresent
 
+        DNS1: "192.168.178.80#5335"
+        # DNS2: "8.8.4.4"
+
         dnsmasq:
           enableCustomDnsMasq: true
           customDnsEntries:
