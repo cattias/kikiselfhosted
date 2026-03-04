@@ -286,8 +286,7 @@ dns:
   # List of DNS servers to expose to clients.
   nameservers:
     global:
-      - 192.168.178.110
-      - 192.168.178.203
+      - 192.168.178.80
     split: {}
       # foo.bar.com:
       #   - 1.1.1.1
