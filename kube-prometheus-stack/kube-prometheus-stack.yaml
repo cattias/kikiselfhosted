@@ -80,6 +80,10 @@ spec:
                   - alertname = "Watchdog"
               - receiver: 'null'
                 matchers:
+                  - alertname = "InfoInhibitor"
+                  - job = "nextcloud-metrics"
+              - receiver: 'null'
+                matchers:
                   - alertname = "KubeControllerManagerDown"
                   - job = "kube-controller-manager"
               - receiver: 'null'
