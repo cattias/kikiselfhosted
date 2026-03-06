@@ -23,7 +23,7 @@ fstab and mount
 curl -sSLf https://get.k0s.sh | sudo sh
 sudo k0s install controller --single -c /etc/k0s/k0s.yaml
 sudo systemctl edit k0scontroller --full
-# => ExecStart=/usr/local/bin/k0s controller --config=/etc/k0s/k0s.yaml --single=true --profile=heavy-nodes
+# => ExecStart=/usr/local/bin/k0s controller --config=/etc/k0s/k0s.yaml --enable-worker --no-taints --profile=heavy-nodes
 # Reload systemd
 sudo systemctl daemon-reload
 # Restart the whole k0s process
